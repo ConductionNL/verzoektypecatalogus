@@ -60,6 +60,7 @@ class Property
 	 * @var Object  $requestType The requestType that this property belongs to
 	 *
      * @Assert\NotBlank
+     * @Assert\Valid
      * @MaxDepth(1)
      * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="properties",cascade={"persist"})
