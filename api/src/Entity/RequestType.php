@@ -48,19 +48,8 @@ class RequestType
 	/**
 	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
-	 *
-	 * @ApiProperty(
-	 * 	   identifier=true,
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The UUID identifier of this object",
-	 *             "type"="string",
-	 *             "format"="uuid",
-	 *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
-	 *         }
-	 *     }
-	 * )
-	 *
+	 * 
+     * @Groups({"read"})
 	 * @Assert\Uuid
 	 * @ORM\Id
 	 * @ORM\Column(type="uuid", unique=true)
@@ -72,17 +61,6 @@ class RequestType
     /**
      * @var string $sourceOrganization The RSIN of the organization that owns this process
      * @example 002851234
-     * 
-     * @ApiProperty(
-     *     attributes={
-     *         "swagger_context"={
- 	 *         	   "description" = "The RSIN of the organization that owns this process",
-     *             "type"="string",
-     *             "example"="002851234",
- 	*              "maxLength"="255"
-     *         }
-     *     }
-     * )
      * 
      * @Assert\NotNull
      * @Assert\Length(
@@ -98,19 +76,6 @@ class RequestType
     /**
 	 * @var string $name The name of this RequestType
      * @example My RequestType
-	 *
-	 * @ApiProperty(
-     * 	   iri="http://schema.org/name",
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The name of this RequestType",
-	 *             "type"="string",
-	 *             "example"="My RequestType",
-	 *             "maxLength"="255",
-	 *             "required" = true
-	 *         }
-	 *     }
-	 * )
 	 * 
      * @Assert\NotNull
      * @Assert\Length(
@@ -124,18 +89,6 @@ class RequestType
     /**
 	 * @var string $description An short description of this RequestType
      * @example This is the best request ever
-	 *
-	 * @ApiProperty(
-     * 	   iri="https://schema.org/description",
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "An short description of this RequestType",
-	 *             "type"="string",
-	 *             "example"="This is the best request ever",
-	 *             "maxLength"="2550"
-	 *         }
-	 *     }
-	 * )
 	 * 
      * @Assert\Length(
      *      max = 2550

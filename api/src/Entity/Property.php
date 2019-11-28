@@ -34,19 +34,8 @@ class Property
 	/**
 	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
-	 *
-	 * @ApiProperty(
-	 * 	   identifier=true,
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The UUID identifier of this object",
-	 *             "type"="string",
-	 *             "format"="uuid",
-	 *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
-	 *         }
-	 *     }
-	 * )
-	 *
+	 * 
+     * @Groups({"read"})	 
 	 * @Assert\Uuid
 	 * @ORM\Id
 	 * @ORM\Column(type="uuid", unique=true)
@@ -69,20 +58,7 @@ class Property
     /**
 	 * @var string $title The title of this property
      * @example My Property
-	 *
-	 * @ApiProperty(
-     * 	   iri="http://schema.org/name",
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The title of this property",
-	 *             "type"="string",
-	 *             "example"="My Property",
-	 *             "maxLength"="15",
-	 *             "maxLength"="255",
-	 *             "required" = true
-	 *         }
-	 *     }
-	 * )
+     * 
      * @Assert\NotBlank
      * @Assert\Length(min = 15, max = 255)
      * @Groups({"read", "write"})
@@ -90,23 +66,10 @@ class Property
      */
     private $title;
     
-    /**     *
+    /**     
 	 * @var string $name The name of the property as used in api calls, extracted from title on snake_case basis
      * @example my_property
-	 *
-	 * @ApiProperty(
-     * 	   iri="http://schema.org/name",
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The name of the property as used in api calls, extracted from title on snake_case basis",
-	 *             "type"="string",
-	 *             "example"="my_property",
-	 *             "maxLength"="15",
-	 *             "maxLength"="255",
-	 *             "required" = true
-	 *         }
-	 *     }
-	 * )
+     * 
      * @Groups({"read"})
      */
     private $name;
@@ -114,19 +77,6 @@ class Property
     /**      
 	 * @var string $type The type of this property
      * @example string
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The type of this property",
-	 *             "type"="string",
-	 *             "example"="string",
-	 *             "enum"={"string", "integer", "boolean", "number","array"},
-	 *             "maxLength"="255",
-	 *             "required" = true
-	 *         }
-	 *     }
-	 * )
      *
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
@@ -139,19 +89,6 @@ class Property
     /**      
 	 * @var string $type The swagger type of the property as used in api calls
      * @example string
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The swagger type of the property as used in api calls",
-	 *             "type"="string",
-	 *             "example"="string",
-	 *             "enum"={"int32","int64","float","double","byte","binary","date","duration","date-time","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent"},
-	 *             "maxLength"="255",
-	 *             "required" = true
-	 *         }
-	 *     }
-	 * )
 	 *       
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
@@ -164,17 +101,6 @@ class Property
     /**
 	 * @var string $multipleOf *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5 
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5",
-	 *             "type"="integer",
-	 *             "example"="2",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -185,17 +111,6 @@ class Property
     /**
 	 * @var string $multipleOf *Can only be used in combination with type integer* The maximum allowed value 
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* The maximum allowed value",
-	 *             "type"="integer",
-	 *             "example"="2",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -206,16 +121,6 @@ class Property
     /**
 	 * @var string $exclusiveMaximum *Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4
      * @example true
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4",
-	 *             "type"="boolean",
-	 *             "example"=true
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -226,17 +131,6 @@ class Property
     /**
 	 * @var string $minimum *Can only be used in combination with type integer* The minimum allowed value 
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* The minimum allowed value",
-	 *             "type"="integer",
-	 *             "example"="2",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -248,16 +142,6 @@ class Property
      * 
 	 * @var string $exclusiveMinimum *Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6
      * @example true
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 4",
-	 *             "type"="boolean",
-	 *             "example"=true
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -268,16 +152,6 @@ class Property
     /**
 	 * @var string $maxLength The maximum amount of characters in the value 
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The maximum amount of characters in the value",
-	 *             "type"="integer",
-	 *             "example"="2"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -288,16 +162,6 @@ class Property
     /**
 	 * @var string $minLength The minimal amount of characters in the value
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The minimal amount of characters in the value",
-	 *             "type"="integer",
-	 *             "example"="2"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -308,17 +172,6 @@ class Property
     /**
 	 * @var string $pattern A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to
      * @example [+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to",
-	 *             "type"="string",
-	 *             "example"="[+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
@@ -345,17 +198,6 @@ class Property
     /**
 	 * @var string $maxItems *Can only be used in combination with type array* The maximum array length  
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type array* The maximum array length ",
-	 *             "type"="integer",
-	 *             "example"="2",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -366,17 +208,6 @@ class Property
     /**
 	 * @var string $minItems *Can only be used in combination with type array* The minimum allowed value 
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type array* The minimum allowed value",
-	 *             "type"="integer",
-	 *             "example"="2",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -387,16 +218,6 @@ class Property
     /**
 	 * @var boolean $uniqueItems *Can only be used in combination with type array* Define whether or not values in an array should be unique
      * @example false
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type array*  Define whether or not values in an array should be unique",
-	 *             "type"="boolean",
-	 *             "example"=false
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -407,17 +228,6 @@ class Property
     /**
 	 * @var string $maxProperties *Can only be used in combination with type integer* The maximum amount of properties an object should contain 
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type integer* The maximum amount of properties an object should contain",
-	 *             "type"="integer",
-	 *             "example"="2",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -428,17 +238,6 @@ class Property
     /**
 	 * @var string $minProperties *Can only be used in combination with type object* The minimum amount of properties an object should contain
      * @example 2
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*Can only be used in combination with type object* The minimum amount of properties an object should contain",
-	 *             "type"="integer",
-	 *             "example"="2",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -449,16 +248,6 @@ class Property
     /**
 	 * @var boolean $required Only whether or not this property is required
      * @example false
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "Whether or not this property is required",
-	 *             "type"="boolean",
-	 *             "example"=false
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -493,16 +282,6 @@ class Property
     /**
 	 * @var array $enum An array of possible values, input is limited to this array
      * @example ['first','second]
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "An array of possible values, input is limited to this array",
-	 *             "type"="array",
-	 *             "example"="['first','second]'"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Groups({"read", "write"})
      * @ORM\Column(type="array", nullable=true)
@@ -512,16 +291,6 @@ class Property
     /**
 	 * @var array $allOf *mutually exclusive with using type* An array of possible types that an property should confirm to
      * @example ['string','boolean']
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*mutually exclusive with using type* An array of possible types that an property should confirm to",
-	 *             "type"="array",
-	 *             "example"="['string','boolean']"
-	 *         }
-	 *     }
-	 * )
      * 
      * @ORM\Column(type="array", nullable=true)
      */
@@ -530,16 +299,6 @@ class Property
     /**
 	 * @var array $anyOf *mutually exclusive with using type* An array of possible types that an property might confirm to
      * @example ['string','boolean']
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*mutually exclusive with using type* An array of possible types that an property might confirm to",
-	 *             "type"="array",
-	 *             "example"="['string','boolean']"
-	 *         }
-	 *     }
-	 * )
      * 
      * @ORM\Column(type="array", nullable=true)
      */
@@ -548,16 +307,6 @@ class Property
     /**
 	 * @var array $oneOf *mutually exclusive with using type* An array of possible types that an property must confirm to
      * @example ['string','boolean']
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*mutually exclusive with using type* An array of possible types that an property must confirm to",
-	 *             "type"="array",
-	 *             "example"="['string','boolean']"
-	 *         }
-	 *     }
-	 * )
      * 
      * @ORM\Column(type="array", nullable=true)
      */
@@ -573,17 +322,6 @@ class Property
     /**
 	 * @var string $description An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)
      * @example My value
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)",
-	 *             "type"="string",
-	 *             "example"="My value",
-	 *             "maxLength"="2555"
-	 *         }
-	 *     }
-	 * )
      *      
      * @Groups({"read", "write"})
      * @ORM\Column(type="text", nullable=true)
@@ -593,17 +331,6 @@ class Property
     /**
 	 * @var string $defaultValue An default value for this value that will be used if a user doesn't supply a value
      * @example My value
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "An default value for this value that will be used if a user doesn't supply a value",
-	 *             "type"="string",
-	 *             "example"="My value",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
@@ -615,16 +342,6 @@ class Property
     /**
 	 * @var boolean $nullable Whether or not this property can be left empty
      * @example false
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "Whether or not this property can be left empty",
-	 *             "type"="boolean",
-	 *             "example"=false
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -635,17 +352,6 @@ class Property
     /**
 	 * @var string $discriminator To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name
      * @example name
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name",
-	 *             "type"="string",
-	 *             "example"="name",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
@@ -656,16 +362,6 @@ class Property
     /**
 	 * @var boolean $readOnly Whether or not this property is read only
      * @example false
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "Whether or not this property is read only",
-	 *             "type"="boolean",
-	 *             "example"=false
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -676,16 +372,6 @@ class Property
     /**
 	 * @var boolean $writeOnly Whether or not this property is write only
      * @example false
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "Whether or not this property is wite only",
-	 *             "type"="boolean",
-	 *             "example"=false
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -696,18 +382,6 @@ class Property
     /**
 	 * @var string $xml An XML representation of the swagger docs
      * @example <xml></xml>
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "An XML representation of the swagger docs",
-	 *             "type"="string",
-	 *             "format"="xml",
-	 *             "example"="<xml></xml>",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Groups({"read", "write"})
      * @ORM\Column(type="text", nullable=true)
@@ -717,18 +391,6 @@ class Property
     /**
 	 * @var string $externalDoc An link to any external documentation for the value
      * @example https://www.w3.org/TR/NOTE-datetime
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "An link to any external documentation for the value",
-	 *             "type"="string",
-	 *             "format"="url",
-	 *             "example"="https://www.w3.org/TR/NOTE-datetime",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
@@ -739,17 +401,6 @@ class Property
     /**
 	 * @var string $example An example of the value that should be supplied
      * @example My value
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "An example of the value that should be supplied",
-	 *             "type"="string",
-	 *             "example"="My value",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
 	 * 
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
@@ -760,16 +411,6 @@ class Property
     /**
 	 * @var boolean $deprecated Whether or not this property has been deprecated and wil be removed in the future
      * @example false
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "Whether or not this property has been deprecated and wil be removed in the future",
-	 *             "type"="boolean",
-	 *             "example"=false
-	 *         }
-	 *     }
-	 * )
      * 
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -780,17 +421,6 @@ class Property
     /**
 	 * @var string $availableUntil  The moment from which this value is available
      * @example 2019-09-16T14:26:51+00:00
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The moment from which this value is available",
-	 *             "type"="string",
-	 *             "format"="date-time",
-	 *             "example"="2019-09-16T14:26:51+00:00"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Groups({"read", "write"})
      * @Assert\DateTime
@@ -801,17 +431,6 @@ class Property
     /**
 	 * @var string $availableUntil *should be used in combination with deprecated* The moment where until this value is available
      * @example 2019-09-16T14:26:51+00:00
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "*should be used in combination with deprecated* The moment where until this value is available",
-	 *             "type"="string",
-	 *             "format"="date-time",
-	 *             "example"="2019-09-16T14:26:51+00:00"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Groups({"read", "write"})
      * @Assert\DateTime
@@ -822,17 +441,6 @@ class Property
     /**
 	 * @var string $minDate The minimal date for value, either a date, datetime or duration (ISO_8601)
      * @example 2019-09-16T14:26:51+00:00
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The minimal date for value, either a date, datetime or duration (ISO_8601)",
-	 *             "type"="string",
-	 *             "example"="2019-09-16T14:26:51+00:00",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      *      
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -842,17 +450,6 @@ class Property
     /**
 	 * @var string $maxDate  The maximum date for value, either a date, datetime or duration (ISO_8601)
      * @example 2019-09-16T14:26:51+00:00
-	 *
-	 * @ApiProperty(
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The maximum date for value, either a date, datetime or duration (ISO_8601)",
-	 *             "type"="string",
-	 *             "example"="2019-09-16T14:26:51+00:00",
-	 *             "maxLength"="255"
-	 *         }
-	 *     }
-	 * )
      * 
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
