@@ -317,7 +317,7 @@ class Property
     private $definitions;
 
     /**
-	 * @var string $description An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)
+	 * @var string An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)
      * @example My value
      *
      * @Groups({"read", "write"})
@@ -326,7 +326,7 @@ class Property
     private $description;
 
     /**
-	 * @var string $defaultValue An default value for this value that will be used if a user doesn't supply a value
+	 * @var string An default value for this value that will be used if a user doesn't supply a value
      * @example My value
      *
      * @Assert\Length(max = 255)
@@ -337,7 +337,7 @@ class Property
 
 
     /**
-	 * @var boolean $nullable Whether or not this property can be left empty
+	 * @var boolean Whether or not this property can be left empty
      * @example false
      *
      * @Assert\Type("bool")
@@ -347,7 +347,7 @@ class Property
     private $nullable;
 
     /**
-	 * @var string $discriminator To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name
+	 * @var string To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name
      * @example name
      *
      * @Assert\Length(max = 255)
@@ -357,7 +357,7 @@ class Property
     private $discriminator;
 
     /**
-	 * @var boolean $readOnly Whether or not this property is read only
+	 * @var boolean Whether or not this property is read only
      * @example false
      *
      * @Assert\Type("bool")
@@ -367,7 +367,7 @@ class Property
     private $readOnly;
 
     /**
-	 * @var boolean $writeOnly Whether or not this property is write only
+	 * @var boolean Whether or not this property is write only
      * @example false
      *
      * @Assert\Type("bool")
@@ -377,7 +377,7 @@ class Property
     private $writeOnly;
 
     /**
-	 * @var string $xml An XML representation of the swagger docs
+	 * @var string An XML representation of the swagger docs
      * @example '<xml></xml>'
      *
      * @Groups({"read", "write"})
@@ -386,7 +386,7 @@ class Property
     private $xml;
 
     /**
-	 * @var string $externalDoc An link to any external documentation for the value
+	 * @var string An link to any external documentation for the value
      * @example https://www.w3.org/TR/NOTE-datetime
      *
      * @Assert\Length(max = 255)
@@ -396,7 +396,7 @@ class Property
     private $externalDoc;
 
     /**
-	 * @var string $example An example of the value that should be supplied
+	 * @var string An example of the value that should be supplied
      * @example My value
 	 *
      * @Assert\Length(max = 255)
@@ -406,7 +406,7 @@ class Property
     private $example;
 
     /**
-	 * @var boolean $deprecated Whether or not this property has been deprecated and wil be removed in the future
+	 * @var boolean Whether or not this property has been deprecated and wil be removed in the future
      * @example false
      *
      * @Assert\Type("bool")
@@ -416,7 +416,7 @@ class Property
     private $deprecated;
 
     /**
-	 * @var string $availableUntil  The moment from which this value is available
+	 * @var string  The moment from which this value is available
      * @example 2019-09-16T14:26:51+00:00
      *
      * @Groups({"read", "write"})
@@ -426,7 +426,7 @@ class Property
     private $availableFrom;
 
     /**
-	 * @var string $availableUntil *should be used in combination with deprecated* The moment where until this value is available
+	 * @var string *should be used in combination with deprecated* The moment where until this value is available
      * @example 2019-09-16T14:26:51+00:00
      *
      * @Groups({"read", "write"})
@@ -436,7 +436,7 @@ class Property
     private $availableUntil;
 
     /**
-	 * @var string $minDate The minimal date for value, either a date, datetime or duration (ISO_8601)
+	 * @var string The minimal date for value, either a date, datetime or duration (ISO_8601)
      * @example 2019-09-16T14:26:51+00:00
      *
      * @Groups({"read", "write"})
@@ -445,7 +445,7 @@ class Property
     private $minDate;
 
     /**
-	 * @var string $maxDate  The maximum date for value, either a date, datetime or duration (ISO_8601)
+	 * @var string  The maximum date for value, either a date, datetime or duration (ISO_8601)
      * @example 2019-09-16T14:26:51+00:00
      *
      * @Groups({"read", "write"})
