@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -19,10 +20,10 @@ use App\Entity\RequestType;
 
 /**
  * This property follows the following schemes (in order of importance)
- * https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md 
+ * https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
  * https://tools.ietf.org/html/draft-wright-json-schema-validation-00
  * http://json-schema.org/
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true}
@@ -32,10 +33,10 @@ use App\Entity\RequestType;
 class Property
 {
 	/**
-	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
+	 * @var UuidInterface The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
-	 * 
-     * @Groups({"read"})	 
+	 *
+     * @Groups({"read"})
 	 * @Assert\Uuid
 	 * @ORM\Id
 	 * @ORM\Column(type="uuid", unique=true)
@@ -45,37 +46,37 @@ class Property
 	private $id;
 
     /**
-	 * @var Object  $requestType The requestType that this property belongs to
-	 * 
+	 * @var RequestType The requestType that this property belongs to
+	 *
      * @Assert\NotBlank
      * @MaxDepth(1)
      * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="properties",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $requestType;    
-    
+    private $requestType;
+
     /**
-	 * @var string $title The title of this property
+	 * @var string The title of this property
      * @example My Property
-     * 
+     *
      * @Assert\NotBlank
      * @Assert\Length(min = 15, max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      */
     private $title;
-    
-    /**     
-	 * @var string $name The name of the property as used in api calls, extracted from title on snake_case basis
+
+    /**
+	 * @var string The name of the property as used in api calls, extracted from title on snake_case basis
      * @example my_property
-     * 
+     *
      * @Groups({"read"})
      */
     private $name;
-    
-    /**      
-	 * @var string $type The type of this property
+
+    /**
+	 * @var string The type of this property
      * @example string
      *
      * @Assert\NotBlank
@@ -84,12 +85,12 @@ class Property
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      */
-    private $type;    
-    
-    /**      
-	 * @var string $type The swagger type of the property as used in api calls
+    private $type;
+
+    /**
+	 * @var string The swagger type of the property as used in api calls
      * @example string
-	 *       
+	 *
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
      * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent"})
@@ -99,9 +100,9 @@ class Property
     private $format;
 
     /**
-	 * @var string $multipleOf *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5 
+	 * @var int *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -109,9 +110,9 @@ class Property
     private $multipleOf;
 
     /**
-	 * @var string $multipleOf *Can only be used in combination with type integer* The maximum allowed value 
+	 * @var int *Can only be used in combination with type integer* The maximum allowed value
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -121,7 +122,7 @@ class Property
     /**
 	 * @var string $exclusiveMaximum *Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4
      * @example true
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -129,9 +130,9 @@ class Property
     private $exclusiveMaximum;
 
     /**
-	 * @var string $minimum *Can only be used in combination with type integer* The minimum allowed value 
+	 * @var string $minimum *Can only be used in combination with type integer* The minimum allowed value
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -139,10 +140,10 @@ class Property
     private $minimum;
 
     /**
-     * 
-	 * @var string $exclusiveMinimum *Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6
+     *
+	 * @var bool *Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6
      * @example true
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -150,9 +151,9 @@ class Property
     private $exclusiveMinimum;
 
     /**
-	 * @var string $maxLength The maximum amount of characters in the value 
+	 * @var int $maxLength The maximum amount of characters in the value
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -160,9 +161,9 @@ class Property
     private $maxLength;
 
     /**
-	 * @var string $minLength The minimal amount of characters in the value
+	 * @var int $minLength The minimal amount of characters in the value
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -170,9 +171,9 @@ class Property
     private $minLength;
 
     /**
-	 * @var string $pattern A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to
-     * @example [+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?
-     * 
+	 * @var string A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to
+     * @example '[+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?'
+     *
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -181,14 +182,14 @@ class Property
 
     /**
      * Not yet supported by business logic
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="App\Entity\Property")
      */
     private $items;
 
     /**
      * Not yet supported by business logic
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -196,9 +197,9 @@ class Property
     private $additionalItems;
 
     /**
-	 * @var string $maxItems *Can only be used in combination with type array* The maximum array length  
+	 * @var int $maxItems *Can only be used in combination with type array* The maximum array length
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -206,9 +207,9 @@ class Property
     private $maxItems;
 
     /**
-	 * @var string $minItems *Can only be used in combination with type array* The minimum allowed value 
+	 * @var int $minItems *Can only be used in combination with type array* The minimum allowed value
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -216,9 +217,9 @@ class Property
     private $minItems;
 
     /**
-	 * @var boolean $uniqueItems *Can only be used in combination with type array* Define whether or not values in an array should be unique
+	 * @var boolean *Can only be used in combination with type array* Define whether or not values in an array should be unique
      * @example false
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -226,9 +227,9 @@ class Property
     private $uniqueItems;
 
     /**
-	 * @var string $maxProperties *Can only be used in combination with type integer* The maximum amount of properties an object should contain 
+	 * @var int $maxProperties *Can only be used in combination with type integer* The maximum amount of properties an object should contain
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -236,9 +237,9 @@ class Property
     private $maxProperties;
 
     /**
-	 * @var string $minProperties *Can only be used in combination with type object* The minimum amount of properties an object should contain
+	 * @var int $minProperties *Can only be used in combination with type object* The minimum amount of properties an object should contain
      * @example 2
-     * 
+     *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
      * @ORM\Column(type="integer", nullable=true)
@@ -248,7 +249,7 @@ class Property
     /**
 	 * @var boolean $required Only whether or not this property is required
      * @example false
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -257,7 +258,7 @@ class Property
 
     /**
      * Not yet supported by business logic
-     * 
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="object", nullable=true)
      */
@@ -265,7 +266,7 @@ class Property
 
     /**
      * Not yet supported by business logic
-     * 
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="object", nullable=true)
      */
@@ -273,65 +274,61 @@ class Property
 
     /**
      * Not yet supported by business logic
-     * 
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="object", nullable=true)
      */
     private $object;
 
     /**
-	 * @var array $enum An array of possible values, input is limited to this array
-     * @example ['first','second]
-     * 
+	 * @var array An array of possible values, input is limited to this array
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="array", nullable=true)
      */
     private $enum = [];
 
     /**
-	 * @var array $allOf *mutually exclusive with using type* An array of possible types that an property should confirm to
-     * @example ['string','boolean']
-     * 
+	 * @var array *mutually exclusive with using type* An array of possible types that an property should confirm to
+     *
      * @ORM\Column(type="array", nullable=true)
      */
     private $allOf = [];
 
     /**
-	 * @var array $anyOf *mutually exclusive with using type* An array of possible types that an property might confirm to
-     * @example ['string','boolean']
-     * 
+	 * @var array *mutually exclusive with using type* An array of possible types that an property might confirm to
+     *
      * @ORM\Column(type="array", nullable=true)
      */
     private $anyOf = [];
 
     /**
-	 * @var array $oneOf *mutually exclusive with using type* An array of possible types that an property must confirm to
-     * @example ['string','boolean']
-     * 
+	 * @var array *mutually exclusive with using type* An array of possible types that an property must confirm to
+     *
      * @ORM\Column(type="array", nullable=true)
      */
     private $oneOf = [];
 
     /**
      * Not yet supported by business logic
-     * 
+     *
      * @ORM\Column(type="object", nullable=true)
      */
     private $definitions;
 
     /**
-	 * @var string $description An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)
+	 * @var string An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)
      * @example My value
-     *      
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-	 * @var string $defaultValue An default value for this value that will be used if a user doesn't supply a value
+	 * @var string An default value for this value that will be used if a user doesn't supply a value
      * @example My value
-     * 
+     *
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -340,9 +337,9 @@ class Property
 
 
     /**
-	 * @var boolean $nullable Whether or not this property can be left empty
+	 * @var boolean Whether or not this property can be left empty
      * @example false
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -350,9 +347,9 @@ class Property
     private $nullable;
 
     /**
-	 * @var string $discriminator To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name
+	 * @var string To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name
      * @example name
-     * 
+     *
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -360,9 +357,9 @@ class Property
     private $discriminator;
 
     /**
-	 * @var boolean $readOnly Whether or not this property is read only
+	 * @var boolean Whether or not this property is read only
      * @example false
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -370,9 +367,9 @@ class Property
     private $readOnly;
 
     /**
-	 * @var boolean $writeOnly Whether or not this property is write only
+	 * @var boolean Whether or not this property is write only
      * @example false
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -380,18 +377,18 @@ class Property
     private $writeOnly;
 
     /**
-	 * @var string $xml An XML representation of the swagger docs
-     * @example <xml></xml>
-     * 
+	 * @var string An XML representation of the swagger docs
+     * @example '<xml></xml>'
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $xml;
 
     /**
-	 * @var string $externalDoc An link to any external documentation for the value
+	 * @var string An link to any external documentation for the value
      * @example https://www.w3.org/TR/NOTE-datetime
-     * 
+     *
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -399,9 +396,9 @@ class Property
     private $externalDoc;
 
     /**
-	 * @var string $example An example of the value that should be supplied
+	 * @var string An example of the value that should be supplied
      * @example My value
-	 * 
+	 *
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -409,9 +406,9 @@ class Property
     private $example;
 
     /**
-	 * @var boolean $deprecated Whether or not this property has been deprecated and wil be removed in the future
+	 * @var boolean Whether or not this property has been deprecated and wil be removed in the future
      * @example false
-     * 
+     *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
@@ -419,9 +416,9 @@ class Property
     private $deprecated;
 
     /**
-	 * @var string $availableUntil  The moment from which this value is available
+	 * @var string  The moment from which this value is available
      * @example 2019-09-16T14:26:51+00:00
-     * 
+     *
      * @Groups({"read", "write"})
      * @Assert\DateTime
      * @ORM\Column(type="datetime", nullable=true)
@@ -429,9 +426,9 @@ class Property
     private $availableFrom;
 
     /**
-	 * @var string $availableUntil *should be used in combination with deprecated* The moment where until this value is available
+	 * @var string *should be used in combination with deprecated* The moment where until this value is available
      * @example 2019-09-16T14:26:51+00:00
-     * 
+     *
      * @Groups({"read", "write"})
      * @Assert\DateTime
      * @ORM\Column(type="datetime", nullable=true)
@@ -439,18 +436,18 @@ class Property
     private $availableUntil;
 
     /**
-	 * @var string $minDate The minimal date for value, either a date, datetime or duration (ISO_8601)
+	 * @var string The minimal date for value, either a date, datetime or duration (ISO_8601)
      * @example 2019-09-16T14:26:51+00:00
-     *      
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $minDate;
 
     /**
-	 * @var string $maxDate  The maximum date for value, either a date, datetime or duration (ISO_8601)
+	 * @var string  The maximum date for value, either a date, datetime or duration (ISO_8601)
      * @example 2019-09-16T14:26:51+00:00
-     * 
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -465,11 +462,11 @@ class Property
     {
         return $this->id;
     }
-    
+
     public function setId(string $id): self
     {
     	$this->id = $id;
-    	
+
     	return $this;
     }
 
@@ -491,12 +488,12 @@ class Property
     }
 
     public function setTitle(string $title): self
-    {	   	
+    {
         $this->title = $title;
 
         return $this;
     }
-        
+
     public function getName(): ?string
     {
     	// titles wil be used as strings so lets convert the to camelcase
@@ -504,7 +501,7 @@ class Property
     	$string = trim($string); //removes whitespace at begin and ending
     	$string = preg_replace('/\s+/', '_', $string); // replaces other whitespaces with _
     	$string = strtolower($string);
-    	
+
     	return $string;
     }
 
