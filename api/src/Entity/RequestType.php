@@ -13,6 +13,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @ApiResource( 
@@ -29,7 +31,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *                      {
  *                          "name" = "extend",
  *                          "in" = "query",
- *                          "description" = "Add the properties of the requestType that this requetType extends",
+ *                          "description" = "Add the properties of the requestType that this requestType extends",
  *                          "required" = false,
  *                          "type" : "boolean"
  *                      }
@@ -47,19 +49,8 @@ class RequestType
 	/**
 	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
-	 *
-	 * @ApiProperty(
-	 * 	   identifier=true,
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The UUID identifier of this object",
-	 *             "type"="string",
-	 *             "format"="uuid",
-	 *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
-	 *         }
-	 *     }
-	 * )
-	 *
+	 * 
+     * @Groups({"read"})
 	 * @Assert\Uuid
 	 * @ORM\Id
 	 * @ORM\Column(type="uuid", unique=true)
@@ -69,19 +60,8 @@ class RequestType
 	private $id;
 
     /**
-     * @var string $sourceOrganisation The RSIN of the organisation that ownes this proces
+     * @var string $sourceOrganization The RSIN of the organization that owns this process
      * @example 002851234
-     * 
-     * @ApiProperty(
-     *     attributes={
-     *         "swagger_context"={
- 	 *         	   "description" = "The RSIN of the organisation that ownes this proces",
-     *             "type"="string",
-     *             "example"="002851234",
- 	*              "maxLength"="255"
-     *         }
-     *     }
-     * )
      * 
      * @Assert\NotNull
      * @Assert\Length(
@@ -92,24 +72,11 @@ class RequestType
      * @ORM\Column(type="string", length=255)
      * @ApiFilter(SearchFilter::class, strategy="exact")
      */
-    private $sourceOrganisation;
+    private $sourceOrganization;
 
     /**
 	 * @var string $name The name of this RequestType
      * @example My RequestType
-	 *
-	 * @ApiProperty(
-     * 	   iri="http://schema.org/name",
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The name of this RequestType",
-	 *             "type"="string",
-	 *             "example"="My RequestType",
-	 *             "maxLength"="255",
-	 *             "required" = true
-	 *         }
-	 *     }
-	 * )
 	 * 
      * @Assert\NotNull
      * @Assert\Length(
@@ -123,18 +90,6 @@ class RequestType
     /**
 	 * @var string $description An short description of this RequestType
      * @example This is the best request ever
-	 *
-	 * @ApiProperty(
-     * 	   iri="https://schema.org/description",
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "An short description of this RequestType",
-	 *             "type"="string",
-	 *             "example"="This is the best request ever",
-	 *             "maxLength"="2550"
-	 *         }
-	 *     }
-	 * )
 	 * 
      * @Assert\Length(
      *      max = 2550
@@ -145,7 +100,8 @@ class RequestType
     private $description;
 
     /**
-     * @Groups({"read-requesttype", "write-requesttype"})
+     * @Groups({"read", "write"})
+     * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
     private $properties;
@@ -182,26 +138,26 @@ class RequestType
      	$this->extendedBy = new ArrayCollection();
     }
 
-    public function getId()
+    public function getId(): Uuid
     {
         return $this->id;
     }
     
-    public function setId(string $id): self
+    public function setId(Uuid $id): self
     {
     	$this->id = $id;
     	
     	return $this;
     }
 
-    public function getSourceOrganisation(): ?string
+    public function getSourceOrganization(): ?string
     {
-    	return $this->sourceOrganisation;
+    	return $this->sourceOrganization;
     }
 
-    public function setSourceOrganisation(string $sourceOrganisation): self
+    public function setSourceOrganization(string $sourceOrganization): self
     {
-    	$this->sourceOrganisation = $sourceOrganisation;
+    	$this->sourceOrganization = $sourceOrganization;
 
         return $this;
     }
@@ -249,7 +205,7 @@ class RequestType
     }
         
     /*
-     * Used for soft adding properties for the extention functionality
+     * Used for soft adding properties for the extension functionality
      */
     public function extendProperty(Property $property): self
     {
