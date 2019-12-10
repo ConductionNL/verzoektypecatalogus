@@ -50,7 +50,7 @@ php:
   secret: ""
 
 nginx:
-  repository: docker.io/conduction/vtc-nginx
+  repository: docker.io/conduction/protocomponent-nginx
   tag: latest
   pullPolicy: Always
   replicaCount: 1

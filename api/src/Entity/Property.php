@@ -33,7 +33,7 @@ use App\Entity\RequestType;
 class Property
 {
 	/**
-	 * @var UuidInterface The UUID identifier of this object
+	 * @var UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
 	 *
      * @Groups({"read"})
@@ -46,9 +46,10 @@ class Property
 	private $id;
 
     /**
-	 * @var RequestType The requestType that this property belongs to
+	 * @var Object  $requestType The requestType that this property belongs to
 	 *
      * @Assert\NotBlank
+     * @Assert\Valid
      * @MaxDepth(1)
      * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="properties",cascade={"persist"})
@@ -59,7 +60,6 @@ class Property
     /**
 	 * @var string The title of this property
      * @example My Property
-     *
      * @Assert\NotBlank
      * @Assert\Length(min = 15, max = 255)
      * @Groups({"read", "write"})
@@ -67,16 +67,16 @@ class Property
      */
     private $title;
 
-    /**
-	 * @var string The name of the property as used in api calls, extracted from title on snake_case basis
+    /**     
+	   * @var string $name The name of the property as used in api calls, extracted from title on snake_case basis
      * @example my_property
-     *
+     * @Assert\Length(min = 15, max = 255)
      * @Groups({"read"})
      */
     private $name;
 
     /**
-	 * @var string The type of this property
+	 * @var string $type The type of this property
      * @example string
      *
      * @Assert\NotBlank
@@ -88,9 +88,9 @@ class Property
     private $type;
 
     /**
-	 * @var string The swagger type of the property as used in api calls
+	   * @var string $type The swagger type of the property as used in api calls
      * @example string
-	 *
+	   *
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
      * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent"})
@@ -100,8 +100,9 @@ class Property
     private $format;
 
     /**
-	 * @var int *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5
+	   * @var string $multipleOf *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5
      * @example 2
+	   *
      *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -110,8 +111,9 @@ class Property
     private $multipleOf;
 
     /**
-	 * @var int *Can only be used in combination with type integer* The maximum allowed value
-     * @example 2
+	 * @var string $multipleOf *Can only be used in combination with type integer* The maximum allowed value
+   * @example 2
+	 *
      *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -140,9 +142,9 @@ class Property
     private $minimum;
 
     /**
-     *
-	 * @var bool *Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6
+	   * @var string $exclusiveMinimum *Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6
      * @example true
+	   *
      *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -151,8 +153,9 @@ class Property
     private $exclusiveMinimum;
 
     /**
-	 * @var int $maxLength The maximum amount of characters in the value
+	   * @var string $maxLength The maximum amount of characters in the value
      * @example 2
+	   *
      *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -171,8 +174,9 @@ class Property
     private $minLength;
 
     /**
-	 * @var string A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to
-     * @example '[+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?'
+	 * @var string $pattern A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to
+     * @example [+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?
+	 *
      *
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
@@ -197,8 +201,9 @@ class Property
     private $additionalItems;
 
     /**
-	 * @var int $maxItems *Can only be used in combination with type array* The maximum array length
+	 * @var string $maxItems *Can only be used in combination with type array* The maximum array length
      * @example 2
+	 *
      *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -207,8 +212,9 @@ class Property
     private $maxItems;
 
     /**
-	 * @var int $minItems *Can only be used in combination with type array* The minimum allowed value
+	 * @var string $minItems *Can only be used in combination with type array* The minimum allowed value
      * @example 2
+	 *
      *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -227,8 +233,9 @@ class Property
     private $uniqueItems;
 
     /**
-	 * @var int $maxProperties *Can only be used in combination with type integer* The maximum amount of properties an object should contain
+	 * @var string $maxProperties *Can only be used in combination with type integer* The maximum amount of properties an object should contain
      * @example 2
+	 *
      *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
@@ -281,7 +288,9 @@ class Property
     private $object;
 
     /**
-	 * @var array An array of possible values, input is limited to this array
+	 * @var array $enum An array of possible values, input is limited to this array
+     * @example ['first','second]
+	 *
      *
      * @Groups({"read", "write"})
      * @ORM\Column(type="array", nullable=true)
@@ -289,21 +298,27 @@ class Property
     private $enum = [];
 
     /**
-	 * @var array *mutually exclusive with using type* An array of possible types that an property should confirm to
+	 * @var array $allOf *mutually exclusive with using type* An array of possible types that an property should confirm to
+     * @example ['string','boolean']
+	 *
      *
      * @ORM\Column(type="array", nullable=true)
      */
     private $allOf = [];
 
     /**
-	 * @var array *mutually exclusive with using type* An array of possible types that an property might confirm to
+	 * @var array $anyOf *mutually exclusive with using type* An array of possible types that an property might confirm to
+     * @example ['string','boolean']
+	 *
      *
      * @ORM\Column(type="array", nullable=true)
      */
     private $anyOf = [];
 
     /**
-	 * @var array *mutually exclusive with using type* An array of possible types that an property must confirm to
+	 * @var array $oneOf *mutually exclusive with using type* An array of possible types that an property must confirm to
+     * @example ['string','boolean']
+	 *
      *
      * @ORM\Column(type="array", nullable=true)
      */
@@ -396,9 +411,9 @@ class Property
     private $externalDoc;
 
     /**
-	 * @var string An example of the value that should be supplied
+	   * @var string An example of the value that should be supplied
      * @example My value
-	 *
+	   *
      * @Assert\Length(max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)

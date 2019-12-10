@@ -123,12 +123,6 @@ $ helm del vtc-stag --purge --kubeconfig="api/helm/kubeconfig.yaml --namespace=s
 $ helm del vtc-prod --purge --kubeconfig="api/helm/kubeconfig.yaml --namespace=prod" 
 ```
 
-or for the dev enviroments
-$ helm install ./api/helm --name vtc-dev --kubeconfig="api/helm/kubeconfig.yaml"
-$ helm upgrade vtc-dev  ./api/helm --kubeconfig="api/helm/kubeconfig.yaml" 
-$ helm del vtc-dev  --purge --kubeconfig="api/helm/kubeconfig.yaml" 
-
-Note that you can replace commonground with the namespace that you want to use (normally the name of your component).
 
 
 ## Making your app known on NLX

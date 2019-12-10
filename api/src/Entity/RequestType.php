@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @ApiResource( 
+ * @ApiResource(
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
  *  collectionOperations={
@@ -36,7 +36,7 @@ use Ramsey\Uuid\Uuid;
  *                          "type" : "boolean"
  *                      }
  *                  }
- *          }        
+ *          }
  *  	},
  *     "put",
  *     "delete"
@@ -62,7 +62,6 @@ class RequestType
     /**
      * @var string $sourceOrganization The RSIN of the organization that owns this process
      * @example 002851234
-     * 
      * @Assert\NotNull
      * @Assert\Length(
      *      min = 8,
@@ -77,7 +76,6 @@ class RequestType
     /**
 	 * @var string $name The name of this RequestType
      * @example My RequestType
-	 * 
      * @Assert\NotNull
      * @Assert\Length(
      *      max = 255
@@ -90,7 +88,6 @@ class RequestType
     /**
 	 * @var string $description An short description of this RequestType
      * @example This is the best request ever
-	 * 
      * @Assert\Length(
      *      max = 2550
      * )
@@ -103,12 +100,13 @@ class RequestType
      * @Groups({"read", "write"})
      * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
+     * @Assert\Valid
      */
     private $properties;
 
     /**
 	 * @var object $extends The requestType that this requestType extends
-     * 
+     *
      * @Groups({"write-requesttype"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="extendedBy", fetch="EAGER")
      */
@@ -116,7 +114,7 @@ class RequestType
 
     /**
 	 * @var object $extendedBy The requestTypes that extend this requestType
-	 * 
+	 *
      * @ORM\OneToMany(targetEntity="App\Entity\RequestType", mappedBy="extends")
      */
     private $extendedBy;
@@ -146,7 +144,7 @@ class RequestType
     public function setId(Uuid $id): self
     {
     	$this->id = $id;
-    	
+
     	return $this;
     }
 
@@ -203,7 +201,7 @@ class RequestType
 
         return $this;
     }
-        
+
     /*
      * Used for soft adding properties for the extension functionality
      */
@@ -212,7 +210,7 @@ class RequestType
     	if (!$this->properties->contains($property)) {
     		$this->properties[] = $property;
     	}
-    	
+
     	return $this;
     }
 
