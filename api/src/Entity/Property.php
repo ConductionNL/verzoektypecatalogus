@@ -288,8 +288,7 @@ class Property
     private $object;
 
     /**
-	 * @var array $enum An array of possible values, input is limited to this array
-     * @example ['first','second]
+	 * @var array $enum An array of possible values, input is limited to this array]
 	 *
      *
      * @Groups({"read", "write"})
@@ -298,8 +297,7 @@ class Property
     private $enum = [];
 
     /**
-	 * @var array $allOf *mutually exclusive with using type* An array of possible types that an property should confirm to
-     * @example ['string','boolean']
+	 * @var array $allOf *mutually exclusive with using type* An array of possible types that an property should confirm to]
 	 *
      *
      * @ORM\Column(type="array", nullable=true)
@@ -307,8 +305,7 @@ class Property
     private $allOf = [];
 
     /**
-	 * @var array $anyOf *mutually exclusive with using type* An array of possible types that an property might confirm to
-     * @example ['string','boolean']
+	 * @var array $anyOf *mutually exclusive with using type* An array of possible types that an property might confirm to]
 	 *
      *
      * @ORM\Column(type="array", nullable=true)
@@ -316,8 +313,7 @@ class Property
     private $anyOf = [];
 
     /**
-	 * @var array $oneOf *mutually exclusive with using type* An array of possible types that an property must confirm to
-     * @example ['string','boolean']
+	 * @var array $oneOf *mutually exclusive with using type* An array of possible types that an property must confirm to]
 	 *
      *
      * @ORM\Column(type="array", nullable=true)
