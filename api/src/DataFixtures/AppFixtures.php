@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Ramsey\Uuid\Uuid;
 
 use App\Entity\RequestType;
 use App\Entity\Property;
@@ -16,8 +17,10 @@ class AppFixtures extends Fixture
     	/*
     	 *  Verhuizen   	  
     	 */
+    	$id = Uuid::fromString('2bfb3cea-b5b5-459c-b3e0-e1100089a11a');
+    	
     	$verhuizenNL = new RequestType();
-    	$verhuizenNL->setId('2bfb3cea-b5b5-459c-b3e0-e1100089a11a');
+    	$verhuizenNL->setId($id);
     	$verhuizenNL->setSourceOrganization('0000');
     	$verhuizenNL->setName('Verhuizen');
     	$verhuizenNL->setDescription('Het doorgeven van een verhuizing aan een gemeente');
@@ -52,20 +55,43 @@ class AppFixtures extends Fixture
     	$property->setRequestType($verhuizenNL);
     	$manager->persist($property);
     	
+    	$id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
     	$verhuizenDenBosh = new RequestType();
-    	$verhuizenDenBosh->setId('939f5d60-e5bd-40b2-9ccd-117cea8b3cbe');
     	$verhuizenDenBosh->setName('Verhuizen');
     	$verhuizenDenBosh->setDescription('Het doorgeven van een verhuizing aan de gemeente \'s-Hertogenbosch');
     	$verhuizenDenBosh->setSourceOrganization('001709124');
     	$verhuizenDenBosh->setExtends($verhuizenNL);
     	$manager->persist($verhuizenDenBosh);
+    	$verhuizenDenBosh->setId($id);
+    	$manager->persist($verhuizenDenBosh);
+    	
+    	
+    	$property = new Property();
+    	//$verhuizenNL->setId('');
+    	$property->setTitle('Email');
+    	$property->setDescription('Het e-mail addres dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
+    	$property->setType('string');
+    	$property->setFormat('email');
+    	$property->setRequired(true);
+    	$property->setRequestType($verhuizenNL);
+    	$manager->persist($property);
+    	
+    	
+    	$property = new Property();
+    	//$verhuizenNL->setId('');
+    	$property->setTitle('Telefoon');
+    	$property->setDescription('Het telefoon nummer dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
+    	$property->setType('string');
+    	$property->setFormat('string');
+    	$property->setRequired(true);
+    	$property->setRequestType($verhuizenNL);
+    	$manager->persist($property);
     	
     	$verhuizenEindhoven = new RequestType(); 
-    	$verhuizenEindhoven->setId('2bfb3cea-b5b5-459c-b3e0-e1100089a11a');
+    	//$verhuizenEindhoven->setId('fc79c4c9-b3b3-4258-bdbb-449262f3e5d7');
     	$verhuizenEindhoven->setName('Verhuizen');
     	$verhuizenEindhoven->setDescription('Het doorgeven van een verhuizing aan de gemeente Eindhoven');
     	$verhuizenEindhoven->setSourceOrganization('001902763');
-    	$verhuizenEindhoven->setId('fc79c4c9-b3b3-4258-bdbb-449262f3e5d7');
     	$verhuizenEindhoven->setExtends($verhuizenNL);
     	$manager->persist($verhuizenEindhoven);
     	
@@ -92,7 +118,7 @@ class AppFixtures extends Fixture
     	 *  Trouwen
     	 */
     	$meldingTrouwenNL= new RequestType();
-    	$meldingTrouwenNL->setId('d009032d-8fdd-4d09-bf43-5000f19737a7');
+    	//$meldingTrouwenNL->setId('d009032d-8fdd-4d09-bf43-5000f19737a7');
     	$meldingTrouwenNL->setSourceOrganization('0000');
     	$meldingTrouwenNL->setName('Melding voorgenomen huwelijk');
     	$meldingTrouwenNL->setDescription('Melding voorgenomen huwelijk');
@@ -118,7 +144,7 @@ class AppFixtures extends Fixture
     	$manager->persist($property);    	
     	
     	$omzettingNL = new RequestType();
-    	$omzettingNL->setId('dc65cbe9-d608-4946-b3d4-368b5b0c4061');
+    	//$omzettingNL->setId('dc65cbe9-d608-4946-b3d4-368b5b0c4061');
     	$omzettingNL->setSourceOrganization('0000');
     	$omzettingNL->setName('Omzetting');
     	$omzettingNL->setDescription('Het omzetten van een bestaand partnerschap in een huwelijk.');
@@ -154,7 +180,7 @@ class AppFixtures extends Fixture
     	$manager->persist($property);    	
     	
     	$trouwenNL = new RequestType();
-    	$trouwenNL->setId('2a0efa35-e911-44d9-8cf1-54bea575be81');
+    	//$trouwenNL->setId('2a0efa35-e911-44d9-8cf1-54bea575be81');
     	$trouwenNL->setSourceOrganization('000');
     	$trouwenNL->setName('Huwelijk / Partnerschap');
     	$trouwenNL->setDescription('Huwelijk / Partnerschap');
@@ -239,12 +265,14 @@ class AppFixtures extends Fixture
     	$property->setRequestType($trouwenNL);
     	$manager->persist($property);
     	
+    	$id = Uuid::fromString('47577f44-0ede-4655-a629-027f051d2b07');
     	$trouwenUtrecht = new RequestType();
-    	$trouwenUtrecht->setId('eb9bdd00-40ce-4510-8555-cc74b2db61c4');
     	$trouwenUtrecht->setExtends($trouwenNL);    	
     	$trouwenUtrecht->setSourceOrganization('002220647');
     	$trouwenUtrecht->setName('Trouwen of Partnerschap in Utrecht');
     	$trouwenUtrecht->setDescription('Trouwen of Partnerschap in Utrecht');
+    	$manager->persist($trouwenUtrecht);
+    	$trouwenUtrecht->setId($id);
     	$manager->persist($trouwenUtrecht);
     	
     	$property= new Property();

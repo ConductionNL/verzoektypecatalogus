@@ -5,10 +5,18 @@
 settings:
   registryBase: docker.io/conduction
   projectName: vtc
-  version: dev
+  name: vtc
+  title: Verzoek Type Catalogus
+  version: V.0.1
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   repro: 'https://github.com/ConductionNL/Proto-component-commonground'
-  domain: conduction.nl
+  domain: conduction.nl  
+  organisationName: Conduction
+  email: info@conduction.nl
+  country: Netherlands
+  state: Noord-Holland
+  locality: Amsterdam
+  unit: Common-Ground  
   demo: pc.zaakonline.nl
   env: dev
   debug: 1
@@ -34,7 +42,7 @@ settings:
 
 
 php:
-  repository: docker.io/conduction/protocomponent-php
+  repository: docker.io/conduction/vtc-php
   tag: latest
   mercure:
     jwtSecret: ""
@@ -49,7 +57,7 @@ nginx:
 
 varnish:
   enabled: true
-  url: https://vtc-varnish
+  #url: https://example.com
   repository: docker.io/conduction/vtc-varnish
   tag: latest
   pullPolicy: Always
@@ -73,7 +81,7 @@ postgresql:
 #    tag: alpine
 
 mercure:
-  enabled: false
+  enabled: true
   publishUrl: http://mercure/hub
   subscribeUrl: https://mercure.example.com/hub
   allowAnonymous: "1"

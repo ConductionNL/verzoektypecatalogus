@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @ApiResource( 
@@ -137,12 +138,12 @@ class RequestType
      	$this->extendedBy = new ArrayCollection();
     }
 
-    public function getId()
+    public function getId(): Uuid
     {
         return $this->id;
     }
     
-    public function setId(string $id): self
+    public function setId(Uuid $id): self
     {
     	$this->id = $id;
     	

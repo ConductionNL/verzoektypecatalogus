@@ -1,10 +1,18 @@
 openapi: 3.0.2
 info:
-  title: 'Verzoek Type Catalogus (VTC)'
-  version: 0.0.1
+  title: 'Proto Component'
+  version: V.0.1
   description: |
-    Dit is een commonground voorbeeld applicatie 
-             
+    API Details
+    - Component: Proto Component
+    - Reference: pc
+    - Enviroment: dev
+    - Version: V.0.1
+    - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
+    - Datamodel: [postman](/schema/openapi.postman_collection) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    
+    'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
 paths:
   /properties:
@@ -358,6 +366,8 @@ paths:
                 $ref: '#/components/schemas/Property-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
     delete:
       tags:
         - Property
@@ -401,7 +411,7 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
     put:
@@ -640,13 +650,13 @@ paths:
                   $ref: '#/components/schemas/RequestType-read'
       parameters:
         -
-          name: source_organization
+          name: sourceOrganization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'source_organization[]'
+          name: 'sourceOrganization[]'
           in: query
           required: false
           schema:
@@ -664,21 +674,17 @@ paths:
             type: integer
             default: 1
         -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
           name: API-Version
           description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
           example: 1.0.1
           in: header
         -
-          name: X-NLX-Request-User-Id
-          description: 'The id of the user performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Application-Id
-          description: 'The id of the application performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Subject-Identifier
-          description: 'An subject identifier for purpose registration (doelbinding)'
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
           in: header
         -
           name: X-NLX-Request-Process-Id
@@ -690,12 +696,56 @@ paths:
           in: header
         -
           name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678,kenteken=ab-12-fg`'
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
     post:
       tags:
         - RequestType
@@ -768,21 +818,17 @@ paths:
         description: 'The new RequestType resource'
       parameters:
         -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
           name: API-Version
           description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
           example: 1.0.1
           in: header
         -
-          name: X-NLX-Request-User-Id
-          description: 'The id of the user performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Application-Id
-          description: 'The id of the application performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Subject-Identifier
-          description: 'An subject identifier for purpose registration (doelbinding)'
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
           in: header
         -
           name: X-NLX-Request-Process-Id
@@ -794,10 +840,10 @@ paths:
           in: header
         -
           name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678,kenteken=ab-12-fg`'
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
   '/request_types/{id}':
@@ -814,21 +860,17 @@ paths:
           schema:
             type: string
         -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
           name: API-Version
           description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
           example: 1.0.1
           in: header
         -
-          name: X-NLX-Request-User-Id
-          description: 'The id of the user performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Application-Id
-          description: 'The id of the application performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Subject-Identifier
-          description: 'An subject identifier for purpose registration (doelbinding)'
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
           in: header
         -
           name: X-NLX-Request-Process-Id
@@ -840,12 +882,54 @@ paths:
           in: header
         -
           name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678,kenteken=ab-12-fg`'
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
       responses:
         200:
           description: 'RequestType resource response'
@@ -876,6 +960,8 @@ paths:
                 $ref: '#/components/schemas/RequestType-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
     put:
       tags:
         - RequestType
@@ -889,21 +975,17 @@ paths:
           schema:
             type: string
         -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
           name: API-Version
           description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
           example: 1.0.1
           in: header
         -
-          name: X-NLX-Request-User-Id
-          description: 'The id of the user performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Application-Id
-          description: 'The id of the application performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Subject-Identifier
-          description: 'An subject identifier for purpose registration (doelbinding)'
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
           in: header
         -
           name: X-NLX-Request-Process-Id
@@ -915,10 +997,10 @@ paths:
           in: header
         -
           name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678,kenteken=ab-12-fg`'
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
       responses:
@@ -998,21 +1080,17 @@ paths:
           schema:
             type: string
         -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
           name: API-Version
           description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
           example: 1.0.1
           in: header
         -
-          name: X-NLX-Request-User-Id
-          description: 'The id of the user performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Application-Id
-          description: 'The id of the application performing the request'
-          in: header
-        -
-          name: X-NLX-Request-Subject-Identifier
-          description: 'An subject identifier for purpose registration (doelbinding)'
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
           in: header
         -
           name: X-NLX-Request-Process-Id
@@ -1024,31 +1102,37 @@ paths:
           in: header
         -
           name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678,kenteken=ab-12-fg`'
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
 components:
   schemas:
     Property-read:
       type: object
-      description: 'This is an example entity.'
+      description: |
+        This property follows the following schemes (in order of importance)
+        https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+        https://tools.ietf.org/html/draft-wright-json-schema-validation-00
+        http://json-schema.org/
       properties:
-        request_type:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType-read'
         title:
           description: 'The title of this property'
-          externalDocs:
-            url: 'http://schema.org/name'
           type: string
         name:
           readOnly: true
-          description: '*'
-          externalDocs:
-            url: 'http://schema.org/name'
+          description: 'The name of the property as used in api calls, extracted from title on snake_case basis'
           type: string
         type:
           description: 'The type of this property'
@@ -1056,45 +1140,46 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
-        multiple_of:
+        multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusive_maximum:
+        exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusive_minimum:
+        exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        max_length:
+        maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
-        min_length:
+        minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
+          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additional_items:
+        additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
-        max_items:
+        maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        min_items:
+        minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        unique_items:
+        uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        max_properties:
+        maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        min_properties:
+        minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -1103,20 +1188,21 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additional_properties:
+        additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
         object:
           description: 'Not yet supported by business logic'
           type: string
         enum:
+          description: 'An array of possible values, input is limited to this array'
           type: array
           items:
             type: string
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        default_value:
+        defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -1125,16 +1211,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        read_only:
+        readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
-        write_only:
+        writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        external_doc:
+        externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -1143,24 +1229,29 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        available_from:
+        availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        available_until:
+        availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        min_date:
+        minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        max_date:
+        maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+      required:
+        - requestType
+        - title
+        - type
+        - format
     Property-write:
       type: object
       description: |
@@ -1169,18 +1260,16 @@ components:
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
         http://json-schema.org/
       required:
-        - request_type
+        - requestType
         - title
         - type
         - format
       properties:
-        request_type:
+        requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType-write'
         title:
           description: 'The title of this property'
-          externalDocs:
-            url: 'http://schema.org/name'
           type: string
         type:
           description: 'The type of this property'
@@ -1188,45 +1277,46 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
-        multiple_of:
+        multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusive_maximum:
+        exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusive_minimum:
+        exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        max_length:
+        maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
-        min_length:
+        minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
+          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additional_items:
+        additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
-        max_items:
+        maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        min_items:
+        minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        unique_items:
+        uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        max_properties:
+        maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        min_properties:
+        minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -1235,20 +1325,21 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additional_properties:
+        additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
         object:
           description: 'Not yet supported by business logic'
           type: string
         enum:
+          description: 'An array of possible values, input is limited to this array'
           type: array
           items:
             type: string
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        default_value:
+        defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -1257,16 +1348,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        read_only:
+        readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
-        write_only:
+        writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        external_doc:
+        externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -1275,22 +1366,22 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        available_from:
+        availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        available_until:
+        availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        min_date:
+        minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        max_date:
+        maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
     'Property:jsonld-read':
@@ -1300,11 +1391,6 @@ components:
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
         http://json-schema.org/
-      required:
-        - request_type
-        - title
-        - type
-        - format
       properties:
         '@context':
           readOnly: true
@@ -1315,19 +1401,21 @@ components:
         '@type':
           readOnly: true
           type: string
-        request_type:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType:jsonld-read'
         title:
           description: 'The title of this property'
-          externalDocs:
-            url: 'http://schema.org/name'
           type: string
         name:
           readOnly: true
-          description: '*'
-          externalDocs:
-            url: 'http://schema.org/name'
+          description: 'The name of the property as used in api calls, extracted from title on snake_case basis'
           type: string
         type:
           description: 'The type of this property'
@@ -1335,45 +1423,46 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
-        multiple_of:
+        multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusive_maximum:
+        exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusive_minimum:
+        exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        max_length:
+        maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
-        min_length:
+        minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
+          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additional_items:
+        additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
-        max_items:
+        maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        min_items:
+        minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        unique_items:
+        uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        max_properties:
+        maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        min_properties:
+        minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -1382,112 +1471,21 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additional_properties:
+        additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
         object:
           description: 'Not yet supported by business logic'
           type: string
         enum:
+          description: 'An array of possible values, input is limited to this array'
           type: array
           items:
             type: string
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
-          type: string
-      required:
-        - request_type
-        - title
-        - type
-        - format
-      properties:
-        '@context':
-          readOnly: true
-          type: string
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        request_type:
-          description: 'The requestType that this property belongs to'
-          $ref: '#/components/schemas/RequestType:jsonld-write'
-        title:
-          description: 'The title of this property'
-          externalDocs:
-            url: 'http://schema.org/name'
-          type: string
-        type:
-          description: 'The type of this property'
-          type: string
-        format:
-          description: 'The swagger type of the property as used in api calls'
-          type: string
-        multiple_of:
-          description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
-          type: integer
-        maximum:
-          description: '*Can only be used in combination with type integer* The maximum allowed value'
-          type: integer
-        exclusive_maximum:
-          description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
-          type: boolean
-        minimum:
-          description: '*Can only be used in combination with type integer* The minimum allowed value'
-          type: integer
-        exclusive_minimum:
-          description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
-          type: boolean
-        max_length:
-          description: 'The maximum amount of characters in the value'
-          type: integer
-        min_length:
-          description: 'The minimal amount of characters in the value'
-          type: integer
-        pattern:
-          type: string
-        additional_items:
-          description: 'Not yet supported by business logic'
-          type: boolean
-        max_items:
-          description: '*Can only be used in combination with type array* The maximum array length'
-          type: integer
-        min_items:
-          description: '*Can only be used in combination with type array* The minimum allowed value'
-          type: integer
-        unique_items:
-          description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
-          type: boolean
-        max_properties:
-          description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
-          type: integer
-        min_properties:
-          description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
-          type: integer
-        required:
-          description: 'Only whether or not this property is required'
-          type: boolean
-        properties:
-          description: 'Not yet supported by business logic'
-          type: string
-        additional_properties:
-          description: 'Not yet supported by business logic'
-          type: string
-        object:
-          description: 'Not yet supported by business logic'
-          type: string
-        enum:
-          type: array
-          items:
-            type: string
-        description:
-          description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
-          type: string
-        default_value:
+        defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -1496,16 +1494,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        read_only:
+        readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
-        write_only:
+        writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        external_doc:
+        externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -1514,100 +1512,500 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        available_from:
+        availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        available_until:
+        availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        min_date:
+        minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        max_date:
+        maxDate:
+          description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+      required:
+        - requestType
+        - title
+        - type
+        - format
+    'Property:jsonld-write':
+      type: object
+      description: |
+        This property follows the following schemes (in order of importance)
+        https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+        https://tools.ietf.org/html/draft-wright-json-schema-validation-00
+        http://json-schema.org/
+      required:
+        - requestType
+        - title
+        - type
+        - format
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        requestType:
+          description: 'The requestType that this property belongs to'
+          $ref: '#/components/schemas/RequestType:jsonld-write'
+        title:
+          description: 'The title of this property'
+          type: string
+        type:
+          description: 'The type of this property'
+          type: string
+        format:
+          description: 'The swagger type of the property as used in api calls'
+          type: string
+        multipleOf:
+          description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
+          type: integer
+        maximum:
+          description: '*Can only be used in combination with type integer* The maximum allowed value'
+          type: integer
+        exclusiveMaximum:
+          description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
+          type: boolean
+        minimum:
+          description: '*Can only be used in combination with type integer* The minimum allowed value'
+          type: integer
+        exclusiveMinimum:
+          description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
+          type: boolean
+        maxLength:
+          description: 'The maximum amount of characters in the value'
+          type: integer
+        minLength:
+          description: 'The minimal amount of characters in the value'
+          type: integer
+        pattern:
+          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
+          type: string
+        additionalItems:
+          description: 'Not yet supported by business logic'
+          type: boolean
+        maxItems:
+          description: '*Can only be used in combination with type array* The maximum array length'
+          type: integer
+        minItems:
+          description: '*Can only be used in combination with type array* The minimum allowed value'
+          type: integer
+        uniqueItems:
+          description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
+          type: boolean
+        maxProperties:
+          description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
+          type: integer
+        minProperties:
+          description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
+          type: integer
+        required:
+          description: 'Only whether or not this property is required'
+          type: boolean
+        properties:
+          description: 'Not yet supported by business logic'
+          type: string
+        additionalProperties:
+          description: 'Not yet supported by business logic'
+          type: string
+        object:
+          description: 'Not yet supported by business logic'
+          type: string
+        enum:
+          description: 'An array of possible values, input is limited to this array'
+          type: array
+          items:
+            type: string
+        description:
+          description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
+          type: string
+        defaultValue:
+          description: 'An default value for this value that will be used if a user doesn''t supply a value'
+          type: string
+        nullable:
+          description: 'Whether or not this property can be left empty'
+          type: boolean
+        discriminator:
+          description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
+          type: string
+        readOnly:
+          description: 'Whether or not this property is read only'
+          type: boolean
+        writeOnly:
+          description: 'Whether or not this property is write only'
+          type: boolean
+        xml:
+          description: 'An XML representation of the swagger docs'
+          type: string
+        externalDoc:
+          description: 'An link to any external documentation for the value'
+          type: string
+        example:
+          description: 'An example of the value that should be supplied'
+          type: string
+        deprecated:
+          description: 'Whether or not this property has been deprecated and wil be removed in the future'
+          type: boolean
+        availableFrom:
+          description: 'The moment from which this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        availableUntil:
+          description: '*should be used in combination with deprecated* The moment where until this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        minDate:
+          description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
     RequestType-read:
       type: object
-      description: 'This is an example entity.'
-      required:
-        - source_organization
+      description: ''
       properties:
-        source_organization:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         name:
           readOnly: true
           description: 'The name of this RequestType'
-          externalDocs:
-            url: 'http://schema.org/name'
           type: string
         description:
           readOnly: true
           description: 'An short description of this RequestType'
+          type: string
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property-read'
+      required:
+        - sourceOrganization
+    RequestType-write:
+      type: object
+      description: ''
+      required:
+        - sourceOrganization
+      properties:
+        sourceOrganization:
+          description: 'The RSIN of the organization that owns this process'
+          type: string
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property-write'
+    'RequestType:jsonld-read':
+      type: object
+      description: ''
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
           externalDocs:
-            url: 'https://schema.org/description'
+            url: 'http://schema.org/identifier'
           type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
+        sourceOrganization:
+          description: 'The RSIN of the organization that owns this process'
           type: string
+        name:
+          readOnly: true
+          description: 'The name of this RequestType'
+          type: string
+        description:
+          readOnly: true
+          description: 'An short description of this RequestType'
+          type: string
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property:jsonld-read'
+      required:
+        - sourceOrganization
+    'RequestType:jsonld-write':
+      type: object
+      description: ''
+      required:
+        - sourceOrganization
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        sourceOrganization:
+          description: 'The RSIN of the organization that owns this process'
+          type: string
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property:jsonld-write'
 definitions:
-  ExampleEntity-read:
+  Property-read:
     properties:
       id:
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      name:
-        example: 'My Group'
+      title:
+        example: 'My Property'
         maxLength: 255
+        minLength: 15
+      type:
+        example: string
+        maxLength: 255
+      format:
+        example: string
+        maxLength: 255
+      multipleOf:
+        example: '2'
+      maximum:
+        example: '2'
+      exclusiveMaximum:
+        example: 'true'
+      minimum:
+        example: '2'
+      exclusiveMinimum:
+        example: 'true'
+      maxLength:
+        example: '2'
+      minLength:
+        example: '2'
+      pattern:
+        example: '''[+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?'''
+        maxLength: 255
+      additionalItems: []
+      maxItems:
+        example: '2'
+      minItems:
+        example: '2'
+      uniqueItems:
+        example: 'false'
+      maxProperties:
+        example: '2'
+      minProperties:
+        example: '2'
+      required:
+        example: 'false'
+      properties: []
+      additionalProperties: []
+      object: []
+      enum: []
       description:
-        example: 'Is the best group ever'
-        maxLength: 2555
-      camelCase:
-        example: 'Best api ever'
+        example: 'My value'
+      defaultValue:
+        example: 'My value'
         maxLength: 255
-    required:
-      - name
-  ExampleEntity-write:
+      nullable:
+        example: 'false'
+      discriminator:
+        example: name
+        maxLength: 255
+      readOnly:
+        example: 'false'
+      writeOnly:
+        example: 'false'
+      xml:
+        example: '''<xml></xml>'''
+      externalDoc:
+        example: 'https://www.w3.org/TR/NOTE-datetime'
+        maxLength: 255
+      example:
+        example: 'My value'
+        maxLength: 255
+      deprecated:
+        example: 'false'
+      availableFrom:
+        example: '2019-09-16T14:26:51+00:00'
+      availableUntil:
+        example: '2019-09-16T14:26:51+00:00'
+      minDate:
+        example: '2019-09-16T14:26:51+00:00'
+      maxDate:
+        example: '2019-09-16T14:26:51+00:00'
+      requestType: []
+    required: []
+  Property-write:
     properties:
+      title:
+        example: 'My Property'
+        maxLength: 255
+        minLength: 15
+      type:
+        example: string
+        maxLength: 255
+      format:
+        example: string
+        maxLength: 255
+      multipleOf:
+        example: '2'
+      maximum:
+        example: '2'
+      exclusiveMaximum:
+        example: 'true'
+      minimum:
+        example: '2'
+      exclusiveMinimum:
+        example: 'true'
+      maxLength:
+        example: '2'
+      minLength:
+        example: '2'
+      pattern:
+        example: '''[+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?'''
+        maxLength: 255
+      additionalItems: []
+      maxItems:
+        example: '2'
+      minItems:
+        example: '2'
+      uniqueItems:
+        example: 'false'
+      maxProperties:
+        example: '2'
+      minProperties:
+        example: '2'
+      required:
+        example: 'false'
+      properties: []
+      additionalProperties: []
+      object: []
+      enum: []
+      description:
+        example: 'My value'
+      defaultValue:
+        example: 'My value'
+        maxLength: 255
+      nullable:
+        example: 'false'
+      discriminator:
+        example: name
+        maxLength: 255
+      readOnly:
+        example: 'false'
+      writeOnly:
+        example: 'false'
+      xml:
+        example: '''<xml></xml>'''
+      externalDoc:
+        example: 'https://www.w3.org/TR/NOTE-datetime'
+        maxLength: 255
+      example:
+        example: 'My value'
+        maxLength: 255
+      deprecated:
+        example: 'false'
+      availableFrom:
+        example: '2019-09-16T14:26:51+00:00'
+      availableUntil:
+        example: '2019-09-16T14:26:51+00:00'
+      minDate:
+        example: '2019-09-16T14:26:51+00:00'
+      maxDate:
+        example: '2019-09-16T14:26:51+00:00'
+      requestType: []
+    required: []
+  RequestType-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      sourceOrganization:
+        example: '002851234'
+        maxLength: 11
+        minLength: 8
       name:
-        example: 'My Group'
+        example: 'My RequestType'
         maxLength: 255
       description:
-        example: 'Is the best group ever'
-        maxLength: 2555
-      camelCase:
-        example: 'Best api ever'
-        maxLength: 255
+        example: 'This is the best request ever'
+        maxLength: 2550
+      properties: []
     required:
+      - sourceOrganization
+      - name
+  RequestType-write:
+    properties:
+      sourceOrganization:
+        example: '002851234'
+        maxLength: 11
+        minLength: 8
+      properties: []
+    required:
+      - sourceOrganization
+      - name
+  RequestType-write-requesttype:
+    properties:
+      extends: []
+    required:
+      - sourceOrganization
       - name
 tags:
   -
-    name: ExampleEntity
+    name: Property
     description: |
-      This is an example entity.
+      This property follows the following schemes (in order of importance)
+      https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+      https://tools.ietf.org/html/draft-wright-json-schema-validation-00
+      http://json-schema.org/
       
-      With an adtional description, all in all its pritty nice [url](www.google.nl)
+      
+  -
+    name: RequestType
+    description: |
+      
+      
+      
 securityDefinitions:
   JWT-Oauth:
     type: oauth2
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ExampleEntity resource'
-      write: 'write right to the ExampleEntity resource'
+      read: 'read right to the RequestType resource'
+      write: 'write right to the RequestType resource'
+      write-requesttype: 'write-requesttype right to the RequestType resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ExampleEntity resource'
-      write: 'write right to the ExampleEntity resource'
+      read: 'read right to the RequestType resource'
+      write: 'write right to the RequestType resource'
+      write-requesttype: 'write-requesttype right to the RequestType resource'
 host: irc.zaakonline.nl
 servers:
   -
