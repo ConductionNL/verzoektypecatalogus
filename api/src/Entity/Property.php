@@ -175,7 +175,7 @@ class Property
 
     /**
 	 * @var string $pattern A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to
-     * @example [+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?
+     * @example regex
 	 *
      *
      * @Assert\Length(max = 255)
