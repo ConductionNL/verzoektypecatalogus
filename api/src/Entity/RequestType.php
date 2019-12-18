@@ -137,7 +137,7 @@ class RequestType
      	$this->extendedBy = new ArrayCollection();
     }
 
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }
@@ -157,7 +157,6 @@ class RequestType
     public function setSourceOrganization(string $sourceOrganization): self
     {
     	$this->sourceOrganization = $sourceOrganization;
-
         return $this;
     }
 
@@ -166,7 +165,7 @@ class RequestType
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -178,7 +177,7 @@ class RequestType
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
