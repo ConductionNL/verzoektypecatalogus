@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -47,9 +48,9 @@ use Ramsey\Uuid\Uuid;
 class RequestType
 {
 	/**
-	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
+	 * @var UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
-	 * 
+	 *
      * @Groups({"read"})
 	 * @Assert\Uuid
 	 * @ORM\Id
@@ -136,12 +137,12 @@ class RequestType
      	$this->extendedBy = new ArrayCollection();
     }
 
-    public function getId(): Uuid
+    public function getId(): ?string
     {
         return $this->id;
     }
-    
-    public function setId(Uuid $id): self
+
+    public function setId(string $id): self
     {
     	$this->id = $id;
 

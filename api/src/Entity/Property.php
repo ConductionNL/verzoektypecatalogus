@@ -67,9 +67,10 @@ class Property
      */
     private $title;
 
-    /**     
+    /**
 	   * @var string $name The name of the property as used in api calls, extracted from title on snake_case basis
      * @example my_property
+     *
      * @Assert\Length(min = 15, max = 255)
      * @Groups({"read"})
      */
