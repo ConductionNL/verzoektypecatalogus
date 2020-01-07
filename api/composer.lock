@@ -4192,6 +4192,7 @@
             ],
             "description": "Symfony Doctrine Bridge",
             "homepage": "https://symfony.com",
+
             "time": "2019-12-17T08:15:02+00:00"
         },
         {
@@ -4599,6 +4600,7 @@
         },
         {
             "name": "symfony/finder",
+
             "version": "v4.4.2",
             "source": {
                 "type": "git",
@@ -4904,6 +4906,7 @@
         },
         {
             "name": "symfony/http-client",
+
             "version": "v4.4.2",
             "source": {
                 "type": "git",
@@ -6391,6 +6394,7 @@
             ],
             "description": "Symfony Security Component - CSRF Library",
             "homepage": "https://symfony.com",
+
             "time": "2019-10-12T00:35:04+00:00"
         },
         {

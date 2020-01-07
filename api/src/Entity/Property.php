@@ -67,6 +67,7 @@ class Property
      */
     private $title;
 
+
     /**     
 	   * @var string $name The name of the property as used in api calls, extracted from title on snake_case basis
      * @example my_property
@@ -463,6 +464,7 @@ class Property
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $maxDate;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="previous")

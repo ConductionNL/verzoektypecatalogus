@@ -48,7 +48,7 @@ settings:
 
 
 php:
-  repository: docker.io/conduction/protocomponent-php
+  repository: docker.io/conduction/vtc-php
   tag: latest
   mercure:
     jwtSecret: ""
@@ -64,7 +64,7 @@ nginx:
 varnish:
   enabled: true
   #url: https://example.com
-  repository: docker.io/conduction/protocomponent-varnish
+  repository: docker.io/conduction/vtc-varnish
   tag: latest
   pullPolicy: Always
   replicaCount: 1

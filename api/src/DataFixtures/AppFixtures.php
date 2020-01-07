@@ -345,6 +345,6 @@ class AppFixtures extends Fixture
     	$trouwenUtrecht->setId($id);
     	$manager->persist($trouwenUtrecht);
     	
-        $manager->flush();
+      $manager->flush();
     }
 }

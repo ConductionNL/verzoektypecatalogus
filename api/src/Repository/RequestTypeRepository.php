@@ -14,6 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class RequestTypeRepository extends ServiceEntityRepository
 {
+
 	public function __construct(ManagerRegistry $registry)
     {
     	parent::__construct($registry, RequestType::class);

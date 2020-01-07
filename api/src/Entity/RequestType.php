@@ -51,7 +51,7 @@ class RequestType
 	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
 	 * 
-     * @Groups({"read"})
+   * @Groups({"read"})
 	 * @Assert\Uuid
 	 * @ORM\Id
 	 * @ORM\Column(type="uuid", unique=true)
@@ -104,6 +104,7 @@ class RequestType
      * @Assert\Valid
      */
     private $properties;
+
     
     /**
      * @Groups({"read"})
@@ -171,6 +172,7 @@ class RequestType
     {
         return $this->name;
     }
+
 
     public function setName(string $name): self
     {
@@ -338,5 +340,4 @@ class RequestType
     	
     	return $this->getProperties()->matching($criteria)->first();    	
     }
-
 }
