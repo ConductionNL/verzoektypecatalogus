@@ -8,8 +8,9 @@ info:
     - Reference: vtc
     - Enviroment: dev
     - Version: V.0.1
-    - Repository: []() / [zip](/archive/master.zip)
-    - Datamodel: [postman](/schema/openapi.postman_collection) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
+    - Datamodel: [postman](/schema/pc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar. 
                              
@@ -38,139 +39,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Property:jsonld-read' } }
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/ExampleEntity:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
-            application/vnd.api+json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Property-read'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Property-read'
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Property-read'
-            application/x-yaml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Property-read'
-            text/csv:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Property-read'
-            text/html:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Property-read'
-      parameters:
-        -
-          name: page
-          in: query
-          required: false
-          description: 'The collection page number'
-          schema:
-            type: integer
-            default: 1
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-        -
-          name: Link
-          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
-          in: header
-        -
-          name: 'extend[]'
-          required: false
-          description: 'An array of nested objects to include in the return object'
-          in: query
-          schema:
-            type: array
-        -
-          name: 'fields[]'
-          required: false
-          description: 'An array of fields to return in output, wil return all fields is not supplied'
-          in: query
-          schema:
-            type: array
-        -
-          name: validOn
-          required: false
-          description: 'Returns object as valid on a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validFrom
-          required: false
-          description: 'Returns objects valid from a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-        -
-          name: validUntil
-          required: false
-          description: 'Returns objects valid until a given date time'
-          schema:
-            type: string
-            format: date-time
-          in: query
-      produces:
-        - application/health+json
-    post:
-      tags:
-        - Property
-      operationId: postPropertyCollection
-      summary: 'Creates a Property resource.'
-      responses:
-        201:
-          description: 'Property resource created'
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/Property-read'
-            application/ld+json:
-              schema:
-                $ref: '#/components/schemas/Property:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Property-read'
@@ -764,7 +638,7 @@ paths:
                 $ref: '#/components/schemas/RequestType-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/RequestType:jsonld-read'
+                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/RequestType-read'
@@ -800,7 +674,7 @@ paths:
               $ref: '#/components/schemas/RequestType-write'
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/RequestType:jsonld-write'
+              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
           application/vnd.api+json:
             schema:
               $ref: '#/components/schemas/RequestType-write'
@@ -943,7 +817,7 @@ paths:
                 $ref: '#/components/schemas/RequestType-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/RequestType:jsonld-read'
+                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/RequestType-read'
@@ -1016,7 +890,7 @@ paths:
                 $ref: '#/components/schemas/RequestType-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/RequestType:jsonld-read'
+                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/RequestType-read'
@@ -1046,7 +920,7 @@ paths:
               $ref: '#/components/schemas/RequestType-write'
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/RequestType:jsonld-write'
+              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
           application/vnd.api+json:
             schema:
               $ref: '#/components/schemas/RequestType-write'
@@ -1124,7 +998,6 @@ components:
       properties:
         id:
           readOnly: true
-          description: 'The UUID identifier of this object'
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
@@ -1492,237 +1365,9 @@ components:
         defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
-        nullable:
-          description: 'Whether or not this property can be left empty'
-          type: boolean
-        discriminator:
-          description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
-          type: string
-        readOnly:
-          description: 'Whether or not this property is read only'
-          type: boolean
-        writeOnly:
-          description: 'Whether or not this property is write only'
-          type: boolean
-        xml:
-          description: 'An XML representation of the swagger docs'
-          type: string
-        externalDoc:
-          description: 'An link to any external documentation for the value'
-          type: string
-        example:
-          description: 'An example of the value that should be supplied'
-          type: string
-        deprecated:
-          description: 'Whether or not this property has been deprecated and wil be removed in the future'
-          type: boolean
-        availableFrom:
-          description: 'The moment from which this value is available'
-          externalDocs:
-            url: 'http://schema.org/DateTime'
-          type: string
-          format: date-time
-        availableUntil:
-          description: '*should be used in combination with deprecated* The moment where until this value is available'
-          externalDocs:
-            url: 'http://schema.org/DateTime'
-          type: string
-          format: date-time
-        minDate:
-          description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
-          type: string
-        maxDate:
-          description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
-          type: string
-      required:
-        - requestType
-        - title
-        - type
-        - format
-    'Property:jsonld-write':
+    'ExampleEntity:jsonld-read':
       type: object
-      description: |
-        This property follows the following schemes (in order of importance)
-        https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
-        https://tools.ietf.org/html/draft-wright-json-schema-validation-00
-        http://json-schema.org/
-      required:
-        - requestType
-        - title
-        - type
-        - format
-      properties:
-        '@context':
-          readOnly: true
-          type: string
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        requestType:
-          description: 'The requestType that this property belongs to'
-          $ref: '#/components/schemas/RequestType:jsonld-write'
-        title:
-          description: 'The title of this property'
-          type: string
-        type:
-          description: 'The type of this property'
-          type: string
-        format:
-          description: 'The swagger type of the property as used in api calls'
-          type: string
-        multipleOf:
-          description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
-          type: integer
-        maximum:
-          description: '*Can only be used in combination with type integer* The maximum allowed value'
-          type: integer
-        exclusiveMaximum:
-          description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
-          type: boolean
-        minimum:
-          description: '*Can only be used in combination with type integer* The minimum allowed value'
-          type: integer
-        exclusiveMinimum:
-          description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
-          type: boolean
-        maxLength:
-          description: 'The maximum amount of characters in the value'
-          type: integer
-        minLength:
-          description: 'The minimal amount of characters in the value'
-          type: integer
-        pattern:
-          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
-          type: string
-        additionalItems:
-          description: 'Not yet supported by business logic'
-          type: boolean
-        maxItems:
-          description: '*Can only be used in combination with type array* The maximum array length'
-          type: integer
-        minItems:
-          description: '*Can only be used in combination with type array* The minimum allowed value'
-          type: integer
-        uniqueItems:
-          description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
-          type: boolean
-        maxProperties:
-          description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
-          type: integer
-        minProperties:
-          description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
-          type: integer
-        required:
-          description: 'Only whether or not this property is required'
-          type: boolean
-        properties:
-          description: 'Not yet supported by business logic'
-          type: string
-        additionalProperties:
-          description: 'Not yet supported by business logic'
-          type: string
-        object:
-          description: 'Not yet supported by business logic'
-          type: string
-        enum:
-          description: 'An array of possible values, input is limited to this array'
-          type: array
-          items:
-            type: string
-        description:
-          description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
-          type: string
-        defaultValue:
-          description: 'An default value for this value that will be used if a user doesn''t supply a value'
-          type: string
-        nullable:
-          description: 'Whether or not this property can be left empty'
-          type: boolean
-        discriminator:
-          description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
-          type: string
-        readOnly:
-          description: 'Whether or not this property is read only'
-          type: boolean
-        writeOnly:
-          description: 'Whether or not this property is write only'
-          type: boolean
-        xml:
-          description: 'An XML representation of the swagger docs'
-          type: string
-        externalDoc:
-          description: 'An link to any external documentation for the value'
-          type: string
-        example:
-          description: 'An example of the value that should be supplied'
-          type: string
-        deprecated:
-          description: 'Whether or not this property has been deprecated and wil be removed in the future'
-          type: boolean
-        availableFrom:
-          description: 'The moment from which this value is available'
-          externalDocs:
-            url: 'http://schema.org/DateTime'
-          type: string
-          format: date-time
-        availableUntil:
-          description: '*should be used in combination with deprecated* The moment where until this value is available'
-          externalDocs:
-            url: 'http://schema.org/DateTime'
-          type: string
-          format: date-time
-        minDate:
-          description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
-          type: string
-        maxDate:
-          description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
-          type: string
-    RequestType-read:
-      type: object
-      description: ''
-      properties:
-        id:
-          readOnly: true
-          description: 'The UUID identifier of this object'
-          externalDocs:
-            url: 'http://schema.org/identifier'
-          type: string
-        sourceOrganization:
-          description: 'The RSIN of the organization that owns this process'
-          type: string
-        name:
-          readOnly: true
-          description: 'The name of this RequestType'
-          type: string
-        description:
-          readOnly: true
-          description: 'An short description of this RequestType'
-          type: string
-        properties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property-read'
-      required:
-        - sourceOrganization
-    RequestType-write:
-      type: object
-      description: ''
-      required:
-        - sourceOrganization
-      properties:
-        sourceOrganization:
-          description: 'The RSIN of the organization that owns this process'
-          type: string
-        properties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property-write'
-    'RequestType:jsonld-read':
-      type: object
-      description: ''
+      description: 'This is an example entity.'
       properties:
         '@context':
           readOnly: true
@@ -1735,32 +1380,25 @@ components:
           type: string
         id:
           readOnly: true
-          description: 'The UUID identifier of this object'
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        sourceOrganization:
-          description: 'The RSIN of the organization that owns this process'
-          type: string
         name:
-          readOnly: true
-          description: 'The name of this RequestType'
+          description: 'The name of this example property'
           type: string
         description:
-          readOnly: true
-          description: 'An short description of this RequestType'
+          description: 'The description of this example property'
           type: string
-        properties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property:jsonld-read'
+        camelCase:
+          description: 'Proof that we camel case our api'
+          type: string
       required:
-        - sourceOrganization
-    'RequestType:jsonld-write':
+        - name
+    'ExampleEntity:jsonld-write':
       type: object
-      description: ''
+      description: 'This is an example entity.'
       required:
-        - sourceOrganization
+        - name
       properties:
         '@context':
           readOnly: true
@@ -1771,13 +1409,15 @@ components:
         '@type':
           readOnly: true
           type: string
-        sourceOrganization:
-          description: 'The RSIN of the organization that owns this process'
+        name:
+          description: 'The name of this example property'
           type: string
-        properties:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property:jsonld-write'
+        description:
+          description: 'The description of this example property'
+          type: string
+        camelCase:
+          description: 'Proof that we camel case our api'
+          type: string
 definitions:
   Property-read:
     properties:
