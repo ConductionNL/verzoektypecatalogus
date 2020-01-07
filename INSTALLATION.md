@@ -118,9 +118,9 @@ $ helm upgrade vtc-prod ./api/helm --kubeconfig="api/helm/kubeconfig.yaml" --nam
 
 Or del if you want to delete an existing  one
 ```CLI
-$ helm del vtc-dev  --purge --kubeconfig="api/helm/kubeconfig.yaml --namespace=dev" 
-$ helm del vtc-stag --purge --kubeconfig="api/helm/kubeconfig.yaml --namespace=stag" 
-$ helm del vtc-prod --purge --kubeconfig="api/helm/kubeconfig.yaml --namespace=prod" 
+$ helm del vtc-dev  --purge --kubeconfig="api/helm/kubeconfig.yaml" 
+$ helm del vtc-stag --purge --kubeconfig="api/helm/kubeconfig.yaml" 
+$ helm del vtc-prod --purge --kubeconfig="kubeconfig.yaml" 
 ```
 
 

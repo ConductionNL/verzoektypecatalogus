@@ -311,6 +311,7 @@ class RequestType
     	while ($stage){
     		
     		$array = [
+    				"id"=>$stage->getId(),
     				"name"=>$stage->getName(),
     				"description"=>$stage->getDescription(),
     				"icon"=>$stage->getIcon(),

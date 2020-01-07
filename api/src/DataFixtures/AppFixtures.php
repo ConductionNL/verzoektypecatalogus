@@ -307,7 +307,7 @@ class AppFixtures extends Fixture
     	$stage10= new Property();
     	$stage10->addPrevious($stage9);
     	$stage10->setTitle('Betalen ');
-    	$stage10->setIcon('fas fa-envelope');
+    	$stage10->setIcon('fas fa-cash-register');
     	$stage10->setSlug('betalen');
     	$stage10->setType('string');
     	$stage10->setFormat('uri');
