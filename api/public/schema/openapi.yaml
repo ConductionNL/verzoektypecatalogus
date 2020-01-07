@@ -8,15 +8,11 @@ info:
     - Reference: vtc
     - Enviroment: dev
     - Version: V.0.1
-    - Repository: []() / [zip](/archive/master.zip)
-    - Datamodel: [postman](/schema/openapi.postman_collection) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    - Repository: [online](https://github.com/ConductionNL/verzoektypecatalogus) / [zip](https://github.com/ConductionNL/verzoektypecatalogus/archive/master.zip)
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/vtc-php) 
+    - Datamodel: [postman](/schema/vtc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
-    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar. 
-                             
-    Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie, ofwel user. Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
-    JWT Tokens kunnen zowel worden verlengd, als opnieuw worden aangevraagd, dit aan de hand van de applicatie id en sleutel.
-    Let er bij het meegeven van JWT tokens op dat deze moet worden voorafgegaan door een Bearer en een spatie, onder de header Authorization. De volledig naam wordt daarmee: 'Authorization: Bearer [TOKEN]'.
-
+    'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
 paths:
   /properties:
@@ -654,13 +650,13 @@ paths:
                   $ref: '#/components/schemas/RequestType-read'
       parameters:
         -
-          name: sourceOrganization
+          name: source_organization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'sourceOrganization[]'
+          name: 'source_organization[]'
           in: query
           required: false
           schema:
@@ -1128,7 +1124,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        requestType:
+        request_type:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType-read'
         title:
@@ -1144,46 +1140,46 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
-        multipleOf:
+        multiple_of:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusiveMaximum:
+        exclusive_maximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusiveMinimum:
+        exclusive_minimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        maxLength:
+        max_length:
           description: 'The maximum amount of characters in the value'
           type: integer
-        minLength:
+        min_length:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additionalItems:
+        additional_items:
           description: 'Not yet supported by business logic'
           type: boolean
-        maxItems:
+        max_items:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        minItems:
+        min_items:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        uniqueItems:
+        unique_items:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        maxProperties:
+        max_properties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        minProperties:
+        min_properties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -1192,21 +1188,21 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additionalProperties:
+        additional_properties:
           description: 'Not yet supported by business logic'
           type: string
         object:
           description: 'Not yet supported by business logic'
           type: string
         enum:
-          description: 'An array of possible values, input is limited to this array'
+          description: 'An array of possible values, input is limited to this array]'
           type: array
           items:
             type: string
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        defaultValue:
+        default_value:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -1215,16 +1211,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        readOnly:
+        read_only:
           description: 'Whether or not this property is read only'
           type: boolean
-        writeOnly:
+        write_only:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        externalDoc:
+        external_doc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -1233,26 +1229,35 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        availableFrom:
+        available_from:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        availableUntil:
+        available_until:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        minDate:
+        min_date:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        maxDate:
+        max_date:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        slug:
+          description: 'The slug of this property'
+          type: string
+        start:
+          description: 'Whether or not this proerty is the starting oint of a process'
+          type: boolean
       required:
-        - requestType
+        - request_type
         - title
         - type
         - format
@@ -1264,12 +1269,12 @@ components:
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
         http://json-schema.org/
       required:
-        - requestType
+        - request_type
         - title
         - type
         - format
       properties:
-        requestType:
+        request_type:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType-write'
         title:
@@ -1281,46 +1286,46 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
-        multipleOf:
+        multiple_of:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusiveMaximum:
+        exclusive_maximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusiveMinimum:
+        exclusive_minimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        maxLength:
+        max_length:
           description: 'The maximum amount of characters in the value'
           type: integer
-        minLength:
+        min_length:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additionalItems:
+        additional_items:
           description: 'Not yet supported by business logic'
           type: boolean
-        maxItems:
+        max_items:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        minItems:
+        min_items:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        uniqueItems:
+        unique_items:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        maxProperties:
+        max_properties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        minProperties:
+        min_properties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -1329,21 +1334,21 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additionalProperties:
+        additional_properties:
           description: 'Not yet supported by business logic'
           type: string
         object:
           description: 'Not yet supported by business logic'
           type: string
         enum:
-          description: 'An array of possible values, input is limited to this array'
+          description: 'An array of possible values, input is limited to this array]'
           type: array
           items:
             type: string
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        defaultValue:
+        default_value:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -1352,16 +1357,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        readOnly:
+        read_only:
           description: 'Whether or not this property is read only'
           type: boolean
-        writeOnly:
+        write_only:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        externalDoc:
+        external_doc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -1370,24 +1375,33 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        availableFrom:
+        available_from:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        availableUntil:
+        available_until:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        minDate:
+        min_date:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        maxDate:
+        max_date:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        slug:
+          description: 'The slug of this property'
+          type: string
+        start:
+          description: 'Whether or not this proerty is the starting oint of a process'
+          type: boolean
     'Property:jsonld-read':
       type: object
       description: |
@@ -1411,7 +1425,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        requestType:
+        request_type:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType:jsonld-read'
         title:
@@ -1427,46 +1441,46 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
-        multipleOf:
+        multiple_of:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusiveMaximum:
+        exclusive_maximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusiveMinimum:
+        exclusive_minimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        maxLength:
+        max_length:
           description: 'The maximum amount of characters in the value'
           type: integer
-        minLength:
+        min_length:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additionalItems:
+        additional_items:
           description: 'Not yet supported by business logic'
           type: boolean
-        maxItems:
+        max_items:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        minItems:
+        min_items:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        uniqueItems:
+        unique_items:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        maxProperties:
+        max_properties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        minProperties:
+        min_properties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -1475,21 +1489,21 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additionalProperties:
+        additional_properties:
           description: 'Not yet supported by business logic'
           type: string
         object:
           description: 'Not yet supported by business logic'
           type: string
         enum:
-          description: 'An array of possible values, input is limited to this array'
+          description: 'An array of possible values, input is limited to this array]'
           type: array
           items:
             type: string
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        defaultValue:
+        default_value:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -1498,16 +1512,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        readOnly:
+        read_only:
           description: 'Whether or not this property is read only'
           type: boolean
-        writeOnly:
+        write_only:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        externalDoc:
+        external_doc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -1516,26 +1530,35 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        availableFrom:
+        available_from:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        availableUntil:
+        available_until:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        minDate:
+        min_date:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        maxDate:
+        max_date:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        slug:
+          description: 'The slug of this property'
+          type: string
+        start:
+          description: 'Whether or not this proerty is the starting oint of a process'
+          type: boolean
       required:
-        - requestType
+        - request_type
         - title
         - type
         - format
@@ -1547,7 +1570,7 @@ components:
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
         http://json-schema.org/
       required:
-        - requestType
+        - request_type
         - title
         - type
         - format
@@ -1561,7 +1584,7 @@ components:
         '@type':
           readOnly: true
           type: string
-        requestType:
+        request_type:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType:jsonld-write'
         title:
@@ -1573,46 +1596,46 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
-        multipleOf:
+        multiple_of:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusiveMaximum:
+        exclusive_maximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusiveMinimum:
+        exclusive_minimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        maxLength:
+        max_length:
           description: 'The maximum amount of characters in the value'
           type: integer
-        minLength:
+        min_length:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additionalItems:
+        additional_items:
           description: 'Not yet supported by business logic'
           type: boolean
-        maxItems:
+        max_items:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        minItems:
+        min_items:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        uniqueItems:
+        unique_items:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        maxProperties:
+        max_properties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        minProperties:
+        min_properties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -1621,21 +1644,21 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additionalProperties:
+        additional_properties:
           description: 'Not yet supported by business logic'
           type: string
         object:
           description: 'Not yet supported by business logic'
           type: string
         enum:
-          description: 'An array of possible values, input is limited to this array'
+          description: 'An array of possible values, input is limited to this array]'
           type: array
           items:
             type: string
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        defaultValue:
+        default_value:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -1644,16 +1667,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        readOnly:
+        read_only:
           description: 'Whether or not this property is read only'
           type: boolean
-        writeOnly:
+        write_only:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        externalDoc:
+        external_doc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -1662,24 +1685,33 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        availableFrom:
+        available_from:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        availableUntil:
+        available_until:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        minDate:
+        min_date:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        maxDate:
+        max_date:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        slug:
+          description: 'The slug of this property'
+          type: string
+        start:
+          description: 'Whether or not this proerty is the starting oint of a process'
+          type: boolean
     RequestType-read:
       type: object
       description: ''
@@ -1690,7 +1722,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        sourceOrganization:
+        source_organization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         name:
@@ -1705,15 +1737,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Property-read'
+        stages:
+          readOnly: true
       required:
-        - sourceOrganization
+        - source_organization
     RequestType-write:
       type: object
       description: ''
       required:
-        - sourceOrganization
+        - source_organization
       properties:
-        sourceOrganization:
+        source_organization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         properties:
@@ -1739,7 +1773,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        sourceOrganization:
+        source_organization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         name:
@@ -1754,13 +1788,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Property:jsonld-read'
+        stages:
+          readOnly: true
       required:
-        - sourceOrganization
+        - source_organization
     'RequestType:jsonld-write':
       type: object
       description: ''
       required:
-        - sourceOrganization
+        - source_organization
       properties:
         '@context':
           readOnly: true
@@ -1771,7 +1807,7 @@ components:
         '@type':
           readOnly: true
           type: string
-        sourceOrganization:
+        source_organization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         properties:
@@ -1809,7 +1845,7 @@ definitions:
       minLength:
         example: '2'
       pattern:
-        example: '''[+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?'''
+        example: regex
         maxLength: 255
       additionalItems: []
       maxItems:
@@ -1860,6 +1896,16 @@ definitions:
         example: '2019-09-16T14:26:51+00:00'
       maxDate:
         example: '2019-09-16T14:26:51+00:00'
+      icon:
+        example: 'My Property'
+        maxLength: 255
+        minLength: 15
+      slug:
+        example: my-slug
+        maxLength: 255
+        minLength: 15
+      start:
+        example: 'true'
       requestType: []
     required: []
   Property-write:
@@ -1889,7 +1935,7 @@ definitions:
       minLength:
         example: '2'
       pattern:
-        example: '''[+-]?(\d+(\.\d+)?|\.\d+)([eE][+-]?\d+)?'''
+        example: regex
         maxLength: 255
       additionalItems: []
       maxItems:
@@ -1940,6 +1986,16 @@ definitions:
         example: '2019-09-16T14:26:51+00:00'
       maxDate:
         example: '2019-09-16T14:26:51+00:00'
+      icon:
+        example: 'My Property'
+        maxLength: 255
+        minLength: 15
+      slug:
+        example: my-slug
+        maxLength: 255
+        minLength: 15
+      start:
+        example: 'true'
       requestType: []
     required: []
   RequestType-read:

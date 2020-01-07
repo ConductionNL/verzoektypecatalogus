@@ -9,8 +9,9 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -50,7 +51,7 @@ class RequestType
 	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
 	 * 
-     * @Groups({"read"})
+   * @Groups({"read"})
 	 * @Assert\Uuid
 	 * @ORM\Id
 	 * @ORM\Column(type="uuid", unique=true)
@@ -103,6 +104,13 @@ class RequestType
      * @Assert\Valid
      */
     private $properties;
+
+    
+    /**
+     * @Groups({"read"})
+     * @MaxDepth(1)
+     */
+    private $stages;
 
     /**
 	 * @var object $extends The requestType that this requestType extends
@@ -164,6 +172,7 @@ class RequestType
     {
         return $this->name;
     }
+
 
     public function setName(string $name): self
     {
@@ -293,5 +302,42 @@ class RequestType
 
         return $this;
     }
-
+    
+    
+    public function getStages()
+    {
+    	$stages = [];
+    	$stage = $this->getFirstStage();
+    	while ($stage){
+    		
+    		$array = [
+    				"name"=>$stage->getName(),
+    				"description"=>$stage->getDescription(),
+    				"icon"=>$stage->getIcon(),
+    				"slug"=>$stage->getSlug()
+    		];
+    		
+    		if($stage->getNext()){    			
+    			$array["next"] = $stage->getNext()->getSlug();
+    		}
+    		
+    		if($stage->getPrevious()->first()){
+    			$array["previous"] = $stage->getPrevious()->first()->getSlug();
+    		}
+    		
+    		$stages[] = $array;
+    		    		
+    		$stage = $stage->getNext();    		
+    	}
+    	
+    	return $stages;
+    }
+    
+    public function getFirstStage()
+    {
+    	$criteria = Criteria::create()
+    	->andWhere(Criteria::expr()->eq('start', true));
+    	
+    	return $this->getProperties()->matching($criteria)->first();    	
+    }
 }
