@@ -212,7 +212,7 @@ class AppFixtures extends Fixture
     	$stage2->setSlug('partners');
     	$stage2->setType('arrays');
     	$stage2->setFormat('bsn');
-    	$stage2->setMinProperties(1);
+    	$stage2->setMinProperties(2);
     	$stage2->setMaxProperties(2);
     	$stage2->setRequired(true);
     	$stage2->setDescription('Wie zijn de getuigen van partner 2?');
