@@ -9,9 +9,9 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\UuidInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -48,10 +48,10 @@ use Ramsey\Uuid\Uuid;
 class RequestType
 {
 	/**
-	 * @var UuidInterface $id The UUID identifier of this object
+	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
-	 *
-     * @Groups({"read"})
+	 * 
+   * @Groups({"read"})
 	 * @Assert\Uuid
 	 * @ORM\Id
 	 * @ORM\Column(type="uuid", unique=true)
@@ -105,6 +105,13 @@ class RequestType
      */
     private $properties;
 
+    
+    /**
+     * @Groups({"read"})
+     * @MaxDepth(1)
+     */
+    private $stages;
+
     /**
 	 * @var object $extends The requestType that this requestType extends
      *
@@ -137,12 +144,12 @@ class RequestType
      	$this->extendedBy = new ArrayCollection();
     }
 
-    public function getId(): string
+    public function getId(): Uuid
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    
+    public function setId(Uuid $id): self
     {
     	$this->id = $id;
 
@@ -157,6 +164,7 @@ class RequestType
     public function setSourceOrganization(string $sourceOrganization): self
     {
     	$this->sourceOrganization = $sourceOrganization;
+
         return $this;
     }
 
@@ -165,7 +173,8 @@ class RequestType
         return $this->name;
     }
 
-    public function setName(?string $name): self
+
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -177,7 +186,7 @@ class RequestType
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
@@ -293,5 +302,42 @@ class RequestType
 
         return $this;
     }
-
+    
+    
+    public function getStages()
+    {
+    	$stages = [];
+    	$stage = $this->getFirstStage();
+    	while ($stage){
+    		
+    		$array = [
+    				"name"=>$stage->getName(),
+    				"description"=>$stage->getDescription(),
+    				"icon"=>$stage->getIcon(),
+    				"slug"=>$stage->getSlug()
+    		];
+    		
+    		if($stage->getNext()){    			
+    			$array["next"] = $stage->getNext()->getSlug();
+    		}
+    		
+    		if($stage->getPrevious()->first()){
+    			$array["previous"] = $stage->getPrevious()->first()->getSlug();
+    		}
+    		
+    		$stages[] = $array;
+    		    		
+    		$stage = $stage->getNext();    		
+    	}
+    	
+    	return $stages;
+    }
+    
+    public function getFirstStage()
+    {
+    	$criteria = Criteria::create()
+    	->andWhere(Criteria::expr()->eq('start', true));
+    	
+    	return $this->getProperties()->matching($criteria)->first();    	
+    }
 }

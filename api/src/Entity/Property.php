@@ -67,10 +67,10 @@ class Property
      */
     private $title;
 
-    /**
+
+    /**     
 	   * @var string $name The name of the property as used in api calls, extracted from title on snake_case basis
      * @example my_property
-     *
      * @Assert\Length(min = 15, max = 255)
      * @Groups({"read"})
      */
@@ -84,7 +84,7 @@ class Property
      * @Assert\Length(max = 255)
      * @Assert\Choice({"string", "integer", "boolean", "number","array"})
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $type;
 
@@ -96,7 +96,7 @@ class Property
      * @Assert\Length(max = 255)
      * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent"})
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $format;
 
@@ -465,9 +465,50 @@ class Property
      */
     private $maxDate;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="previous")
+     */
+    private $next;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="next")
+     */
+    private $previous;
+
+    /**
+	 * @var string The icon of this property
+     * @example My Property
+	 * 	
+     * @Assert\Length(min = 15, max = 255)
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $icon;
+
+    /**
+	 * @var string The slug of this property
+     * @example my-slug
+     * 
+     * @Assert\Length(min = 15, max = 255)
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
+
+    /**
+	 * @var string Whether or not this proerty is the starting oint of a process
+     * @example true
+     * 
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $start = false;
+
     public function __construct()
     {
         $this->items = new ArrayCollection();
+        $this->previous = new ArrayCollection();
     }
 
     public function getId()
@@ -1007,6 +1048,85 @@ class Property
     public function setMaxDate(?string $maxDate): self
     {
         $this->maxDate = $maxDate;
+
+        return $this;
+    }
+
+    public function getNext(): ?self
+    {
+        return $this->next;
+    }
+
+    public function setNext(?self $next): self
+    {
+        $this->next = $next;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getPrevious(): Collection
+    {
+        return $this->previous;
+    }
+
+    public function addPrevious(self $previous): self
+    {
+        if (!$this->previous->contains($previous)) {
+            $this->previous[] = $previous;
+            $previous->setNext($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrevious(self $previous): self
+    {
+        if ($this->previous->contains($previous)) {
+            $this->previous->removeElement($previous);
+            // set the owning side to null (unless already changed)
+            if ($previous->getNext() === $this) {
+                $previous->setNext(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(?string $icon): self
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getStart(): ?bool
+    {
+        return $this->start;
+    }
+
+    public function setStart(bool $start): self
+    {
+        $this->start = $start;
 
         return $this;
     }
