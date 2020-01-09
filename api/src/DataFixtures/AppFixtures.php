@@ -212,8 +212,8 @@ class AppFixtures extends Fixture
     	$stage2->setSlug('partners');
     	$stage2->setType('arrays');
     	$stage2->setFormat('bsn');
-    	$stage2->setMinProperties(2);
-    	$stage2->setMaxProperties(2);
+    	$stage2->setMinItems(2);
+    	$stage2->setMaxItems(2);
     	$stage2->setRequired(true);
     	$stage2->setDescription('Wie zijn de getuigen van partner 2?');
     	$stage2->setRequestType($trouwenNL);
@@ -274,8 +274,8 @@ class AppFixtures extends Fixture
     	$stage7->setSlug('getuigen');
     	$stage7->setType('arrays');
     	$stage7->setFormat('bsn');
-    	$stage7->setMinProperties(2);
-    	$stage7->setMaxProperties(4);
+    	$stage7->setMinItems(2);
+    	$stage7->setMaxItems(4);
     	$stage7->setRequired(true);
     	$stage7->setDescription('Wie zijn de getuigen van partner?');
     	$stage7->setRequestType($trouwenNL);
