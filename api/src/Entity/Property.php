@@ -68,7 +68,7 @@ class Property
     private $title;
 
 
-    /**     
+    /**
 	   * @var string $name The name of the property as used in api calls, extracted from title on snake_case basis
      * @example my_property
      * @Assert\Length(min = 15, max = 255)
@@ -193,7 +193,7 @@ class Property
     private $items;
 
     /**
-     * Not yet supported by business logic
+     * @var boolean Not yet supported by business logic
      *
      * @Assert\Type("bool")
      * @Groups({"read", "write"})
@@ -265,7 +265,7 @@ class Property
     private $required;
 
     /**
-     * Not yet supported by business logic
+     * @var Property[]|ArrayCollection Not yet supported by business logic
      *
      * @Groups({"read", "write"})
      * @ORM\Column(type="object", nullable=true)
@@ -273,7 +273,7 @@ class Property
     private $properties;
 
     /**
-     * Not yet supported by business logic
+     * @var Property[]|ArrayCollection Not yet supported by business logic
      *
      * @Groups({"read", "write"})
      * @ORM\Column(type="object", nullable=true)
@@ -281,7 +281,7 @@ class Property
     private $additionalProperties;
 
     /**
-     * Not yet supported by business logic
+     * @var Object Not yet supported by business logic
      *
      * @Groups({"read", "write"})
      * @ORM\Column(type="object", nullable=true)
@@ -479,7 +479,7 @@ class Property
     /**
 	 * @var string The icon of this property
      * @example My Property
-	 * 	
+	 *
      * @Assert\Length(min = 15, max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -489,7 +489,7 @@ class Property
     /**
 	 * @var string The slug of this property
      * @example my-slug
-     * 
+     *
      * @Assert\Length(min = 15, max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -499,7 +499,7 @@ class Property
     /**
 	 * @var string Whether or not this proerty is the starting oint of a process
      * @example true
-     * 
+     *
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true)
      */

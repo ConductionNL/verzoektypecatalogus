@@ -12,12 +12,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Ramsey\Uuid\Uuid;
 
 /**
+ * All properties contained in the RequestType type
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
@@ -48,9 +51,9 @@ use Ramsey\Uuid\Uuid;
 class RequestType
 {
 	/**
-	 * @var \Ramsey\Uuid\UuidInterface $id The UUID identifier of this object
+	 * @var UuidInterface $id The UUID identifier of this object
 	 * @example e2984465-190a-4562-829e-a8cca81aa35d
-	 * 
+	 *
    * @Groups({"read"})
 	 * @Assert\Uuid
 	 * @ORM\Id
@@ -98,6 +101,7 @@ class RequestType
     private $description;
 
     /**
+     * @var Property[]|ArrayCollection The properties for this request type
      * @Groups({"read", "write"})
      * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
@@ -105,7 +109,7 @@ class RequestType
      */
     private $properties;
 
-    
+
     /**
      * @Groups({"read"})
      * @MaxDepth(1)
@@ -148,7 +152,7 @@ class RequestType
     {
         return $this->id;
     }
-    
+
     public function setId(Uuid $id): self
     {
     	$this->id = $id;
@@ -302,14 +306,14 @@ class RequestType
 
         return $this;
     }
-    
-    
+
+
     public function getStages()
     {
     	$stages = [];
     	$stage = $this->getFirstStage();
     	while ($stage){
-    		
+
     		$array = [
     				"id"=>$stage->getId(),
     				"name"=>$stage->getName(),
@@ -317,28 +321,28 @@ class RequestType
     				"icon"=>$stage->getIcon(),
     				"slug"=>$stage->getSlug()
     		];
-    		
-    		if($stage->getNext()){    			
+
+    		if($stage->getNext()){
     			$array["next"] = $stage->getNext()->getSlug();
     		}
-    		
+
     		if($stage->getPrevious()->first()){
     			$array["previous"] = $stage->getPrevious()->first()->getSlug();
     		}
-    		
+
     		$stages[] = $array;
-    		    		
-    		$stage = $stage->getNext();    		
+
+    		$stage = $stage->getNext();
     	}
-    	
+
     	return $stages;
     }
-    
+
     public function getFirstStage()
     {
     	$criteria = Criteria::create()
     	->andWhere(Criteria::expr()->eq('start', true));
-    	
-    	return $this->getProperties()->matching($criteria)->first();    	
+
+    	return $this->getProperties()->matching($criteria)->first();
     }
 }
