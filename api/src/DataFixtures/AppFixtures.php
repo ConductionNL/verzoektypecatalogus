@@ -48,7 +48,7 @@ class AppFixtures extends Fixture
     	$property= new Property();
     	//$property->setId('');
     	$property->setTitle('Wie');
-    	$property->setType('arrays');
+    	$property->setType('array');
     	$property->setFormat('bsn');
     	$property->setRequired(true);
     	$property->setDescription('Wie gaan er verhuizen?');
@@ -210,7 +210,7 @@ class AppFixtures extends Fixture
     	$stage2->setTitle('Partners');
     	$stage2->setIcon('fas fa-user-friends');
     	$stage2->setSlug('partners');
-    	$stage2->setType('arrays');
+    	$stage2->setType('array');
     	$stage2->setFormat('bsn');
     	$stage2->setMinItems(2);
     	$stage2->setMaxItems(2);
@@ -272,7 +272,7 @@ class AppFixtures extends Fixture
     	$stage7->setTitle('Getuigen');
     	$stage7->setIcon('fas fa-users');
     	$stage7->setSlug('getuigen');
-    	$stage7->setType('arrays');
+    	$stage7->setType('array');
     	$stage7->setFormat('bsn');
     	$stage7->setMinItems(2);
     	$stage7->setMaxItems(4);
@@ -286,7 +286,7 @@ class AppFixtures extends Fixture
     	$stage8->setTitle('Extras');
     	$stage8->setIcon('fas fa-gift');
     	$stage8->setSlug('extras');
-    	$stage8->setType('arrays');
+    	$stage8->setType('array');
     	$stage8->setFormat('bsn');
     	$stage8->setRequired(true);
     	$stage8->setDescription('Wie zijn de getuigen van partner?');
