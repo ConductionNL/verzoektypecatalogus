@@ -1714,7 +1714,7 @@ components:
           type: boolean
     RequestType-read:
       type: object
-      description: ''
+      description: 'All properties contained in the RequestType type'
       properties:
         id:
           readOnly: true
@@ -1734,6 +1734,7 @@ components:
           description: 'An short description of this RequestType'
           type: string
         properties:
+          description: 'The properties for this request type'
           type: array
           items:
             $ref: '#/components/schemas/Property-read'
@@ -1743,7 +1744,7 @@ components:
         - source_organization
     RequestType-write:
       type: object
-      description: ''
+      description: 'All properties contained in the RequestType type'
       required:
         - source_organization
       properties:
@@ -1751,12 +1752,13 @@ components:
           description: 'The RSIN of the organization that owns this process'
           type: string
         properties:
+          description: 'The properties for this request type'
           type: array
           items:
             $ref: '#/components/schemas/Property-write'
     'RequestType:jsonld-read':
       type: object
-      description: ''
+      description: 'All properties contained in the RequestType type'
       properties:
         '@context':
           readOnly: true
@@ -1785,6 +1787,7 @@ components:
           description: 'An short description of this RequestType'
           type: string
         properties:
+          description: 'The properties for this request type'
           type: array
           items:
             $ref: '#/components/schemas/Property:jsonld-read'
@@ -1794,7 +1797,7 @@ components:
         - source_organization
     'RequestType:jsonld-write':
       type: object
-      description: ''
+      description: 'All properties contained in the RequestType type'
       required:
         - source_organization
       properties:
@@ -1811,6 +1814,7 @@ components:
           description: 'The RSIN of the organization that owns this process'
           type: string
         properties:
+          description: 'The properties for this request type'
           type: array
           items:
             $ref: '#/components/schemas/Property:jsonld-write'
@@ -1871,7 +1875,9 @@ definitions:
         type: string
         example: regex
         maxLength: 255
-      additionalItems: []
+      additionalItems:
+        description: 'Not yet supported by business logic'
+        type: bool
       maxItems:
         description: '*Can only be used in combination with type array* The maximum array length'
         type: string
@@ -1896,9 +1902,15 @@ definitions:
         description: 'Only whether or not this property is required'
         type: bool
         example: 'false'
-      properties: []
-      additionalProperties: []
-      object: []
+      properties:
+        description: 'Not yet supported by business logic'
+        type: '\Property[]|\ArrayCollection'
+      additionalProperties:
+        description: 'Not yet supported by business logic'
+        type: '\Property[]|\ArrayCollection'
+      object:
+        description: 'Not yet supported by business logic'
+        type: object
       enum:
         description: 'An array of possible values, input is limited to this array]'
         type: array
@@ -1949,12 +1961,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-01-13 20:12:33'
+        example: '2020-01-13 20:28:20'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-01-13 20:12:33'
+        example: '2020-01-13 20:28:20'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -2035,7 +2047,9 @@ definitions:
         type: string
         example: regex
         maxLength: 255
-      additionalItems: []
+      additionalItems:
+        description: 'Not yet supported by business logic'
+        type: bool
       maxItems:
         description: '*Can only be used in combination with type array* The maximum array length'
         type: string
@@ -2060,9 +2074,15 @@ definitions:
         description: 'Only whether or not this property is required'
         type: bool
         example: 'false'
-      properties: []
-      additionalProperties: []
-      object: []
+      properties:
+        description: 'Not yet supported by business logic'
+        type: '\Property[]|\ArrayCollection'
+      additionalProperties:
+        description: 'Not yet supported by business logic'
+        type: '\Property[]|\ArrayCollection'
+      object:
+        description: 'Not yet supported by business logic'
+        type: object
       enum:
         description: 'An array of possible values, input is limited to this array]'
         type: array
@@ -2113,12 +2133,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-01-13 20:12:33'
+        example: '2020-01-13 20:28:20'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-01-13 20:12:33'
+        example: '2020-01-13 20:28:20'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -2171,7 +2191,9 @@ definitions:
         type: string
         example: 'This is the best request ever'
         maxLength: 2550
-      properties: []
+      properties:
+        description: 'The properties for this request type'
+        type: '\Property[]|\ArrayCollection'
     required:
       - sourceOrganization
       - name
@@ -2183,7 +2205,9 @@ definitions:
         example: '002851234'
         maxLength: 11
         minLength: 8
-      properties: []
+      properties:
+        description: 'The properties for this request type'
+        type: '\Property[]|\ArrayCollection'
     required:
       - sourceOrganization
       - name
@@ -2208,7 +2232,7 @@ tags:
   -
     name: RequestType
     description: |
-      
+      All properties contained in the RequestType type
       
       
 securityDefinitions:
