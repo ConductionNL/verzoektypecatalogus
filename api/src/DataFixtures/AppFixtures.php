@@ -2,119 +2,115 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Property;
+use App\Entity\RequestType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Ramsey\Uuid\Uuid;
-
-use App\Entity\RequestType;
-use App\Entity\Property;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-    	/*
-    	 *  Verhuizen   	  
+        /*
+    	 *  Verhuizen
     	 */
-    	$id = Uuid::fromString('2bfb3cea-b5b5-459c-b3e0-e1100089a11a');
-    	
-    	$verhuizenNL = new RequestType();
-    	$verhuizenNL->setId($id);
-    	$verhuizenNL->setSourceOrganization('0000');
-    	$verhuizenNL->setName('Verhuizen');
-    	$verhuizenNL->setDescription('Het doorgeven van een verhuizing aan een gemeente');
-    	$manager->persist($verhuizenNL);
-    	
-    	$property= new Property();
-    	//$property->setId('');
-    	$property->setTitle('Datum');
-    	$property->setType('string');
-    	$property->setFormat('date');
-    	$property->setDescription('Wat is de verhuisdatum?');
-    	$property->setRequestType($verhuizenNL);
-    	$manager->persist($property);
-    	
-    	$property= new Property();
-    	//$property->setId('');
-    	$property->setTitle('Adress');
-    	$property->setType('string');
-    	$property->setFormat('bag');
-    	$property->setRequired(true);
-    	$property->setDescription('Wat is het nieuwe adres?');
-    	$property->setRequestType($verhuizenNL);
-    	$manager->persist($property);
-    	
-    	$property= new Property();
-    	//$property->setId('');
-    	$property->setTitle('Wie');
-    	$property->setType('array');
-    	$property->setFormat('bsn');
-    	$property->setRequired(true);
-    	$property->setDescription('Wie gaan er verhuizen?');
-    	$property->setRequestType($verhuizenNL);
-    	$manager->persist($property);
-    	
-    	$id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
-    	$verhuizenDenBosh = new RequestType();
-    	$verhuizenDenBosh->setName('Verhuizen');
-    	$verhuizenDenBosh->setDescription('Het doorgeven van een verhuizing aan de gemeente \'s-Hertogenbosch');
-    	$verhuizenDenBosh->setSourceOrganization('001709124');
-    	$verhuizenDenBosh->setExtends($verhuizenNL);
-    	$manager->persist($verhuizenDenBosh);
-    	$verhuizenDenBosh->setId($id);
-    	$manager->persist($verhuizenDenBosh);
-    	
-    	
-    	$property = new Property();
-    	//$verhuizenNL->setId('');
-    	$property->setTitle('Email');
-    	$property->setDescription('Het e-mail addres dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
-    	$property->setType('string');
-    	$property->setFormat('email');
-    	$property->setRequired(true);
-    	$property->setRequestType($verhuizenNL);
-    	$manager->persist($property);
-    	
-    	
-    	$property = new Property();
-    	//$verhuizenNL->setId('');
-    	$property->setTitle('Telefoon');
-    	$property->setDescription('Het telefoon nummer dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
-    	$property->setType('string');
-    	$property->setFormat('string');
-    	$property->setRequired(true);
-    	$property->setRequestType($verhuizenNL);
-    	$manager->persist($property);
-    	
-    	$verhuizenEindhoven = new RequestType(); 
-    	//$verhuizenEindhoven->setId('fc79c4c9-b3b3-4258-bdbb-449262f3e5d7');
-    	$verhuizenEindhoven->setName('Verhuizen');
-    	$verhuizenEindhoven->setDescription('Het doorgeven van een verhuizing aan de gemeente Eindhoven');
-    	$verhuizenEindhoven->setSourceOrganization('001902763');
-    	$verhuizenEindhoven->setExtends($verhuizenNL);
-    	$manager->persist($verhuizenEindhoven);
-    	
-    	$property = new Property();
-    	//$verhuizenNL->setId('');
-    	$property->setTitle('Eigenaar');
-    	$property->setDescription('Bent u de eigenaar van de woning waar u heen verhuist?');
-    	$property->setType('boolean');
-    	$property->setFormat('boolean');
-    	$property->setRequired(true);
-    	$property->setRequestType($verhuizenNL);
-    	$manager->persist($property);
-    	
-    	$property = new Property();
-    	//$verhuizenNL->setId('');
-    	$property->setTitle('Doorgeven gegevens');
-    	$property->setDescription('Wilt u dat we uw verhuizing ook doorgeven aan postNl?');
-    	$property->setType('boolean');
-    	$property->setFormat('boolean');
-    	$property->setRequestType($verhuizenNL);
-    	$manager->persist($property);
-    	
-    	/*
+        $id = Uuid::fromString('2bfb3cea-b5b5-459c-b3e0-e1100089a11a');
+
+        $verhuizenNL = new RequestType();
+        $verhuizenNL->setId($id);
+        $verhuizenNL->setSourceOrganization('0000');
+        $verhuizenNL->setName('Verhuizen');
+        $verhuizenNL->setDescription('Het doorgeven van een verhuizing aan een gemeente');
+        $manager->persist($verhuizenNL);
+
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('Datum');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setDescription('Wat is de verhuisdatum?');
+        $property->setRequestType($verhuizenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('Adress');
+        $property->setType('string');
+        $property->setFormat('bag');
+        $property->setRequired(true);
+        $property->setDescription('Wat is het nieuwe adres?');
+        $property->setRequestType($verhuizenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('Wie');
+        $property->setType('array');
+        $property->setFormat('bsn');
+        $property->setRequired(true);
+        $property->setDescription('Wie gaan er verhuizen?');
+        $property->setRequestType($verhuizenNL);
+        $manager->persist($property);
+
+        $id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
+        $verhuizenDenBosh = new RequestType();
+        $verhuizenDenBosh->setName('Verhuizen');
+        $verhuizenDenBosh->setDescription('Het doorgeven van een verhuizing aan de gemeente \'s-Hertogenbosch');
+        $verhuizenDenBosh->setSourceOrganization('001709124');
+        $verhuizenDenBosh->setExtends($verhuizenNL);
+        $manager->persist($verhuizenDenBosh);
+        $verhuizenDenBosh->setId($id);
+        $manager->persist($verhuizenDenBosh);
+
+        $property = new Property();
+        //$verhuizenNL->setId('');
+        $property->setTitle('Email');
+        $property->setDescription('Het e-mail addres dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($verhuizenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$verhuizenNL->setId('');
+        $property->setTitle('Telefoon');
+        $property->setDescription('Het telefoon nummer dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
+        $property->setType('string');
+        $property->setFormat('string');
+        $property->setRequired(true);
+        $property->setRequestType($verhuizenNL);
+        $manager->persist($property);
+
+        $verhuizenEindhoven = new RequestType();
+        //$verhuizenEindhoven->setId('fc79c4c9-b3b3-4258-bdbb-449262f3e5d7');
+        $verhuizenEindhoven->setName('Verhuizen');
+        $verhuizenEindhoven->setDescription('Het doorgeven van een verhuizing aan de gemeente Eindhoven');
+        $verhuizenEindhoven->setSourceOrganization('001902763');
+        $verhuizenEindhoven->setExtends($verhuizenNL);
+        $manager->persist($verhuizenEindhoven);
+
+        $property = new Property();
+        //$verhuizenNL->setId('');
+        $property->setTitle('Eigenaar');
+        $property->setDescription('Bent u de eigenaar van de woning waar u heen verhuist?');
+        $property->setType('boolean');
+        $property->setFormat('boolean');
+        $property->setRequired(true);
+        $property->setRequestType($verhuizenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$verhuizenNL->setId('');
+        $property->setTitle('Doorgeven gegevens');
+        $property->setDescription('Wilt u dat we uw verhuizing ook doorgeven aan postNl?');
+        $property->setType('boolean');
+        $property->setFormat('boolean');
+        $property->setRequestType($verhuizenNL);
+        $manager->persist($property);
+
+        /*
     	 *  Trouwen
     	 */
     	$meldingTrouwenNL= new RequestType();
