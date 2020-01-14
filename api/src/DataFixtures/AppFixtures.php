@@ -190,7 +190,7 @@ class AppFixtures extends Fixture
     	$stage1->setStart(true);
     	$stage1->setTitle('Type');
     	$stage1->setIcon('fas fa-ring');
-    	$stage1->setSlug('ceremonies');
+    	$stage1->setSlug('ceremonie');
     	$stage1->setType('string');
     	$stage1->setFormat('strin');
     	$stage1->setMaxLength('12');
