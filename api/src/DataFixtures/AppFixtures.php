@@ -35,7 +35,7 @@ class AppFixtures extends Fixture
     	$stage1->setType('string');
     	$stage1->setFormat('date');
     	$stage1->setDescription('Wat is de verhuisdatum?');
-    	$stage1->setRequestType($overlijden);
+    	$stage1->setRequestType($bezwaar);
     	$manager->persist($stage1);   	
     	
     	/*
@@ -61,7 +61,7 @@ class AppFixtures extends Fixture
     	$stage1->setType('string');
     	$stage1->setFormat('date');
     	$stage1->setDescription('Wat is de verhuisdatum?');
-    	$stage1->setRequestType($overlijden);
+    	$stage1->setRequestType($bezwaar);
     	$manager->persist($stage1);   	
     	
     	
@@ -85,7 +85,7 @@ class AppFixtures extends Fixture
     	$stage1->setType('string');
     	$stage1->setFormat('date');
     	$stage1->setDescription('Wat is de verhuisdatum?');
-    	$stage1->setRequestType($overlijden);
+    	$stage1->setRequestType($bezwaar);
     	$manager->persist($stage1);   	
     	
     	/*
@@ -114,7 +114,7 @@ class AppFixtures extends Fixture
     	$stage1->setType('string');
     	$stage1->setFormat('string');
     	$stage1->setDescription('Wat is de verhuisdatum?');
-    	$stage1->setRequestType($overlijden);
+    	$stage1->setRequestType($bezwaar);
     	$manager->persist($stage1);   	
     	
     	/*
@@ -140,7 +140,7 @@ class AppFixtures extends Fixture
     	$stage1->setType('string');
     	$stage1->setFormat('string');
     	$stage1->setDescription('Wat is de verhuisdatum?');
-    	$stage1->setRequestType($overlijden);
+    	$stage1->setRequestType($bezwaar);
     	$manager->persist($stage1);   	
     	
     	/*
@@ -166,7 +166,7 @@ class AppFixtures extends Fixture
     	 $stage1->setType('string');
     	 $stage1->setFormat('string');
     	 $stage1->setDescription('Wat is de verhuisdatum?');
-    	 $stage1->setRequestType($overlijden);
+    	 $stage1->setRequestType($bezwaar);
     	 $manager->persist($stage1);   	
     	
     	/*
