@@ -254,7 +254,7 @@ class AppFixtures extends Fixture
     	$stage2->setRequestType($reisdocument);
     	$manager->persist($stage2);
     	
-    	$id = Uuid::fromString('58d2e5ea-e592-48c1-86c4-93b43d8aac5c');
+    	$id = Uuid::fromString('690cbb51-50b8-4714-b45b-2dba696b1216');
     	$reisdocument = new RequestType();
     	$reisdocument->setSourceOrganization('0000');
     	$reisdocument->setName('Vermissing Reisdocument');
