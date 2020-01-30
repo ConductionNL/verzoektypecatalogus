@@ -11,12 +11,67 @@ use Ramsey\Uuid\Uuid;
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
-    {
-    	// digitale aktes
+    {    	
+    	/*
+    	 *  Bezwaar
+    	 */
+    	$id = Uuid::fromString('282f203c-4ecf-4578-9597-343ceccf8f43');
+    	$bezwaar = new RequestType();
+    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setSourceOrganization('0000');
+    	$bezwaar->setName('VOG');
+    	$bezwaar->setDescription('Aanvraag verklaring omtrend gedrag');
+    	$manager->persist($bezwaar);
+    	$bezwaar->setId($id);
+    	$manager->persist($bezwaar);
+    	$manager->flush();
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
     	
-    	// rijbewijs, vermissing, vsog 
-    	// uitreksel brp
+    	/*
+    	 *  Bezwaar
+    	 */
+    	$id = Uuid::fromString('2a86f09a-5cfc-443e-a54e-4f4b2f2693da');
+    	$bezwaar = new RequestType();
+    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setSourceOrganization('0000');
+    	$bezwaar->setName('Rijbewijs');
+    	$bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
+    	$manager->persist($bezwaar);
+    	$bezwaar->setId($id);
+    	$manager->persist($bezwaar);
+    	$manager->flush();
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
     	
+    	
+    	$id = Uuid::fromString('6aa060d4-ca79-45ac-9836-1522fd10eb42');
+    	$bezwaar = new RequestType();
+    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setSourceOrganization('0000');
+    	$bezwaar->setName('Vermissing Rijbewijs');
+    	$bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
+    	$manager->persist($bezwaar);
+    	$bezwaar->setId($id);
+    	$manager->persist($bezwaar);
+    	$manager->flush();
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
+    	
+    	/*
+    	 *  Bezwaar
+    	 */
+    	//Bewijs van in leven zijn/attestatie de vita.
+    	//Bewijs van ongehuwd geregistreerd staan.
+    	//Bewijs van Nederlanderschap.
+    	$id = Uuid::fromString('e7e30a18-4bc4-458b-8a66-fd2dc779db13');
+    	$bezwaar = new RequestType();
+    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setSourceOrganization('0000');
+    	$bezwaar->setName('Uitreksel BRP');
+    	$bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
+    	$manager->persist($bezwaar);
+    	$bezwaar->setId($id);
+    	$manager->persist($bezwaar);
+    	$manager->flush();
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
     	
     	/*
     	 *  Bezwaar
@@ -198,6 +253,17 @@ class AppFixtures extends Fixture
     	$stage2->setDescription('Upload een recente pasfote');
     	$stage2->setRequestType($reisdocument);
     	$manager->persist($stage2);
+    	
+    	$id = Uuid::fromString('58d2e5ea-e592-48c1-86c4-93b43d8aac5c');
+    	$reisdocument = new RequestType();
+    	$reisdocument->setSourceOrganization('0000');
+    	$reisdocument->setName('Vermissing Reisdocument');
+    	$reisdocument->setDescription('Het aanvragen van een reisdocument');
+    	$manager->persist($reisdocument);
+    	$reisdocument->setId($id);
+    	$manager->persist($reisdocument);
+    	$manager->flush();
+    	$reisdocument= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
     	
     	/*
     	 *  Melding openbare ruimte
