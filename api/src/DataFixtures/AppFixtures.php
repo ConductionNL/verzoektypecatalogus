@@ -17,7 +17,7 @@ class AppFixtures extends Fixture
     	 */
     	$id = Uuid::fromString('282f203c-4ecf-4578-9597-343ceccf8f43');
     	$bezwaar = new RequestType();
-    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setIcon('fal fa-file-certificate');
     	$bezwaar->setSourceOrganization('0000');
     	$bezwaar->setName('VOG');
     	$bezwaar->setDescription('Aanvraag verklaring omtrend gedrag');
@@ -25,14 +25,25 @@ class AppFixtures extends Fixture
     	$bezwaar->setId($id);
     	$manager->persist($bezwaar);
     	$manager->flush();
-    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+    	
+    	$stage1 = new Property();
+    	$stage1->setStart(true);
+    	$stage1->setTitle('Aanvraag');
+    	$stage1->setIcon('fal fa-calendar-day');
+    	$stage1->setSlug('form');
+    	$stage1->setType('string');
+    	$stage1->setFormat('date');
+    	$stage1->setDescription('Wat is de verhuisdatum?');
+    	$stage1->setRequestType($overlijden);
+    	$manager->persist($stage1);   	
     	
     	/*
     	 *  Bezwaar
     	 */
     	$id = Uuid::fromString('2a86f09a-5cfc-443e-a54e-4f4b2f2693da');
     	$bezwaar = new RequestType();
-    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setIcon('fal fa-id-card');
     	$bezwaar->setSourceOrganization('0000');
     	$bezwaar->setName('Rijbewijs');
     	$bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
@@ -40,12 +51,23 @@ class AppFixtures extends Fixture
     	$bezwaar->setId($id);
     	$manager->persist($bezwaar);
     	$manager->flush();
-    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+    	
+    	$stage1 = new Property();
+    	$stage1->setStart(true);
+    	$stage1->setTitle('Aanvraag');
+    	$stage1->setIcon('fal fa-calendar-day');
+    	$stage1->setSlug('form');
+    	$stage1->setType('string');
+    	$stage1->setFormat('date');
+    	$stage1->setDescription('Wat is de verhuisdatum?');
+    	$stage1->setRequestType($overlijden);
+    	$manager->persist($stage1);   	
     	
     	
     	$id = Uuid::fromString('6aa060d4-ca79-45ac-9836-1522fd10eb42');
     	$bezwaar = new RequestType();
-    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setIcon('fal fa-file-search');
     	$bezwaar->setSourceOrganization('0000');
     	$bezwaar->setName('Vermissing Rijbewijs');
     	$bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
@@ -53,7 +75,18 @@ class AppFixtures extends Fixture
     	$bezwaar->setId($id);
     	$manager->persist($bezwaar);
     	$manager->flush();
-    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+    	
+    	$stage1 = new Property();
+    	$stage1->setStart(true);
+    	$stage1->setTitle('Melding');
+    	$stage1->setIcon('fal fa-calendar-day');
+    	$stage1->setSlug('form');
+    	$stage1->setType('string');
+    	$stage1->setFormat('date');
+    	$stage1->setDescription('Wat is de verhuisdatum?');
+    	$stage1->setRequestType($overlijden);
+    	$manager->persist($stage1);   	
     	
     	/*
     	 *  Bezwaar
@@ -63,7 +96,7 @@ class AppFixtures extends Fixture
     	//Bewijs van Nederlanderschap.
     	$id = Uuid::fromString('e7e30a18-4bc4-458b-8a66-fd2dc779db13');
     	$bezwaar = new RequestType();
-    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setIcon('fal fa-file-user');
     	$bezwaar->setSourceOrganization('0000');
     	$bezwaar->setName('Uitreksel BRP');
     	$bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
@@ -71,14 +104,25 @@ class AppFixtures extends Fixture
     	$bezwaar->setId($id);
     	$manager->persist($bezwaar);
     	$manager->flush();
-    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+    	
+    	$stage1 = new Property();
+    	$stage1->setStart(true);
+    	$stage1->setTitle('Type');
+    	$stage1->setIcon('fal fa-calendar-day');
+    	$stage1->setSlug('form');
+    	$stage1->setType('string');
+    	$stage1->setFormat('string');
+    	$stage1->setDescription('Wat is de verhuisdatum?');
+    	$stage1->setRequestType($overlijden);
+    	$manager->persist($stage1);   	
     	
     	/*
     	 *  Bezwaar
     	 */
     	$id = Uuid::fromString('5fe5ed51-f9d1-4ece-b78d-e960e6ce3fd1');
     	$bezwaar = new RequestType();
-    	$bezwaar->setIcon('fal fa-baby');
+    	$bezwaar->setIcon('fal fa-surprise');
     	$bezwaar->setSourceOrganization('0000');
     	$bezwaar->setName('Bezwaar');
     	$bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
@@ -86,14 +130,25 @@ class AppFixtures extends Fixture
     	$bezwaar->setId($id);
     	$manager->persist($bezwaar);
     	$manager->flush();
-    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
+    	$bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+    	
+    	$stage1 = new Property();
+    	$stage1->setStart(true);
+    	$stage1->setTitle('Bezwaar');
+    	$stage1->setIcon('fal fa-calendar-day');
+    	$stage1->setSlug('form');
+    	$stage1->setType('string');
+    	$stage1->setFormat('string');
+    	$stage1->setDescription('Wat is de verhuisdatum?');
+    	$stage1->setRequestType($overlijden);
+    	$manager->persist($stage1);   	
     	
     	/*
     	 *  WOB
     	 */
     	 $id = Uuid::fromString('f4c2d525-5c73-4000-ad71-242a37892be7');
     	 $wob = new RequestType();
-    	 $wob->setIcon('fal fa-baby');
+    	 $wob->setIcon('fal fa-binoculars');
     	 $wob->setSourceOrganization('0000');
     	 $wob->setName('WOB Verzoek');
     	 $wob->setDescription('Een verzoek conform de wet openbaarheid bestuur');
@@ -102,6 +157,17 @@ class AppFixtures extends Fixture
     	 $manager->persist($wob);
     	 $manager->flush();
     	 $wob = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+    	 
+    	 $stage1 = new Property();
+    	 $stage1->setStart(true);
+    	 $stage1->setTitle('Verzoek');
+    	 $stage1->setIcon('fal fa-calendar-day');
+    	 $stage1->setSlug('form');
+    	 $stage1->setType('string');
+    	 $stage1->setFormat('string');
+    	 $stage1->setDescription('Wat is de verhuisdatum?');
+    	 $stage1->setRequestType($overlijden);
+    	 $manager->persist($stage1);   	
     	
     	/*
     	 *  Geboorte
