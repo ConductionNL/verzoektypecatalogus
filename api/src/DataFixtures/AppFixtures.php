@@ -119,7 +119,7 @@ class AppFixtures extends Fixture
     	$geboorte = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
     	
     	$stage1= new Property();
-    	//$property->setId('');
+    	$stage1->setStart(true);
     	$stage1->setTitle('Datum');
     	$stage1->setIcon('fal fa-calendar-day');
     	$stage1->setSlug('datum');
@@ -183,7 +183,7 @@ class AppFixtures extends Fixture
     	$overlijden= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
     	
     	$stage1 = new Property();
-    	//$property->setId('');
+    	$stage1->setStart(true);
     	$stage1->setTitle('Datum');
     	$stage1->setIcon('fal fa-calendar-day');
     	$stage1->setSlug('datum');
@@ -232,6 +232,7 @@ class AppFixtures extends Fixture
     	$reisdocument= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
     	
     	$stage1= new Property();
+    	$stage1->setStart(true);
     	$stage1->setTitle('Type');
     	$stage1->setIcon('fal fa-passport');
     	$stage1->setSlug('document');
@@ -281,6 +282,7 @@ class AppFixtures extends Fixture
     	$mob = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));       	
     	
     	$stage1= new Property();
+    	$stage1->setStart(true);
     	$stage1->setTitle('Wat');
     	$stage1->setIcon('fal fa-map-marked');
     	$stage1->setSlug('locatie');
@@ -331,6 +333,7 @@ class AppFixtures extends Fixture
         $verhuizenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
 
         $stage1 = new Property();
+        $stage1->setStart(true);
         $stage1->setTitle('Datum');
         $stage1->setIcon('fal fa-calendar-day');
         $stage1->setSlug('datum');
@@ -379,6 +382,7 @@ class AppFixtures extends Fixture
         $verhuizenDenBosh= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));    
 
         $stage1= new Property();
+        $stage1->setStart(true);
         //$verhuizenNL->setId('');
         $stage1->setTitle('Email');
         $stage1->setIcon('fal fa-envelope');
@@ -417,7 +421,7 @@ class AppFixtures extends Fixture
         $verhuizenEindhoven= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));    
 
         $stage1= new Property();
-        //$verhuizenNL->setId('');
+        $stage1->setStart(true);
         $stage1->setTitle('Eigenaar');
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('eigenaar');
@@ -454,14 +458,15 @@ class AppFixtures extends Fixture
         $aanvraagBabs->setId($id);
         $manager->persist($aanvraagBabs);
         $manager->flush();
-        $aanvraagBabs= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
-                
+        $aanvraagBabs= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));                    	
+        
         $stage1= new Property();
+        $stage1->setStart(true);
         $stage1->setTitle('Gegevens');
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('babs');
         $stage1->setType('string');
-        $stage1->setFormat('instemming');
+        $stage1->setFormat('string');
         $stage1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
         $stage1->setRequestType($aanvraagBabs);
         $manager->persist($stage1);
@@ -479,6 +484,7 @@ class AppFixtures extends Fixture
         $aanvraagLocatie= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
         
         $stage1= new Property();
+        $stage1->setStart(true);
         $stage1->setTitle('Adress');
         $stage1->setIcon('fal fa-map-marked');
         $stage1->setSlug('locatie');
@@ -512,6 +518,7 @@ class AppFixtures extends Fixture
     	$meldingTrouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));    
     	
     	$stage1= new Property();
+    	$stage1->setStart(true);
     	$stage1->setTitle('Datum');
     	$stage1->setIcon('fas fa-calendar-day');
     	$stage1->setSlug('datum');
@@ -562,6 +569,7 @@ class AppFixtures extends Fixture
     	$omzettingNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));    
     	
     	$stage1= new Property();
+    	$stage1->setStart(true);
     	$stage1->setTitle('Datum');
     	$stage1->setIcon('fas fa-calendar-day');
     	$stage1->setSlug('datum');
