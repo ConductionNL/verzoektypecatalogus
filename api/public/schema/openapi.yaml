@@ -1809,11 +1809,9 @@ components:
           description: 'The icon of this property'
           type: string
         name:
-          readOnly: true
           description: 'The name of this RequestType'
           type: string
         description:
-          readOnly: true
           description: 'An short description of this RequestType'
           type: string
         properties:
@@ -1844,11 +1842,13 @@ components:
           format: date-time
       required:
         - source_organization
+        - name
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
         - source_organization
+        - name
       properties:
         source_organization:
           description: 'The RSIN of the organization that owns this process'
@@ -1896,11 +1896,9 @@ components:
           description: 'The icon of this property'
           type: string
         name:
-          readOnly: true
           description: 'The name of this RequestType'
           type: string
         description:
-          readOnly: true
           description: 'An short description of this RequestType'
           type: string
         properties:
@@ -1931,11 +1929,13 @@ components:
           format: date-time
       required:
         - source_organization
+        - name
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
         - source_organization
+        - name
       properties:
         '@context':
           readOnly: true
