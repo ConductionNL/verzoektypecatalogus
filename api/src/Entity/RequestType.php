@@ -2,18 +2,23 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * All properties contained in the RequestType type.
@@ -44,6 +49,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  *  }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RequestTypeRepository")
+ * @ApiFilter(DateFilter::class, properties={
+ * 		"dateModified",
+ * 		"dateCreated"
+ * })
+ * @ApiFilter(ExistsFilter::class, properties={"parent","children"})
  */
 class RequestType
 {
@@ -74,7 +84,18 @@ class RequestType
      * @ORM\Column(type="string", length=255)
      * @ApiFilter(SearchFilter::class, strategy="exact")
      */
-    private $sourceOrganization;
+    private $sourceOrganization;   
+    
+    /**
+     * @var string The icon of this property
+     *
+     * @example My Property
+     *
+     * @Assert\Length(min = 15, max = 255)
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $icon;
 
     /**
      * @var string The name of this RequestType
@@ -140,11 +161,55 @@ class RequestType
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $availableUntil;
+    
+    /**
+     * @var bool Whether or not this request is unique to a submitter
+     *
+     * @example false
+     *
+     * @Assert\Type("bool")
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="boolean", nullable=true, name="one_of_a_kind")
+     */
+    private $unique;
+    
+    /**
+     * @Groups({"read", "write"})
+     * @MaxDepth(1)
+     * @ORM\OneToMany(targetEntity="App\Entity\RequestType", mappedBy="parent")
+     */
+    private $children;
+    
+    /**
+     * @Groups({"read", "write"})
+     * @MaxDepth(1)
+     * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="children")
+     */
+    private $parent;
+    
+    /**
+     * @var Datetime $dateCreated The moment this request was created
+     *
+     * @Groups({"read"})
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateCreated;
+    
+    /**
+     * @var Datetime $dateModified  The moment this request last Modified
+     *
+     * @Groups({"read"})
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateModified;
 
     public function __construct()
     {
         $this->properties = new ArrayCollection();
         $this->extendedBy = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
 
     public function getId(): Uuid
@@ -169,6 +234,18 @@ class RequestType
         $this->sourceOrganization = $sourceOrganization;
 
         return $this;
+    }
+    
+    public function getIcon(): ?string
+    {
+    	return $this->icon;
+    }
+    
+    public function setIcon(?string $icon): self
+    {
+    	$this->icon = $icon;
+    	
+    	return $this;
     }
 
     public function getName(): ?string
@@ -340,5 +417,84 @@ class RequestType
         ->andWhere(Criteria::expr()->eq('start', true));
 
         return $this->getProperties()->matching($criteria)->first();
+    }
+    
+    public function getUnique(): ?bool
+    {
+    	return $this->unique;
+    }
+    
+    public function setUnique(?bool $unique): self
+    {
+    	$this->unique = $unique;
+    	
+    	return $this;
+    }
+    
+    public function getDateCreated(): ?\DateTimeInterface
+    {
+    	return $this->dateModified;
+    }
+    
+    public function setDateCreated(\DateTimeInterface $dateCreated): self
+    {
+    	$this->dateCreated= $dateCreated;
+    	
+    	return $this;
+    }
+    
+    public function getDateModified(): ?\DateTimeInterface
+    {
+    	return $this->dateModified;
+    }
+    
+    public function setDateModified(\DateTimeInterface $dateModified): self
+    {
+    	$this->dateModified = $dateModified;
+    	
+    	return $this;
+    }
+
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+    	$this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+
+    public function addChild(self $child): self
+    {
+    	if (!$this->children->contains($child)) {
+    		$this->children[] = $child;
+    		$child->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChild(self $child): self
+    {
+    	if ($this->children->contains($child)) {
+    		$this->children->removeElement($child);
+            // set the owning side to null (unless already changed)
+    		if ($child->getParent() === $this) {
+    			$child->setParent(null);
+            }
+        }
+
+        return $this;
     }
 }

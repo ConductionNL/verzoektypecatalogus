@@ -650,6 +650,66 @@ paths:
                   $ref: '#/components/schemas/RequestType-read'
       parameters:
         -
+          name: 'date_modified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'date_modified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'date_modified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'date_modified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'date_created[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'date_created[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'date_created[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'date_created[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'exists[parent]'
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'exists[children]'
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
           name: source_organization
           in: query
           required: false
@@ -1116,7 +1176,7 @@ components:
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
-        http://json-schema.org/
+        http://json-schema.org/.
       properties:
         id:
           readOnly: true
@@ -1256,6 +1316,16 @@ components:
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+        date_created:
+          readOnly: true
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+        date_modified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
       required:
         - request_type
         - title
@@ -1267,7 +1337,7 @@ components:
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
-        http://json-schema.org/
+        http://json-schema.org/.
       required:
         - request_type
         - title
@@ -1408,7 +1478,7 @@ components:
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
-        http://json-schema.org/
+        http://json-schema.org/.
       properties:
         '@context':
           readOnly: true
@@ -1557,6 +1627,16 @@ components:
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+        date_created:
+          readOnly: true
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+        date_modified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
       required:
         - request_type
         - title
@@ -1568,7 +1648,7 @@ components:
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
-        http://json-schema.org/
+        http://json-schema.org/.
       required:
         - request_type
         - title
@@ -1714,7 +1794,7 @@ components:
           type: boolean
     RequestType-read:
       type: object
-      description: 'All properties contained in the RequestType type'
+      description: 'All properties contained in the RequestType type.'
       properties:
         id:
           readOnly: true
@@ -1724,6 +1804,9 @@ components:
           type: string
         source_organization:
           description: 'The RSIN of the organization that owns this process'
+          type: string
+        icon:
+          description: 'The icon of this property'
           type: string
         name:
           readOnly: true
@@ -1740,25 +1823,56 @@ components:
             $ref: '#/components/schemas/Property-read'
         stages:
           readOnly: true
+        unique:
+          description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestType-read'
+        parent:
+          $ref: '#/components/schemas/RequestType-read'
+        date_created:
+          readOnly: true
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+        date_modified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
       required:
         - source_organization
     RequestType-write:
       type: object
-      description: 'All properties contained in the RequestType type'
+      description: 'All properties contained in the RequestType type.'
       required:
         - source_organization
       properties:
         source_organization:
           description: 'The RSIN of the organization that owns this process'
           type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
         properties:
           description: 'The properties for this request type'
           type: array
           items:
             $ref: '#/components/schemas/Property-write'
+        unique:
+          description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestType-write'
+        parent:
+          $ref: '#/components/schemas/RequestType-write'
     'RequestType:jsonld-read':
       type: object
-      description: 'All properties contained in the RequestType type'
+      description: 'All properties contained in the RequestType type.'
       properties:
         '@context':
           readOnly: true
@@ -1778,6 +1892,9 @@ components:
         source_organization:
           description: 'The RSIN of the organization that owns this process'
           type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
         name:
           readOnly: true
           description: 'The name of this RequestType'
@@ -1793,11 +1910,30 @@ components:
             $ref: '#/components/schemas/Property:jsonld-read'
         stages:
           readOnly: true
+        unique:
+          description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestType:jsonld-read'
+        parent:
+          $ref: '#/components/schemas/RequestType:jsonld-read'
+        date_created:
+          readOnly: true
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+        date_modified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
       required:
         - source_organization
     'RequestType:jsonld-write':
       type: object
-      description: 'All properties contained in the RequestType type'
+      description: 'All properties contained in the RequestType type.'
       required:
         - source_organization
       properties:
@@ -1813,11 +1949,23 @@ components:
         source_organization:
           description: 'The RSIN of the organization that owns this process'
           type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
         properties:
           description: 'The properties for this request type'
           type: array
           items:
             $ref: '#/components/schemas/Property:jsonld-write'
+        unique:
+          description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestType:jsonld-write'
+        parent:
+          $ref: '#/components/schemas/RequestType:jsonld-write'
 definitions:
   Property-read:
     properties:
@@ -1961,12 +2109,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-01-13 20:28:20'
+        example: '2020-01-29 12:51:46'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-01-13 20:28:20'
+        example: '2020-01-29 12:51:46'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -1992,6 +2140,12 @@ definitions:
         description: 'Whether or not this proerty is the starting oint of a process'
         type: string
         example: 'true'
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
       requestType:
         description: 'The requestType that this property belongs to'
         type: object
@@ -2133,12 +2287,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-01-13 20:28:20'
+        example: '2020-01-29 12:51:46'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-01-13 20:28:20'
+        example: '2020-01-29 12:51:46'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -2181,6 +2335,12 @@ definitions:
         example: '002851234'
         maxLength: 11
         minLength: 8
+      icon:
+        description: 'The icon of this property'
+        type: string
+        example: 'My Property'
+        maxLength: 255
+        minLength: 15
       name:
         description: 'The name of this RequestType'
         type: string
@@ -2191,9 +2351,21 @@ definitions:
         type: string
         example: 'This is the best request ever'
         maxLength: 2550
+      unique:
+        description: 'Whether or not this request is unique to a submitter'
+        type: bool
+        example: 'false'
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
       properties:
         description: 'The properties for this request type'
         type: '\Property[]|\ArrayCollection'
+      children: []
+      parent: []
     required:
       - sourceOrganization
       - name
@@ -2205,9 +2377,21 @@ definitions:
         example: '002851234'
         maxLength: 11
         minLength: 8
+      icon:
+        description: 'The icon of this property'
+        type: string
+        example: 'My Property'
+        maxLength: 255
+        minLength: 15
+      unique:
+        description: 'Whether or not this request is unique to a submitter'
+        type: bool
+        example: 'false'
       properties:
         description: 'The properties for this request type'
         type: '\Property[]|\ArrayCollection'
+      children: []
+      parent: []
     required:
       - sourceOrganization
       - name
@@ -2226,13 +2410,13 @@ tags:
       This property follows the following schemes (in order of importance)
       https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
       https://tools.ietf.org/html/draft-wright-json-schema-validation-00
-      http://json-schema.org/
+      http://json-schema.org/.
       
       
   -
     name: RequestType
     description: |
-      All properties contained in the RequestType type
+      All properties contained in the RequestType type.
       
       
 securityDefinitions:
