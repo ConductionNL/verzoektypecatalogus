@@ -1809,6 +1809,7 @@ components:
           description: 'The icon of this property'
           type: string
         name:
+          readOnly: true
           description: 'The name of this RequestType'
           type: string
         description:
@@ -1842,19 +1843,20 @@ components:
           format: date-time
       required:
         - source_organization
-        - name
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
         - source_organization
-        - name
       properties:
         source_organization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         icon:
           description: 'The icon of this property'
+          type: string
+        description:
+          description: 'An short description of this RequestType'
           type: string
         properties:
           description: 'The properties for this request type'
@@ -1896,6 +1898,7 @@ components:
           description: 'The icon of this property'
           type: string
         name:
+          readOnly: true
           description: 'The name of this RequestType'
           type: string
         description:
@@ -1929,13 +1932,11 @@ components:
           format: date-time
       required:
         - source_organization
-        - name
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
         - source_organization
-        - name
       properties:
         '@context':
           readOnly: true
@@ -1951,6 +1952,9 @@ components:
           type: string
         icon:
           description: 'The icon of this property'
+          type: string
+        description:
+          description: 'An short description of this RequestType'
           type: string
         properties:
           description: 'The properties for this request type'
@@ -2109,12 +2113,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-01-30 05:41:19'
+        example: '2020-01-31 06:03:51'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-01-30 05:41:19'
+        example: '2020-01-31 06:03:51'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -2287,12 +2291,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-01-30 05:41:19'
+        example: '2020-01-31 06:03:51'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-01-30 05:41:19'
+        example: '2020-01-31 06:03:51'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -2383,6 +2387,11 @@ definitions:
         example: 'My Property'
         maxLength: 255
         minLength: 15
+      description:
+        description: 'An short description of this RequestType'
+        type: string
+        example: 'This is the best request ever'
+        maxLength: 2550
       unique:
         description: 'Whether or not this request is unique to a submitter'
         type: bool

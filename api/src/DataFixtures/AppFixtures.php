@@ -36,7 +36,16 @@ class AppFixtures extends Fixture
     	$stage1->setFormat('date');
     	$stage1->setDescription('Wat is de verhuisdatum?');
     	$stage1->setRequestType($bezwaar);
-    	$manager->persist($stage1);   	
+    	$manager->persist($stage1);   
+    	
+    	$stage2= new Property();
+    	$stage2->addPrevious($stage1);
+    	$stage2->setTitle('Indienen');
+    	$stage2->setIcon('fal fa-paper-plane');
+    	$stage2->setSlug('indienen');
+    	$stage2->setDescription('Wie zijn de getuigen van partner?');
+    	$stage2->setRequestType($bezwaar);
+    	$manager->persist($stage2);
     	
     	/*
     	 *  Bezwaar
@@ -62,7 +71,16 @@ class AppFixtures extends Fixture
     	$stage1->setFormat('date');
     	$stage1->setDescription('Wat is de verhuisdatum?');
     	$stage1->setRequestType($bezwaar);
-    	$manager->persist($stage1);   	
+    	$manager->persist($stage1);
+    	
+    	$stage2= new Property();
+    	$stage2->addPrevious($stage1);
+    	$stage2->setTitle('Indienen');
+    	$stage2->setIcon('fal fa-paper-plane');
+    	$stage2->setSlug('indienen');
+    	$stage2->setDescription('Wie zijn de getuigen van partner?');
+    	$stage2->setRequestType($bezwaar);
+    	$manager->persist($stage2);
     	
     	
     	$id = Uuid::fromString('6aa060d4-ca79-45ac-9836-1522fd10eb42');
@@ -86,7 +104,16 @@ class AppFixtures extends Fixture
     	$stage1->setFormat('date');
     	$stage1->setDescription('Wat is de verhuisdatum?');
     	$stage1->setRequestType($bezwaar);
-    	$manager->persist($stage1);   	
+    	$manager->persist($stage1);
+    	
+    	$stage2= new Property();
+    	$stage2->addPrevious($stage1);
+    	$stage2->setTitle('Indienen');
+    	$stage2->setIcon('fal fa-paper-plane');
+    	$stage2->setSlug('indienen');
+    	$stage2->setDescription('Wie zijn de getuigen van partner?');
+    	$stage2->setRequestType($bezwaar);
+    	$manager->persist($stage2);
     	
     	/*
     	 *  Bezwaar
@@ -115,7 +142,16 @@ class AppFixtures extends Fixture
     	$stage1->setFormat('string');
     	$stage1->setDescription('Wat is de verhuisdatum?');
     	$stage1->setRequestType($bezwaar);
-    	$manager->persist($stage1);   	
+    	$manager->persist($stage1);
+    	
+    	$stage2= new Property();
+    	$stage2->addPrevious($stage1);
+    	$stage2->setTitle('Indienen');
+    	$stage2->setIcon('fal fa-paper-plane');
+    	$stage2->setSlug('indienen');
+    	$stage2->setDescription('Wie zijn de getuigen van partner?');
+    	$stage2->setRequestType($bezwaar);
+    	$manager->persist($stage2);
     	
     	/*
     	 *  Bezwaar
@@ -141,7 +177,16 @@ class AppFixtures extends Fixture
     	$stage1->setFormat('string');
     	$stage1->setDescription('Wat is de verhuisdatum?');
     	$stage1->setRequestType($bezwaar);
-    	$manager->persist($stage1);   	
+    	$manager->persist($stage1);
+    	
+    	$stage2= new Property();
+    	$stage2->addPrevious($stage1);
+    	$stage2->setTitle('Indienen');
+    	$stage2->setIcon('fal fa-paper-plane');
+    	$stage2->setSlug('indienen');
+    	$stage2->setDescription('Wie zijn de getuigen van partner?');
+    	$stage2->setRequestType($bezwaar);
+    	$manager->persist($stage2);
     	
     	/*
     	 *  WOB
@@ -166,8 +211,17 @@ class AppFixtures extends Fixture
     	 $stage1->setType('string');
     	 $stage1->setFormat('string');
     	 $stage1->setDescription('Wat is de verhuisdatum?');
-    	 $stage1->setRequestType($bezwaar);
-    	 $manager->persist($stage1);   	
+    	 $stage1->setRequestType($wob);
+    	 $manager->persist($stage1);
+    	 
+    	 $stage2= new Property();
+    	 $stage2->addPrevious($stage1);
+    	 $stage2->setTitle('Indienen');
+    	 $stage2->setIcon('fal fa-paper-plane');
+    	 $stage2->setSlug('indienen');
+    	 $stage2->setDescription('Wie zijn de getuigen van partner?');
+    	 $stage2->setRequestType($wob);
+    	 $manager->persist($stage2);
     	
     	/*
     	 *  Geboorte
@@ -233,6 +287,15 @@ class AppFixtures extends Fixture
     	$stage4->setRequestType($geboorte);
     	$manager->persist($stage4);
     	
+    	$stage5= new Property();
+    	$stage5->addPrevious($stage4);
+    	$stage5->setTitle('Indienen');
+    	$stage5->setIcon('fal fa-paper-plane');
+    	$stage5->setSlug('indienen');
+    	$stage5->setDescription('Wie zijn de getuigen van partner?');
+    	$stage5->setRequestType($geboorte);
+    	$manager->persist($stage5);
+    	
     	/*
     	 *  Overleiden
     	 */
@@ -283,6 +346,15 @@ class AppFixtures extends Fixture
     	$stage3->setRequestType($overlijden);
     	$manager->persist($stage3);
     	
+    	$stage4= new Property();
+    	$stage4->addPrevious($stage3);
+    	$stage4->setTitle('Indienen');
+    	$stage4->setIcon('fal fa-paper-plane');
+    	$stage4->setSlug('indienen');
+    	$stage4->setDescription('Wie zijn de getuigen van partner?');
+    	$stage4->setRequestType($overlijden);
+    	$manager->persist($stage4);
+    	
     	/*
     	 *  Reisdocument
     	 */
@@ -321,6 +393,15 @@ class AppFixtures extends Fixture
     	$stage2->setRequestType($reisdocument);
     	$manager->persist($stage2);
     	
+    	$stage3= new Property();
+    	$stage3->addPrevious($stage2);
+    	$stage3->setTitle('Indienen');
+    	$stage3->setIcon('fal fa-paper-plane');
+    	$stage3->setSlug('indienen');
+    	$stage3->setDescription('Wie zijn de getuigen van partner?');
+    	$stage3->setRequestType($reisdocument);
+    	$manager->persist($stage3);
+    	
     	$id = Uuid::fromString('690cbb51-50b8-4714-b45b-2dba696b1216');
     	$reisdocument = new RequestType();
     	$reisdocument->setSourceOrganization('0000');
@@ -330,7 +411,28 @@ class AppFixtures extends Fixture
     	$reisdocument->setId($id);
     	$manager->persist($reisdocument);
     	$manager->flush();
-    	$reisdocument= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));   
+    	$reisdocument= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+    	
+    	$stage1= new Property();
+    	$stage1->setStart(true);
+    	$stage1->setTitle('Type');
+    	$stage1->setIcon('fal fa-passport');
+    	$stage1->setSlug('document');
+    	$stage1->setType('string');
+    	$stage1->setFormat('bsn');
+    	$stage1->setRequired(true);
+    	$stage1->setDescription('Wat voor reisdocument wilt u aanvragen?');
+    	$stage1->setRequestType($reisdocument);
+    	$manager->persist($stage1);
+    	
+    	$stage2= new Property();
+    	$stage2->addPrevious($stage2);
+    	$stage2->setTitle('Indienen');
+    	$stage2->setIcon('fal fa-paper-plane');
+    	$stage2->setSlug('indienen');
+    	$stage2->setDescription('Wie zijn de getuigen van partner?');
+    	$stage2->setRequestType($reisdocument);
+    	$manager->persist($stage2);
     	
     	/*
     	 *  Melding openbare ruimte
@@ -433,6 +535,15 @@ class AppFixtures extends Fixture
         $stage3->setDescription('Wie gaan er verhuizen?');
         $stage3->setRequestType($verhuizenNL);
         $manager->persist($stage3);
+        
+        $stage4= new Property();
+        $stage4->addPrevious($stage3);
+        $stage4->setTitle('Indienen');
+        $stage4->setIcon('fal fa-paper-plane');
+        $stage4->setSlug('indienen');
+        $stage4->setDescription('Wie zijn de getuigen van partner?');
+        $stage4->setRequestType($verhuizenNL);
+        $manager->persist($stage4);
 
         $id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
         $verhuizenDenBosh = new RequestType();
@@ -537,6 +648,15 @@ class AppFixtures extends Fixture
         $stage1->setRequestType($aanvraagBabs);
         $manager->persist($stage1);
         
+        $stage2= new Property();
+        $stage2->addPrevious($stage1);
+        $stage2->setTitle('Indienen');
+        $stage2->setIcon('fal fa-paper-plane');
+        $stage2->setSlug('indienen');
+        $stage2->setDescription('Wie zijn de getuigen van partner?');
+        $stage2->setRequestType($aanvraagBabs);
+        $manager->persist($stage2);
+        
         $id = Uuid::fromString('c8704ea6-4962-4b7e-8d4e-69a257aa9577');
         $aanvraagLocatie= new RequestType();
         $aanvraagLocatie->setIcon('fal fa-rings-wedding');
@@ -569,7 +689,16 @@ class AppFixtures extends Fixture
         $stage2->setFormat('instemming');
         $stage2->setDescription('Wat zijn de contact gegevens van uw beoogde locatie');
         $stage2->setRequestType($aanvraagLocatie);
-        $manager->persist($stage2);               
+        $manager->persist($stage2);
+        
+        $stage3= new Property();
+        $stage3->addPrevious($stage2);
+        $stage3->setTitle('Indienen');
+        $stage3->setIcon('fal fa-paper-plane');
+        $stage3->setSlug('indienen');
+        $stage3->setDescription('Wie zijn de getuigen van partner?');
+        $stage3->setRequestType($aanvraagLocatie);
+        $manager->persist($stage3);
                         
         $id = Uuid::fromString('146cb7c8-46b9-4911-8ad9-3238bab4313e');
         $meldingTrouwenNL= new RequestType();
@@ -620,7 +749,16 @@ class AppFixtures extends Fixture
     	$stage3->setRequired(true);
     	$stage3->setDescription('Wie zijn de getuigen van partner?');
     	$stage3->setRequestType($meldingTrouwenNL);
-    	$manager->persist($stage3);
+    	$manager->persist($stage3);    	
+    	
+    	$stage4= new Property();
+    	$stage4->addPrevious($stage3);
+    	$stage4->setTitle('Indienen');
+    	$stage4->setIcon('fal fa-paper-plane');
+    	$stage4->setSlug('indienen');
+    	$stage4->setDescription('Wie zijn de getuigen van partner?');
+    	$stage4->setRequestType($meldingTrouwenNL);
+    	$manager->persist($stage4);
     	
     	$id = Uuid::fromString('432d3e81-5930-4c21-ab7f-c5541c948525');
     	$omzettingNL = new RequestType();
@@ -657,7 +795,16 @@ class AppFixtures extends Fixture
     	$stage2->setRequired(true);
     	$stage2->setDescription('Wie zijn de getuigen van partner 2?');
     	$stage2->setRequestType($omzettingNL);
-    	$manager->persist($stage2); 
+    	$manager->persist($stage2);
+    	
+    	$stage3= new Property();
+    	$stage3->addPrevious($stage2);
+    	$stage3->setTitle('Indienen');
+    	$stage3->setIcon('fal fa-paper-plane');
+    	$stage3->setSlug('indienen');
+    	$stage3->setDescription('Wie zijn de getuigen van partner?');
+    	$stage3->setRequestType($meldingTrouwenNL);
+    	$manager->persist($stage3);
     	
     	$id = Uuid::fromString('5b10c1d6-7121-4be2-b479-7523f1b625f1');    	
     	$trouwenNL = new RequestType();
