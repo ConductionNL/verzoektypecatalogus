@@ -831,7 +831,7 @@ class AppFixtures extends Fixture
     	$stage1->setIcon('fas fa-ring');
     	$stage1->setSlug('ceremonie');
     	$stage1->setType('string');
-    	$stage1->setFormat('strin');
+    	$stage1->setFormat('string');
     	$stage1->setMaxLength('12');
     	$stage1->setMinLength('7');
     	$stage1->setEnum(['trouwen','partnerschap','omzetten']);
@@ -846,7 +846,8 @@ class AppFixtures extends Fixture
     	$stage2->setIcon('fas fa-user-friends');
     	$stage2->setSlug('partner');
     	$stage2->setType('array');
-    	$stage2->setFormat('bsn');
+    	$stage2->setFormat('url');
+    	$stage2->setIri('irc/assent');
     	$stage2->setMinItems(2);
     	$stage2->setMaxItems(2);
     	$stage2->setRequired(true);
@@ -860,7 +861,8 @@ class AppFixtures extends Fixture
     	$stage3->setIcon('fas fa-glass-cheers');
     	$stage3->setSlug('plechtigheid');
     	$stage3->setType('string');
-    	$stage3->setFormat('uri');
+    	$stage3->setFormat('url');
+    	$stage3->setIri('pdc/product');
     	$stage3->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
     	$stage3->setRequestType($trouwenNL);
     	$manager->persist($stage3);   
@@ -883,6 +885,7 @@ class AppFixtures extends Fixture
     	$stage5->setSlug('locatie');
     	$stage5->setType('string');
     	$stage5->setFormat('uri');
+    	$stage5->setIri('pdc/product');
     	$stage5->setMaxLength('255');
     	$stage5->setRequired(true);
     	$stage5->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
@@ -895,7 +898,8 @@ class AppFixtures extends Fixture
     	$stage6->setIcon('fas fa-user-tie');
     	$stage6->setSlug('ambtenaar');
     	$stage6->setType('string');
-    	$stage6->setFormat('uri');
+    	$stage6->setFormat('url');
+    	$stage6->setIri('pdc/product');
     	$stage6->setMaxLength('255');
     	$stage6->setRequired(true);
     	$stage6->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
@@ -908,7 +912,8 @@ class AppFixtures extends Fixture
     	$stage7->setIcon('fas fa-users');
     	$stage7->setSlug('getuige');
     	$stage7->setType('array');
-    	$stage7->setFormat('bsn');
+    	$stage7->setFormat('url');
+    	$stage7->setIri('irc/assent');
     	$stage7->setMinItems(2);
     	$stage7->setMaxItems(4);
     	$stage7->setRequired(true);
@@ -922,7 +927,8 @@ class AppFixtures extends Fixture
     	$stage8->setIcon('fas fa-gift');
     	$stage8->setSlug('extra');
     	$stage8->setType('array');
-    	$stage8->setFormat('bsn');
+    	$stage8->setFormat('url');
+    	$stage8->setIri('pdc/product');
     	$stage8->setRequired(true);
     	$stage8->setDescription('Wie zijn de getuigen van partner?');
     	$stage8->setRequestType($trouwenNL);
@@ -934,7 +940,8 @@ class AppFixtures extends Fixture
     	$stage9->setIcon('fas fa-envelope');
     	$stage9->setSlug('melding');
     	$stage9->setType('string');
-    	$stage9->setFormat('uri');
+    	$stage9->setFormat('url');    	
+    	$stage9->setIri('vrc/request');
     	$stage9->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
     	$stage9->setRequestType($trouwenNL);
     	$manager->persist($stage9);
@@ -945,7 +952,8 @@ class AppFixtures extends Fixture
     	$stage10->setIcon('fas fa-cash-register');
     	$stage10->setSlug('betalen');
     	$stage10->setType('string');
-    	$stage10->setFormat('uri');
+    	$stage10->setFormat('url');
+    	$stage10->setIri('orc/order');
     	$stage10->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
     	$stage10->setRequestType($trouwenNL);
     	$manager->persist($stage10);
@@ -963,7 +971,8 @@ class AppFixtures extends Fixture
     	//$property->setId('');
     	$property->setTitle('Order');
     	$property->setType('string');
-    	$property->setFormat('uri');
+    	$property->setFormat('url');
+    	$property->setIri('orc/order');
     	$property->setMaxLength('255');
     	$property->setRequired(true);
     	$property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');

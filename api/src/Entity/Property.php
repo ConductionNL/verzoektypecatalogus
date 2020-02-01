@@ -103,6 +103,17 @@ class Property
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $format;
+    
+    /**
+     * @var string The iri type of the property used to standarize datas
+     *
+     * @example https://schema.org/name
+     *
+     * @Assert\Length(max = 255)
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $iri;
 
     /**
      * @var string *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5
@@ -957,6 +968,18 @@ class Property
         $this->format = $format;
 
         return $this;
+    }
+    
+    public function getIri(): ?string
+    {
+    	return $this->iri;
+    }
+    
+    public function setIri(?string $iri): self
+    {
+    	$this->iri = $iri;
+    	
+    	return $this;
     }
 
     public function getNullable(): ?bool
