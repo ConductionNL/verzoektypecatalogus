@@ -929,6 +929,7 @@ class AppFixtures extends Fixture
     	$stage8->setType('array');
     	$stage8->setFormat('url');
     	$stage8->setIri('pdc/product');
+    	$stage8->setMinItems(1);
     	$stage8->setRequired(true);
     	$stage8->setDescription('Wie zijn de getuigen van partner?');
     	$stage8->setRequestType($trouwenNL);
