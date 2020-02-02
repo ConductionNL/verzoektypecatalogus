@@ -933,10 +933,21 @@ class AppFixtures extends Fixture
     	$stage8->setRequired(true);
     	$stage8->setDescription('Wie zijn de getuigen van partner?');
     	$stage8->setRequestType($trouwenNL);
-    	$manager->persist($stage8);    
+    	$manager->persist($stage8); 
+    	
+    	$overige = new Property();
+    	$overige->addPrevious($stage8);
+    	$overige->setTitle('Overig');
+    	$overige->setIcon('fas fa-envelope');
+    	$overige->setSlug('overig');
+    	$overige->setType('array');
+    	$overige->setFormat('string');
+    	$overige->setDescription('Graag zouden wij u om wat extra informatie vragen');
+    	$overige->setRequestType($trouwenNL);
+    	$manager->persist($overige);
     	
     	$stage9= new Property();
-    	$stage9->addPrevious($stage8);
+    	$stage9->addPrevious($overige);
     	$stage9->setTitle('Melding ');
     	$stage9->setIcon('fas fa-envelope');
     	$stage9->setSlug('melding');
