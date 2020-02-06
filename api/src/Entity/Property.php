@@ -103,7 +103,7 @@ class Property
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $format;
-    
+
     /**
      * @var string The iri type of the property used to standarize datas
      *
@@ -508,11 +508,15 @@ class Property
     private $maxDate;
 
     /**
+     * @var Property The next property of the request type
+     * 
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="previous", cascade={"persist"})
      */
     private $next;
 
     /**
+     * @var Property The previous property of the request type
+     *
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="next", cascade={"persist"})
      */
     private $previous;
@@ -548,7 +552,7 @@ class Property
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $start = false;
-    
+
     /**
      * @var Datetime $dateCreated The moment this request was created
      *
@@ -557,7 +561,7 @@ class Property
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateCreated;
-    
+
     /**
      * @var Datetime $dateModified  The moment this request last Modified
      *
@@ -969,16 +973,16 @@ class Property
 
         return $this;
     }
-    
+
     public function getIri(): ?string
     {
     	return $this->iri;
     }
-    
+
     public function setIri(?string $iri): self
     {
     	$this->iri = $iri;
-    	
+
     	return $this;
     }
 
@@ -1204,28 +1208,28 @@ class Property
 
         return $this;
     }
-    
+
     public function getDateCreated(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
     	$this->dateCreated= $dateCreated;
-    	
+
     	return $this;
     }
-    
+
     public function getDateModified(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
     	$this->dateModified = $dateModified;
-    	
+
     	return $this;
     }
 }

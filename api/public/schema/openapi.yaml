@@ -1200,6 +1200,9 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
+        iri:
+          description: 'The iri type of the property used to standarize datas'
+          type: string
         multiple_of:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
@@ -1356,6 +1359,9 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
+        iri:
+          description: 'The iri type of the property used to standarize datas'
+          type: string
         multiple_of:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
@@ -1510,6 +1516,9 @@ components:
           type: string
         format:
           description: 'The swagger type of the property as used in api calls'
+          type: string
+        iri:
+          description: 'The iri type of the property used to standarize datas'
           type: string
         multiple_of:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
@@ -1676,6 +1685,9 @@ components:
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
+        iri:
+          description: 'The iri type of the property used to standarize datas'
+          type: string
         multiple_of:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
@@ -1826,10 +1838,12 @@ components:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
         children:
+          description: 'The children of this request type'
           type: array
           items:
             $ref: '#/components/schemas/RequestType-read'
         parent:
+          description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType-read'
         date_created:
           readOnly: true
@@ -1867,10 +1881,12 @@ components:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
         children:
+          description: 'The children of this request type'
           type: array
           items:
             $ref: '#/components/schemas/RequestType-write'
         parent:
+          description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType-write'
     'RequestType:jsonld-read':
       type: object
@@ -1915,10 +1931,12 @@ components:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
         children:
+          description: 'The children of this request type'
           type: array
           items:
             $ref: '#/components/schemas/RequestType:jsonld-read'
         parent:
+          description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType:jsonld-read'
         date_created:
           readOnly: true
@@ -1965,10 +1983,12 @@ components:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
         children:
+          description: 'The children of this request type'
           type: array
           items:
             $ref: '#/components/schemas/RequestType:jsonld-write'
         parent:
+          description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType:jsonld-write'
 definitions:
   Property-read:
@@ -1993,6 +2013,11 @@ definitions:
         description: 'The swagger type of the property as used in api calls'
         type: string
         example: string
+        maxLength: 255
+      iri:
+        description: 'The iri type of the property used to standarize datas'
+        type: string
+        example: 'https://schema.org/name'
         maxLength: 255
       multipleOf:
         description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
@@ -2113,12 +2138,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-01-31 06:03:51'
+        example: '2020-02-06 10:35:13'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-01-31 06:03:51'
+        example: '2020-02-06 10:35:13'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -2172,6 +2197,11 @@ definitions:
         type: string
         example: string
         maxLength: 255
+      iri:
+        description: 'The iri type of the property used to standarize datas'
+        type: string
+        example: 'https://schema.org/name'
+        maxLength: 255
       multipleOf:
         description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
         type: string
@@ -2291,12 +2321,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-01-31 06:03:51'
+        example: '2020-02-06 10:35:13'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-01-31 06:03:51'
+        example: '2020-02-06 10:35:13'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -2368,8 +2398,12 @@ definitions:
       properties:
         description: 'The properties for this request type'
         type: '\Property[]|\ArrayCollection'
-      children: []
-      parent: []
+      children:
+        description: 'The children of this request type'
+        type: '\ArrayCollection|\RequestType[]'
+      parent:
+        description: 'The parent of this request type'
+        type: \RequestType
     required:
       - sourceOrganization
       - name
@@ -2399,8 +2433,12 @@ definitions:
       properties:
         description: 'The properties for this request type'
         type: '\Property[]|\ArrayCollection'
-      children: []
-      parent: []
+      children:
+        description: 'The children of this request type'
+        type: '\ArrayCollection|\RequestType[]'
+      parent:
+        description: 'The parent of this request type'
+        type: \RequestType
     required:
       - sourceOrganization
       - name
