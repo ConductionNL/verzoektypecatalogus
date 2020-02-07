@@ -84,8 +84,8 @@ class RequestType
      * @ORM\Column(type="string", length=255)
      * @ApiFilter(SearchFilter::class, strategy="exact")
      */
-    private $sourceOrganization;   
-    
+    private $sourceOrganization;
+
     /**
      * @var string The icon of this property
      *
@@ -161,7 +161,7 @@ class RequestType
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $availableUntil;
-    
+
     /**
      * @var bool Whether or not this request is unique to a submitter
      *
@@ -172,21 +172,25 @@ class RequestType
      * @ORM\Column(type="boolean", nullable=true, name="one_of_a_kind")
      */
     private $unique;
-    
+
     /**
+     * @var ArrayCollection|RequestType[] The children of this request type
+     *
      * @Groups({"read", "write"})
      * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\RequestType", mappedBy="parent")
      */
     private $children;
-    
+
     /**
+     * @var RequestType The parent of this request type
+     *
      * @Groups({"read", "write"})
      * @MaxDepth(1)
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="children")
      */
     private $parent;
-    
+
     /**
      * @var Datetime $dateCreated The moment this request was created
      *
@@ -195,7 +199,7 @@ class RequestType
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateCreated;
-    
+
     /**
      * @var Datetime $dateModified  The moment this request last Modified
      *
@@ -235,16 +239,16 @@ class RequestType
 
         return $this;
     }
-    
+
     public function getIcon(): ?string
     {
     	return $this->icon;
     }
-    
+
     public function setIcon(?string $icon): self
     {
     	$this->icon = $icon;
-    	
+
     	return $this;
     }
 
@@ -418,40 +422,40 @@ class RequestType
 
         return $this->getProperties()->matching($criteria)->first();
     }
-    
+
     public function getUnique(): ?bool
     {
     	return $this->unique;
     }
-    
+
     public function setUnique(?bool $unique): self
     {
     	$this->unique = $unique;
-    	
+
     	return $this;
     }
-    
+
     public function getDateCreated(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
     	$this->dateCreated= $dateCreated;
-    	
+
     	return $this;
     }
-    
+
     public function getDateModified(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
     	$this->dateModified = $dateModified;
-    	
+
     	return $this;
     }
 
