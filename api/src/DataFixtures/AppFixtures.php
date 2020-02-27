@@ -809,7 +809,7 @@ class AppFixtures extends Fixture
     	$id = Uuid::fromString('5b10c1d6-7121-4be2-b479-7523f1b625f1');
     	$trouwenNL = new RequestType();
     	$trouwenNL->setIcon('fal fa-rings-wedding');
-    	$trouwenNL->setSourceOrganization('000');
+    	$trouwenNL->setSourceOrganization('00000000');
     	$trouwenNL->setName('Huwelijk / Partnerschap');
     	$trouwenNL->setDescription('Huwelijk / Partnerschap');
     	$trouwenNL->setUnique(true);
@@ -849,8 +849,8 @@ class AppFixtures extends Fixture
     	$stage2->setType('array');
     	$stage2->setFormat('url');
     	$stage2->setIri('irc/assent');
-    	$stage2->setMinItems(2);
-    	$stage2->setMaxItems(2);
+    	$stage2->setMinItems(4);
+    	$stage2->setMaxItems(4);
     	$stage2->setRequired(true);
     	$stage2->setDescription('Wie zijn de getuigen van partner 2?');
     	$stage2->setRequestType($trouwenNL);

@@ -63,7 +63,7 @@ class Property
      *
      * @example My Property
      * @Assert\NotBlank
-     * @Assert\Length(min = 15, max = 255)
+     * @Assert\Length(min = 3, max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255)
      */
@@ -98,7 +98,7 @@ class Property
      *
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
-     * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","email","rsin","bag","bsn","iban","challenge","service","assent"})
+     * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","url","email","rsin","bag","bsn","iban","challenge","service","assent"})
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -509,7 +509,7 @@ class Property
 
     /**
      * @var Property The next property of the request type
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="previous", cascade={"persist"})
      */
     private $next;
@@ -526,7 +526,7 @@ class Property
      *
      * @example My Property
      *
-     * @Assert\Length(min = 15, max = 255)
+     * @Assert\Length(min = 3, max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -537,7 +537,7 @@ class Property
      *
      * @example my-slug
      *
-     * @Assert\Length(min = 15, max = 255)
+     * @Assert\Length(min = 3, max = 255)
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
