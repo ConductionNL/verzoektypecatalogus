@@ -941,6 +941,8 @@ class AppFixtures extends Fixture
     	$overige->setTitle('Overig');
     	$overige->setIcon('fas fa-envelope');
     	$overige->setSlug('overig');
+        $overige->setMinItems(4);
+        $overige->setMaxItems(4);
     	$overige->setType('array');
     	$overige->setFormat('string');
     	$overige->setDescription('Graag zouden wij u om wat extra informatie vragen');
