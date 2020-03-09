@@ -825,8 +825,18 @@ class AppFixtures extends Fixture
     	$trouwenNL->addChild($aanvraagLocatie);
     	$trouwenNL->addChild($meldingTrouwenNL);
     	*/
+    	
+    	$stage0= new Property();
+    	$stage0->setStart(true);
+    	$stage0->setTitle('Uitleg');
+    	$stage0->setIcon('fas fa-ring');
+    	$stage0->setSlug('start-huwelijk');
+    	$stage0->setDescription('Wat moet u zo meteen invullen?');
+    	$stage0->setRequestType($trouwenNL);
+    	$manager->persist($stage0);
 
     	$stage1= new Property();
+    	$stage1->addPrevious($stage0);
     	$stage1->setStart(true);
     	$stage1->setTitle('Type');
     	$stage1->setIcon('fas fa-ring');
@@ -941,8 +951,8 @@ class AppFixtures extends Fixture
     	$overige->setTitle('Overig');
     	$overige->setIcon('fal fa-file-alt');
     	$overige->setSlug('overig');
-        $overige->setMinItems(4);
-        $overige->setMaxItems(4);
+        $overige->setMinItems(3);
+        $overige->setMaxItems(3);
     	$overige->setType('array');
     	$overige->setMinItems(4);
     	$overige->setFormat('string');
