@@ -833,7 +833,7 @@ class AppFixtures extends Fixture
     	$stage0->setSlug('start-huwelijk');
     	$stage0->setDescription('Wat moet u zo meteen invullen?');
     	$stage0->setRequestType($trouwenNL);
-    	$manager->persist($stage1);
+    	$manager->persist($stage0);
 
     	$stage1= new Property();
     	$stage1->addPrevious($stage0);
