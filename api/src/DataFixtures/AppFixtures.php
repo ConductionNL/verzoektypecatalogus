@@ -836,7 +836,7 @@ class AppFixtures extends Fixture
     	$manager->persist($stage1);
 
     	$stage1= new Property();
-    	$stage2->addPrevious($stage0);
+    	$stage1->addPrevious($stage0);
     	$stage1->setStart(true);
     	$stage1->setTitle('Type');
     	$stage1->setIcon('fas fa-ring');
