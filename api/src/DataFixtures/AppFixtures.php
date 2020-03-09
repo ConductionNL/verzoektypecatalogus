@@ -825,8 +825,18 @@ class AppFixtures extends Fixture
     	$trouwenNL->addChild($aanvraagLocatie);
     	$trouwenNL->addChild($meldingTrouwenNL);
     	*/
+    	
+    	$stage0= new Property();
+    	$stage0->setStart(true);
+    	$stage0->setTitle('Uitleg');
+    	$stage0->setIcon('fas fa-ring');
+    	$stage0->setSlug('start-huwelijk');
+    	$stage0->setDescription('Wat moet u zo meteen invullen?');
+    	$stage0->setRequestType($trouwenNL);
+    	$manager->persist($stage1);
 
     	$stage1= new Property();
+    	$stage2->addPrevious($stage0);
     	$stage1->setStart(true);
     	$stage1->setTitle('Type');
     	$stage1->setIcon('fas fa-ring');
