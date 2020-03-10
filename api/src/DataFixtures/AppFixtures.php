@@ -949,11 +949,12 @@ class AppFixtures extends Fixture
     	$overige = new Property();
     	$overige->addPrevious($stage8);
     	$overige->setTitle('Overig');
-    	$overige->setIcon('fas fa-envelope');
+    	$overige->setIcon('fal fa-file-alt');
     	$overige->setSlug('overig');
         $overige->setMinItems(3);
         $overige->setMaxItems(3);
     	$overige->setType('array');
+    	$overige->setMinItems(4);
     	$overige->setFormat('string');
     	$overige->setDescription('Graag zouden wij u om wat extra informatie vragen');
     	$overige->setRequestType($trouwenNL);
