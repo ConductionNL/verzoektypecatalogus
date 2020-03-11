@@ -60,6 +60,16 @@ paths:
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
                 required:
                   - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuditTrail-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuditTrail-read'
             application/vnd.api+json:
               schema:
                 type: array
@@ -835,12 +845,12 @@ paths:
         201:
           description: 'RequestType resource created'
           content:
-            application/health+json:
+            application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/json+health:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/RequestType-read'
@@ -877,12 +887,12 @@ paths:
           description: 'Resource not found'
       requestBody:
         content:
-          application/health+json:
+          application/ld+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-          application/json+health:
+              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
+          application/json+ld:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
           application/hal+json:
             schema:
               $ref: '#/components/schemas/RequestType-write'
@@ -1026,12 +1036,12 @@ paths:
         200:
           description: 'RequestType resource response'
           content:
-            application/health+json:
+            application/ld+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
-            application/json+health:
+                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
+            application/json+ld:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/RequestType-read'
@@ -1105,12 +1115,12 @@ paths:
         200:
           description: 'RequestType resource updated'
           content:
-            application/health+json:
+            application/ld+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
-            application/json+health:
+                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
+            application/json+ld:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/RequestType-read'
@@ -1141,12 +1151,12 @@ paths:
           description: 'Resource not found'
       requestBody:
         content:
-          application/health+json:
+          application/ld+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-          application/json+health:
+              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
+          application/json+ld:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
           application/hal+json:
             schema:
               $ref: '#/components/schemas/RequestType-write'
@@ -1218,7 +1228,7 @@ paths:
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
-  '/example_entities/{id}/audit_trial':
+  '/example_entities/{id}/audit_trail':
     get:
       tags:
         - ExampleEntity
@@ -1306,24 +1316,18 @@ paths:
         200:
           description: 'ExampleEntity resource response'
           content:
-            application/health+json:
-              schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
-            application/json+health:
-              schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
-            application/json+hal:
-              schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
             application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/json+ld:
               schema:
                 $ref: '#/components/schemas/ExampleEntity:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
@@ -1331,6 +1335,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/xml:
@@ -1437,24 +1447,18 @@ paths:
         200:
           description: 'ExampleEntity resource response'
           content:
-            application/health+json:
-              schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
-            application/json+health:
-              schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
-            application/json+hal:
-              schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
             application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/json+ld:
               schema:
                 $ref: '#/components/schemas/ExampleEntity:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
@@ -1462,6 +1466,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/xml:
