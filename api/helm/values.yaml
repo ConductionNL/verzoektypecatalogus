@@ -14,11 +14,8 @@ settings:
   container: https://hub.docker.com/repository/docker/conduction/vtc-php
   subdomain: vtc  
   domains:
-    - conduction.nl
     - zaakonline.nl
-    - huwelijksplanner.online
-    - common-ground.dev
-  domainsJson: ["conduction.nl","zaakonline.nl","huwelijksplanner.online","common-ground.dev"]
+  domainsJson: ["zaakonline.nl"]
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands

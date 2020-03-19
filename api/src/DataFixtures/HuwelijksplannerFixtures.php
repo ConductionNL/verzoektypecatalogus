@@ -7,9 +7,17 @@ use App\Entity\RequestType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class HuwelijksplannerFixtures extends Fixture
 {
+	private $params;
+	
+	public function __construct(ParameterBagInterface $params)
+	{
+		$this->params = $params;
+	}
+	
     public function load(ObjectManager $manager)
     {
     	// Lets make sure we only run these fixtures on huwelijksplanner enviroments
