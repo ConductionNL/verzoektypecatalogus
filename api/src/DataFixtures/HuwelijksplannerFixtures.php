@@ -7,11 +7,24 @@ use App\Entity\RequestType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class AppFixtures extends Fixture
+class HuwelijksplannerFixtures extends Fixture
 {
+	private $params;
+	
+	public function __construct(ParameterBagInterface $params)
+	{
+		$this->params = $params;
+	}
+	
     public function load(ObjectManager $manager)
     {
+    	// Lets make sure we only run these fixtures on huwelijksplanner enviroments
+    	if (!in_array("huwelijksplanner.online", $this->params->get('app_domains'))) {
+    		return false;
+    	}
+    	
     	/*
     	 *  Bezwaar
     	 */
@@ -624,7 +637,44 @@ class AppFixtures extends Fixture
         /*
     	 *  Trouwen
     	 */
-
+        
+        // Verztype Babs andere gemeente
+        $id = Uuid::fromString('27f6ecf0-34bb-4100-a375-d14f2d5ee1d0');
+        $request = new RequestType();
+        $request->setSourceOrganization('0000'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setIcon('fas fa-user-tie');
+        $request->setName('Aanvraag babs andere gemeente');
+        $request->setDescription('Met dit verzoek kunt u een ambtenaar voor aan andere gemeente aanvragen');
+        $manager->persist($request);   
+        
+        // Dit is hacky tacky karig
+        $request->setId($id);        
+        $manager->persist($request);        
+        $manager->flush();        
+        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        // einde hacky tacky
+        
+        $property1 = new Property();
+        $property1->setStart(true);
+        $property1->setTitle('Gegevens');
+        $property1->setIcon('fal fa-user');
+        $property1->setSlug('babs-andere-gemeente');
+        $property1->setType('string');
+        $property1->setFormat('string');
+        $property1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
+        $property1->setRequestType($request);
+        $manager->persist($property1);
+        
+        $property2 = new Property();
+        $property2->addPrevious($stage1);
+        $property2->setTitle('Indienen');
+        $property2->setIcon('fal fa-paper-plane');
+        $property2->setSlug('indienen');
+        $property2->setDescription('Wie zijn de getuigen van partner?');
+        $property2->setRequestType($request);
+        $manager->persist($property2);
+        
+        // Aanvraag babs voor een dag 
         $id = Uuid::fromString('cdd7e88b-1890-425d-a158-7f9ec92c9508');
         $aanvraagBabs= new RequestType();
         $aanvraagBabs->setSourceOrganization('0000');
@@ -641,7 +691,7 @@ class AppFixtures extends Fixture
         $stage1->setStart(true);
         $stage1->setTitle('Gegevens');
         $stage1->setIcon('fal fa-user');
-        $stage1->setSlug('babs');
+        $stage1->setSlug('babs-voor-een-dag');
         $stage1->setType('string');
         $stage1->setFormat('string');
         $stage1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
@@ -673,7 +723,7 @@ class AppFixtures extends Fixture
         $stage1->setStart(true);
         $stage1->setTitle('Adress');
         $stage1->setIcon('fal fa-map-marked');
-        $stage1->setSlug('locatie');
+        $stage1->setSlug('afwijkende-trouw-locatie');
         $stage1->setType('string');
         $stage1->setFormat('bag');
         $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde locatie');
