@@ -26,7 +26,7 @@ class ZaakonlineFixtures extends Fixture
     	}
     	
         /*
-    	 *  Trouwen
+    	 *  Corona crisis
     	 */
         
         // Verztype Babs andere gemeente
@@ -34,8 +34,8 @@ class ZaakonlineFixtures extends Fixture
         $request = new RequestType();
         $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
         $request->setIcon('fas fa-user-tie');
-        $request->setName('Aanvraag babs andere gemeente');
-        $request->setDescription('Met dit verzoek kunt u een ambtenaar voor aan andere gemeente aanvragen');
+        $request->setName('Ondersteunings aanvraag ZZP');
+        $request->setDescription('Met dit verzoek kunt u als ZZPer financielle hulp aanvragen');
         $manager->persist($request);   
         
         // Dit is hacky tacky karig
@@ -88,7 +88,41 @@ class ZaakonlineFixtures extends Fixture
         $property->setDescription('Kunt u een toelichting op uw aanvraag geven?');
         $property->setRequestType($request);
         $manager->persist($property);
-
+        
+        
+        // Verztype Babs andere gemeente
+        $id = Uuid::fromString('64127a29-c452-4600-a9a0-b3f827b4d2e5');
+        $request = new RequestType();
+        $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setIcon('fas fa-user-tie');
+        $request->setName('Ik wil helpen');
+        $request->setDescription('Met dit verzoek kunt u aangeven dat u wilt bijdragen');
+        $manager->persist($request);
+        
+        // Dit is hacky tacky karig
+        $request->setId($id);
+        $manager->persist($request);
+        $manager->flush();
+        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        // einde hacky tacky
+        
+        
+        // Verztype Babs andere gemeente
+        $id = Uuid::fromString('2201ebbd-f2b0-4ece-88e0-18ba0d2949e0');
+        $request = new RequestType();
+        $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setIcon('fas fa-user-tie');
+        $request->setName('Ik heb hulp nodig');
+        $request->setDescription('Met dit verzoek kunt u aangeven dat u hulp nodig heeft');
+        $manager->persist($request);
+        
+        // Dit is hacky tacky karig
+        $request->setId($id);
+        $manager->persist($request);
+        $manager->flush();
+        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        // einde hacky tacky
+        
 		$manager->flush();
     }
 }
