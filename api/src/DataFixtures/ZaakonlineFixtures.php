@@ -44,6 +44,24 @@ class ZaakonlineFixtures extends Fixture
         $manager->flush();        
         $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
         // einde hacky tacky
+                
+        $property = new Property();
+        $property->setTitle('e-Mailadres');
+        $property->setIcon('fal fa-user');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk e-mailadres kunnen wij u berijken?');
+        $property->setRequestType($request);
+        $manager->persist($property);        
+        
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setIcon('fal fa-user');
+        $property->setType('string');
+        $property->setFormat('phone');
+        $property->setDescription('Op welk telefoonnummer kunnen wij u berijken?');
+        $property->setRequestType($request);
+        $manager->persist($property);
         
         $property = new Property();
         $property->setStart(true);
@@ -51,7 +69,7 @@ class ZaakonlineFixtures extends Fixture
         $property->setTitle('Bedrijf');
         $property->setIcon('fal fa-user');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('kvk');
         $property->setDescription('Wat is het KVK nummer van der ondernemening waarvoor u aanvraagt?');
         $property->setRequestType($request);
         $manager->persist($property);
@@ -91,6 +109,49 @@ class ZaakonlineFixtures extends Fixture
         
         
         // Verztype Babs andere gemeente
+        $id = Uuid::fromString('d78197df-af77-4b5e-bed0-054cba047550');
+        $request = new RequestType();
+        $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setIcon('fas fa-user-tie');
+        $request->setName('Aanvraag bijzonder bijstand');
+        $request->setDescription('Met dit verzoek kunt bijzondere bijstand aanvragen');
+        $manager->persist($request);
+        
+        $property = new Property();
+        $property->setTitle('e-Mailadres');
+        $property->setIcon('fal fa-user');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk e-mailadres kunnen wij u berijken?');
+        $property->setRequestType($request);
+        $manager->persist($property);
+        
+        // Dit is hacky tacky karig
+        $request->setId($id);
+        $manager->persist($request);
+        $manager->flush();
+        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        // einde hacky tacky
+        
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setIcon('fal fa-user');
+        $property->setType('string');
+        $property->setFormat('phone');
+        $property->setDescription('Op welk telefoonnummer kunnen wij u berijken?');
+        $property->setRequestType($request);
+        $manager->persist($property);
+        
+        $property = new Property();
+        $property->setTitle('Toelichting');
+        $property->setIcon('fal fa-user');
+        $property->setType('text');
+        $property->setFormat('string');
+        $property->setDescription('Kunt u een toelichting op uw aanvraag geven?');
+        $property->setRequestType($request);
+        $manager->persist($property);
+        
+        // Verztype Babs andere gemeente
         $id = Uuid::fromString('64127a29-c452-4600-a9a0-b3f827b4d2e5');
         $request = new RequestType();
         $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
@@ -105,6 +166,24 @@ class ZaakonlineFixtures extends Fixture
         $manager->flush();
         $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
         // einde hacky tacky
+        
+        $property = new Property();
+        $property->setTitle('e-Mailadres');
+        $property->setIcon('fal fa-user');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk e-mailadres kunnen wij u berijken?');
+        $property->setRequestType($request);
+        $manager->persist($property);
+        
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setIcon('fal fa-user');
+        $property->setType('string');
+        $property->setFormat('phone');
+        $property->setDescription('Op welk telefoonnummer kunnen wij u berijken?');
+        $property->setRequestType($request);
+        $manager->persist($property);
         
         
         // Verztype Babs andere gemeente
@@ -122,6 +201,24 @@ class ZaakonlineFixtures extends Fixture
         $manager->flush();
         $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
         // einde hacky tacky
+        
+        $property = new Property();
+        $property->setTitle('e-Mailadres');
+        $property->setIcon('fal fa-user');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk e-mailadres kunnen wij u berijken?');
+        $property->setRequestType($request);
+        $manager->persist($property);
+        
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setIcon('fal fa-user');
+        $property->setType('string');
+        $property->setFormat('phone');
+        $property->setDescription('Op welk telefoonnummer kunnen wij u berijken?');
+        $property->setRequestType($request);
+        $manager->persist($property);
         
 		$manager->flush();
     }
