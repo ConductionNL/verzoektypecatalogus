@@ -1004,7 +1004,6 @@ class HuwelijksplannerFixtures extends Fixture
         $overige->setMinItems(3);
         $overige->setMaxItems(3);
     	$overige->setType('array');
-    	$overige->setMinItems(4);
     	$overige->setFormat('string');
     	$overige->setDescription('Graag zouden wij u om wat extra informatie vragen');
     	$overige->setRequestType($trouwenNL);
