@@ -12,12 +12,12 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class HuwelijksplannerFixtures extends Fixture
 {
 	private $params;
-	
+
 	public function __construct(ParameterBagInterface $params)
 	{
 		$this->params = $params;
 	}
-	
+
     public function load(ObjectManager $manager)
     {
     	// Lets make sure we only run these fixtures on huwelijksplanner enviroments
@@ -669,7 +669,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property2->addPrevious($stage1);
         $property2->setTitle('Indienen');
         $property2->setIcon('fal fa-paper-plane');
-        $property2->setSlug('indienen');
+        $property2->setSlug('indienen-babs-andere-gemeente');
         $property2->setDescription('Wie zijn de getuigen van partner?');
         $property2->setRequestType($request);
         $manager->persist($property2);
@@ -702,7 +702,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Indienen');
         $stage2->setIcon('fal fa-paper-plane');
-        $stage2->setSlug('indienen');
+        $stage2->setSlug('indienen-babs-voor-een-dag');
         $stage2->setDescription('Wie zijn de getuigen van partner?');
         $stage2->setRequestType($aanvraagBabs);
         $manager->persist($stage2);
@@ -721,7 +721,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage1= new Property();
         $stage1->setStart(true);
-        $stage1->setTitle('Adress');
+        $stage1->setTitle('Adres');
         $stage1->setIcon('fal fa-map-marked');
         $stage1->setSlug('afwijkende-trouw-locatie');
         $stage1->setType('string');
@@ -745,7 +745,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->addPrevious($stage2);
         $stage3->setTitle('Indienen');
         $stage3->setIcon('fal fa-paper-plane');
-        $stage3->setSlug('indienen');
+        $stage3->setSlug('indienen-afwijkende-trouw-locatie');
         $stage3->setDescription('Wie zijn de getuigen van partner?');
         $stage3->setRequestType($aanvraagLocatie);
         $manager->persist($stage3);
@@ -805,7 +805,7 @@ class HuwelijksplannerFixtures extends Fixture
     	$stage4->addPrevious($stage3);
     	$stage4->setTitle('Indienen');
     	$stage4->setIcon('fal fa-paper-plane');
-    	$stage4->setSlug('indienen');
+    	$stage4->setSlug('indienen-melding');
     	$stage4->setDescription('Wie zijn de getuigen van partner?');
     	$stage4->setRequestType($meldingTrouwenNL);
     	$manager->persist($stage4);
@@ -1004,7 +1004,6 @@ class HuwelijksplannerFixtures extends Fixture
         $overige->setMinItems(3);
         $overige->setMaxItems(3);
     	$overige->setType('array');
-    	$overige->setMinItems(4);
     	$overige->setFormat('string');
     	$overige->setDescription('Graag zouden wij u om wat extra informatie vragen');
     	$overige->setRequestType($trouwenNL);
