@@ -805,7 +805,7 @@ class HuwelijksplannerFixtures extends Fixture
     	$stage4->addPrevious($stage3);
     	$stage4->setTitle('Indienen');
     	$stage4->setIcon('fal fa-paper-plane');
-    	$stage4->setSlug('indienen');
+    	$stage4->setSlug('indienen-melding');
     	$stage4->setDescription('Wie zijn de getuigen van partner?');
     	$stage4->setRequestType($meldingTrouwenNL);
     	$manager->persist($stage4);
