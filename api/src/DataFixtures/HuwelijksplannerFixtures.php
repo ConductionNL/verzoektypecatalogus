@@ -666,7 +666,7 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($property1);
 
         $property2 = new Property();
-        $property2->addPrevious($stage1);
+        $property2->addPrevious($property1);
         $property2->setTitle('Indienen');
         $property2->setIcon('fal fa-paper-plane');
         $property2->setSlug('indienen-babs-andere-gemeente');
@@ -734,7 +734,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Gegevens');
         $stage2->setIcon('fal fa-user');
-        $stage2->setSlug('contact');
+        $stage2->setSlug('afwijkende-trouw-locatie-contact');
         $stage2->setType('string');
         $stage2->setFormat('instemming');
         $stage2->setDescription('Wat zijn de contact gegevens van uw beoogde locatie');
