@@ -190,7 +190,7 @@ class RequestType
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true, name="one_of_a_kind")
      */
-    private $unique;
+    private $unique = false;
 
     /**
      * @var bool $parentRequired If this request type needs a parent request
