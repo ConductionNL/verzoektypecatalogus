@@ -228,6 +228,11 @@ class RequestType
      */
     private $dateModified;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $ParentRequired;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
@@ -519,5 +524,17 @@ class RequestType
     	$this->dateModified = $dateModified;
     	
     	return $this;
+    }
+
+    public function getParentRequired(): ?bool
+    {
+        return $this->ParentRequired;
+    }
+
+    public function setParentRequired(bool $ParentRequired): self
+    {
+        $this->ParentRequired = $ParentRequired;
+
+        return $this;
     }
 }
