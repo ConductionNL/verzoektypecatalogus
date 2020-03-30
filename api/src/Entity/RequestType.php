@@ -67,7 +67,7 @@ use Doctrine\Common\Collections\Criteria;
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RequestTypeRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
- * 
+ *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
@@ -193,6 +193,15 @@ class RequestType
     private $unique;
 
     /**
+     * @var bool $parentRequired If this request type needs a parent request
+     *
+     * @Groups({"read","write"})
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private $parentRequired = false;
+
+    /**
      * @var ArrayCollection|RequestType[] The children of this request type
      *
      * @Groups({"read", "write"})
@@ -227,11 +236,6 @@ class RequestType
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $ParentRequired;
 
     public function __construct()
     {
@@ -501,39 +505,39 @@ class RequestType
 
         return $this;
     }
-    
+
     public function getDateCreated(): ?\DateTimeInterface
     {
     	return $this->dateCreated;
     }
-    
+
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
     	$this->dateCreated= $dateCreated;
-    	
+
     	return $this;
     }
-    
+
     public function getDateModified(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
     	$this->dateModified = $dateModified;
-    	
+
     	return $this;
     }
 
     public function getParentRequired(): ?bool
     {
-        return $this->ParentRequired;
+        return $this->parentRequired;
     }
 
-    public function setParentRequired(bool $ParentRequired): self
+    public function setParentRequired(bool $parentRequired): self
     {
-        $this->ParentRequired = $ParentRequired;
+        $this->parentRequired = $parentRequired;
 
         return $this;
     }
