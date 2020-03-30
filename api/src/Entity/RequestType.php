@@ -124,7 +124,7 @@ class RequestType
      * @Assert\Length(
      *      max = 255
      * )
-     * @Groups({"read"})
+     * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
