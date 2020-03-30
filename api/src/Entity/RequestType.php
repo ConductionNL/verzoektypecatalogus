@@ -67,7 +67,7 @@ use Doctrine\Common\Collections\Criteria;
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RequestTypeRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
- * 
+ *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
@@ -124,7 +124,7 @@ class RequestType
      * @Assert\Length(
      *      max = 255
      * )
-     * @Groups({"read"})
+     * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -190,7 +190,16 @@ class RequestType
      * @Groups({"read", "write"})
      * @ORM\Column(type="boolean", nullable=true, name="one_of_a_kind")
      */
-    private $unique;
+    private $unique = false;
+
+    /**
+     * @var bool $parentRequired If this request type needs a parent request
+     *
+     * @Groups({"read","write"})
+     * @Assert\Type("bool")
+     * @ORM\Column(type="boolean")
+     */
+    private $parentRequired = false;
 
     /**
      * @var ArrayCollection|RequestType[] The children of this request type
@@ -496,28 +505,40 @@ class RequestType
 
         return $this;
     }
-    
+
     public function getDateCreated(): ?\DateTimeInterface
     {
     	return $this->dateCreated;
     }
-    
+
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
     	$this->dateCreated= $dateCreated;
-    	
+
     	return $this;
     }
-    
+
     public function getDateModified(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
     	$this->dateModified = $dateModified;
-    	
+
     	return $this;
+    }
+
+    public function getParentRequired(): ?bool
+    {
+        return $this->parentRequired;
+    }
+
+    public function setParentRequired(bool $parentRequired): self
+    {
+        $this->parentRequired = $parentRequired;
+
+        return $this;
     }
 }
