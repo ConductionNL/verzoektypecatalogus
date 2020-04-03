@@ -9,19 +9,21 @@ settings:
   title: Verzoek Type Catalogus
   version: V.0.1
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
+  type: component
   repro: https://github.com/ConductionNL/verzoektypecatalogus
   demo: vtc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/vtc-php
+  domain: conduction.nl
   subdomain: vtc  
   domains:
     - zaakonline.nl
-  domainsJson: ["zaakonline.nl"]
+  domainsJson: ["conduction.nl","zaakonline.nl","larping.eu","common-ground.dev","trouwplanner.online","huwelijksplanner.online"]
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
   state: Noord-Holland
   locality: Amsterdam
-  unit: Common-Ground  
+  unit: Common-Ground
   env: dev
   debug: 1
   replicaCount: 1
