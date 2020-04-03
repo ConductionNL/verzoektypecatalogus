@@ -147,7 +147,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[resource_type]'
+          name: 'order[resourceType]'
           in: query
           required: false
           schema:
@@ -165,7 +165,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[content_type]'
+          name: 'order[contentType]'
           in: query
           required: false
           schema:
@@ -192,7 +192,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[date_created]'
+          name: 'order[dateCreated]'
           in: query
           required: false
           schema:
@@ -201,7 +201,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[date_modified]'
+          name: 'order[dateModified]'
           in: query
           required: false
           schema:
@@ -274,7 +274,7 @@ paths:
           style: form
           explode: true
         -
-          name: resource_type
+          name: resourceType
           in: query
           required: false
           schema:
@@ -296,13 +296,13 @@ paths:
           style: form
           explode: true
         -
-          name: content_type
+          name: contentType
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'content_type[]'
+          name: 'contentType[]'
           in: query
           required: false
           schema:
@@ -344,49 +344,49 @@ paths:
           style: form
           explode: true
         -
-          name: 'date_created[before]'
+          name: 'dateCreated[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[strictly_before]'
+          name: 'dateCreated[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[after]'
+          name: 'dateCreated[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[strictly_after]'
+          name: 'dateCreated[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[before]'
+          name: 'dateModified[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[strictly_before]'
+          name: 'dateModified[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[after]'
+          name: 'dateModified[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[strictly_after]'
+          name: 'dateModified[strictly_after]'
           in: query
           required: false
           schema:
@@ -1123,7 +1123,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[object_id]'
+          name: 'order[objectId]'
           in: query
           required: false
           schema:
@@ -1132,7 +1132,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[object_class]'
+          name: 'order[objectClass]'
           in: query
           required: false
           schema:
@@ -1159,7 +1159,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[date_created]'
+          name: 'order[dateCreated]'
           in: query
           required: false
           schema:
@@ -1168,7 +1168,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[date_modified]'
+          name: 'order[dateModified]'
           in: query
           required: false
           schema:
@@ -1193,13 +1193,13 @@ paths:
           style: form
           explode: true
         -
-          name: object_id
+          name: objectId
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'object_id[]'
+          name: 'objectId[]'
           in: query
           required: false
           schema:
@@ -1209,13 +1209,13 @@ paths:
           style: form
           explode: true
         -
-          name: object_class
+          name: objectClass
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'object_class[]'
+          name: 'objectClass[]'
           in: query
           required: false
           schema:
@@ -1241,49 +1241,49 @@ paths:
           style: form
           explode: true
         -
-          name: 'date_created[before]'
+          name: 'dateCreated[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[strictly_before]'
+          name: 'dateCreated[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[after]'
+          name: 'dateCreated[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[strictly_after]'
+          name: 'dateCreated[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[before]'
+          name: 'dateModified[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[strictly_before]'
+          name: 'dateModified[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[after]'
+          name: 'dateModified[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[strictly_after]'
+          name: 'dateModified[strictly_after]'
           in: query
           required: false
           schema:
@@ -2011,25 +2011,25 @@ paths:
                   $ref: '#/components/schemas/Property-read'
       parameters:
         -
-          name: exclusive_maximum
+          name: exclusiveMaximum
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: exclusive_minimum
+          name: exclusiveMinimum
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: additional_items
+          name: additionalItems
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: unique_items
+          name: uniqueItems
           in: query
           required: false
           schema:
@@ -2047,13 +2047,13 @@ paths:
           schema:
             type: boolean
         -
-          name: read_only
+          name: readOnly
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: write_only
+          name: writeOnly
           in: query
           required: false
           schema:
@@ -2116,7 +2116,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[multiple_of]'
+          name: 'order[multipleOf]'
           in: query
           required: false
           schema:
@@ -2134,7 +2134,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[exclusive_maximum]'
+          name: 'order[exclusiveMaximum]'
           in: query
           required: false
           schema:
@@ -2152,7 +2152,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[exclusive_minimum]'
+          name: 'order[exclusiveMinimum]'
           in: query
           required: false
           schema:
@@ -2161,7 +2161,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[max_length]'
+          name: 'order[maxLength]'
           in: query
           required: false
           schema:
@@ -2170,7 +2170,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[min_length]'
+          name: 'order[minLength]'
           in: query
           required: false
           schema:
@@ -2188,7 +2188,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[additional_items]'
+          name: 'order[additionalItems]'
           in: query
           required: false
           schema:
@@ -2197,7 +2197,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[max_items]'
+          name: 'order[maxItems]'
           in: query
           required: false
           schema:
@@ -2206,7 +2206,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[min_items]'
+          name: 'order[minItems]'
           in: query
           required: false
           schema:
@@ -2215,7 +2215,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[unique_items]'
+          name: 'order[uniqueItems]'
           in: query
           required: false
           schema:
@@ -2224,7 +2224,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[max_properties]'
+          name: 'order[maxProperties]'
           in: query
           required: false
           schema:
@@ -2233,7 +2233,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[min_properties]'
+          name: 'order[minProperties]'
           in: query
           required: false
           schema:
@@ -2260,7 +2260,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[additional_properties]'
+          name: 'order[additionalProperties]'
           in: query
           required: false
           schema:
@@ -2287,7 +2287,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[all_of]'
+          name: 'order[allOf]'
           in: query
           required: false
           schema:
@@ -2296,7 +2296,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[any_of]'
+          name: 'order[anyOf]'
           in: query
           required: false
           schema:
@@ -2305,7 +2305,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[one_of]'
+          name: 'order[oneOf]'
           in: query
           required: false
           schema:
@@ -2332,7 +2332,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[default_value]'
+          name: 'order[defaultValue]'
           in: query
           required: false
           schema:
@@ -2359,7 +2359,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[read_only]'
+          name: 'order[readOnly]'
           in: query
           required: false
           schema:
@@ -2368,7 +2368,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[write_only]'
+          name: 'order[writeOnly]'
           in: query
           required: false
           schema:
@@ -2386,7 +2386,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[external_doc]'
+          name: 'order[externalDoc]'
           in: query
           required: false
           schema:
@@ -2413,7 +2413,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[available_from]'
+          name: 'order[availableFrom]'
           in: query
           required: false
           schema:
@@ -2422,7 +2422,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[available_until]'
+          name: 'order[availableUntil]'
           in: query
           required: false
           schema:
@@ -2431,7 +2431,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[min_date]'
+          name: 'order[minDate]'
           in: query
           required: false
           schema:
@@ -2440,7 +2440,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[max_date]'
+          name: 'order[maxDate]'
           in: query
           required: false
           schema:
@@ -2476,7 +2476,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[date_created]'
+          name: 'order[dateCreated]'
           in: query
           required: false
           schema:
@@ -2485,7 +2485,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[date_modified]'
+          name: 'order[dateModified]'
           in: query
           required: false
           schema:
@@ -2494,97 +2494,97 @@ paths:
               - asc
               - desc
         -
-          name: 'available_from[before]'
+          name: 'availableFrom[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_from[strictly_before]'
+          name: 'availableFrom[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_from[after]'
+          name: 'availableFrom[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_from[strictly_after]'
+          name: 'availableFrom[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[before]'
+          name: 'availableUntil[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[strictly_before]'
+          name: 'availableUntil[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[after]'
+          name: 'availableUntil[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[strictly_after]'
+          name: 'availableUntil[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[before]'
+          name: 'dateCreated[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[strictly_before]'
+          name: 'dateCreated[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[after]'
+          name: 'dateCreated[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[strictly_after]'
+          name: 'dateCreated[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[before]'
+          name: 'dateModified[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[strictly_before]'
+          name: 'dateModified[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[after]'
+          name: 'dateModified[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[strictly_after]'
+          name: 'dateModified[strictly_after]'
           in: query
           required: false
           schema:
@@ -2670,13 +2670,13 @@ paths:
           style: form
           explode: true
         -
-          name: multiple_of
+          name: multipleOf
           in: query
           required: false
           schema:
             type: integer
         -
-          name: 'multiple_of[]'
+          name: 'multipleOf[]'
           in: query
           required: false
           schema:
@@ -2702,13 +2702,13 @@ paths:
           style: form
           explode: true
         -
-          name: exclusive_maximum
+          name: exclusiveMaximum
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: 'exclusive_maximum[]'
+          name: 'exclusiveMaximum[]'
           in: query
           required: false
           schema:
@@ -2734,13 +2734,13 @@ paths:
           style: form
           explode: true
         -
-          name: exclusive_minimum
+          name: exclusiveMinimum
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: 'exclusive_minimum[]'
+          name: 'exclusiveMinimum[]'
           in: query
           required: false
           schema:
@@ -2750,13 +2750,13 @@ paths:
           style: form
           explode: true
         -
-          name: max_length
+          name: maxLength
           in: query
           required: false
           schema:
             type: integer
         -
-          name: 'max_length[]'
+          name: 'maxLength[]'
           in: query
           required: false
           schema:
@@ -2766,13 +2766,13 @@ paths:
           style: form
           explode: true
         -
-          name: min_length
+          name: minLength
           in: query
           required: false
           schema:
             type: integer
         -
-          name: 'min_length[]'
+          name: 'minLength[]'
           in: query
           required: false
           schema:
@@ -2798,13 +2798,13 @@ paths:
           style: form
           explode: true
         -
-          name: additional_items
+          name: additionalItems
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: 'additional_items[]'
+          name: 'additionalItems[]'
           in: query
           required: false
           schema:
@@ -2814,13 +2814,13 @@ paths:
           style: form
           explode: true
         -
-          name: max_items
+          name: maxItems
           in: query
           required: false
           schema:
             type: integer
         -
-          name: 'max_items[]'
+          name: 'maxItems[]'
           in: query
           required: false
           schema:
@@ -2830,13 +2830,13 @@ paths:
           style: form
           explode: true
         -
-          name: min_items
+          name: minItems
           in: query
           required: false
           schema:
             type: integer
         -
-          name: 'min_items[]'
+          name: 'minItems[]'
           in: query
           required: false
           schema:
@@ -2846,13 +2846,13 @@ paths:
           style: form
           explode: true
         -
-          name: unique_items
+          name: uniqueItems
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: 'unique_items[]'
+          name: 'uniqueItems[]'
           in: query
           required: false
           schema:
@@ -2862,13 +2862,13 @@ paths:
           style: form
           explode: true
         -
-          name: max_properties
+          name: maxProperties
           in: query
           required: false
           schema:
             type: integer
         -
-          name: 'max_properties[]'
+          name: 'maxProperties[]'
           in: query
           required: false
           schema:
@@ -2878,13 +2878,13 @@ paths:
           style: form
           explode: true
         -
-          name: min_properties
+          name: minProperties
           in: query
           required: false
           schema:
             type: integer
         -
-          name: 'min_properties[]'
+          name: 'minProperties[]'
           in: query
           required: false
           schema:
@@ -2926,13 +2926,13 @@ paths:
           style: form
           explode: true
         -
-          name: additional_properties
+          name: additionalProperties
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'additional_properties[]'
+          name: 'additionalProperties[]'
           in: query
           required: false
           schema:
@@ -2974,13 +2974,13 @@ paths:
           style: deepObject
           explode: true
         -
-          name: all_of
+          name: allOf
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'all_of[]'
+          name: 'allOf[]'
           in: query
           required: false
           schema:
@@ -2990,13 +2990,13 @@ paths:
           style: deepObject
           explode: true
         -
-          name: any_of
+          name: anyOf
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'any_of[]'
+          name: 'anyOf[]'
           in: query
           required: false
           schema:
@@ -3006,13 +3006,13 @@ paths:
           style: deepObject
           explode: true
         -
-          name: one_of
+          name: oneOf
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'one_of[]'
+          name: 'oneOf[]'
           in: query
           required: false
           schema:
@@ -3054,13 +3054,13 @@ paths:
           style: form
           explode: true
         -
-          name: default_value
+          name: defaultValue
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'default_value[]'
+          name: 'defaultValue[]'
           in: query
           required: false
           schema:
@@ -3102,13 +3102,13 @@ paths:
           style: form
           explode: true
         -
-          name: read_only
+          name: readOnly
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: 'read_only[]'
+          name: 'readOnly[]'
           in: query
           required: false
           schema:
@@ -3118,13 +3118,13 @@ paths:
           style: form
           explode: true
         -
-          name: write_only
+          name: writeOnly
           in: query
           required: false
           schema:
             type: boolean
         -
-          name: 'write_only[]'
+          name: 'writeOnly[]'
           in: query
           required: false
           schema:
@@ -3150,13 +3150,13 @@ paths:
           style: form
           explode: true
         -
-          name: external_doc
+          name: externalDoc
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'external_doc[]'
+          name: 'externalDoc[]'
           in: query
           required: false
           schema:
@@ -3198,37 +3198,37 @@ paths:
           style: form
           explode: true
         -
-          name: available_from
+          name: availableFrom
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_from[]'
+          name: 'availableFrom[]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: available_until
+          name: availableUntil
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[]'
+          name: 'availableUntil[]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: min_date
+          name: minDate
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'min_date[]'
+          name: 'minDate[]'
           in: query
           required: false
           schema:
@@ -3238,13 +3238,13 @@ paths:
           style: form
           explode: true
         -
-          name: max_date
+          name: maxDate
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'max_date[]'
+          name: 'maxDate[]'
           in: query
           required: false
           schema:
@@ -3302,25 +3302,25 @@ paths:
           style: form
           explode: true
         -
-          name: date_created
+          name: dateCreated
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[]'
+          name: 'dateCreated[]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: date_modified
+          name: dateModified
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[]'
+          name: 'dateModified[]'
           in: query
           required: false
           schema:
@@ -4207,7 +4207,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[source_organization]'
+          name: 'order[sourceOrganization]'
           in: query
           required: false
           schema:
@@ -4243,7 +4243,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[available_from]'
+          name: 'order[availableFrom]'
           in: query
           required: false
           schema:
@@ -4252,7 +4252,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[available_until]'
+          name: 'order[availableUntil]'
           in: query
           required: false
           schema:
@@ -4270,7 +4270,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[date_created]'
+          name: 'order[dateCreated]'
           in: query
           required: false
           schema:
@@ -4279,7 +4279,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[date_modified]'
+          name: 'order[dateModified]'
           in: query
           required: false
           schema:
@@ -4288,109 +4288,109 @@ paths:
               - asc
               - desc
         -
-          name: 'available_from[before]'
+          name: 'availableFrom[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_from[strictly_before]'
+          name: 'availableFrom[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_from[after]'
+          name: 'availableFrom[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_from[strictly_after]'
+          name: 'availableFrom[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[before]'
+          name: 'availableUntil[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[strictly_before]'
+          name: 'availableUntil[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[after]'
+          name: 'availableUntil[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'available_until[strictly_after]'
+          name: 'availableUntil[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[before]'
+          name: 'dateCreated[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[strictly_before]'
+          name: 'dateCreated[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[after]'
+          name: 'dateCreated[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_created[strictly_after]'
+          name: 'dateCreated[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[before]'
+          name: 'dateModified[before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[strictly_before]'
+          name: 'dateModified[strictly_before]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[after]'
+          name: 'dateModified[after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'date_modified[strictly_after]'
+          name: 'dateModified[strictly_after]'
           in: query
           required: false
           schema:
             type: string
         -
-          name: source_organization
+          name: sourceOrganization
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'source_organization[]'
+          name: 'sourceOrganization[]'
           in: query
           required: false
           schema:
@@ -5223,13 +5223,13 @@ components:
           readOnly: true
           description: 'The procces on behalf of wich the request was made'
           type: string
-        data_elements:
+        dataElements:
           readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
-        data_subjects:
+        dataSubjects:
           readOnly: true
           description: 'The moment this request was created'
           type: array
@@ -5239,7 +5239,7 @@ components:
           readOnly: true
           description: 'The resource that was requested'
           type: string
-        resource_type:
+        resourceType:
           readOnly: true
           description: 'The type of the resource that was requested'
           type: string
@@ -5259,7 +5259,7 @@ components:
           readOnly: true
           description: 'The contentType that was reqousted'
           type: string
-        content_type:
+        contentType:
           readOnly: true
           description: 'The contentType that was suplieds'
           type: string
@@ -5281,11 +5281,11 @@ components:
           type: array
           items:
             type: string
-        status_code:
+        statusCode:
           readOnly: true
           description: 'The status code returned to client'
           type: integer
-        not_found:
+        notFound:
           readOnly: true
           description: 'Whether or not the reqousted endpoint was found'
           type: boolean
@@ -5297,14 +5297,14 @@ components:
           readOnly: true
           description: 'Whether or not there where any problems'
           type: boolean
-        date_created:
+        dateCreated:
           readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        date_modified:
+        dateModified:
           readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
@@ -5353,13 +5353,13 @@ components:
           readOnly: true
           description: 'The procces on behalf of wich the request was made'
           type: string
-        data_elements:
+        dataElements:
           readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
-        data_subjects:
+        dataSubjects:
           readOnly: true
           description: 'The moment this request was created'
           type: array
@@ -5369,7 +5369,7 @@ components:
           readOnly: true
           description: 'The resource that was requested'
           type: string
-        resource_type:
+        resourceType:
           readOnly: true
           description: 'The type of the resource that was requested'
           type: string
@@ -5389,7 +5389,7 @@ components:
           readOnly: true
           description: 'The contentType that was reqousted'
           type: string
-        content_type:
+        contentType:
           readOnly: true
           description: 'The contentType that was suplieds'
           type: string
@@ -5411,11 +5411,11 @@ components:
           type: array
           items:
             type: string
-        status_code:
+        statusCode:
           readOnly: true
           description: 'The status code returned to client'
           type: integer
-        not_found:
+        notFound:
           readOnly: true
           description: 'Whether or not the reqousted endpoint was found'
           type: boolean
@@ -5427,14 +5427,14 @@ components:
           readOnly: true
           description: 'Whether or not there where any problems'
           type: boolean
-        date_created:
+        dateCreated:
           readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        date_modified:
+        dateModified:
           readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
@@ -5467,10 +5467,10 @@ components:
         action:
           readOnly: true
           type: string
-        object_id:
+        objectId:
           readOnly: true
           type: string
-        object_class:
+        objectClass:
           readOnly: true
           type: string
         version:
@@ -5488,14 +5488,14 @@ components:
           readOnly: true
           description: 'The moment this request was created'
           type: string
-        date_created:
+        dateCreated:
           readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        date_modified:
+        dateModified:
           readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
@@ -5527,10 +5527,10 @@ components:
         action:
           readOnly: true
           type: string
-        object_id:
+        objectId:
           readOnly: true
           type: string
-        object_class:
+        objectClass:
           readOnly: true
           type: string
         version:
@@ -5548,14 +5548,14 @@ components:
           readOnly: true
           description: 'The moment this request was created'
           type: string
-        date_created:
+        dateCreated:
           readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        date_modified:
+        dateModified:
           readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
@@ -5589,7 +5589,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        request_type:
+        requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType-read'
         title:
@@ -5608,46 +5608,46 @@ components:
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
-        multiple_of:
+        multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusive_maximum:
+        exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusive_minimum:
+        exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        max_length:
+        maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
-        min_length:
+        minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additional_items:
+        additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
-        max_items:
+        maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        min_items:
+        minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        unique_items:
+        uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        max_properties:
+        maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        min_properties:
+        minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -5656,7 +5656,7 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additional_properties:
+        additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
         object:
@@ -5670,7 +5670,7 @@ components:
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        default_value:
+        defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -5679,16 +5679,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        read_only:
+        readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
-        write_only:
+        writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        external_doc:
+        externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -5697,22 +5697,22 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        available_from:
+        availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        available_until:
+        availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        min_date:
+        minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        max_date:
+        maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
         icon:
@@ -5724,18 +5724,18 @@ components:
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
-        date_created:
+        dateCreated:
           readOnly: true
           description: 'The moment this request was created'
           type: string
           format: date-time
-        date_modified:
+        dateModified:
           readOnly: true
           description: 'The moment this request last Modified'
           type: string
           format: date-time
       required:
-        - request_type
+        - requestType
         - title
         - type
         - format
@@ -5747,12 +5747,12 @@ components:
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
         http://json-schema.org/.
       required:
-        - request_type
+        - requestType
         - title
         - type
         - format
       properties:
-        request_type:
+        requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType-write'
         title:
@@ -5767,46 +5767,46 @@ components:
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
-        multiple_of:
+        multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusive_maximum:
+        exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusive_minimum:
+        exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        max_length:
+        maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
-        min_length:
+        minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additional_items:
+        additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
-        max_items:
+        maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        min_items:
+        minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        unique_items:
+        uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        max_properties:
+        maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        min_properties:
+        minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -5815,7 +5815,7 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additional_properties:
+        additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
         object:
@@ -5829,7 +5829,7 @@ components:
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        default_value:
+        defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -5838,16 +5838,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        read_only:
+        readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
-        write_only:
+        writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        external_doc:
+        externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -5856,22 +5856,22 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        available_from:
+        availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        available_until:
+        availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        min_date:
+        minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        max_date:
+        maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
         icon:
@@ -5906,7 +5906,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        request_type:
+        requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType:jsonld-read'
         title:
@@ -5925,46 +5925,46 @@ components:
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
-        multiple_of:
+        multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusive_maximum:
+        exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusive_minimum:
+        exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        max_length:
+        maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
-        min_length:
+        minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additional_items:
+        additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
-        max_items:
+        maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        min_items:
+        minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        unique_items:
+        uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        max_properties:
+        maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        min_properties:
+        minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -5973,7 +5973,7 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additional_properties:
+        additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
         object:
@@ -5987,7 +5987,7 @@ components:
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        default_value:
+        defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -5996,16 +5996,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        read_only:
+        readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
-        write_only:
+        writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        external_doc:
+        externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -6014,22 +6014,22 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        available_from:
+        availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        available_until:
+        availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        min_date:
+        minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        max_date:
+        maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
         icon:
@@ -6041,18 +6041,18 @@ components:
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
-        date_created:
+        dateCreated:
           readOnly: true
           description: 'The moment this request was created'
           type: string
           format: date-time
-        date_modified:
+        dateModified:
           readOnly: true
           description: 'The moment this request last Modified'
           type: string
           format: date-time
       required:
-        - request_type
+        - requestType
         - title
         - type
         - format
@@ -6064,7 +6064,7 @@ components:
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
         http://json-schema.org/.
       required:
-        - request_type
+        - requestType
         - title
         - type
         - format
@@ -6078,7 +6078,7 @@ components:
         '@type':
           readOnly: true
           type: string
-        request_type:
+        requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType:jsonld-write'
         title:
@@ -6093,46 +6093,46 @@ components:
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
-        multiple_of:
+        multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
-        exclusive_maximum:
+        exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
-        exclusive_minimum:
+        exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
-        max_length:
+        maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
-        min_length:
+        minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
-        additional_items:
+        additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
-        max_items:
+        maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
-        min_items:
+        minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
-        unique_items:
+        uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
-        max_properties:
+        maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
-        min_properties:
+        minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
         required:
@@ -6141,7 +6141,7 @@ components:
         properties:
           description: 'Not yet supported by business logic'
           type: string
-        additional_properties:
+        additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
         object:
@@ -6155,7 +6155,7 @@ components:
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
-        default_value:
+        defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
         nullable:
@@ -6164,16 +6164,16 @@ components:
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
-        read_only:
+        readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
-        write_only:
+        writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
-        external_doc:
+        externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
         example:
@@ -6182,22 +6182,22 @@ components:
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
-        available_from:
+        availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        available_until:
+        availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
-        min_date:
+        minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
-        max_date:
+        maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
         icon:
@@ -6219,7 +6219,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        source_organization:
+        sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         icon:
@@ -6250,25 +6250,25 @@ components:
         parent:
           description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType-read'
-        date_created:
+        dateCreated:
           readOnly: true
           description: 'The moment this request was created'
           type: string
           format: date-time
-        date_modified:
+        dateModified:
           readOnly: true
           description: 'The moment this request last Modified'
           type: string
           format: date-time
       required:
-        - source_organization
+        - sourceOrganization
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
-        - source_organization
+        - sourceOrganization
       properties:
-        source_organization:
+        sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         icon:
@@ -6312,7 +6312,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        source_organization:
+        sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         icon:
@@ -6343,23 +6343,23 @@ components:
         parent:
           description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType:jsonld-read'
-        date_created:
+        dateCreated:
           readOnly: true
           description: 'The moment this request was created'
           type: string
           format: date-time
-        date_modified:
+        dateModified:
           readOnly: true
           description: 'The moment this request last Modified'
           type: string
           format: date-time
       required:
-        - source_organization
+        - sourceOrganization
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
-        - source_organization
+        - sourceOrganization
       properties:
         '@context':
           readOnly: true
@@ -6370,7 +6370,7 @@ components:
         '@type':
           readOnly: true
           type: string
-        source_organization:
+        sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         icon:
@@ -6500,12 +6500,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-03-19 05:33:27'
+        example: '2020-03-30 08:41:14'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-03-19 05:33:27'
+        example: '2020-03-30 08:41:14'
     required: []
   AuditTrail-write:
     properties:
@@ -6553,12 +6553,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-03-19 05:33:27'
+        example: '2020-03-30 08:41:14'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-03-19 05:33:27'
+        example: '2020-03-30 08:41:14'
     required: []
   ChangeLog-write:
     properties:
@@ -6715,12 +6715,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-03-19 05:33:27'
+        example: '2020-03-30 08:41:14'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-03-19 05:33:27'
+        example: '2020-03-30 08:41:14'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -6898,12 +6898,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-03-19 05:33:27'
+        example: '2020-03-30 08:41:14'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-03-19 05:33:27'
+        example: '2020-03-30 08:41:14'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
