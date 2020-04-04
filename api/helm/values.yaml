@@ -11,10 +11,10 @@ settings:
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   type: component
   repro: https://github.com/ConductionNL/verzoektypecatalogus
-  demo: vtc.zaakonline.nl
+  demo: pc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/vtc-php
   domain: conduction.nl
-  subdomain: vtc  
+  subdomain: pc
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
