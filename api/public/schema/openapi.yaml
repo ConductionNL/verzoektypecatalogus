@@ -4198,6 +4198,12 @@ paths:
           schema:
             type: boolean
         -
+          name: parentRequired
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
           name: 'order[id]'
           in: query
           required: false
@@ -4262,6 +4268,15 @@ paths:
               - desc
         -
           name: 'order[unique]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[parentRequired]'
           in: query
           required: false
           schema:
@@ -6226,7 +6241,6 @@ components:
           description: 'The icon of this property'
           type: string
         name:
-          readOnly: true
           description: 'The name of this RequestType'
           type: string
         description:
@@ -6241,6 +6255,9 @@ components:
           readOnly: true
         unique:
           description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        parentRequired:
+          description: 'If this request type needs a parent request'
           type: boolean
         children:
           description: 'The children of this request type'
@@ -6262,17 +6279,22 @@ components:
           format: date-time
       required:
         - sourceOrganization
+        - name
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
         - sourceOrganization
+        - name
       properties:
         sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
           type: string
         icon:
           description: 'The icon of this property'
+          type: string
+        name:
+          description: 'The name of this RequestType'
           type: string
         description:
           description: 'An short description of this RequestType'
@@ -6284,6 +6306,9 @@ components:
             $ref: '#/components/schemas/Property-write'
         unique:
           description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        parentRequired:
+          description: 'If this request type needs a parent request'
           type: boolean
         children:
           description: 'The children of this request type'
@@ -6319,7 +6344,6 @@ components:
           description: 'The icon of this property'
           type: string
         name:
-          readOnly: true
           description: 'The name of this RequestType'
           type: string
         description:
@@ -6334,6 +6358,9 @@ components:
           readOnly: true
         unique:
           description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        parentRequired:
+          description: 'If this request type needs a parent request'
           type: boolean
         children:
           description: 'The children of this request type'
@@ -6355,11 +6382,13 @@ components:
           format: date-time
       required:
         - sourceOrganization
+        - name
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
         - sourceOrganization
+        - name
       properties:
         '@context':
           readOnly: true
@@ -6376,6 +6405,9 @@ components:
         icon:
           description: 'The icon of this property'
           type: string
+        name:
+          description: 'The name of this RequestType'
+          type: string
         description:
           description: 'An short description of this RequestType'
           type: string
@@ -6386,6 +6418,9 @@ components:
             $ref: '#/components/schemas/Property:jsonld-write'
         unique:
           description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        parentRequired:
+          description: 'If this request type needs a parent request'
           type: boolean
         children:
           description: 'The children of this request type'
@@ -6500,12 +6535,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-03-30 08:41:14'
+        example: '2020-04-04 11:42:28'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-03-30 08:41:14'
+        example: '2020-04-04 11:42:28'
     required: []
   AuditTrail-write:
     properties:
@@ -6553,12 +6588,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-03-30 08:41:14'
+        example: '2020-04-04 11:42:28'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-03-30 08:41:14'
+        example: '2020-04-04 11:42:28'
     required: []
   ChangeLog-write:
     properties:
@@ -6715,12 +6750,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-03-30 08:41:14'
+        example: '2020-04-04 11:42:28'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-03-30 08:41:14'
+        example: '2020-04-04 11:42:28'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -6898,12 +6933,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-03-30 08:41:14'
+        example: '2020-04-04 11:42:28'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-03-30 08:41:14'
+        example: '2020-04-04 11:42:28'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -6966,6 +7001,9 @@ definitions:
         description: 'Whether or not this request is unique to a submitter'
         type: bool
         example: 'false'
+      parentRequired:
+        description: 'If this request type needs a parent request'
+        type: bool
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -6998,6 +7036,11 @@ definitions:
         example: 'My Property'
         maxLength: 255
         minLength: 15
+      name:
+        description: 'The name of this RequestType'
+        type: string
+        example: 'My RequestType'
+        maxLength: 255
       description:
         description: 'An short description of this RequestType'
         type: string
@@ -7007,6 +7050,9 @@ definitions:
         description: 'Whether or not this request is unique to a submitter'
         type: bool
         example: 'false'
+      parentRequired:
+        description: 'If this request type needs a parent request'
+        type: bool
       properties:
         description: 'The properties for this request type'
         type: '\Property[]|\ArrayCollection'
