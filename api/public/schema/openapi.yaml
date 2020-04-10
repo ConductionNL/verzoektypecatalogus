@@ -4285,6 +4285,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[caseType]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[dateCreated]'
           in: query
           required: false
@@ -6267,6 +6276,11 @@ components:
         parent:
           description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType-read'
+        caseType:
+          description: 'The default case type that is created when submiting this request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
         dateCreated:
           readOnly: true
           description: 'The moment this request was created'
@@ -6280,12 +6294,14 @@ components:
       required:
         - sourceOrganization
         - name
+        - caseType
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
         - sourceOrganization
         - name
+        - caseType
       properties:
         sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
@@ -6318,6 +6334,11 @@ components:
         parent:
           description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType-write'
+        caseType:
+          description: 'The default case type that is created when submiting this request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
     'RequestType:jsonld-read':
       type: object
       description: 'All properties contained in the RequestType type.'
@@ -6370,6 +6391,11 @@ components:
         parent:
           description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType:jsonld-read'
+        caseType:
+          description: 'The default case type that is created when submiting this request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
         dateCreated:
           readOnly: true
           description: 'The moment this request was created'
@@ -6383,12 +6409,14 @@ components:
       required:
         - sourceOrganization
         - name
+        - caseType
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
       required:
         - sourceOrganization
         - name
+        - caseType
       properties:
         '@context':
           readOnly: true
@@ -6430,6 +6458,11 @@ components:
         parent:
           description: 'The parent of this request type'
           $ref: '#/components/schemas/RequestType:jsonld-write'
+        caseType:
+          description: 'The default case type that is created when submiting this request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
 definitions:
   AuditTrail-read:
     properties:
@@ -6535,12 +6568,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-04 11:42:28'
+        example: '2020-04-10 09:11:23'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-04 11:42:28'
+        example: '2020-04-10 09:11:23'
     required: []
   AuditTrail-write:
     properties:
@@ -6588,12 +6621,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-04 11:42:28'
+        example: '2020-04-10 09:11:23'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-04 11:42:28'
+        example: '2020-04-10 09:11:23'
     required: []
   ChangeLog-write:
     properties:
@@ -6750,12 +6783,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-04-04 11:42:28'
+        example: '2020-04-10 09:11:23'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-04-04 11:42:28'
+        example: '2020-04-10 09:11:23'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -6933,12 +6966,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-04-04 11:42:28'
+        example: '2020-04-10 09:11:23'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-04-04 11:42:28'
+        example: '2020-04-10 09:11:23'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -7004,6 +7037,12 @@ definitions:
       parentRequired:
         description: 'If this request type needs a parent request'
         type: bool
+      caseType:
+        description: 'The default case type that is created when submiting this request'
+        type: string
+        example: 'http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a'
+        format: url
+        maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -7022,6 +7061,7 @@ definitions:
     required:
       - sourceOrganization
       - name
+      - caseType
   RequestType-write:
     properties:
       sourceOrganization:
@@ -7053,6 +7093,12 @@ definitions:
       parentRequired:
         description: 'If this request type needs a parent request'
         type: bool
+      caseType:
+        description: 'The default case type that is created when submiting this request'
+        type: string
+        example: 'http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a'
+        format: url
+        maxLength: 255
       properties:
         description: 'The properties for this request type'
         type: '\Property[]|\ArrayCollection'
@@ -7065,6 +7111,7 @@ definitions:
     required:
       - sourceOrganization
       - name
+      - caseType
   RequestType-write-requesttype:
     properties:
       extends:
@@ -7073,6 +7120,7 @@ definitions:
     required:
       - sourceOrganization
       - name
+      - caseType
 tags:
   -
     name: AuditTrail
