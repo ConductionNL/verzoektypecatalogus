@@ -26,8 +26,10 @@ parameters:
     app_env: '%env(APP_ENV)%'                
     app_cache: '%env(APP_CACHE)%'                             
     app_version: '%env(APP_VERSION)%'         
-    app_name: '%env(APP_NAME)%'       
+    app_name: '%env(APP_NAME)%'
+    app_subdomain: '%env(APP_SUBDOMAIN)%'
     app_domain: '%env(APP_DOMAIN)%'   
+    app_type: '%env(APP_TYPE)%'
     auth_provider_user: '%env(AUTH_PROVIDER_USER)%'   
     auth_provider_application: '%env(AUTH_PROVIDER_APPLICATION)%'    
     
@@ -87,11 +89,11 @@ parameters:
     common_ground.oas.servers:
             -
               description: Demo Omgeving
-              url: 'http://vtc.zaakonline.nl'       
+              url: 'http://proto.demo.common-ground.dev'       
     common_ground.oas.externalDocs:
             -
               description: OAS Documentatie
-              url: 'http://vtc.zaakonline.nl'   
+              url: 'http://proto.demo.common-ground.dev'  
     common_ground.oas.developers:
             -
               name: Conduction
@@ -101,6 +103,10 @@ parameters:
               name: Gemeente 's-Hertogenbosch
               url: https://github.com/gemeenteshertogenbosch
               email: info@s-hertogenbosch.nl/
+            -
+              name: Gemeente Utrecht
+              url: https://github.com/GemeenteUtrecht
+              email: info@utrecht.nl
     common_ground.oas.builds:
             -
               name: travis
