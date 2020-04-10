@@ -220,6 +220,21 @@ class RequestType
     private $parent;
 
     /**
+     * @var string $caseType The default case type that is created when submiting this request
+     * @example http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a
+     *
+     * @Gedmo\Versioned
+     * @Assert\NotNull
+     * @Assert\Url
+     * @Assert\Length(
+     *      max = 255
+     * )
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $caseType;
+
+    /**
      * @var Datetime $dateCreated The moment this request was created
      *
      * @Groups({"read"})
@@ -472,6 +487,17 @@ class RequestType
     {
     	$this->parent = $parent;
 
+        return $this;
+    }
+
+    public function getCaseType(): ?string
+    {
+        return $this->caseType;
+    }
+
+    public function setCaseType(string $caseType): self
+    {
+        $this->caseType = $caseType;
         return $this;
     }
 

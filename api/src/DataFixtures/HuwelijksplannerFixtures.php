@@ -638,6 +638,33 @@ class HuwelijksplannerFixtures extends Fixture
     	 *  Trouwen
     	 */
 
+        // Aanpassen naamsgebruik
+        $id = Uuid::fromString('4830cd4c-d8ce-4f8c-a8ad-f3dc821911f3');
+        $request = new RequestType();
+        $request->setSourceOrganization('0000'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setIcon('fas fa-user-tie');
+        $request->setName('Wijziging Naamsgebruik');
+        $request->setDescription('Met dit verzoek kunt u achternaam aanpassen');
+        $request->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/804489a3-8a5c-4f7b-b3b1-1e1178da9384');
+        $manager->persist($request);
+
+        // Dit is hacky tacky karig
+        $request->setId($id);
+        $manager->persist($request);
+        $manager->flush();
+        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        // einde hacky tacky
+
+        $stage1 = new Property();
+        $stage1->setStart(true);
+        $stage1->setTitle('Gegevens');
+        $stage1->setIcon('fal fa-user');
+        $stage1->setSlug('wijziging-naamsgebruik');
+        $stage1->setType('array');
+        $stage1->setDescription('Welke naam wilt u');
+        $stage1->setRequestType($request);
+        $manager->persist($stage1);
+
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('27f6ecf0-34bb-4100-a375-d14f2d5ee1d0');
         $request = new RequestType();
@@ -645,6 +672,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setIcon('fas fa-user-tie');
         $request->setName('Aanvraag babs andere gemeente');
         $request->setDescription('Met dit verzoek kunt u een ambtenaar voor aan andere gemeente aanvragen');
+        $request->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/29f85c3e-0602-4ada-b0be-def8710ea7b1');
         $manager->persist($request);
 
         // Dit is hacky tacky karig
@@ -664,33 +692,14 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($request);
         $manager->persist($stage1);
 
-//        $property1 = new Property();
-//        $property1->setStart(true);
-//        $property1->setTitle('Gegevens');
-//        $property1->setIcon('fal fa-user');
-//        $property1->setSlug('babs-andere-gemeente');
-//        $property1->setType('string');
-//        $property1->setFormat('string');
-//        $property1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
-//        $property1->setRequestType($request);
-//        $manager->persist($property1);
-//
-//        $property2 = new Property();
-//        $property2->addPrevious($stage1);
-//        $property2->setTitle('Indienen');
-//        $property2->setIcon('fal fa-paper-plane');
-//        $property2->setSlug('indienen');
-//        $property2->setDescription('Wie zijn de getuigen van partner?');
-//        $property2->setRequestType($request);
-//        $manager->persist($property2);
-
         // Aanvraag babs voor een dag
         $id = Uuid::fromString('cdd7e88b-1890-425d-a158-7f9ec92c9508');
         $aanvraagBabs= new RequestType();
         $aanvraagBabs->setSourceOrganization('0000');
         $aanvraagBabs->setIcon('fas fa-user-tie');
-        $aanvraagBabs->setName('Aanvraag babs voor een dag');
+        $aanvraagBabs->setName('Aanvraag babs (niet beeidigd))');
         $aanvraagBabs->setDescription('Melding voorgenomen huwelijk');
+        $aanvraagBabs->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
         $manager->persist($aanvraagBabs);
         $aanvraagBabs->setId($id);
         $manager->persist($aanvraagBabs);
@@ -707,12 +716,14 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($aanvraagBabs);
         $manager->persist($stage1);
 
+        // Aanvraag trouwlocatie
         $id = Uuid::fromString('c8704ea6-4962-4b7e-8d4e-69a257aa9577');
         $aanvraagLocatie= new RequestType();
         $aanvraagLocatie->setIcon('fal fa-rings-wedding');
         $aanvraagLocatie->setSourceOrganization('0000');
         $aanvraagLocatie->setName('Aanvraag trouwlocatie');
         $aanvraagLocatie->setDescription('Melding voorgenomen huwelijk');
+        $aanvraagLocatie->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/2ab5dfd8-5285-499c-85be-4325f5084eb9');
         $manager->persist($aanvraagLocatie);
         $aanvraagLocatie->setId($id);
         $manager->persist($aanvraagLocatie);
@@ -729,32 +740,14 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($aanvraagLocatie);
         $manager->persist($stage1);
 
-//        $stage2= new Property();
-//        $stage2->addPrevious($stage1);
-//        $stage2->setTitle('Gegevens');
-//        $stage2->setIcon('fal fa-user');
-//        $stage2->setSlug('contact');
-//        $stage2->setType('string');
-//        $stage2->setFormat('instemming');
-//        $stage2->setDescription('Wat zijn de contact gegevens van uw beoogde locatie');
-//        $stage2->setRequestType($aanvraagLocatie);
-//        $manager->persist($stage2);
-//
-//        $stage3= new Property();
-//        $stage3->addPrevious($stage2);
-//        $stage3->setTitle('Indienen');
-//        $stage3->setIcon('fal fa-paper-plane');
-//        $stage3->setSlug('indienen');
-//        $stage3->setDescription('Wie zijn de getuigen van partner?');
-//        $stage3->setRequestType($aanvraagLocatie);
-//        $manager->persist($stage3);
-
+        // Melding Huwelijk
         $id = Uuid::fromString('146cb7c8-46b9-4911-8ad9-3238bab4313e');
         $meldingTrouwenNL= new RequestType();
         $meldingTrouwenNL->setIcon('fal fa-ring');
         $meldingTrouwenNL->setSourceOrganization('0000');
         $meldingTrouwenNL->setName('Melding voorgenomen huwelijk');
         $meldingTrouwenNL->setDescription('Melding voorgenomen huwelijk');
+        $meldingTrouwenNL->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/28e05004-1754-48cf-bb1e-15525ebdeb0b');
         $manager->persist($meldingTrouwenNL);
         $meldingTrouwenNL->setId($id);
         $manager->persist($meldingTrouwenNL);
