@@ -13,7 +13,7 @@ settings:
   repro: https://github.com/ConductionNL/verzoektypecatalogus
   demo: pc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/vtc-php
-  domain: conduction.nl
+  domain: huwelijksplanner.online
   subdomain: pc
   organisationName: Conduction
   email: info@conduction.nl
