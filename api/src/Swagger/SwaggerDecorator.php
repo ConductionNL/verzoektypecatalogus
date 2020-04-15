@@ -146,7 +146,7 @@ final class SwaggerDecorator implements NormalizerInterface
 
         $docs['definitions'] = $additionalDocs;
 
-        /*
+        
         // Lest add an host
         if ($this->params->get('common_ground.oas.host')) {
             $docs['host'] = $this->params->get('common_ground.oas.host');
@@ -158,18 +158,19 @@ final class SwaggerDecorator implements NormalizerInterface
         }
 
         if($this->params->get('app_env') == 'prod'){
-            $docs['servers'][$this->params->get('app_domain')] = ['name'=>$this->params->get('app_domain'),['url'=>''.$this->params->get('app_name').'.'.$this->params->get('app_domain'),];
+            $docs['servers'][] = ['name'=>$this->params->get('app_domain'),'url'=>''.$this->params->get('app_name').'.'.$this->params->get('app_domain'),];
         }
         else{
-            $docs['servers'][$this->params->get('app_domain')] = ['name'=>$this->params->get('app_domain'),['url'=>''.$this->params->get('app_name').'.'.$this->params->get('app_env').'.'.$this->params->get('app_domain'),];
+            $docs['servers'][] = ['name'=>$this->params->get('app_domain'),'url'=>''.$this->params->get('app_name').'.'.$this->params->get('app_env').'.'.$this->params->get('app_domain'),];
         }
-        */
+
+
         /*
         app_domain
         foreach ($this->params->get('common_ground.oas.servers') as $key => $value) {
             $docs['servers'][$key] = $value;
         }
-        /*
+        */
 
 
 
@@ -457,7 +458,7 @@ final class SwaggerDecorator implements NormalizerInterface
                         $groups = $propertyAnnotation->getGroups();
                         break;
 
-                        // Constrainds (Validation)
+                    // Constrainds (Validation)
                     case "Assert\Date":
                         $atributes['type'] = 'string';
                         $atributes['format'] = 'date';
