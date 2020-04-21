@@ -1,16 +1,16 @@
 openapi: 3.0.2
 info:
-  title: 'Proto component commonground'
+  title: 'Verzoek Type Catalogus'
   version: V.0.1
   description: |
     API Details
-    - Component: Proto component commonground
-    - Reference: pc
+    - Component: Verzoek Type Catalogus
+    - Reference: vtc
     - Enviroment: dev
     - Version: V.0.1
-    - Repository: [online](https://github.com/ConductionNL/proto-component) / [zip](https://github.com/ConductionNL/proto-component/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
-    - Datamodel: [postman](/schema/pc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    - Repository: [online](https://github.com/ConductionNL/verzoektypecatalogus) / [zip](https://github.com/ConductionNL/verzoektypecatalogus/archive/master.zip)
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/vtc-php) 
+    - Datamodel: [postman](/schema/vtc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
     'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
@@ -1924,6 +1924,3297 @@ paths:
             schema:
               $ref: '#/components/schemas/ChangeLog-write'
         description: 'The updated ChangeLog resource'
+  /properties:
+    get:
+      tags:
+        - Property
+      operationId: getPropertyCollection
+      summary: 'Retrieves the collection of Property resources.'
+      responses:
+        200:
+          description: 'Property collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Property:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Property:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            application/json+vnd.api:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property-read'
+      parameters:
+        -
+          name: exclusiveMaximum
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: exclusiveMinimum
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: additionalItems
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: uniqueItems
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: required
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: nullable
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: readOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: writeOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: deprecated
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: start
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[title]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[type]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[format]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[iri]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[multipleOf]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[maximum]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[exclusiveMaximum]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[minimum]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[exclusiveMinimum]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[maxLength]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[minLength]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[pattern]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[additionalItems]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[maxItems]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[minItems]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[uniqueItems]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[maxProperties]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[minProperties]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[required]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[properties]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[additionalProperties]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[object]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[enum]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[allOf]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[anyOf]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[oneOf]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[definitions]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[description]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[defaultValue]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[nullable]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[discriminator]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[readOnly]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[writeOnly]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[xml]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[externalDoc]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[example]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[deprecated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[availableFrom]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[availableUntil]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[minDate]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[maxDate]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[icon]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[slug]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[start]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'availableFrom[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableFrom[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableFrom[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableFrom[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: title
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'title[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: type
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'type[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: format
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'format[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: iri
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'iri[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: multipleOf
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'multipleOf[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: maximum
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'maximum[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: exclusiveMaximum
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'exclusiveMaximum[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: minimum
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'minimum[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: exclusiveMinimum
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'exclusiveMinimum[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: maxLength
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'maxLength[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: minLength
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'minLength[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: pattern
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'pattern[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: additionalItems
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'additionalItems[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: maxItems
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'maxItems[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: minItems
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'minItems[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: uniqueItems
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'uniqueItems[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: maxProperties
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'maxProperties[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: minProperties
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'minProperties[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: required
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'required[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: properties
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'properties[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: additionalProperties
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'additionalProperties[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: object
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'object[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: enum
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'enum[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: allOf
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'allOf[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: anyOf
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'anyOf[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: oneOf
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'oneOf[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: definitions
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'definitions[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: description
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'description[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: defaultValue
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'defaultValue[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: nullable
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'nullable[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: discriminator
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'discriminator[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: readOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'readOnly[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: writeOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'writeOnly[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: xml
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'xml[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: externalDoc
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'externalDoc[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: example
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'example[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: deprecated
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'deprecated[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: availableFrom
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableFrom[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: availableUntil
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: minDate
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'minDate[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: maxDate
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'maxDate[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: icon
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'icon[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: slug
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'slug[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: start
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'start[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: dateCreated
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: dateModified
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - Property
+      operationId: postPropertyCollection
+      summary: 'Creates a Property resource.'
+      responses:
+        201:
+          description: 'Property resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+          links:
+            GetPropertyItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getPropertyItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /properties/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Property:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Property:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+        description: 'The new Property resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/properties/{id}':
+    get:
+      tags:
+        - Property
+      operationId: getPropertyItem
+      summary: 'Retrieves a Property resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Property resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+    put:
+      tags:
+        - Property
+      operationId: putPropertyItem
+      summary: 'Replaces the Property resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Property resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Property:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Property:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Property-write'
+        description: 'The updated Property resource'
+    delete:
+      tags:
+        - Property
+      operationId: deletePropertyItem
+      summary: 'Removes the Property resource.'
+      responses:
+        204:
+          description: 'Property resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/properties/{id}/audit_trail':
+    get:
+      tags:
+        - Property
+      operationId: get_audit_trailPropertyItem
+      summary: 'Retrieves a Property resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Property resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  '/properties/{id}/change_log':
+    get:
+      tags:
+        - Property
+      operationId: get_change_logsPropertyItem
+      summary: 'Retrieves a Property resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Property resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Property:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Property-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  /request_types:
+    get:
+      tags:
+        - RequestType
+      operationId: getRequestTypeCollection
+      summary: 'Retrieves the collection of RequestType resources.'
+      responses:
+        200:
+          description: 'RequestType collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/RequestType:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/RequestType:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            application/json+vnd.api:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestType-read'
+      parameters:
+        -
+          name: unique
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: parentRequired
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[sourceOrganization]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[icon]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[name]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[description]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[availableFrom]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[availableUntil]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[unique]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[parentRequired]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[caseType]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'availableFrom[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableFrom[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableFrom[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableFrom[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: sourceOrganization
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'sourceOrganization[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: 'exists[parent]'
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'exists[children]'
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - RequestType
+      operationId: postRequestTypeCollection
+      summary: 'Creates a RequestType resource.'
+      responses:
+        201:
+          description: 'RequestType resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+          links:
+            GetRequestTypeItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getRequestTypeItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /request_types/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/RequestType:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/RequestType:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+        description: 'The new RequestType resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/request_types/{id}':
+    get:
+      tags:
+        - RequestType
+      operationId: getRequestTypeItem
+      summary: 'Retrieves a RequestType resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'RequestType resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+    put:
+      tags:
+        - RequestType
+      operationId: putRequestTypeItem
+      summary: 'Replaces the RequestType resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'RequestType resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/RequestType:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/RequestType:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/RequestType-write'
+        description: 'The updated RequestType resource'
+    delete:
+      tags:
+        - RequestType
+      operationId: deleteRequestTypeItem
+      summary: 'Removes the RequestType resource.'
+      responses:
+        204:
+          description: 'RequestType resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/request_types/{id}/audit_trail':
+    get:
+      tags:
+        - RequestType
+      operationId: get_audit_trailRequestTypeItem
+      summary: 'Retrieves a RequestType resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'RequestType resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  '/request_types/{id}/change_log':
+    get:
+      tags:
+        - RequestType
+      operationId: get_change_logsRequestTypeItem
+      summary: 'Retrieves a RequestType resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'RequestType resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/RequestType:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/RequestType-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
 components:
   schemas:
     AuditTrail-read:
@@ -1936,6 +5227,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         request:
           readOnly: true
           description: 'The id of the request within that application'
@@ -2066,6 +5358,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         request:
           readOnly: true
           description: 'The id of the request within that application'
@@ -2197,6 +5490,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         action:
           readOnly: true
           type: string
@@ -2257,6 +5551,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         action:
           readOnly: true
           type: string
@@ -2307,6 +5602,874 @@ components:
           type: string
         '@type':
           readOnly: true
+          type: string
+    Property-read:
+      type: object
+      description: |
+        This property follows the following schemes (in order of importance)
+        https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+        https://tools.ietf.org/html/draft-wright-json-schema-validation-00
+        http://json-schema.org/.
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        requestType:
+          description: 'The requestType that this property belongs to'
+          $ref: '#/components/schemas/RequestType-read'
+        title:
+          description: 'The title of this property'
+          type: string
+        name:
+          readOnly: true
+          description: 'The name of the property as used in api calls, extracted from title on snake_case basis'
+          type: string
+        type:
+          description: 'The type of this property'
+          type: string
+        format:
+          description: 'The swagger type of the property as used in api calls'
+          type: string
+        iri:
+          description: 'The iri type of the property used to standarize datas'
+          type: string
+        multipleOf:
+          description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
+          type: integer
+        maximum:
+          description: '*Can only be used in combination with type integer* The maximum allowed value'
+          type: integer
+        exclusiveMaximum:
+          description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
+          type: boolean
+        minimum:
+          description: '*Can only be used in combination with type integer* The minimum allowed value'
+          type: integer
+        exclusiveMinimum:
+          description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
+          type: boolean
+        maxLength:
+          description: 'The maximum amount of characters in the value'
+          type: integer
+        minLength:
+          description: 'The minimal amount of characters in the value'
+          type: integer
+        pattern:
+          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
+          type: string
+        additionalItems:
+          description: 'Not yet supported by business logic'
+          type: boolean
+        maxItems:
+          description: '*Can only be used in combination with type array* The maximum array length'
+          type: integer
+        minItems:
+          description: '*Can only be used in combination with type array* The minimum allowed value'
+          type: integer
+        uniqueItems:
+          description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
+          type: boolean
+        maxProperties:
+          description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
+          type: integer
+        minProperties:
+          description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
+          type: integer
+        required:
+          description: 'Only whether or not this property is required'
+          type: boolean
+        properties:
+          description: 'Not yet supported by business logic'
+          type: string
+        additionalProperties:
+          description: 'Not yet supported by business logic'
+          type: string
+        object:
+          description: 'Not yet supported by business logic'
+          type: string
+        enum:
+          description: 'An array of possible values, input is limited to this array]'
+          type: array
+          items:
+            type: string
+        description:
+          description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
+          type: string
+        defaultValue:
+          description: 'An default value for this value that will be used if a user doesn''t supply a value'
+          type: string
+        nullable:
+          description: 'Whether or not this property can be left empty'
+          type: boolean
+        discriminator:
+          description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
+          type: string
+        readOnly:
+          description: 'Whether or not this property is read only'
+          type: boolean
+        writeOnly:
+          description: 'Whether or not this property is write only'
+          type: boolean
+        xml:
+          description: 'An XML representation of the swagger docs'
+          type: string
+        externalDoc:
+          description: 'An link to any external documentation for the value'
+          type: string
+        example:
+          description: 'An example of the value that should be supplied'
+          type: string
+        deprecated:
+          description: 'Whether or not this property has been deprecated and wil be removed in the future'
+          type: boolean
+        availableFrom:
+          description: 'The moment from which this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        availableUntil:
+          description: '*should be used in combination with deprecated* The moment where until this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        minDate:
+          description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        maxDate:
+          description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        slug:
+          description: 'The slug of this property'
+          type: string
+        start:
+          description: 'Whether or not this proerty is the starting oint of a process'
+          type: boolean
+        dateCreated:
+          readOnly: true
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+        dateModified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+      required:
+        - requestType
+        - title
+        - type
+        - format
+    Property-write:
+      type: object
+      description: |
+        This property follows the following schemes (in order of importance)
+        https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+        https://tools.ietf.org/html/draft-wright-json-schema-validation-00
+        http://json-schema.org/.
+      required:
+        - requestType
+        - title
+        - type
+        - format
+      properties:
+        requestType:
+          description: 'The requestType that this property belongs to'
+          $ref: '#/components/schemas/RequestType-write'
+        title:
+          description: 'The title of this property'
+          type: string
+        type:
+          description: 'The type of this property'
+          type: string
+        format:
+          description: 'The swagger type of the property as used in api calls'
+          type: string
+        iri:
+          description: 'The iri type of the property used to standarize datas'
+          type: string
+        multipleOf:
+          description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
+          type: integer
+        maximum:
+          description: '*Can only be used in combination with type integer* The maximum allowed value'
+          type: integer
+        exclusiveMaximum:
+          description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
+          type: boolean
+        minimum:
+          description: '*Can only be used in combination with type integer* The minimum allowed value'
+          type: integer
+        exclusiveMinimum:
+          description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
+          type: boolean
+        maxLength:
+          description: 'The maximum amount of characters in the value'
+          type: integer
+        minLength:
+          description: 'The minimal amount of characters in the value'
+          type: integer
+        pattern:
+          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
+          type: string
+        additionalItems:
+          description: 'Not yet supported by business logic'
+          type: boolean
+        maxItems:
+          description: '*Can only be used in combination with type array* The maximum array length'
+          type: integer
+        minItems:
+          description: '*Can only be used in combination with type array* The minimum allowed value'
+          type: integer
+        uniqueItems:
+          description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
+          type: boolean
+        maxProperties:
+          description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
+          type: integer
+        minProperties:
+          description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
+          type: integer
+        required:
+          description: 'Only whether or not this property is required'
+          type: boolean
+        properties:
+          description: 'Not yet supported by business logic'
+          type: string
+        additionalProperties:
+          description: 'Not yet supported by business logic'
+          type: string
+        object:
+          description: 'Not yet supported by business logic'
+          type: string
+        enum:
+          description: 'An array of possible values, input is limited to this array]'
+          type: array
+          items:
+            type: string
+        description:
+          description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
+          type: string
+        defaultValue:
+          description: 'An default value for this value that will be used if a user doesn''t supply a value'
+          type: string
+        nullable:
+          description: 'Whether or not this property can be left empty'
+          type: boolean
+        discriminator:
+          description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
+          type: string
+        readOnly:
+          description: 'Whether or not this property is read only'
+          type: boolean
+        writeOnly:
+          description: 'Whether or not this property is write only'
+          type: boolean
+        xml:
+          description: 'An XML representation of the swagger docs'
+          type: string
+        externalDoc:
+          description: 'An link to any external documentation for the value'
+          type: string
+        example:
+          description: 'An example of the value that should be supplied'
+          type: string
+        deprecated:
+          description: 'Whether or not this property has been deprecated and wil be removed in the future'
+          type: boolean
+        availableFrom:
+          description: 'The moment from which this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        availableUntil:
+          description: '*should be used in combination with deprecated* The moment where until this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        minDate:
+          description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        maxDate:
+          description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        slug:
+          description: 'The slug of this property'
+          type: string
+        start:
+          description: 'Whether or not this proerty is the starting oint of a process'
+          type: boolean
+    'Property:jsonld-read':
+      type: object
+      description: |
+        This property follows the following schemes (in order of importance)
+        https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+        https://tools.ietf.org/html/draft-wright-json-schema-validation-00
+        http://json-schema.org/.
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        requestType:
+          description: 'The requestType that this property belongs to'
+          $ref: '#/components/schemas/RequestType:jsonld-read'
+        title:
+          description: 'The title of this property'
+          type: string
+        name:
+          readOnly: true
+          description: 'The name of the property as used in api calls, extracted from title on snake_case basis'
+          type: string
+        type:
+          description: 'The type of this property'
+          type: string
+        format:
+          description: 'The swagger type of the property as used in api calls'
+          type: string
+        iri:
+          description: 'The iri type of the property used to standarize datas'
+          type: string
+        multipleOf:
+          description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
+          type: integer
+        maximum:
+          description: '*Can only be used in combination with type integer* The maximum allowed value'
+          type: integer
+        exclusiveMaximum:
+          description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
+          type: boolean
+        minimum:
+          description: '*Can only be used in combination with type integer* The minimum allowed value'
+          type: integer
+        exclusiveMinimum:
+          description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
+          type: boolean
+        maxLength:
+          description: 'The maximum amount of characters in the value'
+          type: integer
+        minLength:
+          description: 'The minimal amount of characters in the value'
+          type: integer
+        pattern:
+          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
+          type: string
+        additionalItems:
+          description: 'Not yet supported by business logic'
+          type: boolean
+        maxItems:
+          description: '*Can only be used in combination with type array* The maximum array length'
+          type: integer
+        minItems:
+          description: '*Can only be used in combination with type array* The minimum allowed value'
+          type: integer
+        uniqueItems:
+          description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
+          type: boolean
+        maxProperties:
+          description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
+          type: integer
+        minProperties:
+          description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
+          type: integer
+        required:
+          description: 'Only whether or not this property is required'
+          type: boolean
+        properties:
+          description: 'Not yet supported by business logic'
+          type: string
+        additionalProperties:
+          description: 'Not yet supported by business logic'
+          type: string
+        object:
+          description: 'Not yet supported by business logic'
+          type: string
+        enum:
+          description: 'An array of possible values, input is limited to this array]'
+          type: array
+          items:
+            type: string
+        description:
+          description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
+          type: string
+        defaultValue:
+          description: 'An default value for this value that will be used if a user doesn''t supply a value'
+          type: string
+        nullable:
+          description: 'Whether or not this property can be left empty'
+          type: boolean
+        discriminator:
+          description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
+          type: string
+        readOnly:
+          description: 'Whether or not this property is read only'
+          type: boolean
+        writeOnly:
+          description: 'Whether or not this property is write only'
+          type: boolean
+        xml:
+          description: 'An XML representation of the swagger docs'
+          type: string
+        externalDoc:
+          description: 'An link to any external documentation for the value'
+          type: string
+        example:
+          description: 'An example of the value that should be supplied'
+          type: string
+        deprecated:
+          description: 'Whether or not this property has been deprecated and wil be removed in the future'
+          type: boolean
+        availableFrom:
+          description: 'The moment from which this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        availableUntil:
+          description: '*should be used in combination with deprecated* The moment where until this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        minDate:
+          description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        maxDate:
+          description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        slug:
+          description: 'The slug of this property'
+          type: string
+        start:
+          description: 'Whether or not this proerty is the starting oint of a process'
+          type: boolean
+        dateCreated:
+          readOnly: true
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+        dateModified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+      required:
+        - requestType
+        - title
+        - type
+        - format
+    'Property:jsonld-write':
+      type: object
+      description: |
+        This property follows the following schemes (in order of importance)
+        https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+        https://tools.ietf.org/html/draft-wright-json-schema-validation-00
+        http://json-schema.org/.
+      required:
+        - requestType
+        - title
+        - type
+        - format
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        requestType:
+          description: 'The requestType that this property belongs to'
+          $ref: '#/components/schemas/RequestType:jsonld-write'
+        title:
+          description: 'The title of this property'
+          type: string
+        type:
+          description: 'The type of this property'
+          type: string
+        format:
+          description: 'The swagger type of the property as used in api calls'
+          type: string
+        iri:
+          description: 'The iri type of the property used to standarize datas'
+          type: string
+        multipleOf:
+          description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
+          type: integer
+        maximum:
+          description: '*Can only be used in combination with type integer* The maximum allowed value'
+          type: integer
+        exclusiveMaximum:
+          description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
+          type: boolean
+        minimum:
+          description: '*Can only be used in combination with type integer* The minimum allowed value'
+          type: integer
+        exclusiveMinimum:
+          description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
+          type: boolean
+        maxLength:
+          description: 'The maximum amount of characters in the value'
+          type: integer
+        minLength:
+          description: 'The minimal amount of characters in the value'
+          type: integer
+        pattern:
+          description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
+          type: string
+        additionalItems:
+          description: 'Not yet supported by business logic'
+          type: boolean
+        maxItems:
+          description: '*Can only be used in combination with type array* The maximum array length'
+          type: integer
+        minItems:
+          description: '*Can only be used in combination with type array* The minimum allowed value'
+          type: integer
+        uniqueItems:
+          description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
+          type: boolean
+        maxProperties:
+          description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
+          type: integer
+        minProperties:
+          description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
+          type: integer
+        required:
+          description: 'Only whether or not this property is required'
+          type: boolean
+        properties:
+          description: 'Not yet supported by business logic'
+          type: string
+        additionalProperties:
+          description: 'Not yet supported by business logic'
+          type: string
+        object:
+          description: 'Not yet supported by business logic'
+          type: string
+        enum:
+          description: 'An array of possible values, input is limited to this array]'
+          type: array
+          items:
+            type: string
+        description:
+          description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
+          type: string
+        defaultValue:
+          description: 'An default value for this value that will be used if a user doesn''t supply a value'
+          type: string
+        nullable:
+          description: 'Whether or not this property can be left empty'
+          type: boolean
+        discriminator:
+          description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
+          type: string
+        readOnly:
+          description: 'Whether or not this property is read only'
+          type: boolean
+        writeOnly:
+          description: 'Whether or not this property is write only'
+          type: boolean
+        xml:
+          description: 'An XML representation of the swagger docs'
+          type: string
+        externalDoc:
+          description: 'An link to any external documentation for the value'
+          type: string
+        example:
+          description: 'An example of the value that should be supplied'
+          type: string
+        deprecated:
+          description: 'Whether or not this property has been deprecated and wil be removed in the future'
+          type: boolean
+        availableFrom:
+          description: 'The moment from which this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        availableUntil:
+          description: '*should be used in combination with deprecated* The moment where until this value is available'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+        minDate:
+          description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        maxDate:
+          description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
+          type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        slug:
+          description: 'The slug of this property'
+          type: string
+        start:
+          description: 'Whether or not this proerty is the starting oint of a process'
+          type: boolean
+    RequestType-read:
+      type: object
+      description: 'All properties contained in the RequestType type.'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        sourceOrganization:
+          description: 'The RSIN of the organization that owns this process'
+          type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        name:
+          description: 'The name of this RequestType'
+          type: string
+        description:
+          description: 'An short description of this RequestType'
+          type: string
+        properties:
+          description: 'The properties for this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/Property-read'
+        stages:
+          readOnly: true
+        unique:
+          description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        parentRequired:
+          description: 'If this request type needs a parent request'
+          type: boolean
+        children:
+          description: 'The children of this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestType-read'
+        parent:
+          description: 'The parent of this request type'
+          $ref: '#/components/schemas/RequestType-read'
+        caseType:
+          description: 'The default case type that is created when submiting this request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        dateCreated:
+          readOnly: true
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+        dateModified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+      required:
+        - sourceOrganization
+        - name
+        - caseType
+    RequestType-write:
+      type: object
+      description: 'All properties contained in the RequestType type.'
+      required:
+        - sourceOrganization
+        - name
+        - caseType
+      properties:
+        sourceOrganization:
+          description: 'The RSIN of the organization that owns this process'
+          type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        name:
+          description: 'The name of this RequestType'
+          type: string
+        description:
+          description: 'An short description of this RequestType'
+          type: string
+        properties:
+          description: 'The properties for this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/Property-write'
+        unique:
+          description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        parentRequired:
+          description: 'If this request type needs a parent request'
+          type: boolean
+        children:
+          description: 'The children of this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestType-write'
+        parent:
+          description: 'The parent of this request type'
+          $ref: '#/components/schemas/RequestType-write'
+        caseType:
+          description: 'The default case type that is created when submiting this request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+    'RequestType:jsonld-read':
+      type: object
+      description: 'All properties contained in the RequestType type.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        sourceOrganization:
+          description: 'The RSIN of the organization that owns this process'
+          type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        name:
+          description: 'The name of this RequestType'
+          type: string
+        description:
+          description: 'An short description of this RequestType'
+          type: string
+        properties:
+          description: 'The properties for this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/Property:jsonld-read'
+        stages:
+          readOnly: true
+        unique:
+          description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        parentRequired:
+          description: 'If this request type needs a parent request'
+          type: boolean
+        children:
+          description: 'The children of this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestType:jsonld-read'
+        parent:
+          description: 'The parent of this request type'
+          $ref: '#/components/schemas/RequestType:jsonld-read'
+        caseType:
+          description: 'The default case type that is created when submiting this request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        dateCreated:
+          readOnly: true
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+        dateModified:
+          readOnly: true
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+      required:
+        - sourceOrganization
+        - name
+        - caseType
+    'RequestType:jsonld-write':
+      type: object
+      description: 'All properties contained in the RequestType type.'
+      required:
+        - sourceOrganization
+        - name
+        - caseType
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        sourceOrganization:
+          description: 'The RSIN of the organization that owns this process'
+          type: string
+        icon:
+          description: 'The icon of this property'
+          type: string
+        name:
+          description: 'The name of this RequestType'
+          type: string
+        description:
+          description: 'An short description of this RequestType'
+          type: string
+        properties:
+          description: 'The properties for this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/Property:jsonld-write'
+        unique:
+          description: 'Whether or not this request is unique to a submitter'
+          type: boolean
+        parentRequired:
+          description: 'If this request type needs a parent request'
+          type: boolean
+        children:
+          description: 'The children of this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestType:jsonld-write'
+        parent:
+          description: 'The parent of this request type'
+          $ref: '#/components/schemas/RequestType:jsonld-write'
+        caseType:
+          description: 'The default case type that is created when submiting this request'
+          externalDocs:
+            url: 'http://schema.org/url'
           type: string
 definitions:
   AuditTrail-read:
@@ -2413,12 +6576,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-10 09:55:49'
+        example: '2020-04-21 13:57:29'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-10 09:55:49'
+        example: '2020-04-21 13:57:29'
     required: []
   AuditTrail-write:
     properties:
@@ -2466,12 +6629,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-10 09:55:49'
+        example: '2020-04-21 13:57:29'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-10 09:55:49'
+        example: '2020-04-21 13:57:29'
     required: []
   ChangeLog-write:
     properties:
@@ -2481,6 +6644,491 @@ definitions:
         example: 'This log line is suspicius'
         maxLength: 2555
     required: []
+  Property-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      title:
+        description: 'The title of this property'
+        type: string
+        example: 'My Property'
+        maxLength: 255
+        minLength: 3
+      type:
+        description: 'The type of this property'
+        type: string
+        example: string
+        maxLength: 255
+      format:
+        description: 'The swagger type of the property as used in api calls'
+        type: string
+        example: string
+        maxLength: 255
+      iri:
+        description: 'The iri type of the property used to standarize datas'
+        type: string
+        example: 'https://schema.org/name'
+        maxLength: 255
+      multipleOf:
+        description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
+        type: string
+        example: '2'
+      maximum:
+        description: '*Can only be used in combination with type integer* The maximum allowed value'
+        type: string
+        example: '2'
+      exclusiveMaximum:
+        description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
+        type: string
+        example: 'true'
+      minimum:
+        description: '*Can only be used in combination with type integer* The minimum allowed value'
+        type: string
+        example: '2'
+      exclusiveMinimum:
+        description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
+        type: string
+        example: 'true'
+      maxLength:
+        description: 'The maximum amount of characters in the value'
+        type: string
+        example: '2'
+      minLength:
+        description: 'The minimal amount of characters in the value'
+        type: int
+        example: '2'
+      pattern:
+        description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
+        type: string
+        example: regex
+        maxLength: 255
+      additionalItems:
+        description: 'Not yet supported by business logic'
+        type: bool
+      maxItems:
+        description: '*Can only be used in combination with type array* The maximum array length'
+        type: string
+        example: '2'
+      minItems:
+        description: '*Can only be used in combination with type array* The minimum allowed value'
+        type: string
+        example: '2'
+      uniqueItems:
+        description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
+        type: bool
+        example: 'false'
+      maxProperties:
+        description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
+        type: string
+        example: '2'
+      minProperties:
+        description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
+        type: int
+        example: '2'
+      required:
+        description: 'Only whether or not this property is required'
+        type: bool
+        example: 'false'
+      properties:
+        description: 'Not yet supported by business logic'
+        type: '\Property[]|\ArrayCollection'
+      additionalProperties:
+        description: 'Not yet supported by business logic'
+        type: '\Property[]|\ArrayCollection'
+      object:
+        description: 'Not yet supported by business logic'
+        type: object
+      enum:
+        description: 'An array of possible values, input is limited to this array]'
+        type: array
+      description:
+        description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
+        type: string
+        example: 'My value'
+      defaultValue:
+        description: 'An default value for this value that will be used if a user doesn''t supply a value'
+        type: string
+        example: 'My value'
+        maxLength: 255
+      nullable:
+        description: 'Whether or not this property can be left empty'
+        type: bool
+        example: 'false'
+      discriminator:
+        description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
+        type: string
+        example: name
+        maxLength: 255
+      readOnly:
+        description: 'Whether or not this property is read only'
+        type: bool
+        example: 'false'
+      writeOnly:
+        description: 'Whether or not this property is write only'
+        type: bool
+        example: 'false'
+      xml:
+        description: 'An XML representation of the swagger docs'
+        type: string
+        example: '''<xml></xml>'''
+      externalDoc:
+        description: 'An link to any external documentation for the value'
+        type: string
+        example: 'https://www.w3.org/TR/NOTE-datetime'
+        maxLength: 255
+      example:
+        description: 'An example of the value that should be supplied'
+        type: string
+        example: 'My value'
+        maxLength: 255
+      deprecated:
+        description: 'Whether or not this property has been deprecated and wil be removed in the future'
+        type: bool
+        example: 'false'
+      availableFrom:
+        description: 'The moment from which this value is available'
+        type: string
+        example: '2020-04-21 13:57:29'
+        format: date-time
+      availableUntil:
+        description: '*should be used in combination with deprecated* The moment where until this value is available'
+        type: string
+        example: '2020-04-21 13:57:29'
+        format: date-time
+      minDate:
+        description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
+        type: string
+        example: '2019-09-16T14:26:51+00:00'
+      maxDate:
+        description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
+        type: string
+        example: '2019-09-16T14:26:51+00:00'
+      icon:
+        description: 'The icon of this property'
+        type: string
+        example: 'My Property'
+        maxLength: 255
+        minLength: 3
+      slug:
+        description: 'The slug of this property'
+        type: string
+        example: my-slug
+        maxLength: 255
+        minLength: 3
+      start:
+        description: 'Whether or not this proerty is the starting oint of a process'
+        type: string
+        example: 'true'
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      requestType:
+        description: 'The requestType that this property belongs to'
+        type: object
+    required: []
+  Property-write:
+    properties:
+      title:
+        description: 'The title of this property'
+        type: string
+        example: 'My Property'
+        maxLength: 255
+        minLength: 3
+      type:
+        description: 'The type of this property'
+        type: string
+        example: string
+        maxLength: 255
+      format:
+        description: 'The swagger type of the property as used in api calls'
+        type: string
+        example: string
+        maxLength: 255
+      iri:
+        description: 'The iri type of the property used to standarize datas'
+        type: string
+        example: 'https://schema.org/name'
+        maxLength: 255
+      multipleOf:
+        description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
+        type: string
+        example: '2'
+      maximum:
+        description: '*Can only be used in combination with type integer* The maximum allowed value'
+        type: string
+        example: '2'
+      exclusiveMaximum:
+        description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
+        type: string
+        example: 'true'
+      minimum:
+        description: '*Can only be used in combination with type integer* The minimum allowed value'
+        type: string
+        example: '2'
+      exclusiveMinimum:
+        description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
+        type: string
+        example: 'true'
+      maxLength:
+        description: 'The maximum amount of characters in the value'
+        type: string
+        example: '2'
+      minLength:
+        description: 'The minimal amount of characters in the value'
+        type: int
+        example: '2'
+      pattern:
+        description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
+        type: string
+        example: regex
+        maxLength: 255
+      additionalItems:
+        description: 'Not yet supported by business logic'
+        type: bool
+      maxItems:
+        description: '*Can only be used in combination with type array* The maximum array length'
+        type: string
+        example: '2'
+      minItems:
+        description: '*Can only be used in combination with type array* The minimum allowed value'
+        type: string
+        example: '2'
+      uniqueItems:
+        description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
+        type: bool
+        example: 'false'
+      maxProperties:
+        description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
+        type: string
+        example: '2'
+      minProperties:
+        description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
+        type: int
+        example: '2'
+      required:
+        description: 'Only whether or not this property is required'
+        type: bool
+        example: 'false'
+      properties:
+        description: 'Not yet supported by business logic'
+        type: '\Property[]|\ArrayCollection'
+      additionalProperties:
+        description: 'Not yet supported by business logic'
+        type: '\Property[]|\ArrayCollection'
+      object:
+        description: 'Not yet supported by business logic'
+        type: object
+      enum:
+        description: 'An array of possible values, input is limited to this array]'
+        type: array
+      description:
+        description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
+        type: string
+        example: 'My value'
+      defaultValue:
+        description: 'An default value for this value that will be used if a user doesn''t supply a value'
+        type: string
+        example: 'My value'
+        maxLength: 255
+      nullable:
+        description: 'Whether or not this property can be left empty'
+        type: bool
+        example: 'false'
+      discriminator:
+        description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
+        type: string
+        example: name
+        maxLength: 255
+      readOnly:
+        description: 'Whether or not this property is read only'
+        type: bool
+        example: 'false'
+      writeOnly:
+        description: 'Whether or not this property is write only'
+        type: bool
+        example: 'false'
+      xml:
+        description: 'An XML representation of the swagger docs'
+        type: string
+        example: '''<xml></xml>'''
+      externalDoc:
+        description: 'An link to any external documentation for the value'
+        type: string
+        example: 'https://www.w3.org/TR/NOTE-datetime'
+        maxLength: 255
+      example:
+        description: 'An example of the value that should be supplied'
+        type: string
+        example: 'My value'
+        maxLength: 255
+      deprecated:
+        description: 'Whether or not this property has been deprecated and wil be removed in the future'
+        type: bool
+        example: 'false'
+      availableFrom:
+        description: 'The moment from which this value is available'
+        type: string
+        example: '2020-04-21 13:57:29'
+        format: date-time
+      availableUntil:
+        description: '*should be used in combination with deprecated* The moment where until this value is available'
+        type: string
+        example: '2020-04-21 13:57:29'
+        format: date-time
+      minDate:
+        description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
+        type: string
+        example: '2019-09-16T14:26:51+00:00'
+      maxDate:
+        description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
+        type: string
+        example: '2019-09-16T14:26:51+00:00'
+      icon:
+        description: 'The icon of this property'
+        type: string
+        example: 'My Property'
+        maxLength: 255
+        minLength: 3
+      slug:
+        description: 'The slug of this property'
+        type: string
+        example: my-slug
+        maxLength: 255
+        minLength: 3
+      start:
+        description: 'Whether or not this proerty is the starting oint of a process'
+        type: string
+        example: 'true'
+      requestType:
+        description: 'The requestType that this property belongs to'
+        type: object
+    required: []
+  RequestType-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      sourceOrganization:
+        description: 'The RSIN of the organization that owns this process'
+        type: string
+        example: '002851234'
+        maxLength: 11
+        minLength: 8
+      icon:
+        description: 'The icon of this property'
+        type: string
+        example: 'My Property'
+        maxLength: 255
+        minLength: 15
+      name:
+        description: 'The name of this RequestType'
+        type: string
+        example: 'My RequestType'
+        maxLength: 255
+      description:
+        description: 'An short description of this RequestType'
+        type: string
+        example: 'This is the best request ever'
+        maxLength: 2550
+      unique:
+        description: 'Whether or not this request is unique to a submitter'
+        type: bool
+        example: 'false'
+      parentRequired:
+        description: 'If this request type needs a parent request'
+        type: bool
+      caseType:
+        description: 'The default case type that is created when submiting this request'
+        type: string
+        example: 'http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a'
+        format: url
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: \Datetime
+      properties:
+        description: 'The properties for this request type'
+        type: '\Property[]|\ArrayCollection'
+      children:
+        description: 'The children of this request type'
+        type: '\ArrayCollection|\RequestType[]'
+      parent:
+        description: 'The parent of this request type'
+        type: \RequestType
+    required:
+      - sourceOrganization
+      - name
+      - caseType
+  RequestType-write:
+    properties:
+      sourceOrganization:
+        description: 'The RSIN of the organization that owns this process'
+        type: string
+        example: '002851234'
+        maxLength: 11
+        minLength: 8
+      icon:
+        description: 'The icon of this property'
+        type: string
+        example: 'My Property'
+        maxLength: 255
+        minLength: 15
+      name:
+        description: 'The name of this RequestType'
+        type: string
+        example: 'My RequestType'
+        maxLength: 255
+      description:
+        description: 'An short description of this RequestType'
+        type: string
+        example: 'This is the best request ever'
+        maxLength: 2550
+      unique:
+        description: 'Whether or not this request is unique to a submitter'
+        type: bool
+        example: 'false'
+      parentRequired:
+        description: 'If this request type needs a parent request'
+        type: bool
+      caseType:
+        description: 'The default case type that is created when submiting this request'
+        type: string
+        example: 'http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a'
+        format: url
+        maxLength: 255
+      properties:
+        description: 'The properties for this request type'
+        type: '\Property[]|\ArrayCollection'
+      children:
+        description: 'The children of this request type'
+        type: '\ArrayCollection|\RequestType[]'
+      parent:
+        description: 'The parent of this request type'
+        type: \RequestType
+    required:
+      - sourceOrganization
+      - name
+      - caseType
+  RequestType-write-requesttype:
+    properties:
+      extends:
+        description: 'The requestType that this requestType extends'
+        type: object
+    required:
+      - sourceOrganization
+      - name
+      - caseType
 tags:
   -
     name: AuditTrail
@@ -2494,18 +7142,76 @@ tags:
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
+  -
+    name: Property
+    description: |
+      This property follows the following schemes (in order of importance)
+      https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+      https://tools.ietf.org/html/draft-wright-json-schema-validation-00
+      http://json-schema.org/.
+      
+      
+  -
+    name: RequestType
+    description: |
+      All properties contained in the RequestType type.
+      
+      
 securityDefinitions:
   JWT-Oauth:
     type: oauth2
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the RequestType resource'
+      write: 'write right to the RequestType resource'
+      write-requesttype: 'write-requesttype right to the RequestType resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the RequestType resource'
+      write: 'write right to the RequestType resource'
+      write-requesttype: 'write-requesttype right to the RequestType resource'
+host: irc.zaakonline.nl
+servers:
+  -
+    name: conduction.nl
+    url: vtc.dev.conduction.nl
+externalDocs:
+  -
+    description: 'OAS Documentatie'
+    url: 'http://vtc.zaakonline.nl'
+x-commonground:
+  type: service
+  developers:
+    -
+      name: Conduction
+      url: 'https://github.com/ConductionNL'
+      email: info@conduction.nl
+    -
+      name: 'Gemeente ''s-Hertogenbosch'
+      url: 'https://github.com/gemeenteshertogenbosch'
+      email: info@s-hertogenbosch.nl/
+  builds:
+    -
+      name: travis
+      logo: 'https://travis-ci.org/api-platform/core.svg?branch=master'
+      url: 'https://travis-ci.org/api-platform/core'
+    -
+      name: appveyor
+      logo: 'https://ci.appveyor.com/api/projects/status/grwuyprts3wdqx5l?svg=true'
+      url: 'https://ci.appveyor.com/project/dunglas/dunglasapibundle'
+    -
+      name: codecov
+      logo: 'https://codecov.io/gh/api-platform/core/branch/master/graph/badge.svg'
+      url: 'https://codecov.io/gh/api-platform/core'
+    -
+      name: SensioLabsInsight
+      logo: 'https://insight.sensiolabs.com/projects/92d78899-946c-4282-89a3-ac92344f9a93/mini.png'
+      url: 'https://insight.sensiolabs.com/projects/92d78899-946c-4282-89a3-ac92344f9a93'
+    -
+      name: 'Scrutinizer Code Quality'
+      logo: 'https://scrutinizer-ci.com/g/api-platform/core/badges/quality-score.png?b=master'
+      url: 'https://scrutinizer-ci.com/g/api-platform/core/?branch=master'
