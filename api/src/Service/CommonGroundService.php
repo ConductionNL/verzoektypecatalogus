@@ -73,6 +73,13 @@ class CommonGroundService
      */
     public function getResourceList($url, $query = [], $force = false, $async = false, $autowire = true)
     {
+        if(is_array($url) && array_key_exists('component', $url)){
+            $component = $this->getComponent($url['component']);
+        }
+        else {
+            $component = false;
+        }
+
         $url = $this->cleanUrl($url, false, $autowire);
 
         /* This is broken
@@ -98,17 +105,34 @@ class CommonGroundService
         }
 
         // To work with NLX we need a couple of default headers
+        $auth = false;
         $headers = $this->headers;
+
+        // Component specific congiguration
+        if($component && array_key_exists('accept', $component)){
+            $headers['Accept'] = $component['accept'];
+        }
+        if($component && array_key_exists('auth', $component)){
+            switch ($component['auth']) {
+                case "jwt":
+                    $headers['Authorization'] = 'Bearer '.$this->getJwtToken($component['id'], $component['secret']);
+                    break;
+                case "username-password":
+                    $auth = [$component['username'], $component['password']];
+            }
+        }
 
         if (!$async) {
             $response = $this->client->request('GET', $url, [
                 'query'   => $query,
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         } else {
             $response = $this->client->requestAsync('GET', $url, [
                 'query'   => $query,
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         }
 
@@ -144,6 +168,13 @@ class CommonGroundService
      */
     public function getResource($url, $query = [], $force = false, $async = false, $autowire = true)
     {
+        if(is_array($url) && array_key_exists('component', $url)){
+            $component = $this->getComponent($url['component']);
+        }
+        else {
+            $component = false;
+        }
+
         $url = $this->cleanUrl($url, false, $autowire);
 
         $item = $this->cache->getItem('commonground_'.md5($url));
@@ -153,18 +184,36 @@ class CommonGroundService
         }
 
         // To work with NLX we need a couple of default headers
+        $auth = false;
         $headers = $this->headers;
         $headers['X-NLX-Request-Subject-Identifier'] = $url;
+
+        // Component specific congiguration
+        if($component && array_key_exists('accept', $component)){
+            $headers['Accept'] = $component['accept'];
+        }
+        if($component && array_key_exists('auth', $component)){
+            switch ($component['auth']) {
+                case "jwt":
+                    $headers['Authorization'] = 'Bearer '.$this->getJwtToken($component['id'], $component['secret']);
+                    break;
+                case "username-password":
+                    $auth = [$component['username'], $component['password']];
+            }
+        }
+
 
         if (!$async) {
             $response = $this->client->request('GET', $url, [
                 'query'   => $query,
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         } else {
             $response = $this->client->requestAsync('GET', $url, [
                 'query'   => $query,
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         }
 
@@ -172,7 +221,7 @@ class CommonGroundService
         $response = json_decode($response->getBody(), true);
 
         // The trick here is that if statements are executed left to right. So the prosses errors wil only be called when all other conditions are met
-        if ($statusCode != 200 && !$this->proccesErrors($response, $statusCode, $headers, null, $url, 'GET')) {
+        if ($statusCode != 200 &&  !$this->proccesErrors($response, $statusCode, $headers, null, $url, 'GET')) {
             return false;
         }
 
@@ -194,11 +243,33 @@ class CommonGroundService
      */
     public function updateResource($resource, $url = null, $async = false, $autowire = true)
     {
+        if(is_array($url) && array_key_exists('component', $url)){
+            $component = $this->getComponent($url['component']);
+        }
+        else {
+            $component = false;
+        }
+
         $url = $this->cleanUrl($url, $resource, $autowire);
 
         // To work with NLX we need a couple of default headers
+        $auth = false;
         $headers = $this->headers;
         $headers['X-NLX-Request-Subject-Identifier'] = $url;
+
+        // Component specific congiguration
+        if($component && array_key_exists('accept', $component)){
+            $headers['Accept'] = $component['accept'];
+        }
+        if($component && array_key_exists('auth', $component)){
+            switch ($component['auth']) {
+                case "jwt":
+                    $headers['Authorization'] = 'Bearer '.$this->getJwtToken($component['id'], $component['secret']);
+                    break;
+                case "username-password":
+                    $auth = [$component['username'], $component['password']];
+            }
+        }
 
         $resource = $this->cleanResource($resource);
 
@@ -212,11 +283,13 @@ class CommonGroundService
             $response = $this->client->request('PUT', $url, [
                 'body'    => json_encode($resource),
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         } else {
             $response = $this->client->requestAsync('PUT', $url, [
                 'body'    => json_encode($resource),
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         }
 
@@ -248,10 +321,32 @@ class CommonGroundService
      */
     public function createResource($resource, $url = null, $async = false, $autowire = true)
     {
+        if(is_array($url) && array_key_exists('component', $url)){
+            $component = $this->getComponent($url['component']);
+        }
+        else {
+            $component = false;
+        }
+
         $url = $this->cleanUrl($url, $resource, $autowire);
 
         // Set headers
+        $auth = false;
         $headers = $this->headers;
+
+        // Component specific congiguration
+        if($component && array_key_exists('accept', $component)){
+            $headers['Accept'] = $component['accept'];
+        }
+        if($component && array_key_exists('auth', $component)){
+            switch ($component['auth']) {
+                case "jwt":
+                    $headers['Authorization'] = 'Bearer '.$this->getJwtToken($component['id'], $component['secret']);
+                    break;
+                case "username-password":
+                    $auth = [$component['username'], $component['password']];
+            }
+        }
 
         $resource = $this->cleanResource($resource);
 
@@ -259,11 +354,13 @@ class CommonGroundService
             $response = $this->client->request('POST', $url, [
                 'body'    => json_encode($resource),
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         } else {
             $response = $this->client->requestAsync('POST', $url, [
                 'body'    => json_encode($resource),
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         }
 
@@ -295,18 +392,42 @@ class CommonGroundService
      */
     public function deleteResource($resource, $url = null, $async = false, $autowire = true)
     {
+        if(is_array($url) && array_key_exists('component', $url)){
+            $component = $this->getComponent($url['component']);
+        }
+        else {
+            $component = false;
+        }
+
         $url = $this->cleanUrl($url, $resource, $autowire);
 
         // Set headers
+        $auth = false;
         $headers = $this->headers;
+
+        // Component specific congiguration
+        if($component && array_key_exists('accept', $component)){
+            $headers['Accept'] = $component['accept'];
+        }
+        if($component && array_key_exists('auth', $component)){
+            switch ($component['auth']) {
+                case "jwt":
+                    $headers['Authorization'] = 'Bearer '.$this->getJwtToken($component['id'], $component['secret']);
+                    break;
+                case "username-password":
+                    $auth = [$component['username'], $component['password']];
+            }
+        }
 
         if (!$async) {
             $response = $this->client->request('DELETE', $url, [
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         } else {
             $response = $this->client->requestAsync('DELETE', $url, [
                 'headers' => $headers,
+                'auth' => $auth,
             ]);
         }
 
@@ -314,7 +435,7 @@ class CommonGroundService
         $response = json_decode($response->getBody(), true);
 
         // The trick here is that if statements are executed left to right. So the prosses errors wil only be called when all other conditions are met
-        if ($statusCode != 201 && $statusCode != 200 && !$this->proccesErrors($response, $statusCode, $headers, $resource, $url, 'DELETE')) {
+        if ($statusCode != 204 && !$this->proccesErrors($response, $statusCode, $headers, $resource, $url, 'DELETE')) {
             return false;
         }
 
@@ -476,6 +597,11 @@ class CommonGroundService
             // Lets see if an UUID is provided
             if (array_key_exists('uuid', $object)) {
                 $object['id'] = $object['uuid'];
+                break;
+            }
+
+            // What if we dont have an id at all?
+            if (!array_key_exists('@id', $object)) {
                 break;
             }
 
@@ -710,5 +836,36 @@ class CommonGroundService
         $this->cache->save($item);
 
         return $component;
+    }
+
+    /*
+     * Get the current application from the wrc
+     */
+    public function getJwtToken($clientId, $secret)
+    {
+
+        $userId = '';
+        $userRepresentation = '';
+
+        // Create token header as a JSON string
+        $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256', 'client_identifier' => $clientId]);
+
+        // Create token payload as a JSON string
+        $payload = json_encode(['iss' => $clientId, 'client_id' =>$clientId, 'user_id' => $userId, 'user_representation' => $userRepresentation, 'iat' => time()]);
+
+        // Encode Header to Base64Url String
+        $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
+
+        // Encode Payload to Base64Url String
+        $base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
+
+        // Create Signature Hash
+        $signature = hash_hmac('sha256', $base64UrlHeader.'.'.$base64UrlPayload, $secret, true);
+
+        // Encode Signature to Base64Url String
+        $base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
+
+        // Return JWT
+        return $base64UrlHeader.'.'.$base64UrlPayload.'.'.$base64UrlSignature;
     }
 }
