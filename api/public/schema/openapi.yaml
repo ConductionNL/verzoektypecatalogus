@@ -5617,6 +5617,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType-read'
@@ -5934,6 +5935,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         requestType:
           description: 'The requestType that this property belongs to'
           $ref: '#/components/schemas/RequestType:jsonld-read'
@@ -6247,6 +6249,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
           type: string
@@ -6362,6 +6365,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         sourceOrganization:
           description: 'The RSIN of the organization that owns this process'
           type: string
@@ -6572,12 +6576,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-15 08:54:17'
+        example: '2020-04-21 13:57:29'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-15 08:54:17'
+        example: '2020-04-21 13:57:29'
     required: []
   AuditTrail-write:
     properties:
@@ -6625,12 +6629,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-15 08:54:17'
+        example: '2020-04-21 13:57:29'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-15 08:54:17'
+        example: '2020-04-21 13:57:29'
     required: []
   ChangeLog-write:
     properties:
@@ -6787,12 +6791,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-04-15 08:54:17'
+        example: '2020-04-21 13:57:29'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-04-15 08:54:17'
+        example: '2020-04-21 13:57:29'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -6970,12 +6974,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-04-15 08:54:17'
+        example: '2020-04-21 13:57:29'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-04-15 08:54:17'
+        example: '2020-04-21 13:57:29'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -7173,8 +7177,8 @@ securityDefinitions:
 host: irc.zaakonline.nl
 servers:
   -
-    name: huwelijksplanner.online
-    url: vtc.dev.huwelijksplanner.online
+    name: conduction.nl
+    url: vtc.dev.conduction.nl
 externalDocs:
   -
     description: 'OAS Documentatie'

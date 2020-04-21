@@ -44,7 +44,6 @@ parameters:
     app_health: '%env(HEALTH_ENABLED)%'
     app_version: '%env(APP_VERSION)%'         
     app_name: '%env(APP_NAME)%'
-    app_subdomain: '%env(APP_SUBDOMAIN)%'
     app_domain: '%env(APP_DOMAIN)%'   
     app_type: '%env(APP_TYPE)%'
     app_title: '%env(APP_TITLE)%'
