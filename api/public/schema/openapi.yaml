@@ -6576,12 +6576,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-22 06:52:54'
+        example: '2020-04-23 07:09:32'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-22 06:52:54'
+        example: '2020-04-23 07:09:32'
     required: []
   AuditTrail-write:
     properties:
@@ -6629,12 +6629,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-22 06:52:54'
+        example: '2020-04-23 07:09:32'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-22 06:52:54'
+        example: '2020-04-23 07:09:32'
     required: []
   ChangeLog-write:
     properties:
@@ -6791,12 +6791,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-04-22 06:52:54'
+        example: '2020-04-23 07:09:33'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-04-22 06:52:54'
+        example: '2020-04-23 07:09:33'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -6974,12 +6974,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-04-22 06:52:54'
+        example: '2020-04-23 07:09:33'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-04-22 06:52:54'
+        example: '2020-04-23 07:09:33'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -7182,7 +7182,7 @@ servers:
 externalDocs:
   -
     description: 'OAS Documentatie'
-    url: 'http://vtc.zaakonline.nl'
+    url: 'http://proto.demo.common-ground.dev'
 x-commonground:
   type: service
   developers:
@@ -7194,6 +7194,10 @@ x-commonground:
       name: 'Gemeente ''s-Hertogenbosch'
       url: 'https://github.com/gemeenteshertogenbosch'
       email: info@s-hertogenbosch.nl/
+    -
+      name: 'Gemeente Utrecht'
+      url: 'https://github.com/GemeenteUtrecht'
+      email: info@utrecht.nl
   builds:
     -
       name: travis
