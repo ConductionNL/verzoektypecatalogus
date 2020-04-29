@@ -52,7 +52,7 @@ use Ramsey\Uuid\UuidInterface;
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
- * 
+ *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
@@ -78,7 +78,6 @@ class Property
      * @var object The requestType that this property belongs to
      *
      * @Assert\NotBlank
-     * @Assert\Valid
      * @MaxDepth(1)
      * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="properties",cascade={"persist"})
@@ -126,7 +125,7 @@ class Property
      *
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
-     * @Assert\Choice({"int32","int64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","url","email","rsin","bag","bsn","iban","challenge","service","assent"})
+     * @Assert\Choice({"int32","int64","base64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","url","email","rsin","bag","bsn","iban","challenge","service","assent"})
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -147,7 +146,6 @@ class Property
      * @var string *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5
      *
      * @example 2
-     *
      *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
