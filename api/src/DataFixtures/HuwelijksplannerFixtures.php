@@ -513,6 +513,7 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $verhuizenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
 
+        $id = Uuid::fromString('69d16301-5e45-449d-b208-ba3efdca4f1d');
         $stage1 = new Property();
         $stage1->setStart(true);
         $stage1->setTitle('Datum');
@@ -523,19 +524,29 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setDescription('Wat is de verhuisdatum?');
         $stage1->setRequestType($verhuizenNL);
         $manager->persist($stage1);
+        $stage1->setId($id);
+        $manager->persist($stage1);
+        $manager->flush();
+        $stage1 = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
 
+        $id = Uuid::fromString('368fc9ce-6238-4e7c-ad4c-09c797e1f3f9');
         $stage2= new Property();
         $stage2->addPrevious($stage1);
-        $stage2->setTitle('Adress');
+        $stage2->setTitle('Adres');
         $stage2->setIcon('fal fa-map-marked');
-        $stage2->setSlug('adress');
+        $stage2->setSlug('adres');
         $stage2->setType('string');
         $stage2->setFormat('bag');
         $stage2->setRequired(true);
         $stage2->setDescription('Wat is het nieuwe adres?');
         $stage2->setRequestType($verhuizenNL);
         $manager->persist($stage2);
+        $stage2->setId($id);
+        $manager->persist($stage2);
+        $manager->flush();
+        $stage2 = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
 
+        $id = Uuid::fromString('b6942884-574a-45b3-b2ca-36733d800ca4');
         $stage3= new Property();
         $stage3->addPrevious($stage2);
         //$property->setId('');
@@ -548,15 +559,10 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setDescription('Wie gaan er verhuizen?');
         $stage3->setRequestType($verhuizenNL);
         $manager->persist($stage3);
-
-        $stage4= new Property();
-        $stage4->addPrevious($stage3);
-        $stage4->setTitle('Indienen');
-        $stage4->setIcon('fal fa-paper-plane');
-        $stage4->setSlug('indienen');
-        $stage4->setDescription('Wie zijn de getuigen van partner?');
-        $stage4->setRequestType($verhuizenNL);
-        $manager->persist($stage4);
+        $stage3->setId($id);
+        $manager->persist($stage3);
+        $manager->flush();
+        $stage3 = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
 
         $id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
         $verhuizenDenBosh = new RequestType();
