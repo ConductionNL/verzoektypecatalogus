@@ -688,23 +688,26 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('babs-andere-gemeente');
         $stage1->setType('array');
-        $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde locatie');
+        $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde babs van een andere gemeente');
         $stage1->setRequestType($request);
         $manager->persist($stage1);
 
         // Aanvraag babs voor een dag
         $id = Uuid::fromString('cdd7e88b-1890-425d-a158-7f9ec92c9508');
-        $aanvraagBabs= new RequestType();
-        $aanvraagBabs->setSourceOrganization('0000');
-        $aanvraagBabs->setIcon('fas fa-user-tie');
-        $aanvraagBabs->setName('Aanvraag babs (niet beeidigd))');
-        $aanvraagBabs->setDescription('Melding voorgenomen huwelijk');
-        $aanvraagBabs->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
-        $manager->persist($aanvraagBabs);
-        $aanvraagBabs->setId($id);
-        $manager->persist($aanvraagBabs);
+        $request= new RequestType();
+        $request->setSourceOrganization('0000');
+        $request->setIcon('fas fa-user-tie');
+        $request->setName('Aanvraag babs (niet beeidigd))');
+        $request->setDescription('Melding voorgenomen huwelijk');
+        $request->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
+        $manager->persist($request);
+
+        // Dit is hacky tacky karig
+        $request->setId($id);
+        $manager->persist($request);
         $manager->flush();
-        $aanvraagBabs= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        // einde hacky tacky
 
         $stage1= new Property();
         $stage1->setStart(true);
@@ -713,7 +716,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('babs-voor-een-dag');
         $stage1->setType('array');
         $stage1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
-        $stage1->setRequestType($aanvraagBabs);
+        $stage1->setRequestType($request);
         $manager->persist($stage1);
 
         // Aanvraag trouwlocatie
