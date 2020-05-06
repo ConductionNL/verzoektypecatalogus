@@ -531,7 +531,6 @@ class HuwelijksplannerFixtures extends Fixture
 
         $id = Uuid::fromString('368fc9ce-6238-4e7c-ad4c-09c797e1f3f9');
         $stage2= new Property();
-        $stage2->addPrevious($stage1);
         $stage2->setTitle('Adres');
         $stage2->setIcon('fal fa-map-marked');
         $stage2->setSlug('adres');
@@ -545,10 +544,12 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($stage2);
         $manager->flush();
         $stage2 = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
+        $stage2->addPrevious($stage1);
+        $manager->persist($stage2);
+        $manager->flush();
 
         $id = Uuid::fromString('b6942884-574a-45b3-b2ca-36733d800ca4');
         $stage3= new Property();
-        $stage3->addPrevious($stage2);
         //$property->setId('');
         $stage3->setTitle('Wie');
         $stage3->setIcon('fal fa-users');
@@ -563,6 +564,9 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($stage3);
         $manager->flush();
         $stage3 = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
+        $stage3->addPrevious($stage2);
+        $manager->persist($stage3);
+        $manager->flush();
 
         $id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
         $verhuizenDenBosh = new RequestType();
