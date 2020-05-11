@@ -722,7 +722,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request= new RequestType();
         $request->setIcon('fas fa-user-tie');
         $request->setSourceOrganization('002220647');
-        $request->setName('Aanvraag babs (niet beeidigd))');
+        $request->setName('Aanvraag babs (niet beëdigd)');
         $request->setDescription('Melding voorgenomen huwelijk');
         $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
         $request->setCamundaProces('Aanvraag_eigen_Babs_niet_beedigd_behandelen');
