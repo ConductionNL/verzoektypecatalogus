@@ -669,7 +669,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property = new Property();
         $property->setStart(true);
         $property->setTitle('Partner 1');
-        $property->setName('naamgebruikPartner1');
+        // $property->setName('naamgebruikPartner1');
         $property->setIcon('fal fa-user');
         $property->setSlug('naamgebruikPartner1');
         $property->setType('string');
@@ -680,7 +680,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property = new Property();
         $property->setStart(true);
         $property->setTitle('Gegevens');
-        $property->setName('naamgebruikPartner2');
+        //$property->setName('naamgebruikPartner2');
         $property->setIcon('fal fa-user');
         $property->setSlug('naamgebruikPartner2');
         $property->setType('string');
