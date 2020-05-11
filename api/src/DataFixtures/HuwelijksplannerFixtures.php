@@ -708,7 +708,7 @@ class HuwelijksplannerFixtures extends Fixture
         $aanvraagBabs= new RequestType();
         $aanvraagBabs->setSourceOrganization('0000');
         $aanvraagBabs->setIcon('fas fa-user-tie');
-        $aanvraagBabs->setName('Aanvraag babs (niet beeidigd))');
+        $aanvraagBabs->setName('Aanvraag babs (niet beëdigd)');
         $aanvraagBabs->setDescription('Melding voorgenomen huwelijk');
         $aanvraagBabs->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
         $manager->persist($aanvraagBabs);

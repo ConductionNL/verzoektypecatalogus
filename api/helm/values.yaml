@@ -12,7 +12,7 @@ settings:
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   type: component
   repro: https://github.com/ConductionNL/verzoektypecatalogus
-  demo: vtc.huwelijksplanner.online
+  demo: pc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/vtc-php
   domain: huwelijksplanner.online
   subdomain: vtc

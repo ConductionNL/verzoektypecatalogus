@@ -4213,7 +4213,7 @@ paths:
               - asc
               - desc
         -
-          name: 'order[sourceOrganization]'
+          name: 'order[organization]'
           in: query
           required: false
           schema:
@@ -4286,6 +4286,15 @@ paths:
               - desc
         -
           name: 'order[caseType]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[camundaProces]'
           in: query
           required: false
           schema:
@@ -4408,13 +4417,13 @@ paths:
           schema:
             type: string
         -
-          name: sourceOrganization
+          name: id
           in: query
           required: false
           schema:
             type: string
         -
-          name: 'sourceOrganization[]'
+          name: 'id[]'
           in: query
           required: false
           schema:
@@ -4423,6 +4432,182 @@ paths:
               type: string
           style: form
           explode: true
+        -
+          name: organization
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'organization[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: icon
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'icon[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'name[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: description
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'description[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: availableFrom
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableFrom[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: availableUntil
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'availableUntil[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: unique
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'unique[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: parentRequired
+          in: query
+          required: false
+          schema:
+            type: boolean
+        -
+          name: 'parentRequired[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: boolean
+          style: form
+          explode: true
+        -
+          name: caseType
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'caseType[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: camundaProces
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'camundaProces[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: dateCreated
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: dateModified
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[]'
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: 'exists[parent]'
           in: query
@@ -6250,9 +6435,6 @@ components:
             url: 'http://schema.org/identifier'
           type: string
           format: uuid
-        sourceOrganization:
-          description: 'The RSIN of the organization that owns this process'
-          type: string
         icon:
           description: 'The icon of this property'
           type: string
@@ -6263,6 +6445,7 @@ components:
           description: 'An short description of this RequestType'
           type: string
         properties:
+          readOnly: true
           description: 'The properties for this request type'
           type: array
           items:
@@ -6285,8 +6468,9 @@ components:
           $ref: '#/components/schemas/RequestType-read'
         caseType:
           description: 'The default case type that is created when submiting this request'
-          externalDocs:
-            url: 'http://schema.org/url'
+          type: string
+        camundaProces:
+          description: 'The default camunda proces that is started when submiting this request'
           type: string
         dateCreated:
           readOnly: true
@@ -6299,20 +6483,11 @@ components:
           type: string
           format: date-time
       required:
-        - sourceOrganization
         - name
-        - caseType
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
-      required:
-        - sourceOrganization
-        - name
-        - caseType
       properties:
-        sourceOrganization:
-          description: 'The RSIN of the organization that owns this process'
-          type: string
         icon:
           description: 'The icon of this property'
           type: string
@@ -6322,11 +6497,6 @@ components:
         description:
           description: 'An short description of this RequestType'
           type: string
-        properties:
-          description: 'The properties for this request type'
-          type: array
-          items:
-            $ref: '#/components/schemas/Property-write'
         unique:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
@@ -6343,9 +6513,12 @@ components:
           $ref: '#/components/schemas/RequestType-write'
         caseType:
           description: 'The default case type that is created when submiting this request'
-          externalDocs:
-            url: 'http://schema.org/url'
           type: string
+        camundaProces:
+          description: 'The default camunda proces that is started when submiting this request'
+          type: string
+      required:
+        - name
     'RequestType:jsonld-read':
       type: object
       description: 'All properties contained in the RequestType type.'
@@ -6366,9 +6539,6 @@ components:
             url: 'http://schema.org/identifier'
           type: string
           format: uuid
-        sourceOrganization:
-          description: 'The RSIN of the organization that owns this process'
-          type: string
         icon:
           description: 'The icon of this property'
           type: string
@@ -6379,6 +6549,7 @@ components:
           description: 'An short description of this RequestType'
           type: string
         properties:
+          readOnly: true
           description: 'The properties for this request type'
           type: array
           items:
@@ -6401,8 +6572,9 @@ components:
           $ref: '#/components/schemas/RequestType:jsonld-read'
         caseType:
           description: 'The default case type that is created when submiting this request'
-          externalDocs:
-            url: 'http://schema.org/url'
+          type: string
+        camundaProces:
+          description: 'The default camunda proces that is started when submiting this request'
           type: string
         dateCreated:
           readOnly: true
@@ -6415,16 +6587,10 @@ components:
           type: string
           format: date-time
       required:
-        - sourceOrganization
         - name
-        - caseType
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
-      required:
-        - sourceOrganization
-        - name
-        - caseType
       properties:
         '@context':
           readOnly: true
@@ -6435,9 +6601,6 @@ components:
         '@type':
           readOnly: true
           type: string
-        sourceOrganization:
-          description: 'The RSIN of the organization that owns this process'
-          type: string
         icon:
           description: 'The icon of this property'
           type: string
@@ -6447,11 +6610,6 @@ components:
         description:
           description: 'An short description of this RequestType'
           type: string
-        properties:
-          description: 'The properties for this request type'
-          type: array
-          items:
-            $ref: '#/components/schemas/Property:jsonld-write'
         unique:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
@@ -6468,9 +6626,12 @@ components:
           $ref: '#/components/schemas/RequestType:jsonld-write'
         caseType:
           description: 'The default case type that is created when submiting this request'
-          externalDocs:
-            url: 'http://schema.org/url'
           type: string
+        camundaProces:
+          description: 'The default camunda proces that is started when submiting this request'
+          type: string
+      required:
+        - name
 definitions:
   AuditTrail-read:
     properties:
@@ -6576,12 +6737,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-23 07:09:32'
+        example: '2020-05-05 14:51:30'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-23 07:09:32'
+        example: '2020-05-05 14:51:30'
     required: []
   AuditTrail-write:
     properties:
@@ -6629,12 +6790,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-23 07:09:32'
+        example: '2020-05-05 14:51:30'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-23 07:09:32'
+        example: '2020-05-05 14:51:30'
     required: []
   ChangeLog-write:
     properties:
@@ -6791,12 +6952,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-04-23 07:09:33'
+        example: '2020-05-05 14:51:30'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-04-23 07:09:33'
+        example: '2020-05-05 14:51:30'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -6974,12 +7135,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-04-23 07:09:33'
+        example: '2020-05-05 14:51:30'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-04-23 07:09:33'
+        example: '2020-05-05 14:51:30'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -7016,12 +7177,11 @@ definitions:
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      sourceOrganization:
-        description: 'The RSIN of the organization that owns this process'
+      organization:
+        description: 'A specific commonground organisation'
         type: string
-        example: '002851234'
-        maxLength: 11
-        minLength: 8
+        example: 'https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f'
+        format: url
       icon:
         description: 'The icon of this property'
         type: string
@@ -7049,7 +7209,11 @@ definitions:
         description: 'The default case type that is created when submiting this request'
         type: string
         example: 'http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a'
-        format: url
+        maxLength: 255
+      camundaProces:
+        description: 'The default camunda proces that is started when submiting this request'
+        type: string
+        example: 'http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a'
         maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
@@ -7067,17 +7231,15 @@ definitions:
         description: 'The parent of this request type'
         type: \RequestType
     required:
-      - sourceOrganization
+      - organization
       - name
-      - caseType
   RequestType-write:
     properties:
-      sourceOrganization:
-        description: 'The RSIN of the organization that owns this process'
+      organization:
+        description: 'A specific commonground organisation'
         type: string
-        example: '002851234'
-        maxLength: 11
-        minLength: 8
+        example: 'https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f'
+        format: url
       icon:
         description: 'The icon of this property'
         type: string
@@ -7105,11 +7267,12 @@ definitions:
         description: 'The default case type that is created when submiting this request'
         type: string
         example: 'http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a'
-        format: url
         maxLength: 255
-      properties:
-        description: 'The properties for this request type'
-        type: '\Property[]|\ArrayCollection'
+      camundaProces:
+        description: 'The default camunda proces that is started when submiting this request'
+        type: string
+        example: 'http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a'
+        maxLength: 255
       children:
         description: 'The children of this request type'
         type: '\ArrayCollection|\RequestType[]'
@@ -7117,18 +7280,16 @@ definitions:
         description: 'The parent of this request type'
         type: \RequestType
     required:
-      - sourceOrganization
+      - organization
       - name
-      - caseType
   RequestType-write-requesttype:
     properties:
       extends:
         description: 'The requestType that this requestType extends'
         type: object
     required:
-      - sourceOrganization
+      - organization
       - name
-      - caseType
 tags:
   -
     name: AuditTrail
@@ -7177,8 +7338,8 @@ securityDefinitions:
 host: irc.zaakonline.nl
 servers:
   -
-    name: conduction.nl
-    url: vtc.dev.conduction.nl
+    name: huwelijksplanner.online
+    url: vtc.dev.huwelijksplanner.online
 externalDocs:
   -
     description: 'OAS Documentatie'
