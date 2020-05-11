@@ -656,7 +656,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setName('Wijziging Naamsgebruik');
         $request->setDescription('Met dit verzoek kunt u achternaam aanpassen');
         $request->setCaseType('1ca29793-b797-4d52-953b-2c231fb8a6cf');
-        $request->camundaProces('Aanvraag_wijziging_naamgebruik_behandelen');
+        $request->setCamundaProces('Aanvraag_wijziging_naamgebruik_behandelen');
         $manager->persist($request);
 
         // Dit is hacky tacky karig
@@ -696,7 +696,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setName('Aanvraag babs andere gemeente');
         $request->setDescription('Met dit verzoek kunt u een ambtenaar voor aan andere gemeente aanvragen');
         $request->setCaseType('43340378-1c3a-4605-8a64-aa90e400368a');
-        $request->camundaProces('Aanvraag_eigen_babs_beedigd_behandelen');
+        $request->setCamundaProces('Aanvraag_eigen_babs_beedigd_behandelen');
         $manager->persist($request);
 
         // Dit is hacky tacky karig
@@ -725,7 +725,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setName('Aanvraag babs (niet beeidigd))');
         $request->setDescription('Melding voorgenomen huwelijk');
         $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
-        $request->camundaProces('Aanvraag_eigen_Babs_niet_beedigd_behandelen');
+        $request->setCamundaProces('Aanvraag_eigen_Babs_niet_beedigd_behandelen');
         $manager->persist($request);
 
         // Dit is hacky tacky karig
@@ -754,7 +754,7 @@ class HuwelijksplannerFixtures extends Fixture
         $aanvraagLocatie->setName('Aanvraag trouwlocatie');
         $aanvraagLocatie->setDescription('Melding voorgenomen huwelijk');
         $aanvraagLocatie->setCaseType('bb1e251f-d7a2-4d2a-a8e4-a7236336fcfd');
-        $aanvraagLocatie->camundaProces('Aanvraag_eigen_locatie_behandelen');
+        $aanvraagLocatie->setCamundaProces('Aanvraag_eigen_locatie_behandelen');
         $manager->persist($aanvraagLocatie);
         $aanvraagLocatie->setId($id);
         $manager->persist($aanvraagLocatie);
