@@ -802,6 +802,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setTitle('Partners');
         $stage2->setIcon('fas fa-user-friends');
         $stage2->setSlug('partner-melding');
+        $stage2->setIri('irc/assent');
         $stage2->setType('array');
         $stage2->setFormat('bsn');
         $stage2->setMinItems(2);
@@ -816,6 +817,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setTitle('Getuigen');
         $stage3->setIcon('fas fa-users');
         $stage3->setSlug('getuige-melding');
+        $stage3->setIri('irc/assent');
         $stage3->setType('array');
         $stage3->setFormat('bsn');
         $stage3->setMinItems(2);
