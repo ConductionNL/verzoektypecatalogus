@@ -779,7 +779,7 @@ class HuwelijksplannerFixtures extends Fixture
         $meldingTrouwenNL->setName('Melding voorgenomen huwelijk');
         $meldingTrouwenNL->setDescription('Melding voorgenomen huwelijk');
         $meldingTrouwenNL->setCaseType('13c5e8e1-27e2-47e0-96df-410541176623');
-        $meldingTrouwenNL->camundaProces('Melding_voorgenomen_huwelijk_behandelen');
+        $meldingTrouwenNL->setCamundaProces('Melding_voorgenomen_huwelijk_behandelen');
         $manager->persist($meldingTrouwenNL);
         $meldingTrouwenNL->setId($id);
         $manager->persist($meldingTrouwenNL);
