@@ -675,7 +675,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setType('string');
         $property->setDescription('Welke naam wilt u');
         $property->setRequestType($request);
-        $property->persist($property);
+        $manager->persist($property);
 
         $property = new Property();
         $property->setStart(true);
@@ -686,7 +686,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setType('string');
         $property->setDescription('Welke naam wilt uw partner');
         $property->setRequestType($request);
-        $property->persist($property);
+        $manager->persist($property);
 
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('27f6ecf0-34bb-4100-a375-d14f2d5ee1d0');
