@@ -651,7 +651,7 @@ class HuwelijksplannerFixtures extends Fixture
         // Aanpassen naamsgebruik
         $id = Uuid::fromString('4830cd4c-d8ce-4f8c-a8ad-f3dc821911f3');
         $request = new RequestType();
-        $request->setSourceOrganization('0000'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setSourceOrganization('002220647');
         $request->setIcon('fas fa-user-tie');
         $request->setName('Wijziging Naamsgebruik');
         $request->setDescription('Met dit verzoek kunt u achternaam aanpassen');
@@ -691,7 +691,7 @@ class HuwelijksplannerFixtures extends Fixture
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('27f6ecf0-34bb-4100-a375-d14f2d5ee1d0');
         $request = new RequestType();
-        $request->setSourceOrganization('0000'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setSourceOrganization('002220647');
         $request->setIcon('fas fa-user-tie');
         $request->setName('Aanvraag babs andere gemeente');
         $request->setDescription('Met dit verzoek kunt u een ambtenaar voor aan andere gemeente aanvragen');
@@ -720,8 +720,8 @@ class HuwelijksplannerFixtures extends Fixture
         // Aanvraag babs voor een dag
         $id = Uuid::fromString('cdd7e88b-1890-425d-a158-7f9ec92c9508');
         $request= new RequestType();
-        $request->setSourceOrganization('0000');
         $request->setIcon('fas fa-user-tie');
+        $request->setSourceOrganization('002220647');
         $request->setName('Aanvraag babs (niet beeidigd))');
         $request->setDescription('Melding voorgenomen huwelijk');
         $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
@@ -750,7 +750,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('c8704ea6-4962-4b7e-8d4e-69a257aa9577');
         $aanvraagLocatie= new RequestType();
         $aanvraagLocatie->setIcon('fal fa-rings-wedding');
-        $aanvraagLocatie->setSourceOrganization('0000');
+        $aanvraagLocatie->setSourceOrganization('002220647');
         $aanvraagLocatie->setName('Aanvraag trouwlocatie');
         $aanvraagLocatie->setDescription('Melding voorgenomen huwelijk');
         $aanvraagLocatie->setCaseType('bb1e251f-d7a2-4d2a-a8e4-a7236336fcfd');
@@ -775,7 +775,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('146cb7c8-46b9-4911-8ad9-3238bab4313e');
         $meldingTrouwenNL= new RequestType();
         $meldingTrouwenNL->setIcon('fal fa-ring');
-        $meldingTrouwenNL->setSourceOrganization('0000');
+        $meldingTrouwenNL->setSourceOrganization('002220647');
         $meldingTrouwenNL->setName('Melding voorgenomen huwelijk');
         $meldingTrouwenNL->setDescription('Melding voorgenomen huwelijk');
         $meldingTrouwenNL->setCaseType('13c5e8e1-27e2-47e0-96df-410541176623');
@@ -883,7 +883,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('5b10c1d6-7121-4be2-b479-7523f1b625f1');
         $trouwenNL = new RequestType();
         $trouwenNL->setIcon('fal fa-rings-wedding');
-        $trouwenNL->setSourceOrganization('00000000');
+        $trouwenNL->setSourceOrganization('002220647');
         $trouwenNL->setName('Huwelijk / Partnerschap');
         $trouwenNL->setDescription('Huwelijk / Partnerschap');
         $trouwenNL->setUnique(true);
