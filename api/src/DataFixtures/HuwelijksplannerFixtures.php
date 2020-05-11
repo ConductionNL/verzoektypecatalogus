@@ -655,7 +655,8 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setIcon('fas fa-user-tie');
         $request->setName('Wijziging Naamsgebruik');
         $request->setDescription('Met dit verzoek kunt u achternaam aanpassen');
-        $request->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/804489a3-8a5c-4f7b-b3b1-1e1178da9384');
+        $request->setCaseType('1ca29793-b797-4d52-953b-2c231fb8a6cf');
+        $request->camundaProces('Aanvraag_wijziging_naamgebruik_behandelen');
         $manager->persist($request);
 
         // Dit is hacky tacky karig
@@ -665,15 +666,27 @@ class HuwelijksplannerFixtures extends Fixture
         $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
         // einde hacky tacky
 
-        $stage1 = new Property();
-        $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
-        $stage1->setIcon('fal fa-user');
-        $stage1->setSlug('wijziging-naamsgebruik');
-        $stage1->setType('array');
-        $stage1->setDescription('Welke naam wilt u');
-        $stage1->setRequestType($request);
-        $manager->persist($stage1);
+        $property = new Property();
+        $property->setStart(true);
+        $property->setTitle('Partner 1');
+        $property->setName('naamgebruikPartner1');
+        $property->setIcon('fal fa-user');
+        $property->setSlug('naamgebruikPartner1');
+        $property->setType('string');
+        $property->setDescription('Welke naam wilt u');
+        $property->setRequestType($request);
+        $property->persist($property);
+
+        $property = new Property();
+        $property->setStart(true);
+        $property->setTitle('Gegevens');
+        $property->setName('naamgebruikPartner2');
+        $property->setIcon('fal fa-user');
+        $property->setSlug('naamgebruikPartner2');
+        $property->setType('string');
+        $property->setDescription('Welke naam wilt uw partner');
+        $property->setRequestType($request);
+        $property->persist($property);
 
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('27f6ecf0-34bb-4100-a375-d14f2d5ee1d0');
@@ -682,7 +695,8 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setIcon('fas fa-user-tie');
         $request->setName('Aanvraag babs andere gemeente');
         $request->setDescription('Met dit verzoek kunt u een ambtenaar voor aan andere gemeente aanvragen');
-        $request->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/29f85c3e-0602-4ada-b0be-def8710ea7b1');
+        $request->setCaseType('43340378-1c3a-4605-8a64-aa90e400368a');
+        $request->camundaProces('Aanvraag_eigen_babs_beedigd_behandelen');
         $manager->persist($request);
 
         // Dit is hacky tacky karig
@@ -699,7 +713,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('babs-andere-gemeente');
         $stage1->setType('array');
         $stage1->setIri('irc/assent');
-        $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde locatie');
+        $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde babs');
         $stage1->setRequestType($request);
         $manager->persist($stage1);
 
@@ -710,7 +724,8 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setIcon('fas fa-user-tie');
         $request->setName('Aanvraag babs (niet beeidigd))');
         $request->setDescription('Melding voorgenomen huwelijk');
-        $request->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
+        $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
+        $request->camundaProces('Aanvraag_eigen_Babs_niet_beedigd_behandelen');
         $manager->persist($request);
 
         // Dit is hacky tacky karig
@@ -738,7 +753,8 @@ class HuwelijksplannerFixtures extends Fixture
         $aanvraagLocatie->setSourceOrganization('0000');
         $aanvraagLocatie->setName('Aanvraag trouwlocatie');
         $aanvraagLocatie->setDescription('Melding voorgenomen huwelijk');
-        $aanvraagLocatie->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/2ab5dfd8-5285-499c-85be-4325f5084eb9');
+        $aanvraagLocatie->setCaseType('bb1e251f-d7a2-4d2a-a8e4-a7236336fcfd');
+        $aanvraagLocatie->camundaProces('Aanvraag_eigen_locatie_behandelen');
         $manager->persist($aanvraagLocatie);
         $aanvraagLocatie->setId($id);
         $manager->persist($aanvraagLocatie);
@@ -762,7 +778,8 @@ class HuwelijksplannerFixtures extends Fixture
         $meldingTrouwenNL->setSourceOrganization('0000');
         $meldingTrouwenNL->setName('Melding voorgenomen huwelijk');
         $meldingTrouwenNL->setDescription('Melding voorgenomen huwelijk');
-        $meldingTrouwenNL->setCaseType('https://openzaak.utrechtproeftuin.nl/catalogi/api/v1/zaaktypen/28e05004-1754-48cf-bb1e-15525ebdeb0b');
+        $meldingTrouwenNL->setCaseType('13c5e8e1-27e2-47e0-96df-410541176623');
+        $meldingTrouwenNL->camundaProces('Melding_voorgenomen_huwelijk_behandelen');
         $manager->persist($meldingTrouwenNL);
         $meldingTrouwenNL->setId($id);
         $manager->persist($meldingTrouwenNL);
@@ -790,7 +807,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setMinItems(2);
         $stage2->setMaxItems(2);
         $stage2->setRequired(true);
-        $stage2->setDescription('Wie zijn de getuigen van partner 2?');
+        $stage2->setDescription('Wie zijn de partners?');
         $stage2->setRequestType($meldingTrouwenNL);
         $manager->persist($stage2);
 
