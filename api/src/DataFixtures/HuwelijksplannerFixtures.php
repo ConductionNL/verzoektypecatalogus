@@ -786,13 +786,21 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $meldingTrouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
 
+        $stage0 = new Property();
+        $stage0->setStart(true);
+        $stage0->setTitle('Info');
+        $stage0->setIcon('fas fa-ring');
+        $stage0->setSlug('info-melding');
+        $stage0->setDescription('Hier wordt de benodigde informatie weergegeven voor het indienen van een melding.');
+        $stage0->setRequestType($meldingTrouwenNL);
+        $manager->persist($stage0);
+
         $stage1= new Property();
-        $stage1->setStart(true);
+        $stage1->addPrevious($stage0);
         $stage1->setTitle('Datum');
         $stage1->setIcon('fas fa-calendar-day');
         $stage1->setSlug('datum-melding');
-        $stage1->setType('string');
-        $stage1->setFormat('date');
+        $stage1->setType('boolean');
         $stage1->setDescription('Selecteer een datum voor de omzetting naar huwelijk');
         $stage1->setRequestType($meldingTrouwenNL);
         $manager->persist($stage1);
