@@ -8,25 +8,26 @@ settings:
   name: vtc
   title: Verzoek Type Catalogus
   version: V.0.1
+  id: 
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
+  type: component
   repro: https://github.com/ConductionNL/verzoektypecatalogus
-  demo: vtc.zaakonline.nl
+  demo: pc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/vtc-php
-  subdomain: vtc  
-  domains:
-    - zaakonline.nl
-  domainsJson: ["zaakonline.nl"]
+  domain: conduction.nl
+  subdomain: vtc
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
   state: Noord-Holland
   locality: Amsterdam
-  unit: Common-Ground  
+  unit: Common-Ground
   env: dev
   debug: 1
+  cache: 1
   replicaCount: 1
   corsAllowOrigin: ['*']
-  trustedHosts: '127.0.0.1$|^(.+\.)?conduction\.nl$|^(.+\.)?huwelijksplanner\.online$|^(.+\.)?larping\.eu$|^(.+\.)?common-ground\.dev$|^(.+\.)?trouwplanner\.online$|^(.+\.)?zaakonline\.nl$|localhost'
+  trustedHosts: '^localhost$|^127.0.0.1$|^(.+\.)?conduction\.nl$|^(.+\.)?huwelijksplanner\.online$|^(.+\.)?zaakonline\.nl$'
   pullPolicy: Always
   # You will need these proxies on kubernetes
   trustedProxies:

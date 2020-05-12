@@ -20,10 +20,10 @@ class ZaakonlineFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-    	// Lets make sure we only run these fixtures on huwelijksplanner enviroments
-    	if (!in_array("zaakonline.nl", $this->params->get('app_domains'))) {
-    		return false;
-    	}
+        // Lets make sure we only run these fixtures on larping enviroment
+        if ($this->params->get('app_domain') != "zaakonline.nl" && strpos($this->params->get('app_domain'), "zaakonline.nl") == false) {
+            return false;
+        }
 
         /*
     	 *  Corona crisis
