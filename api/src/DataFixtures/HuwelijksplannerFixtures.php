@@ -800,8 +800,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setTitle('Datum');
         $stage1->setIcon('fas fa-calendar-day');
         $stage1->setSlug('datum-melding');
-        $stage1->setType('string');
-        $stage1->setFormat('date');
+        $stage1->setType('boolean');
         $stage1->setDescription('Selecteer een datum voor de omzetting naar huwelijk');
         $stage1->setRequestType($meldingTrouwenNL);
         $manager->persist($stage1);
