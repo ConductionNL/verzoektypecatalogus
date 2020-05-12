@@ -91,19 +91,16 @@ class RequestType
     private $id;
 
     /**
-     * @var string The RSIN of the organization that owns this process
+     * @var string $resource A specific commonground organisation
+     * @example https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f
      *
-     * @example 002851234
+     * @Gedmo\Versioned
      * @Assert\NotNull
-     * @Assert\Length(
-     *      min = 8,
-     *      max = 11
-     * )
+     * @Assert\Url
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
-     * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $sourceOrganization;
+    private $organization;
 
     /**
      * @var string The icon of this property
@@ -143,10 +140,11 @@ class RequestType
 
     /**
      * @var Property[]|ArrayCollection The properties for this request type
-     * @Groups({"read", "write"})
+     *
+     * @Groups({"read"})
      * @MaxDepth(1)
+     *
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
-     * @Assert\Valid
      */
     private $properties;
 
@@ -224,8 +222,6 @@ class RequestType
      * @example http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
-     * @Assert\Url
      * @Assert\Length(
      *      max = 255
      * )
@@ -233,6 +229,19 @@ class RequestType
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $caseType;
+
+    /**
+     * @var string $camundaProces The default camunda proces that is started when submiting this request
+     * @example http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a
+     *
+     * @Gedmo\Versioned
+     * @Assert\Length(
+     *      max = 255
+     * )
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $camundaProces;
 
     /**
      * @var Datetime $dateCreated The moment this request was created
@@ -247,7 +256,7 @@ class RequestType
      * @var Datetime $dateModified  The moment this request last Modified
      *
      * @Groups({"read"})
-     * @Gedmo\Timestampable(on="create")
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
@@ -498,6 +507,17 @@ class RequestType
     public function setCaseType(string $caseType): self
     {
         $this->caseType = $caseType;
+        return $this;
+    }
+
+    public function getCamundaProces(): ?string
+    {
+        return $this->camundaProces;
+    }
+
+    public function setCamundaProces(string $camundaProces): self
+    {
+        $this->camundaProces = $camundaProces;
         return $this;
     }
 
