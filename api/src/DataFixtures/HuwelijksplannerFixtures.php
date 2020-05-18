@@ -722,7 +722,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request= new RequestType();
         $request->setIcon('fas fa-user-tie');
         $request->setSourceOrganization('002220647');
-        $request->setName('Aanvraag babs (niet beeidigd))');
+        $request->setName('Aanvraag babs (niet beëdigd)');
         $request->setDescription('Melding voorgenomen huwelijk');
         $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
         $request->setCamundaProces('Aanvraag_eigen_Babs_niet_beedigd_behandelen');
@@ -786,13 +786,21 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $meldingTrouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
 
+        $stage0 = new Property();
+        $stage0->setStart(true);
+        $stage0->setTitle('Info');
+        $stage0->setIcon('fas fa-ring');
+        $stage0->setSlug('info-melding');
+        $stage0->setDescription('Hier wordt de benodigde informatie weergegeven voor het indienen van een melding.');
+        $stage0->setRequestType($meldingTrouwenNL);
+        $manager->persist($stage0);
+
         $stage1= new Property();
-        $stage1->setStart(true);
+        $stage1->addPrevious($stage0);
         $stage1->setTitle('Datum');
         $stage1->setIcon('fas fa-calendar-day');
         $stage1->setSlug('datum-melding');
-        $stage1->setType('string');
-        $stage1->setFormat('date');
+        $stage1->setType('boolean');
         $stage1->setDescription('Selecteer een datum voor de omzetting naar huwelijk');
         $stage1->setRequestType($meldingTrouwenNL);
         $manager->persist($stage1);
@@ -802,6 +810,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setTitle('Partners');
         $stage2->setIcon('fas fa-user-friends');
         $stage2->setSlug('partner-melding');
+        $stage2->setIri('irc/assent');
         $stage2->setType('array');
         $stage2->setFormat('bsn');
         $stage2->setMinItems(2);
@@ -816,6 +825,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setTitle('Getuigen');
         $stage3->setIcon('fas fa-users');
         $stage3->setSlug('getuige-melding');
+        $stage3->setIri('irc/assent');
         $stage3->setType('array');
         $stage3->setFormat('bsn');
         $stage3->setMinItems(2);

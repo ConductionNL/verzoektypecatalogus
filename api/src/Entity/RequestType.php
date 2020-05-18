@@ -285,7 +285,7 @@ class RequestType
         return $this->organization;
     }
 
-    public function setOrganizationOrganization(string $organization): self
+    public function setOrganization(string $organization): self
     {
         $this->organization = $organization;
 
