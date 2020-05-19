@@ -31,7 +31,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('282f203c-4ecf-4578-9597-343ceccf8f43');
         $bezwaar = new RequestType();
         $bezwaar->setIcon('fal fa-file-certificate');
-        $bezwaar->setOrganization('0000');
+        $bezwaar->setSourceOrganization('0000');
         $bezwaar->setName('VOG');
         $bezwaar->setDescription('Aanvraag verklaring omtrend gedrag');
         $manager->persist($bezwaar);
@@ -66,7 +66,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('2a86f09a-5cfc-443e-a54e-4f4b2f2693da');
         $bezwaar = new RequestType();
         $bezwaar->setIcon('fal fa-id-card');
-        $bezwaar->setOrganization('0000');
+        $bezwaar->setSourceOrganization('0000');
         $bezwaar->setName('Rijbewijs');
         $bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
         $manager->persist($bezwaar);
@@ -99,7 +99,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('6aa060d4-ca79-45ac-9836-1522fd10eb42');
         $bezwaar = new RequestType();
         $bezwaar->setIcon('fal fa-file-search');
-        $bezwaar->setOrganization('0000');
+        $bezwaar->setSourceOrganization('0000');
         $bezwaar->setName('Vermissing Rijbewijs');
         $bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
         $manager->persist($bezwaar);
@@ -137,7 +137,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('e7e30a18-4bc4-458b-8a66-fd2dc779db13');
         $bezwaar = new RequestType();
         $bezwaar->setIcon('fal fa-file-user');
-        $bezwaar->setOrganization('0000');
+        $bezwaar->setSourceOrganization('0000');
         $bezwaar->setName('Uitreksel BRP');
         $bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
         $manager->persist($bezwaar);
@@ -172,7 +172,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('5fe5ed51-f9d1-4ece-b78d-e960e6ce3fd1');
         $bezwaar = new RequestType();
         $bezwaar->setIcon('fal fa-surprise');
-        $bezwaar->setOrganization('0000');
+        $bezwaar->setSourceOrganization('0000');
         $bezwaar->setName('Bezwaar');
         $bezwaar->setDescription('Het maken van bezwaar tegen een genomen besluit');
         $manager->persist($bezwaar);
@@ -207,7 +207,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('f4c2d525-5c73-4000-ad71-242a37892be7');
         $wob = new RequestType();
         $wob->setIcon('fal fa-binoculars');
-        $wob->setOrganization('0000');
+        $wob->setSourceOrganization('0000');
         $wob->setName('WOB Verzoek');
         $wob->setDescription('Een verzoek conform de wet openbaarheid bestuur');
         $manager->persist($wob);
@@ -242,7 +242,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('d8d053cf-573a-4cbd-8b15-4681372cc2c8');
         $geboorte = new RequestType();
         $geboorte->setIcon('fal fa-baby');
-        $geboorte->setOrganization('0000');
+        $geboorte->setSourceOrganization('0000');
         $geboorte->setName('Geboorte aangifte');
         $geboorte->setDescription('Het aangeven van een nieuw geboren kind');
         $manager->persist($geboorte);
@@ -315,7 +315,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('41ccbba0-241c-4801-a70d-f11894a1098a');
         $overlijden= new RequestType();
         $overlijden->setIcon('fal fa-tombstone');
-        $overlijden->setOrganization('0000');
+        $overlijden->setSourceOrganization('0000');
         $overlijden->setName('Overlijdens aangifte');
         $overlijden->setDescription('Het doorgeven van overlijden aan een gemeente');
         $manager->persist($overlijden);
@@ -373,7 +373,7 @@ class HuwelijksplannerFixtures extends Fixture
          */
         $id = Uuid::fromString('58d2e5ea-e592-48c1-86c4-93b43d8aac5c');
         $reisdocument = new RequestType();
-        $reisdocument->setOrganization('0000');
+        $reisdocument->setSourceOrganization('0000');
         $reisdocument->setName('Aanvraag Reisdocument');
         $reisdocument->setDescription('Het aanvragen van een reisdocument');
         $manager->persist($reisdocument);
@@ -417,7 +417,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $id = Uuid::fromString('690cbb51-50b8-4714-b45b-2dba696b1216');
         $reisdocument = new RequestType();
-        $reisdocument->setOrganization('0000');
+        $reisdocument->setSourceOrganization('0000');
         $reisdocument->setName('Vermissing Reisdocument');
         $reisdocument->setDescription('Het aanvragen van een reisdocument');
         $manager->persist($reisdocument);
@@ -453,7 +453,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('07b9df95-cc8a-43c8-bc1e-5f1392973b39');
         $mob = new RequestType();
         $mob->setIcon('fal fa-map-marker-edit');
-        $mob->setOrganization('0000');
+        $mob->setSourceOrganization('0000');
         $mob->setName('Melding openbare ruimte');
         $mob->setDescription('Het doorgeven van melding openbare ruimte');
         $manager->persist($mob);
@@ -504,7 +504,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('2bfb3cea-b5b5-459c-b3e0-e1100089a11a');
         $verhuizenNL = new RequestType();
         $verhuizenNL->setIcon('fal fa-truck-moving');
-        $verhuizenNL->setOrganization('0000');
+        $verhuizenNL->setSourceOrganization('0000');
         $verhuizenNL->setName('Verhuizen');
         $verhuizenNL->setDescription('Het doorgeven van een verhuizing aan een gemeente');
         $manager->persist($verhuizenNL);
@@ -573,7 +573,7 @@ class HuwelijksplannerFixtures extends Fixture
         $verhuizenDenBosh->setName('Verhuizen');
         $verhuizenDenBosh->setIcon('fal fa-truck-moving');
         $verhuizenDenBosh->setDescription('Het doorgeven van een verhuizing aan de gemeente \'s-Hertogenbosch');
-        $verhuizenDenBosh->setOrganization('001709124');
+        $verhuizenDenBosh->setSourceOrganization('001709124');
         $verhuizenDenBosh->setExtends($verhuizenNL);
         $manager->persist($verhuizenDenBosh);
         $verhuizenDenBosh->setId($id);
@@ -612,7 +612,7 @@ class HuwelijksplannerFixtures extends Fixture
         $verhuizenEindhoven->setName('Verhuizen');
         $verhuizenEindhoven->setIcon('fal fa-truck-moving');
         $verhuizenEindhoven->setDescription('Het doorgeven van een verhuizing aan de gemeente Eindhoven');
-        $verhuizenEindhoven->setOrganization('001902763');
+        $verhuizenEindhoven->setSourceOrganization('001902763');
         $verhuizenEindhoven->setExtends($verhuizenNL);
         $manager->persist($verhuizenEindhoven);
         $verhuizenEindhoven->setId($id);
@@ -651,7 +651,7 @@ class HuwelijksplannerFixtures extends Fixture
         // Aanpassen naamsgebruik
         $id = Uuid::fromString('4830cd4c-d8ce-4f8c-a8ad-f3dc821911f3');
         $request = new RequestType();
-        $request->setOrganization('002220647');
+        $request->setSourceOrganization('002220647');
         $request->setIcon('fas fa-user-tie');
         $request->setName('Wijziging Naamsgebruik');
         $request->setDescription('Met dit verzoek kunt u achternaam aanpassen');
@@ -691,7 +691,7 @@ class HuwelijksplannerFixtures extends Fixture
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('27f6ecf0-34bb-4100-a375-d14f2d5ee1d0');
         $request = new RequestType();
-        $request->setOrganization('002220647');
+        $request->setSourceOrganization('002220647');
         $request->setIcon('fas fa-user-tie');
         $request->setName('Aanvraag babs andere gemeente');
         $request->setDescription('Met dit verzoek kunt u een ambtenaar voor aan andere gemeente aanvragen');
@@ -721,7 +721,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('cdd7e88b-1890-425d-a158-7f9ec92c9508');
         $request= new RequestType();
         $request->setIcon('fas fa-user-tie');
-        $request->setOrganization('002220647');
+        $request->setSourceOrganization('002220647');
         $request->setName('Aanvraag babs (niet beëdigd)');
         $request->setDescription('Melding voorgenomen huwelijk');
         $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
@@ -750,7 +750,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('c8704ea6-4962-4b7e-8d4e-69a257aa9577');
         $aanvraagLocatie= new RequestType();
         $aanvraagLocatie->setIcon('fal fa-rings-wedding');
-        $aanvraagLocatie->setOrganization('002220647');
+        $aanvraagLocatie->setSourceOrganization('002220647');
         $aanvraagLocatie->setName('Aanvraag trouwlocatie');
         $aanvraagLocatie->setDescription('Melding voorgenomen huwelijk');
         $aanvraagLocatie->setCaseType('bb1e251f-d7a2-4d2a-a8e4-a7236336fcfd');
@@ -775,7 +775,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('146cb7c8-46b9-4911-8ad9-3238bab4313e');
         $meldingTrouwenNL= new RequestType();
         $meldingTrouwenNL->setIcon('fal fa-ring');
-        $meldingTrouwenNL->setOrganization('002220647');
+        $meldingTrouwenNL->setSourceOrganization('002220647');
         $meldingTrouwenNL->setName('Melding voorgenomen huwelijk');
         $meldingTrouwenNL->setDescription('Melding voorgenomen huwelijk');
         $meldingTrouwenNL->setCaseType('13c5e8e1-27e2-47e0-96df-410541176623');
@@ -847,7 +847,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('432d3e81-5930-4c21-ab7f-c5541c948525');
         $omzettingNL = new RequestType();
         $omzettingNL->setIcon('fal fa-rings-wedding');
-        $omzettingNL->setOrganization('0000');
+        $omzettingNL->setSourceOrganization('0000');
         $omzettingNL->setName('Omzetting');
         $omzettingNL->setDescription('Het omzetten van een bestaand partnerschap in een huwelijk.');
         $manager->persist($omzettingNL);
@@ -893,7 +893,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('5b10c1d6-7121-4be2-b479-7523f1b625f1');
         $trouwenNL = new RequestType();
         $trouwenNL->setIcon('fal fa-rings-wedding');
-        $trouwenNL->setOrganization('002220647');
+        $trouwenNL->setSourceOrganization('002220647');
         $trouwenNL->setName('Huwelijk / Partnerschap');
         $trouwenNL->setDescription('Huwelijk / Partnerschap');
         $trouwenNL->setUnique(true);
@@ -942,7 +942,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setSlug('partner');
         $stage2->setType('array');
         $stage2->setFormat('url');
-        $stage2->setIri('irc/assent');
+        $stage2->setIri('irc/assents');
         $stage2->setMinItems(2);
         $stage2->setMaxItems(2);
         $stage2->setRequired(true);
@@ -957,7 +957,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setSlug('plechtigheid');
         $stage3->setType('string');
         $stage3->setFormat('url');
-        $stage3->setIri('pdc/offer');
+        $stage3->setIri('pdc/offers');
         $stage3->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage3->setRequestType($trouwenNL);
         $manager->persist($stage3);
@@ -980,7 +980,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage5->setSlug('locatie');
         $stage5->setType('string');
         $stage5->setFormat('uri');
-        $stage5->setIri('pdc/offer');
+        $stage5->setIri('pdc/offers');
         $stage5->setMaxLength('255');
         $stage5->setRequired(true);
         $stage5->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
@@ -994,7 +994,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage6->setSlug('ambtenaar');
         $stage6->setType('string');
         $stage6->setFormat('url');
-        $stage6->setIri('pdc/offer');
+        $stage6->setIri('pdc/offers');
         $stage6->setMaxLength('255');
         $stage6->setRequired(true);
         $stage6->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
@@ -1008,8 +1008,8 @@ class HuwelijksplannerFixtures extends Fixture
         $stage7->setSlug('getuige');
         $stage7->setType('array');
         $stage7->setFormat('url');
-        $stage7->setIri('irc/assent');
-        $stage7->setMinItems(2);
+        $stage7->setIri('irc/assents');
+        $stage7->setMinItems(4);
         $stage7->setMaxItems(4);
         $stage7->setRequired(true);
         $stage7->setDescription('Wie zijn de getuigen van partner?');
@@ -1023,7 +1023,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage8->setSlug('extra');
         $stage8->setType('array');
         $stage8->setFormat('url');
-        $stage8->setIri('pdc/offer');
+        $stage8->setIri('pdc/offers');
         $stage8->setMinItems(1);
         $stage8->setRequired(true);
         $stage8->setDescription('Wie zijn de getuigen van partner?');
@@ -1038,6 +1038,7 @@ class HuwelijksplannerFixtures extends Fixture
         $overige->setMinItems(3);
         $overige->setMaxItems(3);
         $overige->setType('array');
+        $overige->setMinItems(4);
         $overige->setFormat('string');
         $overige->setDescription('Graag zouden wij u om wat extra informatie vragen');
         $overige->setRequestType($trouwenNL);
@@ -1050,7 +1051,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage9->setSlug('melding');
         $stage9->setType('string');
         $stage9->setFormat('url');
-        $stage9->setIri('vrc/request');
+        $stage9->setIri('vrc/requests');
         $stage9->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage9->setRequestType($trouwenNL);
         $manager->persist($stage9);
@@ -1062,7 +1063,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage10->setSlug('betalen');
         $stage10->setType('string');
         $stage10->setFormat('url');
-        $stage10->setIri('orc/order');
+        $stage10->setIri('bs/invoices');
         $stage10->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage10->setRequestType($trouwenNL);
         $manager->persist($stage10);
@@ -1081,7 +1082,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setTitle('Order');
         $property->setType('string');
         $property->setFormat('url');
-        $property->setIri('orc/order');
+        $property->setIri('orc/orders');
         $property->setMaxLength('255');
         $property->setRequired(true);
         $property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
@@ -1136,7 +1137,7 @@ class HuwelijksplannerFixtures extends Fixture
         $id = Uuid::fromString('47577f44-0ede-4655-a629-027f051d2b07');
         $trouwenUtrecht = new RequestType();
         $trouwenUtrecht->setExtends($trouwenNL);
-        $trouwenUtrecht->setOrganization('002220647');
+        $trouwenUtrecht->setSourceOrganization('002220647');
         $trouwenUtrecht->setName('Trouwen of Partnerschap in Utrecht');
         $trouwenUtrecht->setDescription('Trouwen of Partnerschap in Utrecht');
         $manager->persist($trouwenUtrecht);
