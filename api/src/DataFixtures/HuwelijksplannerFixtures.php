@@ -942,7 +942,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setSlug('partner');
         $stage2->setType('array');
         $stage2->setFormat('url');
-        $stage2->setIri('irc/assents');
+        $stage2->setIri('irc/assent');
         $stage2->setMinItems(2);
         $stage2->setMaxItems(2);
         $stage2->setRequired(true);
@@ -957,7 +957,8 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setSlug('plechtigheid');
         $stage3->setType('string');
         $stage3->setFormat('url');
-        $stage3->setIri('pdc/offers');
+        $stage3->setIri('pdc/offer');
+        $stage3->setRequired(true);
         $stage3->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage3->setRequestType($trouwenNL);
         $manager->persist($stage3);
@@ -980,7 +981,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage5->setSlug('locatie');
         $stage5->setType('string');
         $stage5->setFormat('uri');
-        $stage5->setIri('pdc/offers');
+        $stage5->setIri('pdc/offer');
         $stage5->setMaxLength('255');
         $stage5->setRequired(true);
         $stage5->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
@@ -994,7 +995,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage6->setSlug('ambtenaar');
         $stage6->setType('string');
         $stage6->setFormat('url');
-        $stage6->setIri('pdc/offers');
+        $stage6->setIri('pdc/offer');
         $stage6->setMaxLength('255');
         $stage6->setRequired(true);
         $stage6->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
@@ -1008,7 +1009,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage7->setSlug('getuige');
         $stage7->setType('array');
         $stage7->setFormat('url');
-        $stage7->setIri('irc/assents');
+        $stage7->setIri('irc/assent');
         $stage7->setMinItems(4);
         $stage7->setMaxItems(4);
         $stage7->setRequired(true);
@@ -1023,7 +1024,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage8->setSlug('extra');
         $stage8->setType('array');
         $stage8->setFormat('url');
-        $stage8->setIri('pdc/offers');
+        $stage8->setIri('pdc/offer');
         $stage8->setMinItems(1);
         $stage8->setRequired(true);
         $stage8->setDescription('Wie zijn de getuigen van partner?');
@@ -1051,7 +1052,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage9->setSlug('melding');
         $stage9->setType('string');
         $stage9->setFormat('url');
-        $stage9->setIri('vrc/requests');
+        $stage9->setIri('vrc/request');
         $stage9->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage9->setRequestType($trouwenNL);
         $manager->persist($stage9);
@@ -1063,7 +1064,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage10->setSlug('betalen');
         $stage10->setType('string');
         $stage10->setFormat('url');
-        $stage10->setIri('bs/invoices');
+        $stage10->setIri('bs/invoice');
         $stage10->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage10->setRequestType($trouwenNL);
         $manager->persist($stage10);
@@ -1082,7 +1083,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setTitle('Order');
         $property->setType('string');
         $property->setFormat('url');
-        $property->setIri('orc/orders');
+        $property->setIri('orc/order');
         $property->setMaxLength('255');
         $property->setRequired(true);
         $property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
