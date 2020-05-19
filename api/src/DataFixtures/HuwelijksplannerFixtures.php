@@ -1089,6 +1089,51 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setRequestType($trouwenNL);
         $manager->persist($property);
 
+        $property= new Property();
+        //$property->setId('');
+        $property->setTitle('Leeftijd');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('ptc/leeftijdscheckhuwelijk');
+        $property->setRequired(true);
+        $property->setDescription('Zijn bijde parnters op de trouwdatum meerderjarig');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property= new Property();
+        //$property->setId('');
+        $property->setTitle('Curatele');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('ptc/curatelecheckhuwelijk');
+        $property->setRequired(true);
+        $property->setDescription('Staan bijde partners niet onder curatele');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property= new Property();
+        //$property->setId('');
+        $property->setTitle('Familiaregraad');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('ptc/familiaregraadhuwelijk');
+        $property->setRequired(true);
+        $property->setDescription('Zijn bijde parnters geen fammilie dichter dan de 4e graad');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property= new Property();
+        //$property->setId('');
+        $property->setTitle('schijnhuwelijk');
+        $property->setType('array');
+        $property->setFormat('url');
+        $property->setIri('ptc/schijnhuwelijk');
+        $property->setRequired(true);
+        $property->setDescription('Hebben bijde partners aangegeven niet te trouwen onder dwang');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+
         $id = Uuid::fromString('47577f44-0ede-4655-a629-027f051d2b07');
         $trouwenUtrecht = new RequestType();
         $trouwenUtrecht->setExtends($trouwenNL);
