@@ -113,7 +113,7 @@ class Property
      *
      * @Assert\Type("integer")
      * @Groups({"read", "write"})
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=true, name="p_order")
      */
     private $order;
 

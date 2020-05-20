@@ -30,7 +30,7 @@ class HuwelijksplannerFixtures extends Fixture
          */
         $id = Uuid::fromString('282f203c-4ecf-4578-9597-343ceccf8f43');
         $bezwaar = new RequestType();
-        $bezwaar->setIcon('fal fa-file-certificate');f
+        $bezwaar->setIcon('fal fa-file-certificate');
         $bezwaar->setOrganization('0000');
         $bezwaar->setName('VOG');
         $bezwaar->setDescription('Aanvraag verklaring omtrend gedrag');
