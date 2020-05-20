@@ -30,7 +30,7 @@ class HuwelijksplannerFixtures extends Fixture
          */
         $id = Uuid::fromString('282f203c-4ecf-4578-9597-343ceccf8f43');
         $bezwaar = new RequestType();
-        $bezwaar->setIcon('fal fa-file-certificate');
+        $bezwaar->setIcon('fal fa-file-certificate');f
         $bezwaar->setOrganization('0000');
         $bezwaar->setName('VOG');
         $bezwaar->setDescription('Aanvraag verklaring omtrend gedrag');
@@ -922,7 +922,8 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1= new Property();
         $stage1->addPrevious($stage0);
         $stage1->setStart(true);
-        $stage1->setTitle('Type');
+        $stage1->setTitle('Ceremonie');
+        $stage1->setName('type');
         $stage1->setIcon('fas fa-ring');
         $stage1->setSlug('ceremonie');
         $stage1->setType('string');
@@ -1010,7 +1011,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage7->setType('array');
         $stage7->setFormat('url');
         $stage7->setIri('irc/assent');
-        $stage7->setMinItems(4);
+        $stage7->setMinItems(2);
         $stage7->setMaxItems(4);
         $stage7->setRequired(true);
         $stage7->setDescription('Wie zijn de getuigen van partner?');
@@ -1059,7 +1060,8 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage10= new Property();
         $stage10->addPrevious($stage9);
-        $stage10->setTitle('Betalen ');
+        $stage10->setTitle('Betaling ');
+        $stage10->setName('Betalen');
         $stage10->setIcon('fas fa-cash-register');
         $stage10->setSlug('betalen');
         $stage10->setType('string');
@@ -1080,7 +1082,8 @@ class HuwelijksplannerFixtures extends Fixture
 
         $property= new Property();
         //$property->setId('');
-        $property->setTitle('Order');
+        $property->setTitle('Bestelling');
+        $property->setName('order');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('orc/order');
@@ -1131,6 +1134,16 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setIri('ptc/schijnhuwelijk');
         $property->setRequired(true);
         $property->setDescription('Hebben bijde partners aangegeven niet te trouwen onder dwang');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property= new Property();
+        //$property->setId('');
+        $property->setTitle('Opmerkingen / Wensen');
+        $property->setName('wensen');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setDescription('zijn er vanuit de partners nog opmerkingen of wensen?');
         $property->setRequestType($trouwenNL);
         $manager->persist($property);
 
