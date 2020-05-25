@@ -2089,6 +2089,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[order]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[type]'
           in: query
           required: false
@@ -2619,6 +2628,22 @@ paths:
             type: array
             items:
               type: string
+          style: form
+          explode: true
+        -
+          name: order
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'order[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
           style: form
           explode: true
         -
@@ -5413,114 +5438,113 @@ components:
             url: 'http://schema.org/identifier'
           type: string
           format: uuid
+        application:
+          writeOnly: true
+          description: 'The application that made the request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         request:
-          readOnly: true
           description: 'The id of the request within that application'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         user:
-          readOnly: true
           description: 'The user on behalf of wich the request was made'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         subject:
-          readOnly: true
           description: '???'
           type: string
+          nullable: true
         process:
-          readOnly: true
           description: 'The procces on behalf of wich the request was made'
           type: string
+          nullable: true
         dataElements:
-          readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
+          nullable: true
         dataSubjects:
-          readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
+          nullable: true
         resource:
-          readOnly: true
           description: 'The resource that was requested'
           type: string
+          nullable: true
         resourceType:
-          readOnly: true
           description: 'The type of the resource that was requested'
           type: string
+          nullable: true
         route:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         endpoint:
-          readOnly: true
           description: 'The endpoint that the request was made to'
           type: string
         method:
-          readOnly: true
           description: 'The method that was used'
           type: string
         accept:
-          readOnly: true
           description: 'The contentType that was reqousted'
           type: string
         contentType:
-          readOnly: true
           description: 'The contentType that was suplieds'
           type: string
         content:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
+          nullable: true
         ip:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         session:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         headers:
-          readOnly: true
           description: 'The headers supplied by client'
           type: array
           items:
             type: string
         statusCode:
-          readOnly: true
           description: 'The status code returned to client'
           type: integer
+          nullable: true
         notFound:
-          readOnly: true
           description: 'Whether or not the reqousted endpoint was found'
           type: boolean
+          nullable: true
         forbidden:
-          readOnly: true
           description: 'Whether or not the client was allowed to the reqousted endpoint'
           type: boolean
+          nullable: true
         ok:
-          readOnly: true
           description: 'Whether or not there where any problems'
           type: boolean
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
     AuditTrail-write:
       type: object
       description: 'An resource representing a log line.'
@@ -5544,114 +5568,113 @@ components:
             url: 'http://schema.org/identifier'
           type: string
           format: uuid
+        application:
+          writeOnly: true
+          description: 'The application that made the request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         request:
-          readOnly: true
           description: 'The id of the request within that application'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         user:
-          readOnly: true
           description: 'The user on behalf of wich the request was made'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         subject:
-          readOnly: true
           description: '???'
           type: string
+          nullable: true
         process:
-          readOnly: true
           description: 'The procces on behalf of wich the request was made'
           type: string
+          nullable: true
         dataElements:
-          readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
+          nullable: true
         dataSubjects:
-          readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
+          nullable: true
         resource:
-          readOnly: true
           description: 'The resource that was requested'
           type: string
+          nullable: true
         resourceType:
-          readOnly: true
           description: 'The type of the resource that was requested'
           type: string
+          nullable: true
         route:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         endpoint:
-          readOnly: true
           description: 'The endpoint that the request was made to'
           type: string
         method:
-          readOnly: true
           description: 'The method that was used'
           type: string
         accept:
-          readOnly: true
           description: 'The contentType that was reqousted'
           type: string
         contentType:
-          readOnly: true
           description: 'The contentType that was suplieds'
           type: string
         content:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
+          nullable: true
         ip:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         session:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         headers:
-          readOnly: true
           description: 'The headers supplied by client'
           type: array
           items:
             type: string
         statusCode:
-          readOnly: true
           description: 'The status code returned to client'
           type: integer
+          nullable: true
         notFound:
-          readOnly: true
           description: 'Whether or not the reqousted endpoint was found'
           type: boolean
+          nullable: true
         forbidden:
-          readOnly: true
           description: 'Whether or not the client was allowed to the reqousted endpoint'
           type: boolean
+          nullable: true
         ok:
-          readOnly: true
           description: 'Whether or not there where any problems'
           type: boolean
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
     'AuditTrail:jsonld-write':
       type: object
       description: 'An resource representing a log line.'
@@ -5677,43 +5700,40 @@ components:
           type: string
           format: uuid
         action:
-          readOnly: true
           type: string
         objectId:
-          readOnly: true
           type: string
+          nullable: true
         objectClass:
-          readOnly: true
           type: string
         version:
-          readOnly: true
           type: integer
         data:
-          readOnly: true
           type: array
           items:
             type: string
+          nullable: true
         username:
-          readOnly: true
           type: string
+          nullable: true
         session:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
     ChangeLog-write:
       type: object
       description: 'An resource representing a log line.'
@@ -5738,43 +5758,40 @@ components:
           type: string
           format: uuid
         action:
-          readOnly: true
           type: string
         objectId:
-          readOnly: true
           type: string
+          nullable: true
         objectClass:
-          readOnly: true
           type: string
         version:
-          readOnly: true
           type: integer
         data:
-          readOnly: true
           type: array
           items:
             type: string
+          nullable: true
         username:
-          readOnly: true
           type: string
+          nullable: true
         session:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
     'ChangeLog:jsonld-write':
       type: object
       description: 'An resource representing a log line.'
@@ -5810,144 +5827,186 @@ components:
           description: 'The title of this property'
           type: string
         name:
-          readOnly: true
           description: 'The name of the property as used in api calls, extracted from title on snake_case basis'
           type: string
+        order:
+          description: 'The order in wichs this propertie is desplayed'
+          type: integer
+          nullable: true
         type:
           description: 'The type of this property'
           type: string
+          nullable: true
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
+          nullable: true
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
+          nullable: true
         multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
+          nullable: true
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
+          nullable: true
         exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
+          nullable: true
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
+          nullable: true
         exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
+          nullable: true
         maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
+          nullable: true
         minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
+          nullable: true
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
+          nullable: true
         additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
+          nullable: true
         maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
+          nullable: true
         minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
+          nullable: true
         uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
+          nullable: true
         maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
+          nullable: true
         minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
+          nullable: true
         required:
           description: 'Only whether or not this property is required'
           type: boolean
+          nullable: true
         properties:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         object:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         enum:
           description: 'An array of possible values, input is limited to this array]'
           type: array
           items:
             type: string
+          nullable: true
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
+          nullable: true
         defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
+          nullable: true
         nullable:
           description: 'Whether or not this property can be left empty'
           type: boolean
+          nullable: true
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
+          nullable: true
         readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
+          nullable: true
         writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
+          nullable: true
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
+          nullable: true
         externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
+          nullable: true
         example:
           description: 'An example of the value that should be supplied'
           type: string
+          nullable: true
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
+          nullable: true
         availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+          nullable: true
         maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+          nullable: true
         icon:
           description: 'The icon of this property'
           type: string
+          nullable: true
         slug:
           description: 'The slug of this property'
           type: string
+          nullable: true
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           type: string
           format: date-time
+          nullable: true
       required:
         - requestType
         - title
@@ -5972,131 +6031,174 @@ components:
         title:
           description: 'The title of this property'
           type: string
+        order:
+          description: 'The order in wichs this propertie is desplayed'
+          type: integer
+          nullable: true
         type:
           description: 'The type of this property'
           type: string
+          nullable: true
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
+          nullable: true
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
+          nullable: true
         multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
+          nullable: true
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
+          nullable: true
         exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
+          nullable: true
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
+          nullable: true
         exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
+          nullable: true
         maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
+          nullable: true
         minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
+          nullable: true
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
+          nullable: true
         additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
+          nullable: true
         maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
+          nullable: true
         minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
+          nullable: true
         uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
+          nullable: true
         maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
+          nullable: true
         minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
+          nullable: true
         required:
           description: 'Only whether or not this property is required'
           type: boolean
+          nullable: true
         properties:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         object:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         enum:
           description: 'An array of possible values, input is limited to this array]'
           type: array
           items:
             type: string
+          nullable: true
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
+          nullable: true
         defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
+          nullable: true
         nullable:
           description: 'Whether or not this property can be left empty'
           type: boolean
+          nullable: true
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
+          nullable: true
         readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
+          nullable: true
         writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
+          nullable: true
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
+          nullable: true
         externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
+          nullable: true
         example:
           description: 'An example of the value that should be supplied'
           type: string
+          nullable: true
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
+          nullable: true
         availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+          nullable: true
         maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+          nullable: true
         icon:
           description: 'The icon of this property'
           type: string
+          nullable: true
         slug:
           description: 'The slug of this property'
           type: string
+          nullable: true
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+          nullable: true
     'Property:jsonld-read':
       type: object
       description: |
@@ -6128,144 +6230,186 @@ components:
           description: 'The title of this property'
           type: string
         name:
-          readOnly: true
           description: 'The name of the property as used in api calls, extracted from title on snake_case basis'
           type: string
+        order:
+          description: 'The order in wichs this propertie is desplayed'
+          type: integer
+          nullable: true
         type:
           description: 'The type of this property'
           type: string
+          nullable: true
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
+          nullable: true
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
+          nullable: true
         multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
+          nullable: true
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
+          nullable: true
         exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
+          nullable: true
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
+          nullable: true
         exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
+          nullable: true
         maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
+          nullable: true
         minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
+          nullable: true
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
+          nullable: true
         additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
+          nullable: true
         maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
+          nullable: true
         minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
+          nullable: true
         uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
+          nullable: true
         maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
+          nullable: true
         minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
+          nullable: true
         required:
           description: 'Only whether or not this property is required'
           type: boolean
+          nullable: true
         properties:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         object:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         enum:
           description: 'An array of possible values, input is limited to this array]'
           type: array
           items:
             type: string
+          nullable: true
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
+          nullable: true
         defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
+          nullable: true
         nullable:
           description: 'Whether or not this property can be left empty'
           type: boolean
+          nullable: true
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
+          nullable: true
         readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
+          nullable: true
         writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
+          nullable: true
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
+          nullable: true
         externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
+          nullable: true
         example:
           description: 'An example of the value that should be supplied'
           type: string
+          nullable: true
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
+          nullable: true
         availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+          nullable: true
         maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+          nullable: true
         icon:
           description: 'The icon of this property'
           type: string
+          nullable: true
         slug:
           description: 'The slug of this property'
           type: string
+          nullable: true
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           type: string
           format: date-time
+          nullable: true
       required:
         - requestType
         - title
@@ -6299,131 +6443,174 @@ components:
         title:
           description: 'The title of this property'
           type: string
+        order:
+          description: 'The order in wichs this propertie is desplayed'
+          type: integer
+          nullable: true
         type:
           description: 'The type of this property'
           type: string
+          nullable: true
         format:
           description: 'The swagger type of the property as used in api calls'
           type: string
+          nullable: true
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
+          nullable: true
         multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
+          nullable: true
         maximum:
           description: '*Can only be used in combination with type integer* The maximum allowed value'
           type: integer
+          nullable: true
         exclusiveMaximum:
           description: '*Can only be used in combination with type integer* Defines if the maximum is exclusive, e.g. a exclusive maximum of 5 would invalidate 5 but validate 4'
           type: boolean
+          nullable: true
         minimum:
           description: '*Can only be used in combination with type integer* The minimum allowed value'
           type: integer
+          nullable: true
         exclusiveMinimum:
           description: '*Can only be used in combination with type integer* Defines if the minimum is exclusive, e.g. a exclusive minimum of 5 would invalidate 5 but validate 6'
           type: boolean
+          nullable: true
         maxLength:
           description: 'The maximum amount of characters in the value'
           type: integer
+          nullable: true
         minLength:
           description: 'The minimal amount of characters in the value'
           type: integer
+          nullable: true
         pattern:
           description: 'A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) that the value should comply to'
           type: string
+          nullable: true
         additionalItems:
           description: 'Not yet supported by business logic'
           type: boolean
+          nullable: true
         maxItems:
           description: '*Can only be used in combination with type array* The maximum array length'
           type: integer
+          nullable: true
         minItems:
           description: '*Can only be used in combination with type array* The minimum allowed value'
           type: integer
+          nullable: true
         uniqueItems:
           description: '*Can only be used in combination with type array* Define whether or not values in an array should be unique'
           type: boolean
+          nullable: true
         maxProperties:
           description: '*Can only be used in combination with type integer* The maximum amount of properties an object should contain'
           type: integer
+          nullable: true
         minProperties:
           description: '*Can only be used in combination with type object* The minimum amount of properties an object should contain'
           type: integer
+          nullable: true
         required:
           description: 'Only whether or not this property is required'
           type: boolean
+          nullable: true
         properties:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         additionalProperties:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         object:
           description: 'Not yet supported by business logic'
           type: string
+          nullable: true
         enum:
           description: 'An array of possible values, input is limited to this array]'
           type: array
           items:
             type: string
+          nullable: true
         description:
           description: 'An description of the value asked, supports markdown syntax as described by [CommonMark 0.27.](https://spec.commonmark.org/0.27/)'
           type: string
+          nullable: true
         defaultValue:
           description: 'An default value for this value that will be used if a user doesn''t supply a value'
           type: string
+          nullable: true
         nullable:
           description: 'Whether or not this property can be left empty'
           type: boolean
+          nullable: true
         discriminator:
           description: 'To help API consumers detect the object type, you can add the discriminator/propertyName keyword to model definitions. This keyword points to the property that specifies the data type name'
           type: string
+          nullable: true
         readOnly:
           description: 'Whether or not this property is read only'
           type: boolean
+          nullable: true
         writeOnly:
           description: 'Whether or not this property is write only'
           type: boolean
+          nullable: true
         xml:
           description: 'An XML representation of the swagger docs'
           type: string
+          nullable: true
         externalDoc:
           description: 'An link to any external documentation for the value'
           type: string
+          nullable: true
         example:
           description: 'An example of the value that should be supplied'
           type: string
+          nullable: true
         deprecated:
           description: 'Whether or not this property has been deprecated and wil be removed in the future'
           type: boolean
+          nullable: true
         availableFrom:
           description: 'The moment from which this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         availableUntil:
           description: '*should be used in combination with deprecated* The moment where until this value is available'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         minDate:
           description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+          nullable: true
         maxDate:
           description: 'The maximum date for value, either a date, datetime or duration (ISO_8601)'
           type: string
+          nullable: true
         icon:
           description: 'The icon of this property'
           type: string
+          nullable: true
         slug:
           description: 'The slug of this property'
           type: string
+          nullable: true
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+          nullable: true
     RequestType-read:
       type: object
       description: 'All properties contained in the RequestType type.'
@@ -6440,17 +6627,19 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         icon:
           description: 'The icon of this property'
           type: string
+          nullable: true
         name:
           description: 'The name of this RequestType'
           type: string
         description:
           description: 'An short description of this RequestType'
           type: string
+          nullable: true
         properties:
-          readOnly: true
           description: 'The properties for this request type'
           type: array
           items:
@@ -6460,6 +6649,7 @@ components:
         unique:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
+          nullable: true
         parentRequired:
           description: 'If this request type needs a parent request'
           type: boolean
@@ -6470,23 +6660,28 @@ components:
             $ref: '#/components/schemas/RequestType-read'
         parent:
           description: 'The parent of this request type'
-          $ref: '#/components/schemas/RequestType-read'
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType-read'
         caseType:
           description: 'The default case type that is created when submiting this request'
           type: string
+          nullable: true
         camundaProces:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           type: string
           format: date-time
+          nullable: true
       required:
         - organization
         - name
@@ -6502,18 +6697,22 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         icon:
           description: 'The icon of this property'
           type: string
+          nullable: true
         name:
           description: 'The name of this RequestType'
           type: string
         description:
           description: 'An short description of this RequestType'
           type: string
+          nullable: true
         unique:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
+          nullable: true
         parentRequired:
           description: 'If this request type needs a parent request'
           type: boolean
@@ -6524,13 +6723,18 @@ components:
             $ref: '#/components/schemas/RequestType-write'
         parent:
           description: 'The parent of this request type'
-          $ref: '#/components/schemas/RequestType-write'
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType-write'
         caseType:
           description: 'The default case type that is created when submiting this request'
           type: string
+          nullable: true
         camundaProces:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
+          nullable: true
     'RequestType:jsonld-read':
       type: object
       description: 'All properties contained in the RequestType type.'
@@ -6556,17 +6760,19 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         icon:
           description: 'The icon of this property'
           type: string
+          nullable: true
         name:
           description: 'The name of this RequestType'
           type: string
         description:
           description: 'An short description of this RequestType'
           type: string
+          nullable: true
         properties:
-          readOnly: true
           description: 'The properties for this request type'
           type: array
           items:
@@ -6576,6 +6782,7 @@ components:
         unique:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
+          nullable: true
         parentRequired:
           description: 'If this request type needs a parent request'
           type: boolean
@@ -6586,23 +6793,28 @@ components:
             $ref: '#/components/schemas/RequestType:jsonld-read'
         parent:
           description: 'The parent of this request type'
-          $ref: '#/components/schemas/RequestType:jsonld-read'
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType:jsonld-read'
         caseType:
           description: 'The default case type that is created when submiting this request'
           type: string
+          nullable: true
         camundaProces:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           type: string
           format: date-time
+          nullable: true
       required:
         - organization
         - name
@@ -6627,18 +6839,22 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         icon:
           description: 'The icon of this property'
           type: string
+          nullable: true
         name:
           description: 'The name of this RequestType'
           type: string
         description:
           description: 'An short description of this RequestType'
           type: string
+          nullable: true
         unique:
           description: 'Whether or not this request is unique to a submitter'
           type: boolean
+          nullable: true
         parentRequired:
           description: 'If this request type needs a parent request'
           type: boolean
@@ -6649,186 +6865,19 @@ components:
             $ref: '#/components/schemas/RequestType:jsonld-write'
         parent:
           description: 'The parent of this request type'
-          $ref: '#/components/schemas/RequestType:jsonld-write'
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType:jsonld-write'
         caseType:
           description: 'The default case type that is created when submiting this request'
           type: string
+          nullable: true
         camundaProces:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
+          nullable: true
 definitions:
-  AuditTrail-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line looks suspicius'
-        maxLength: 2555
-      application:
-        description: 'The application that made the request'
-        type: string
-        format: url
-        maxLength: 255
-      request:
-        description: 'The id of the request within that application'
-        type: string
-        format: url
-        maxLength: 255
-      user:
-        description: 'The user on behalf of wich the request was made'
-        type: string
-        format: url
-        maxLength: 255
-      subject:
-        description: '???'
-        type: \sting
-        maxLength: 255
-      process:
-        description: 'The procces on behalf of wich the request was made'
-        type: \sting
-        maxLength: 255
-      dataElements:
-        description: 'The moment this request was created'
-        type: array
-      dataSubjects:
-        description: 'The moment this request was created'
-        type: array
-      resource:
-        description: 'The resource that was requested'
-        type: \sting
-        maxLength: 255
-      resourceType:
-        description: 'The type of the resource that was requested'
-        type: \sting
-        maxLength: 255
-      route:
-        description: 'The moment this request was created'
-        type: \sting
-        maxLength: 255
-      endpoint:
-        description: 'The endpoint that the request was made to'
-        type: \sting
-        maxLength: 255
-      method:
-        description: 'The method that was used'
-        type: \sting
-        maxLength: 255
-      accept:
-        description: 'The contentType that was reqousted'
-        type: \sting
-        maxLength: 255
-      contentType:
-        description: 'The contentType that was suplieds'
-        type: \sting
-        maxLength: 255
-      content:
-        description: 'The moment this request was created'
-        type: \sting
-        maxLength: 2555
-      ip:
-        description: 'The moment this request was created'
-        type: \sting
-        maxLength: 255
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      headers:
-        description: 'The headers supplied by client'
-        type: array
-      statusCode:
-        description: 'The status code returned to client'
-        type: int
-        example: '200'
-      notFound:
-        description: 'Whether or not the reqousted endpoint was found'
-        type: bool
-        example: 'false'
-      forbidden:
-        description: 'Whether or not the client was allowed to the reqousted endpoint'
-        type: bool
-        example: 'false'
-      ok:
-        description: 'Whether or not there where any problems'
-        type: bool
-        example: 'true'
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-05-14 12:30:15'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-05-14 12:30:15'
-    required: []
-  AuditTrail-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line looks suspicius'
-        maxLength: 2555
-    required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: \sting
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-05-14 12:30:15'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-05-14 12:30:15'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
   Property-read:
     properties:
       id:
@@ -6842,6 +6891,10 @@ definitions:
         example: 'My Property'
         maxLength: 255
         minLength: 3
+      order:
+        description: 'The order in wichs this propertie is desplayed'
+        type: int
+        example: '1'
       type:
         description: 'The type of this property'
         type: string
@@ -6976,12 +7029,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-05-14 12:30:15'
+        example: '2020-05-25 11:25:01'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-05-14 12:30:15'
+        example: '2020-05-25 11:25:01'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -7025,6 +7078,10 @@ definitions:
         example: 'My Property'
         maxLength: 255
         minLength: 3
+      order:
+        description: 'The order in wichs this propertie is desplayed'
+        type: int
+        example: '1'
       type:
         description: 'The type of this property'
         type: string
@@ -7159,12 +7216,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-05-14 12:30:15'
+        example: '2020-05-25 11:25:01'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-05-14 12:30:15'
+        example: '2020-05-25 11:25:01'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -7314,19 +7371,179 @@ definitions:
     required:
       - organization
       - name
+  AuditTrail-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line looks suspicius'
+        maxLength: 2555
+      application:
+        description: 'The application that made the request'
+        type: string
+        format: url
+        maxLength: 255
+      request:
+        description: 'The id of the request within that application'
+        type: string
+        format: url
+        maxLength: 255
+      user:
+        description: 'The user on behalf of wich the request was made'
+        type: string
+        format: url
+        maxLength: 255
+      subject:
+        description: '???'
+        type: string
+        maxLength: 255
+      process:
+        description: 'The procces on behalf of wich the request was made'
+        type: string
+        maxLength: 255
+      dataElements:
+        description: 'The moment this request was created'
+        type: array
+      dataSubjects:
+        description: 'The moment this request was created'
+        type: array
+      resource:
+        description: 'The resource that was requested'
+        type: string
+        maxLength: 255
+      resourceType:
+        description: 'The type of the resource that was requested'
+        type: string
+        maxLength: 255
+      route:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      endpoint:
+        description: 'The endpoint that the request was made to'
+        type: string
+        maxLength: 255
+      method:
+        description: 'The method that was used'
+        type: string
+        maxLength: 255
+      accept:
+        description: 'The contentType that was reqousted'
+        type: string
+        maxLength: 255
+      contentType:
+        description: 'The contentType that was suplieds'
+        type: string
+        maxLength: 255
+      content:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 2555
+      ip:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      headers:
+        description: 'The headers supplied by client'
+        type: array
+      statusCode:
+        description: 'The status code returned to client'
+        type: int
+        example: '200'
+      notFound:
+        description: 'Whether or not the reqousted endpoint was found'
+        type: bool
+        example: 'false'
+      forbidden:
+        description: 'Whether or not the client was allowed to the reqousted endpoint'
+        type: bool
+        example: 'false'
+      ok:
+        description: 'Whether or not there where any problems'
+        type: bool
+        example: 'true'
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-05-25 11:25:01'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-05-25 11:25:01'
+    required: []
+  AuditTrail-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line looks suspicius'
+        maxLength: 2555
+    required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-05-25 11:25:01'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-05-25 11:25:01'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
 tags:
-  -
-    name: AuditTrail
-    description: |
-      An resource representing a log line.
-      
-      This entity represents a product that can be ordered via the OrderRegistratieComponent.
-  -
-    name: ChangeLog
-    description: |
-      An resource representing a log line.
-      
-      This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
     name: Property
     description: |
@@ -7342,22 +7559,34 @@ tags:
       All properties contained in the RequestType type.
       
       
+  -
+    name: AuditTrail
+    description: |
+      An resource representing a log line.
+      
+      This entity represents a product that can be ordered via the OrderRegistratieComponent.
+  -
+    name: ChangeLog
+    description: |
+      An resource representing a log line.
+      
+      This entity represents a product that can be ordered via the OrderRegistratieComponent.
 securityDefinitions:
   JWT-Oauth:
     type: oauth2
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the RequestType resource'
-      write: 'write right to the RequestType resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the RequestType resource'
-      write: 'write right to the RequestType resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
 host: irc.zaakonline.nl
 servers:
@@ -7376,7 +7605,7 @@ x-commonground:
       url: 'https://github.com/ConductionNL'
       email: info@conduction.nl
     -
-      name: 'Gemeente ''s-Hertogenbosch'
+      name: 'Gemeente "s-Hertogenbosch'
       url: 'https://github.com/gemeenteshertogenbosch'
       email: info@s-hertogenbosch.nl/
     -

@@ -12,9 +12,9 @@ settings:
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   type: component
   repro: https://github.com/ConductionNL/verzoektypecatalogus
-  demo: vtc.huwelijksplanner.online
+  demo: pc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/vtc-php
-  domain: huwelijksplanner.online
+  domain: begraven.zaakonline.nl
   subdomain: vtc
   organisationName: Conduction
   email: info@conduction.nl
@@ -61,12 +61,13 @@ php:
     jwtSecret: ""
   env: prod
   secret: ""
+  replicaCount: 2
 
 nginx:
   repository: docker.io/conduction/protocomponent-nginx
   tag: latest
   pullPolicy: Always
-  replicaCount: 1
+  replicaCount: 2
 
 varnish:
   enabled: true
