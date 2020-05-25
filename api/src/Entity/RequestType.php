@@ -280,14 +280,14 @@ class RequestType
         return $this;
     }
 
-    public function getOrganization(): ?string
+    public function getSourceOrganization(): ?string
     {
-        return $this->organization;
+        return $this->sourceOrganization;
     }
 
-    public function setOrganization(string $organization): self
+    public function setSourceOrganization(string $sourceOrganization): self
     {
-        $this->organization = $organization;
+        $this->sourceOrganization = $sourceOrganization;
 
         return $this;
     }

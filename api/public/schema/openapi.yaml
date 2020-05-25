@@ -6683,14 +6683,10 @@ components:
           format: date-time
           nullable: true
       required:
-        - organization
         - name
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
-      required:
-        - organization
-        - name
       properties:
         organization:
           description: 'A specific commonground organisation'
@@ -6816,14 +6812,10 @@ components:
           format: date-time
           nullable: true
       required:
-        - organization
         - name
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
-      required:
-        - organization
-        - name
       properties:
         '@context':
           readOnly: true
@@ -7591,8 +7583,8 @@ securityDefinitions:
 host: irc.zaakonline.nl
 servers:
   -
-    name: begraven.zaakonline.nl
-    url: vtc.dev.begraven.zaakonline.nl
+    name: huwelijksplanner.online
+    url: vtc.dev.huwelijksplanner.online
 externalDocs:
   -
     description: 'OAS Documentatie'
