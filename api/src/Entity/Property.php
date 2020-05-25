@@ -26,6 +26,7 @@ use Ramsey\Uuid\UuidInterface;
  * http://json-schema.org/.
  *
  * @ApiResource(
+ *     attributes={"order"={"order"="ASC"}},
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true},
  *     itemOperations={
@@ -106,6 +107,17 @@ class Property
     private $name;
 
     /**
+     * @var integer The order in wichs this propertie is desplayed
+     *
+     * @example 1
+     *
+     * @Assert\Type("integer")
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="integer", nullable=true, name="p_order")
+     */
+    private $order;
+
+    /**
      * @var string The type of this property
      *
      * @example string
@@ -125,7 +137,7 @@ class Property
      *
      * @Assert\NotBlank
      * @Assert\Length(max = 255)
-     * @Assert\Choice({"int32","int64","base64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","url","email","rsin","bag","bsn","iban","challenge","service","assent"})
+     * @Assert\Choice({"int32","int64","base64","float","double","byte","binary","date","date-time","duration","password","boolean","string","uuid","uri","url","email","rsin","bag","bsn","iban","service"})
      * @Groups({"read", "write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -639,8 +651,19 @@ class Property
         return $this;
     }
 
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     public function getName(): ?string
     {
+        if($this->name){
+            return $this->name;
+        }
         // titles wil be used as strings so lets convert the to camelcase
         $string = $this->title;
         $string = trim($string); //removes whitespace at begin and ending
@@ -648,6 +671,18 @@ class Property
         $string = strtolower($string);
 
         return $string;
+    }
+
+    public function getOrder(): ?int
+    {
+        return $this->order;
+    }
+
+    public function setOrder(?int $order): self
+    {
+        $this->order = $order;
+
+        return $this;
     }
 
     public function getMultipleOf(): ?int
