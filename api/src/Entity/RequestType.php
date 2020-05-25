@@ -66,7 +66,7 @@ use Doctrine\Common\Collections\Criteria;
  *  }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RequestTypeRepository")
- * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
