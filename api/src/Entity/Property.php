@@ -2,22 +2,21 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * This property follows the following schemes (in order of importance)
@@ -107,7 +106,7 @@ class Property
     private $name;
 
     /**
-     * @var integer The order in wichs this propertie is desplayed
+     * @var int The order in wichs this propertie is desplayed
      *
      * @example 1
      *
@@ -592,7 +591,7 @@ class Property
     private $start = false;
 
     /**
-     * @var Datetime $dateCreated The moment this request was created
+     * @var Datetime The moment this request was created
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="create")
@@ -601,7 +600,7 @@ class Property
     private $dateCreated;
 
     /**
-     * @var Datetime $dateModified  The moment this request last Modified
+     * @var Datetime The moment this request last Modified
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="update")
@@ -651,7 +650,6 @@ class Property
         return $this;
     }
 
-
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -661,7 +659,7 @@ class Property
 
     public function getName(): ?string
     {
-        if($this->name){
+        if ($this->name) {
             return $this->name;
         }
         // titles wil be used as strings so lets convert the to camelcase
@@ -1037,14 +1035,14 @@ class Property
 
     public function getIri(): ?string
     {
-    	return $this->iri;
+        return $this->iri;
     }
 
     public function setIri(?string $iri): self
     {
-    	$this->iri = $iri;
+        $this->iri = $iri;
 
-    	return $this;
+        return $this;
     }
 
     public function getNullable(): ?bool
@@ -1272,25 +1270,25 @@ class Property
 
     public function getDateCreated(): ?\DateTimeInterface
     {
-    	return $this->dateCreated;
+        return $this->dateCreated;
     }
 
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
-    	$this->dateCreated= $dateCreated;
+        $this->dateCreated = $dateCreated;
 
-    	return $this;
+        return $this;
     }
 
     public function getDateModified(): ?\DateTimeInterface
     {
-    	return $this->dateModified;
+        return $this->dateModified;
     }
 
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
-    	$this->dateModified = $dateModified;
+        $this->dateModified = $dateModified;
 
-    	return $this;
+        return $this;
     }
 }
