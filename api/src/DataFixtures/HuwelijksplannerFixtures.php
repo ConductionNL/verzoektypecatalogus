@@ -759,8 +759,8 @@ class HuwelijksplannerFixtures extends Fixture
 
         $property = new Property();
         $property->setStart(true);
-        $property->setTitle('Gegevens');
-        $property->setName('gegevens');
+        $property->setTitle('Afwijkende trouw locatie');
+        $property->setName('afwijkende-trouw-locatie');
         $property->setSlug('afwijkende-trouw-locatie');
         $property->setIcon('fal fa-paper-plane');
         $property->setType('array');
