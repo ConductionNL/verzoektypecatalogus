@@ -154,6 +154,15 @@ class Property
     private $iri;
 
     /**
+     * @var array An array of aditional query values that need to be applied to the iri, for example anly accept products from a specific catagory
+     *
+     *
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $query = [];
+
+    /**
      * @var string *Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5
      *
      * @example 2
@@ -1041,6 +1050,18 @@ class Property
     public function setIri(?string $iri): self
     {
         $this->iri = $iri;
+
+        return $this;
+    }
+
+    public function getQuery(): ?array
+    {
+        return $this->query;
+    }
+
+    public function setQuery(?array $query): self
+    {
+        $this->query = $query;
 
         return $this;
     }
