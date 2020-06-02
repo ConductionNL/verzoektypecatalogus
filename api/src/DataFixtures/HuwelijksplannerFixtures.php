@@ -740,7 +740,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setType('array');
         $stage1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
         $stage1->setRequestType($request);
-        $manager->persist($stage1);
+        $manager->persist($stage1); 
 
         // Aanvraag trouwlocatie
         $id = Uuid::fromString('c8704ea6-4962-4b7e-8d4e-69a257aa9577');
