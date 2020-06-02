@@ -740,7 +740,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setType('array');
         $stage1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
         $stage1->setRequestType($request);
-        $manager->persist($stage1); 
+        $manager->persist($stage1);
 
         // Aanvraag trouwlocatie
         $id = Uuid::fromString('c8704ea6-4962-4b7e-8d4e-69a257aa9577');
@@ -760,8 +760,8 @@ class HuwelijksplannerFixtures extends Fixture
         $property = new Property();
         $property->setStart(true);
         $property->setTitle('Afwijkende trouw locatie');
-        $property->setName('afwijkende-trouw-locatie');
-        $property->setSlug('afwijkende-trouw-locatie');
+        $property->setName('afwijkende_trouw_locatie');
+        $property->setSlug('afwijkende_trouw_locatie');
         $property->setIcon('fal fa-paper-plane');
         $property->setType('array');
         $property->setDescription('Wat zijn de gegevens van uw locatie');
@@ -945,16 +945,16 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage0= new Property();
         $stage0->setStart(true);
-        $stage0->setTitle('Uitleg');
+        $stage0->setTitle('Start Huwelijk');
         $stage0->setIcon('fas fa-ring');
-        $stage0->setSlug('start-huwelijk');
+        $stage0->setName('start_huwelijk');
+        $stage0->setSlug('start_huwelijk');
         $stage0->setDescription('Wat moet u zo meteen invullen?');
         $stage0->setRequestType($trouwenNL);
         $manager->persist($stage0);
 
         $stage1= new Property();
         $stage1->addPrevious($stage0);
-        $stage1->setStart(true);
         $stage1->setTitle('Ceremonie');
         $stage1->setName('type');
         $stage1->setIcon('fas fa-ring');
