@@ -5645,30 +5645,6 @@ paths:
               - asc
               - desc
         -
-          name: 'timeInterval[before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'timeInterval[strictly_before]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'timeInterval[after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
-          name: 'timeInterval[strictly_after]'
-          in: query
-          required: false
-          schema:
-            type: string
-        -
           name: 'dateCreated[before]'
           in: query
           required: false
@@ -5871,7 +5847,11 @@ paths:
           in: query
           required: false
           schema:
-            type: string
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
         -
           name: dateCreated
           in: query
@@ -8065,7 +8045,6 @@ components:
         timeInterval:
           description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
           type: string
-          format: date-time
           nullable: true
         dateCreated:
           description: 'The moment this request was created'
@@ -8128,7 +8107,6 @@ components:
         timeInterval:
           description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
           type: string
-          format: date-time
           nullable: true
     'Task:jsonld-read':
       type: object
@@ -8186,7 +8164,6 @@ components:
         timeInterval:
           description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
           type: string
-          format: date-time
           nullable: true
         dateCreated:
           description: 'The moment this request was created'
@@ -8258,7 +8235,6 @@ components:
         timeInterval:
           description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
           type: string
-          format: date-time
           nullable: true
 definitions:
   Property-read:
@@ -8415,12 +8391,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8605,12 +8581,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8812,12 +8788,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -8972,12 +8948,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
     required: []
   AuditTrail-write:
     properties:
@@ -9025,12 +9001,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-03 05:05:05'
+        example: '2020-06-03 07:07:21'
     required: []
   ChangeLog-write:
     properties:

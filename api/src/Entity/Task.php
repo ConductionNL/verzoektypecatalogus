@@ -153,7 +153,7 @@ class Task
      *
      *
      * @Groups({"read", "write"})
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $timeInterval;
 

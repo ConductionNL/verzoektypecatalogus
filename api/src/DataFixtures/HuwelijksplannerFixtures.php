@@ -830,6 +830,8 @@ class HuwelijksplannerFixtures extends Fixture
         $task->setType('post');
         $task->setTimeInterval('P1Y');
 
+        $manager->persist($task);
+
         $task= new Task();
         $task->setRequestType($meldingTrouwenNL);
         $task->setName('Informeer Verlopen melding');
@@ -838,6 +840,8 @@ class HuwelijksplannerFixtures extends Fixture
         $task->setEndpoint('trouwservice');
         $task->setType('post');
         $task->setTimeInterval('P300D');
+
+        $manager->persist($task);
 
         $stage0 = new Property();
         $stage0->setStart(true);
@@ -966,6 +970,7 @@ class HuwelijksplannerFixtures extends Fixture
         $task->setType('post');
         $task->setTimeInterval('P5D');
 
+        $manager->persist($task);
 
         // Inladen van de kinderen
         /*
