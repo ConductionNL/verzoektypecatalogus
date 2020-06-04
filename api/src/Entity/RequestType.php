@@ -149,6 +149,16 @@ class RequestType
     private $properties;
 
     /**
+     * @var Property[]|ArrayCollection The tasks for this request type
+     *
+     * @Groups({"read"})
+     * @MaxDepth(1)
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
+     */
+    private $tasks;
+
+    /**
      * @Groups({"read"})
      * @MaxDepth(1)
      */
@@ -266,6 +276,7 @@ class RequestType
     public function __construct()
     {
         $this->properties = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
         $this->extendedBy = new ArrayCollection();
         $this->children = new ArrayCollection();
     }
@@ -348,6 +359,19 @@ class RequestType
         return $this;
     }
 
+    public function removeProperty(Property $property): self
+    {
+        if ($this->properties->contains($property)) {
+            $this->properties->removeElement($property);
+            // set the owning side to null (unless already changed)
+            if ($property->getRequestType() === $this) {
+                $property->setRequestType(null);
+            }
+        }
+
+        return $this;
+    }
+
     /*
      * Used for soft adding properties for the extension functionality
      */
@@ -360,13 +384,31 @@ class RequestType
         return $this;
     }
 
-    public function removeProperty(Property $property): self
+    /**
+     * @return Collection|Tasks[]
+     */
+    public function getTasks(): Collection
     {
-        if ($this->properties->contains($property)) {
-            $this->properties->removeElement($property);
+        return $this->tasks;
+    }
+
+    public function addTask(Task $property): self
+    {
+        if (!$this->tasks->contains(task)) {
+            $this->tasks[] = $task;
+            $property->setRequestType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTasks(Task $task): self
+    {
+        if ($this->tasks->contains($task)) {
+            $this->tasks->removeElement($task);
             // set the owning side to null (unless already changed)
-            if ($property->getRequestType() === $this) {
-                $property->setRequestType(null);
+            if ($task->getRequestType() === $this) {
+                $task->setRequestType(null);
             }
         }
 

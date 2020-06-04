@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Task;
 use App\Entity\Property;
 use App\Entity\RequestType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -22,7 +23,7 @@ class HuwelijksplannerFixtures extends Fixture
     {
         // Lets make sure we only run these fixtures on larping enviroment
         if ($this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false) {
-            return false;
+            //return false;
         }
 
         /*
@@ -719,7 +720,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setIcon('fas fa-user-tie');
         $request->setOrganization('002220647');
         $request->setName('Aanvraag babs (niet beëdigd)');
-        $request->setDescription('Melding voorgenomen huwelijk');
+        $request->setDescription('Aanvraag babs (niet beëdigd)');
         $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
         $request->setCamundaProces('Aanvraag_eigen_Babs_niet_beedigd_behandelen');
         $manager->persist($request);
@@ -818,6 +819,43 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($meldingTrouwenNL);
         $manager->flush();
         $meldingTrouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+
+        // Bijbehorende taken die in de queu worden gezet
+        $task= new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Verlopen melding');
+        $task->setDescription('Deze task controleerd na 1 jaar het verlopen van de melding');
+        $task->setCode('controleer_meldingin');
+        $task->setEndpoint('trouwservice');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P1Y');
+
+        $manager->persist($task);
+
+        $task= new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Informeer Verlopen melding');
+        $task->setDescription('Deze task verstuurd na 300 dagen een waarschuwing voor het verlopen van de melding');
+        $task->setCode('informeren verlopen melding');
+        $task->setEndpoint('trouwservice');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P300D');
+
+        $manager->persist($task);
+
+        $task= new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Bevestig naar burger');
+        $task->setDescription('Deze ttaak bevestig het huwelijk naar de burger');
+        $task->setCode('bevestig_huwelijk');
+        $task->setEndpoint('trouwservice');
+        $task->setType('POST');
+        $task->setEvent('create');
+        $task->setTimeInterval('P0D'); # vertraging vna 0 dagen = meteen
+
+        $manager->persist($task);
 
         $stage0 = new Property();
         $stage0->setStart(true);
@@ -935,6 +973,19 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($trouwenNL);
         $manager->flush();
         $trouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+
+        // Bijbehorende taken die in de queu worden gezet
+        $task= new Task();
+        $task->setRequestType($trouwenNL);
+        $task->setName('Verlopen reservering');
+        $task->setDescription('Deze task controleerd na 5 dagen het verlopen van de reservering');
+        $task->setCode('start_huwelijk');
+        $task->setEndpoint('trouwservice');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P5D');
+
+        $manager->persist($task);
 
         // Inladen van de kinderen
         /*

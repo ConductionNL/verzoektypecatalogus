@@ -10,7 +10,7 @@ info:
     - Version: V.0.1
     - Repository: [online](https://github.com/ConductionNL/verzoektypecatalogus) / [zip](https://github.com/ConductionNL/verzoektypecatalogus/archive/master.zip)
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/vtc-php) 
-    - Datamodel: [postman](/schema/vtc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    - Datamodel: [postman](/schema/vtc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
     
     'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
@@ -2125,6 +2125,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[query]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[multipleOf]'
           in: query
           required: false
@@ -2693,6 +2702,22 @@ paths:
             items:
               type: string
           style: form
+          explode: true
+        -
+          name: query
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'query[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
           explode: true
         -
           name: multipleOf
@@ -5425,6 +5450,1093 @@ paths:
           description: 'Resource not found'
       produces:
         - application/health+json
+  /tasks:
+    get:
+      tags:
+        - Task
+      operationId: getTaskCollection
+      summary: 'Retrieves the collection of Task resources.'
+      responses:
+        200:
+          description: 'Task collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Task:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Task:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            application/json+vnd.api:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task-read'
+      parameters:
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[name]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[description]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[endpoint]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[type]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[event]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[code]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[requestHeaders]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[requestBody]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[webHookHeaders]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[timeInterval]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'name[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: description
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'description[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: endpoint
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'endpoint[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: type
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'type[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: event
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'event[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: code
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'code[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: requestHeaders
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'requestHeaders[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: requestBody
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'requestBody[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: webHookHeaders
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'webHookHeaders[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
+          explode: true
+        -
+          name: timeInterval
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'timeInterval[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: dateCreated
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: dateModified
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - Task
+      operationId: postTaskCollection
+      summary: 'Creates a Task resource.'
+      responses:
+        201:
+          description: 'Task resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Task:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Task:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+          links:
+            GetTaskItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getTaskItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /tasks/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Task:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Task:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+        description: 'The new Task resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/tasks/{id}':
+    get:
+      tags:
+        - Task
+      operationId: getTaskItem
+      summary: 'Retrieves a Task resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Task resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Task:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Task:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+    delete:
+      tags:
+        - Task
+      operationId: deleteTaskItem
+      summary: 'Removes the Task resource.'
+      responses:
+        204:
+          description: 'Task resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+    put:
+      tags:
+        - Task
+      operationId: putTaskItem
+      summary: 'Replaces the Task resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Task resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Task:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Task:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Task:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Task:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+        description: 'The updated Task resource'
+    patch:
+      tags:
+        - Task
+      operationId: patchTaskItem
+      summary: 'Updates the Task resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Task resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Task:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Task:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Task-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Task:jsonld-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          applications/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Task-write'
+        description: 'The updated Task resource'
 components:
   schemas:
     AuditTrail-read:
@@ -5845,6 +6957,12 @@ components:
           description: 'The iri type of the property used to standarize datas'
           type: string
           nullable: true
+        query:
+          description: 'An array of aditional query values that need to be applied to the iri, for example anly accept products from a specific catagory'
+          type: array
+          items:
+            type: string
+          nullable: true
         multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
@@ -6047,6 +7165,12 @@ components:
           description: 'The iri type of the property used to standarize datas'
           type: string
           nullable: true
+        query:
+          description: 'An array of aditional query values that need to be applied to the iri, for example anly accept products from a specific catagory'
+          type: array
+          items:
+            type: string
+          nullable: true
         multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
@@ -6247,6 +7371,12 @@ components:
         iri:
           description: 'The iri type of the property used to standarize datas'
           type: string
+          nullable: true
+        query:
+          description: 'An array of aditional query values that need to be applied to the iri, for example anly accept products from a specific catagory'
+          type: array
+          items:
+            type: string
           nullable: true
         multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
@@ -6459,6 +7589,12 @@ components:
           description: 'The iri type of the property used to standarize datas'
           type: string
           nullable: true
+        query:
+          description: 'An array of aditional query values that need to be applied to the iri, for example anly accept products from a specific catagory'
+          type: array
+          items:
+            type: string
+          nullable: true
         multipleOf:
           description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
           type: integer
@@ -6644,6 +7780,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Property-read'
+        tasks:
+          description: 'The tasks for this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/Task-read'
         stages:
           readOnly: true
         unique:
@@ -6683,10 +7824,14 @@ components:
           format: date-time
           nullable: true
       required:
+        - organization
         - name
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
+      required:
+        - organization
+        - name
       properties:
         organization:
           description: 'A specific commonground organisation'
@@ -6773,6 +7918,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Property:jsonld-read'
+        tasks:
+          description: 'The tasks for this request type'
+          type: array
+          items:
+            $ref: '#/components/schemas/Task:jsonld-read'
         stages:
           readOnly: true
         unique:
@@ -6812,10 +7962,14 @@ components:
           format: date-time
           nullable: true
       required:
+        - organization
         - name
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
+      required:
+        - organization
+        - name
       properties:
         '@context':
           readOnly: true
@@ -6869,6 +8023,256 @@ components:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
           nullable: true
+    Task-read:
+      type: object
+      description: ''
+      properties:
+        id:
+          readOnly: true
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        requestType:
+          description: 'The requestType that this task belongs to'
+          $ref: '#/components/schemas/RequestType-read'
+        name:
+          description: 'The name of this Task'
+          type: string
+        description:
+          description: 'The description of this Task'
+          type: string
+          nullable: true
+        endpoint:
+          description: 'The endpoint that the request was made to'
+          type: string
+        type:
+          description: 'The type of the task'
+          type: string
+        event:
+          description: 'The type of event that trigers the ttask'
+          type: string
+        code:
+          description: 'The type of the task'
+          type: string
+        requestHeaders:
+          description: 'The request headers supplied by client'
+          type: array
+          items:
+            type: string
+        requestBody:
+          description: 'The request body supplied by client'
+          type: array
+          items:
+            type: string
+        webHookHeaders:
+          description: 'The the headers of the webHook'
+          type: array
+          items:
+            type: string
+        timeInterval:
+          description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+          type: string
+          nullable: true
+        dateCreated:
+          description: 'The moment this request was created'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - requestType
+        - name
+    Task-write:
+      type: object
+      description: ''
+      required:
+        - requestType
+        - name
+      properties:
+        requestType:
+          description: 'The requestType that this task belongs to'
+          $ref: '#/components/schemas/RequestType-write'
+        name:
+          description: 'The name of this Task'
+          type: string
+        description:
+          description: 'The description of this Task'
+          type: string
+          nullable: true
+        endpoint:
+          description: 'The endpoint that the request was made to'
+          type: string
+        type:
+          description: 'The type of the task'
+          type: string
+        event:
+          description: 'The type of event that trigers the ttask'
+          type: string
+        code:
+          description: 'The type of the task'
+          type: string
+        requestHeaders:
+          description: 'The request headers supplied by client'
+          type: array
+          items:
+            type: string
+        requestBody:
+          description: 'The request body supplied by client'
+          type: array
+          items:
+            type: string
+        webHookHeaders:
+          description: 'The the headers of the webHook'
+          type: array
+          items:
+            type: string
+        timeInterval:
+          description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+          type: string
+          nullable: true
+    'Task:jsonld-read':
+      type: object
+      description: ''
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        requestType:
+          description: 'The requestType that this task belongs to'
+          $ref: '#/components/schemas/RequestType:jsonld-read'
+        name:
+          description: 'The name of this Task'
+          type: string
+        description:
+          description: 'The description of this Task'
+          type: string
+          nullable: true
+        endpoint:
+          description: 'The endpoint that the request was made to'
+          type: string
+        type:
+          description: 'The type of the task'
+          type: string
+        event:
+          description: 'The type of event that trigers the ttask'
+          type: string
+        code:
+          description: 'The type of the task'
+          type: string
+        requestHeaders:
+          description: 'The request headers supplied by client'
+          type: array
+          items:
+            type: string
+        requestBody:
+          description: 'The request body supplied by client'
+          type: array
+          items:
+            type: string
+        webHookHeaders:
+          description: 'The the headers of the webHook'
+          type: array
+          items:
+            type: string
+        timeInterval:
+          description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+          type: string
+          nullable: true
+        dateCreated:
+          description: 'The moment this request was created'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          externalDocs:
+            url: 'http://schema.org/DateTime'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - requestType
+        - name
+    'Task:jsonld-write':
+      type: object
+      description: ''
+      required:
+        - requestType
+        - name
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        requestType:
+          description: 'The requestType that this task belongs to'
+          $ref: '#/components/schemas/RequestType:jsonld-write'
+        name:
+          description: 'The name of this Task'
+          type: string
+        description:
+          description: 'The description of this Task'
+          type: string
+          nullable: true
+        endpoint:
+          description: 'The endpoint that the request was made to'
+          type: string
+        type:
+          description: 'The type of the task'
+          type: string
+        event:
+          description: 'The type of event that trigers the ttask'
+          type: string
+        code:
+          description: 'The type of the task'
+          type: string
+        requestHeaders:
+          description: 'The request headers supplied by client'
+          type: array
+          items:
+            type: string
+        requestBody:
+          description: 'The request body supplied by client'
+          type: array
+          items:
+            type: string
+        webHookHeaders:
+          description: 'The the headers of the webHook'
+          type: array
+          items:
+            type: string
+        timeInterval:
+          description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+          type: string
+          nullable: true
 definitions:
   Property-read:
     properties:
@@ -6902,6 +8306,9 @@ definitions:
         type: string
         example: 'https://schema.org/name'
         maxLength: 255
+      query:
+        description: 'An array of aditional query values that need to be applied to the iri, for example anly accept products from a specific catagory'
+        type: array
       multipleOf:
         description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
         type: string
@@ -7021,12 +8428,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-05-25 11:25:01'
+        example: '2020-06-04 18:52:19'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-05-25 11:25:01'
+        example: '2020-06-04 18:52:19'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -7089,6 +8496,9 @@ definitions:
         type: string
         example: 'https://schema.org/name'
         maxLength: 255
+      query:
+        description: 'An array of aditional query values that need to be applied to the iri, for example anly accept products from a specific catagory'
+        type: array
       multipleOf:
         description: '*Can only be used in combination with type integer* Specifies a number where the value should be a multiple of, e.g. a multiple of 2 would validate 2,4 and 6 but would prevent 5'
         type: string
@@ -7208,12 +8618,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-05-25 11:25:01'
+        example: '2020-06-04 18:52:19'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-05-25 11:25:01'
+        example: '2020-06-04 18:52:19'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -7297,6 +8707,9 @@ definitions:
       properties:
         description: 'The properties for this request type'
         type: '\Property[]|\ArrayCollection'
+      tasks:
+        description: 'The tasks for this request type'
+        type: '\Property[]|\ArrayCollection'
       children:
         description: 'The children of this request type'
         type: '\ArrayCollection|\RequestType[]'
@@ -7362,6 +8775,121 @@ definitions:
         type: object
     required:
       - organization
+      - name
+  Task-read:
+    properties:
+      id:
+        description: ''
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The name of this Task'
+        type: string
+        example: 'Task name'
+        maxLength: 255
+      description:
+        description: 'The description of this Task'
+        type: string
+        example: 'Task description'
+        maxLength: 255
+      endpoint:
+        description: 'The endpoint that the request was made to'
+        type: string
+        example: endpoint
+        maxLength: 255
+      type:
+        description: 'The type of the task'
+        type: string
+        example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      event:
+        description: 'The type of event that trigers the ttask'
+        type: string
+        example: 'create, update, save or delete'
+        maxLength: 255
+      code:
+        description: 'The type of the task'
+        type: string
+        example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      requestHeaders:
+        description: 'The request headers supplied by client'
+        type: array
+      requestBody:
+        description: 'The request body supplied by client'
+        type: array
+      webHookHeaders:
+        description: 'The the headers of the webHook'
+        type: array
+      timeInterval:
+        description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+        type: string
+        example: P10D
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-06-04 18:52:19'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-06-04 18:52:19'
+      requestType:
+        description: 'The requestType that this task belongs to'
+        type: object
+    required:
+      - name
+  Task-write:
+    properties:
+      name:
+        description: 'The name of this Task'
+        type: string
+        example: 'Task name'
+        maxLength: 255
+      description:
+        description: 'The description of this Task'
+        type: string
+        example: 'Task description'
+        maxLength: 255
+      endpoint:
+        description: 'The endpoint that the request was made to'
+        type: string
+        example: endpoint
+        maxLength: 255
+      type:
+        description: 'The type of the task'
+        type: string
+        example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      event:
+        description: 'The type of event that trigers the ttask'
+        type: string
+        example: 'create, update, save or delete'
+        maxLength: 255
+      code:
+        description: 'The type of the task'
+        type: string
+        example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      requestHeaders:
+        description: 'The request headers supplied by client'
+        type: array
+      requestBody:
+        description: 'The request body supplied by client'
+        type: array
+      webHookHeaders:
+        description: 'The the headers of the webHook'
+        type: array
+      timeInterval:
+        description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+        type: string
+        example: P10D
+      requestType:
+        description: 'The requestType that this task belongs to'
+        type: object
+    required:
       - name
   AuditTrail-read:
     properties:
@@ -7467,12 +8995,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-25 11:25:01'
+        example: '2020-06-04 18:52:19'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-25 11:25:01'
+        example: '2020-06-04 18:52:19'
     required: []
   AuditTrail-write:
     properties:
@@ -7520,12 +9048,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-05-25 11:25:01'
+        example: '2020-06-04 18:52:19'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-05-25 11:25:01'
+        example: '2020-06-04 18:52:19'
     required: []
   ChangeLog-write:
     properties:
@@ -7549,6 +9077,12 @@ tags:
     name: RequestType
     description: |
       All properties contained in the RequestType type.
+      
+      
+  -
+    name: Task
+    description: |
+      
       
       
   -
