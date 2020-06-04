@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Task;
 use App\Entity\Property;
 use App\Entity\RequestType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -22,7 +23,7 @@ class HuwelijksplannerFixtures extends Fixture
     {
         // Lets make sure we only run these fixtures on larping enviroment
         if ($this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false) {
-            return false;
+            //return false;
         }
 
         /*
@@ -667,24 +668,20 @@ class HuwelijksplannerFixtures extends Fixture
         // einde hacky tacky
 
         $property = new Property();
-        $property->setStart(true);
         $property->setTitle('Partner 1');
-        // $property->setName('naamgebruikPartner1');
+        $property->setName('naamgebruikPartner1');
         $property->setIcon('fal fa-user');
-        $property->setSlug('naamgebruikPartner1');
         $property->setType('string');
         $property->setDescription('Welke naam wilt u');
         $property->setRequestType($request);
         $manager->persist($property);
 
         $property = new Property();
-        $property->setStart(true);
-        $property->setTitle('Gegevens');
-        //$property->setName('naamgebruikPartner2');
+        $property->setTitle('Partner 2');
+        $property->setName('naamgebruikPartner2');
         $property->setIcon('fal fa-user');
-        $property->setSlug('naamgebruikPartner2');
         $property->setType('string');
-        $property->setDescription('Welke naam wilt uw partner');
+        $property->setDescription('Welke naam wilt partner 2');
         $property->setRequestType($request);
         $manager->persist($property);
 
@@ -723,7 +720,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setIcon('fas fa-user-tie');
         $request->setOrganization('002220647');
         $request->setName('Aanvraag babs (niet beëdigd)');
-        $request->setDescription('Melding voorgenomen huwelijk');
+        $request->setDescription('Aanvraag babs (niet beëdigd)');
         $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
         $request->setCamundaProces('Aanvraag_eigen_Babs_niet_beedigd_behandelen');
         $manager->persist($request);
@@ -761,15 +758,52 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $aanvraagLocatie= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
 
-        $stage1 = new Property();
-        $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
-        $stage1->setIcon('fal fa-paper-plane');
-        $stage1->setSlug('afwijkende-trouw-locatie');
-        $stage1->setType('array');
-        $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde locatie');
-        $stage1->setRequestType($aanvraagLocatie);
-        $manager->persist($stage1);
+        $property = new Property();
+        $property->setStart(true);
+        $property->setTitle('Afwijkende trouw locatie');
+        $property->setName('afwijkende_trouw_locatie');
+        $property->setSlug('afwijkende_trouw_locatie');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('array');
+        $property->setDescription('Wat zijn de gegevens van uw locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
+
+        $property = new Property();
+        $property->setTitle('Naam');
+        $property->setName('locatieNaam');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('string');
+        $property->setDescription('Wat is de naam van uw beoogde locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
+
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setName('locatieTelefoon');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('string');
+        $property->setDescription('Wat is het telefoon nummer van uw beoogde locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
+
+        $property = new Property();
+        $property->setTitle('Adres');
+        $property->setName('locatieAdres');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('string');
+        $property->setDescription('Wat is het adress van uw beoogde locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
+
+        $property = new Property();
+        $property->setTitle('Omschrijving');
+        $property->setName('locatieOmschrijving');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('string');
+        $property->setDescription('Kunt u een korte omschrijving geven van uw beoogde locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
 
         // Melding Huwelijk
         $id = Uuid::fromString('146cb7c8-46b9-4911-8ad9-3238bab4313e');
@@ -785,6 +819,29 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($meldingTrouwenNL);
         $manager->flush();
         $meldingTrouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+
+        // Bijbehorende taken die in de queu worden gezet
+        $task= new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Verlopen melding');
+        $task->setDescription('Deze task controleerd na 1 jaar het verlopen van de melding');
+        $task->setCode('controleer_meldingin');
+        $task->setEndpoint('trouwservice');
+        $task->setType('post');
+        $task->setTimeInterval('P1Y');
+
+        $manager->persist($task);
+
+        $task= new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Informeer Verlopen melding');
+        $task->setDescription('Deze task verstuurd na 300 dagen een waarschuwing voor het verlopen van de melding');
+        $task->setCode('informeren verlopen melding');
+        $task->setEndpoint('trouwservice');
+        $task->setType('post');
+        $task->setTimeInterval('P300D');
+
+        $manager->persist($task);
 
         $stage0 = new Property();
         $stage0->setStart(true);
@@ -903,6 +960,18 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $trouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
 
+        // Bijbehorende taken die in de queu worden gezet
+        $task= new Task();
+        $task->setRequestType($trouwenNL);
+        $task->setName('Verlopen reservering');
+        $task->setDescription('Deze task controleerd na 5 dagen het verlopen van de reservering');
+        $task->setCode('start_huwelijk');
+        $task->setEndpoint('trouwservice');
+        $task->setType('post');
+        $task->setTimeInterval('P5D');
+
+        $manager->persist($task);
+
         // Inladen van de kinderen
         /*
         $trouwenNL->addChild($aanvraagBabs);
@@ -912,16 +981,16 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage0= new Property();
         $stage0->setStart(true);
-        $stage0->setTitle('Uitleg');
+        $stage0->setTitle('Start Huwelijk');
         $stage0->setIcon('fas fa-ring');
-        $stage0->setSlug('start-huwelijk');
+        $stage0->setName('start_huwelijk');
+        $stage0->setSlug('start_huwelijk');
         $stage0->setDescription('Wat moet u zo meteen invullen?');
         $stage0->setRequestType($trouwenNL);
         $manager->persist($stage0);
 
         $stage1= new Property();
         $stage1->addPrevious($stage0);
-        $stage1->setStart(true);
         $stage1->setTitle('Ceremonie');
         $stage1->setName('type');
         $stage1->setIcon('fas fa-ring');

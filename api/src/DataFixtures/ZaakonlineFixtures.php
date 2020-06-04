@@ -11,17 +11,17 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class ZaakonlineFixtures extends Fixture
 {
-	private $params;
+    private $params;
 
-	public function __construct(ParameterBagInterface $params)
-	{
-		$this->params = $params;
-	}
+    public function __construct(ParameterBagInterface $params)
+    {
+        $this->params = $params;
+    }
 
     public function load(ObjectManager $manager)
     {
         // Lets make sure we only run these fixtures on larping enviroment
-        if ($this->params->get('app_domain') != "zaakonline.nl" && strpos($this->params->get('app_domain'), "zaakonline.nl") == false) {
+        if ($this->params->get('app_domain') != 'zaakonline.nl' && strpos($this->params->get('app_domain'), 'zaakonline.nl') == false) {
             return false;
         }
 
@@ -107,7 +107,6 @@ class ZaakonlineFixtures extends Fixture
         $property->setRequestType($request);
         $manager->persist($property);
 
-
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('d78197df-af77-4b5e-bed0-054cba047550');
         $request = new RequestType();
@@ -137,7 +136,7 @@ class ZaakonlineFixtures extends Fixture
         $request->setId($id);
         $manager->persist($request);
         $manager->flush();
-        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
         // einde hacky tacky
 
         $property = new Property();
@@ -171,7 +170,7 @@ class ZaakonlineFixtures extends Fixture
         $request->setId($id);
         $manager->persist($request);
         $manager->flush();
-        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
         // einde hacky tacky
 
         $property = new Property();
@@ -191,7 +190,6 @@ class ZaakonlineFixtures extends Fixture
         $property->setDescription('Op welk telefoonnummer kunnen wij u berijken?');
         $property->setRequestType($request);
         $manager->persist($property);
-
 
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('2201ebbd-f2b0-4ece-88e0-18ba0d2949e0');
@@ -206,7 +204,7 @@ class ZaakonlineFixtures extends Fixture
         $request->setId($id);
         $manager->persist($request);
         $manager->flush();
-        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
         // einde hacky tacky
 
         $property = new Property();
@@ -227,6 +225,6 @@ class ZaakonlineFixtures extends Fixture
         $property->setRequestType($request);
         $manager->persist($property);
 
-		$manager->flush();
+        $manager->flush();
     }
 }
