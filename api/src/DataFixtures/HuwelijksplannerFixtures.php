@@ -827,7 +827,8 @@ class HuwelijksplannerFixtures extends Fixture
         $task->setDescription('Deze task controleerd na 1 jaar het verlopen van de melding');
         $task->setCode('controleer_meldingin');
         $task->setEndpoint('trouwservice');
-        $task->setType('post');
+        $task->setType('POST');
+        $task->setEvent('update');
         $task->setTimeInterval('P1Y');
 
         $manager->persist($task);
@@ -838,8 +839,21 @@ class HuwelijksplannerFixtures extends Fixture
         $task->setDescription('Deze task verstuurd na 300 dagen een waarschuwing voor het verlopen van de melding');
         $task->setCode('informeren verlopen melding');
         $task->setEndpoint('trouwservice');
-        $task->setType('post');
+        $task->setType('POST');
+        $task->setEvent('update');
         $task->setTimeInterval('P300D');
+
+        $manager->persist($task);
+
+        $task= new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Bevestig naar burger');
+        $task->setDescription('Deze ttaak bevestig het huwelijk naar de burger');
+        $task->setCode('bevestig_huwelijk');
+        $task->setEndpoint('trouwservice');
+        $task->setType('POST');
+        $task->setEvent('create');
+        $task->setTimeInterval('P0D'); # vertraging vna 0 dagen = meteen
 
         $manager->persist($task);
 
@@ -967,7 +981,8 @@ class HuwelijksplannerFixtures extends Fixture
         $task->setDescription('Deze task controleerd na 5 dagen het verlopen van de reservering');
         $task->setCode('start_huwelijk');
         $task->setEndpoint('trouwservice');
-        $task->setType('post');
+        $task->setType('POST');
+        $task->setEvent('update');
         $task->setTimeInterval('P5D');
 
         $manager->persist($task);

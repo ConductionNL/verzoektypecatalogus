@@ -111,6 +111,18 @@ class Task
     private $type;
 
     /**
+     * @var string The type of event that trigers the ttask
+     *
+     * @example create, update, save or delete
+     * @Assert\Length(
+     *      max = 255
+     * )
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $event;
+
+    /**
      * @var string The type of the task
      *
      * @example GET, POST, DELETE, CAMUNDA
@@ -238,6 +250,18 @@ class Task
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getEvent(): ?string
+    {
+        return $this->event;
+    }
+
+    public function setEvent(string $event): self
+    {
+        $this->event = $event;
 
         return $this;
     }
