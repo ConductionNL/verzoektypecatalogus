@@ -5582,6 +5582,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[event]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[code]'
           in: query
           required: false
@@ -5764,6 +5773,22 @@ paths:
             type: string
         -
           name: 'type[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: event
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'event[]'
           in: query
           required: false
           schema:
@@ -8024,6 +8049,9 @@ components:
         type:
           description: 'The type of the task'
           type: string
+        event:
+          description: 'The type of event that trigers the ttask'
+          type: string
         code:
           description: 'The type of the task'
           type: string
@@ -8086,6 +8114,9 @@ components:
         type:
           description: 'The type of the task'
           type: string
+        event:
+          description: 'The type of event that trigers the ttask'
+          type: string
         code:
           description: 'The type of the task'
           type: string
@@ -8142,6 +8173,9 @@ components:
           type: string
         type:
           description: 'The type of the task'
+          type: string
+        event:
+          description: 'The type of event that trigers the ttask'
           type: string
         code:
           description: 'The type of the task'
@@ -8213,6 +8247,9 @@ components:
           type: string
         type:
           description: 'The type of the task'
+          type: string
+        event:
+          description: 'The type of event that trigers the ttask'
           type: string
         code:
           description: 'The type of the task'
@@ -8391,12 +8428,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8581,12 +8618,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8766,6 +8803,11 @@ definitions:
         type: string
         example: 'GET, POST, DELETE, CAMUNDA'
         maxLength: 255
+      event:
+        description: 'The type of event that trigers the ttask'
+        type: string
+        example: 'create, update, save or delete'
+        maxLength: 255
       code:
         description: 'The type of the task'
         type: string
@@ -8788,12 +8830,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -8820,6 +8862,11 @@ definitions:
         description: 'The type of the task'
         type: string
         example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      event:
+        description: 'The type of event that trigers the ttask'
+        type: string
+        example: 'create, update, save or delete'
         maxLength: 255
       code:
         description: 'The type of the task'
@@ -8948,12 +8995,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
     required: []
   AuditTrail-write:
     properties:
@@ -9001,12 +9048,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-04 09:46:26'
+        example: '2020-06-04 18:52:19'
     required: []
   ChangeLog-write:
     properties:
