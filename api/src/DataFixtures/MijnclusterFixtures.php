@@ -78,6 +78,7 @@ class MijnclusterFixtures extends Fixture
         $task->setDescription('Deze task roept een webhook aan als er een verzoek vanhet type verhuizen wordt gecrieërd');
         $task->setEndpoint('https://webhook.mijncluster.nl');
         $task->setType('GET');
+        $task->setCode('webhook_call_pink');
         $task->setEvent('create');
         $task->setTimeInterval('P0D');
         $manager->persist($task);
