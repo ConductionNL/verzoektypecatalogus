@@ -39,7 +39,7 @@ class MijnclusterFixtures extends Fixture
         $manager->persist($request);
         $request->setId($id);
         $manager->persist($request);
-        $request->flush();
+        $manager->flush();
         $request = $manager->getRepository('App:RequestType')->findOneBy(array('id' => $id));
 
         $id = Uuid::fromString('fbc9c518-8971-4257-bf81-68cbd9af84d3');
@@ -80,7 +80,8 @@ class MijnclusterFixtures extends Fixture
         $task->setType('GET');
         $task->setEvent('create');
         $task->setTimeInterval('P0D');
-
         $manager->persist($task);
+        
+        $manager->flush();
     }
 }
