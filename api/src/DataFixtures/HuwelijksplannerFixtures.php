@@ -48,7 +48,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('form');
         $stage1->setType('string');
         $stage1->setFormat('date');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('Waarvoor vraagt u de vog aan');
         $stage1->setRequestType($bezwaar);
         $manager->persist($stage1);
 
@@ -83,7 +83,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('form');
         $stage1->setType('string');
         $stage1->setFormat('date');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('Waarom maakt u bezwaar');
         $stage1->setRequestType($bezwaar);
         $manager->persist($stage1);
 
@@ -116,7 +116,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('form');
         $stage1->setType('string');
         $stage1->setFormat('date');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('WOmschrijf hoe u uw rijbewijs bent kwijt graakt');
         $stage1->setRequestType($bezwaar);
         $manager->persist($stage1);
 
@@ -1230,7 +1230,6 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setDescription('zijn er vanuit de partners nog opmerkingen of wensen?');
         $property->setRequestType($trouwenNL);
         $manager->persist($property);
-
 
         $id = Uuid::fromString('47577f44-0ede-4655-a629-027f051d2b07');
         $trouwenUtrecht = new RequestType();
