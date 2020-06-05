@@ -40,7 +40,7 @@ class MijnclusterFixtures extends Fixture
         $request->setId($id);
         $manager->persist($request);
         $request->flush();
-        $request= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id' => $id));
 
         $id = Uuid::fromString('fbc9c518-8971-4257-bf81-68cbd9af84d3');
         $property = new Property();
@@ -54,10 +54,10 @@ class MijnclusterFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
+        $property = $manager->getRepository('App:Property')->findOneBy(array('id' => $id));
 
         $id = Uuid::fromString('c6623907-a2cc-490e-a4cf-4bc3eaaadeba');
-        $property= new Property();
+        $property = new Property();
         $property->setTitle('Adres');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
@@ -69,10 +69,10 @@ class MijnclusterFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
+        $property = $manager->getRepository('App:Property')->findOneBy(array('id' => $id));
 
         // Bijbehorende taken die in de queu worden gezet
-        $task= new Task();
+        $task = new Task();
         $task->setRequestType($requestType);
         $task->setName('Aanroepen webhook');
         $task->setDescription('Deze task roept een webhook aan als er een verzoek vanhet type verhuizen wordt gecrieërd');
@@ -82,4 +82,5 @@ class MijnclusterFixtures extends Fixture
         $task->setTimeInterval('P0D');
 
         $manager->persist($task);
+    }
 }

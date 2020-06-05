@@ -10,7 +10,7 @@ class AppFixtures extends Fixture
 {
     private $params;
 
-    public function __construct(ParameterBagInterface $params, UserPasswordEncoderInterface $encoder)
+    public function __construct(ParameterBagInterface $params)
     {
         $this->params = $params;
     }
