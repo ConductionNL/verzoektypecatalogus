@@ -31,16 +31,16 @@ class MijnclusterFixtures extends Fixture
     	 *  Verhuizen
     	 */
         $id = Uuid::fromString('23d4803a-67cd-4720-82d0-e1e0a776d8c4');
-        $request = new RequestType();
-        $request->setIcon('fal fa-truck-moving');
-        $request->setOrganization('0000');
-        $request->setName('Verhuizen');
-        $request->setDescription('Het doorgeven van een verhuizing aan een gemeente');
-        $manager->persist($request);
-        $request->setId($id);
-        $manager->persist($request);
+        $requestType = new RequestType();
+        $requestType->setIcon('fal fa-truck-moving');
+        $requestType->setOrganization('0000');
+        $requestType->setName('Verhuizen');
+        $requestType->setDescription('Het doorgeven van een verhuizing aan een gemeente');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
         $manager->flush();
-        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id' => $id));
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(array('id' => $id));
 
         $id = Uuid::fromString('fbc9c518-8971-4257-bf81-68cbd9af84d3');
         $property = new Property();
@@ -81,7 +81,7 @@ class MijnclusterFixtures extends Fixture
         $task->setEvent('create');
         $task->setTimeInterval('P0D');
         $manager->persist($task);
-        
+
         $manager->flush();
     }
 }
