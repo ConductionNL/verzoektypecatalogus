@@ -2,10 +2,10 @@
 
 namespace App\DataFixtures;
 
+use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Conduction\CommonGroundBundle\Service\CommonGroundService;
 
 class AppFixtures extends Fixture
 {
