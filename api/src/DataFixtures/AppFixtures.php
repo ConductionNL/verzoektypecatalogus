@@ -5,13 +5,16 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Conduction\CommonGroundBundle\Service\CommonGroundService;
 
 class AppFixtures extends Fixture
 {
+    private $commonGroundService;
     private $params;
 
-    public function __construct(ParameterBagInterface $params)
+    public function __construct(CommonGroundService $commonGroundService, ParameterBagInterface $params)
     {
+        $this->commonGroundService = $commonGroundService;
         $this->params = $params;
     }
 
