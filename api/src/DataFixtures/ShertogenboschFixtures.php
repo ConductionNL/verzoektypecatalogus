@@ -30,7 +30,6 @@ class ShertogenboschFixtures extends Fixture
             return false;
         }
 
-
         /*
     	 *  Verhuizen
     	 */
@@ -44,7 +43,7 @@ class ShertogenboschFixtures extends Fixture
         $requestType->setId($id);
         $manager->persist($requestType);
         $manager->flush();
-        $requestType = $manager->getRepository('App:RequestType')->findOneBy(array('id' => $id));
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
         $id = Uuid::fromString('77aa09c9-c3d5-4764-9670-9ea08362341b');
         $property = new Property();
@@ -58,7 +57,7 @@ class ShertogenboschFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(array('id' => $id));
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         $id = Uuid::fromString('4b77bd59-d198-4aaf-ae0c-f66b16a6893d');
         $property = new Property();
@@ -73,7 +72,7 @@ class ShertogenboschFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(array('id' => $id));
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         // Bijbehorende taken die in de queu worden gezet
         $task = new Task();
