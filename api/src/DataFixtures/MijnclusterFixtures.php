@@ -2,9 +2,9 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Task;
 use App\Entity\Property;
 use App\Entity\RequestType;
+use App\Entity\Task;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
@@ -25,10 +25,9 @@ class MijnclusterFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         // Lets make sure we only run these fixtures on larping enviroment
-        if ($this->params->get('app_domain') != "mijncluster.nl" && strpos($this->params->get('app_domain'), "mijncluster.nl") == false) {
+        if ($this->params->get('app_domain') != 'mijncluster.nl' && strpos($this->params->get('app_domain'), 'mijncluster.nl') == false) {
             return false;
         }
-
 
         /*
     	 *  Verhuizen
@@ -43,7 +42,7 @@ class MijnclusterFixtures extends Fixture
         $requestType->setId($id);
         $manager->persist($requestType);
         $manager->flush();
-        $requestType = $manager->getRepository('App:RequestType')->findOneBy(array('id' => $id));
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
         $id = Uuid::fromString('fbc9c518-8971-4257-bf81-68cbd9af84d3');
         $property = new Property();
@@ -57,7 +56,7 @@ class MijnclusterFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(array('id' => $id));
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         $id = Uuid::fromString('c6623907-a2cc-490e-a4cf-4bc3eaaadeba');
         $property = new Property();
@@ -72,15 +71,15 @@ class MijnclusterFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(array('id' => $id));
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         // Bijbehorende taken die in de queu worden gezet
         $task = new Task();
         $task->setRequestType($requestType);
         $task->setName('Aanroepen webhook');
         $task->setDescription('Deze task roept een webhook aan als er een verzoek vanhet type verhuizen wordt gecrieërd');
-        $task->setEndpoint('https://urk.pinkprivatecloud.nl:10443/gaas-web/commonground/audit');
-        $task->setType('GET');
+        $task->setEndpoint('https://timeblockr.pinkprivatecloud.nl/gaas-web/commonground/audit');
+        $task->setType('POST');
         $task->setCode('webhook_call_pink');
         $task->setEvent('create');
         $task->setTimeInterval('P0D');
