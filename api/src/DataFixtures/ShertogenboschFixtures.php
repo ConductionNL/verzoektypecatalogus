@@ -4,13 +4,12 @@ namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
-use App\Entity\Task;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class MijnclusterFixtures extends Fixture
+class ShertogenboschFixtures extends Fixture
 {
     private $params;
 
@@ -22,14 +21,19 @@ class MijnclusterFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         // Lets make sure we only run these fixtures on larping enviroment
-        if ($this->params->get('app_domain') != 'mijncluster.nl' && strpos($this->params->get('app_domain'), 'mijncluster.nl') == false) {
+        if (
+            $this->params->get('app_domain') != 'shertogenbosch.commonground.nu' &&
+            strpos($this->params->get('app_domain'), 'shertogenbosch.commonground.nu') == false &&
+            $this->params->get('app_domain') != 's-hertogenbosch.commonground.nu' &&
+            strpos($this->params->get('app_domain'), 's-hertogenbosch.commonground.nu') == false
+        ) {
             return false;
         }
 
         /*
     	 *  Verhuizen
     	 */
-        $id = Uuid::fromString('23d4803a-67cd-4720-82d0-e1e0a776d8c4');
+        $id = Uuid::fromString('37812338-fa7c-46c5-a914-bcf17339a4c5');
         $requestType = new RequestType();
         $requestType->setIcon('fal fa-truck-moving');
         $requestType->setOrganization('0000');
@@ -41,7 +45,7 @@ class MijnclusterFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
-        $id = Uuid::fromString('fbc9c518-8971-4257-bf81-68cbd9af84d3');
+        $id = Uuid::fromString('77aa09c9-c3d5-4764-9670-9ea08362341b');
         $property = new Property();
         $property->setTitle('Datum');
         $property->setIcon('fal fa-calendar-day');
@@ -55,7 +59,7 @@ class MijnclusterFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        $id = Uuid::fromString('c6623907-a2cc-490e-a4cf-4bc3eaaadeba');
+        $id = Uuid::fromString('4b77bd59-d198-4aaf-ae0c-f66b16a6893d');
         $property = new Property();
         $property->setTitle('Adres');
         $property->setIcon('fal fa-map-marked');
@@ -75,8 +79,8 @@ class MijnclusterFixtures extends Fixture
         $task->setRequestType($requestType);
         $task->setName('Aanroepen webhook');
         $task->setDescription('Deze task roept een webhook aan als er een verzoek vanhet type verhuizen wordt gecrieërd');
-        $task->setEndpoint('https://timeblockr.pinkprivatecloud.nl/gaas-web/commonground/audit');
-        $task->setType('POST');
+        $task->setEndpoint('https://webhook.mijncluster.nl');
+        $task->setType('GET');
         $task->setCode('webhook_call_pink');
         $task->setEvent('create');
         $task->setTimeInterval('P0D');
