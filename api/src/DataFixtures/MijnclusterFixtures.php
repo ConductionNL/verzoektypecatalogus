@@ -77,7 +77,7 @@ class MijnclusterFixtures extends Fixture
         $task->setName('Aanroepen webhook');
         $task->setDescription('Deze task roept een webhook aan als er een verzoek vanhet type verhuizen wordt gecrieërd');
         $task->setEndpoint('https://timeblockr.pinkprivatecloud.nl/gaas-web/commonground/audit');
-        $task->setType('GET');
+        $task->setType('POST');
         $task->setCode('webhook_call_pink');
         $task->setEvent('create');
         $task->setTimeInterval('P0D');
