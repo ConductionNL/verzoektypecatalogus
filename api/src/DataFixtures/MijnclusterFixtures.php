@@ -5,11 +5,11 @@ namespace App\DataFixtures;
 use App\Entity\Property;
 use App\Entity\RequestType;
 use App\Entity\Task;
+use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Conduction\CommonGroundBundle\Service\CommonGroundService;
 
 class MijnclusterFixtures extends Fixture
 {
