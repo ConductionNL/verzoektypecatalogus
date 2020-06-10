@@ -10,7 +10,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class ShertogenboschFixtures extends Fixture
+class SHertogenboschFixtures extends Fixture
 {
     private $params;
 
@@ -21,7 +21,6 @@ class ShertogenboschFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        var_dump($this->params->get('app_domain'));
         // Lets make sure we only run these fixtures on larping enviroment
         if (
             $this->params->get('app_domain') != 'shertogenbosch.commonground.nu' &&
