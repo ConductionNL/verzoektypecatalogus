@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
+use App\Entity\Task;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
