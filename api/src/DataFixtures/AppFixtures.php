@@ -2,23 +2,26 @@
 
 namespace App\DataFixtures;
 
+use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class AppFixtures extends Fixture
 {
+    private $commonGroundService;
     private $params;
 
-    public function __construct(ParameterBagInterface $params)
+    public function __construct(CommonGroundService $commonGroundService, ParameterBagInterface $params)
     {
+        $this->commonGroundService = $commonGroundService;
         $this->params = $params;
     }
 
     public function load(ObjectManager $manager)
     {
         // Lets make sure we only run these fixtures on larping enviroment
-        if (strpos($this->params->get('app_domain'), "conduction.nl") == false) {
+        if (strpos($this->params->get('app_domain'), 'conduction.nl') == false) {
             return false;
         }
 
@@ -37,7 +40,7 @@ class AppFixtures extends Fixture
         $request->setId($id);
         $manager->persist($request);
         $request->flush();
-        $request= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $id = Uuid::fromString('1cf0c80b-df0c-4677-a98a-aefaf3ef101e');
         $property = new Property();
@@ -51,10 +54,10 @@ class AppFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
 
         $id = Uuid::fromString('cfb73004-115d-4c98-9824-0f338080e066');
-        $property= new Property();
+        $property = new Property();
         $property->setTitle('Adres');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
@@ -66,7 +69,6 @@ class AppFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
-
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
     }
 }
