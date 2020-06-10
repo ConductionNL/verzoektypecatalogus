@@ -21,6 +21,7 @@ class ShertogenboschFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        var_dump($this->params->get('app_domain'));
         // Lets make sure we only run these fixtures on larping enviroment
         if (
             $this->params->get('app_domain') != 'shertogenbosch.commonground.nu' &&
