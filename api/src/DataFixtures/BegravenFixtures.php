@@ -24,8 +24,11 @@ class BegravenFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // Lets make sure we only run these fixtures on larping enviroment
-        if ($this->params->get('app_domain') != 'westfriesland.commonground.nu' && strpos($this->params->get('app_domain'), 'westfriesland.commonground.nu') == false) {
+        if (
+            $this->params->get('app_domain') != "begraven.zaakonline.nl" && strpos($this->params->get('app_domain'), "begraven.zaakonline.nl") == false &&
+            $this->params->get('app_domain') != "westfriesland.commonground.nu" && strpos($this->params->get('app_domain'), "westfriesland.commonground.nu") == false &&
+            $this->params->get('app_domain') != "zuid-drecht.nl" && strpos($this->params->get('app_domain'), "zuid-drecht.nl") == false
+        ) {
             return false;
         }
 
