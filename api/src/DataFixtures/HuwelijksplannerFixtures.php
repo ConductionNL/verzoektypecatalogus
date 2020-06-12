@@ -24,8 +24,12 @@ class HuwelijksplannerFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // Lets make sure we only run these fixtures on larping enviroment
-        if ($this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false) {
+        if (
+            $this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false &&
+            $this->params->get('app_domain') != "begraven.zaakonline.nl" && strpos($this->params->get('app_domain'), "begraven.zaakonline.nl") == false &&
+            $this->params->get('app_domain') != "westfriesland.commonground.nu" && strpos($this->params->get('app_domain'), "westfriesland.commonground.nu") == false &&
+            $this->params->get('app_domain') != "zuid-drecht.nl" && strpos($this->params->get('app_domain'), "zuid-drecht.nl") == false
+        ) {
             return false;
         }
 
@@ -226,7 +230,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('form');
         $stage1->setType('string');
         $stage1->setFormat('string');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('Wat is uw verzoek');
         $stage1->setRequestType($wob);
         $manager->persist($stage1);
 
@@ -334,7 +338,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('datum');
         $stage1->setType('string');
         $stage1->setFormat('date');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('Wat is de overleidens datum?');
         $stage1->setRequestType($overlijden);
         $manager->persist($stage1);
 
