@@ -32,7 +32,7 @@ class ZaakonlineFixtures extends Fixture
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('90ad9841-bb57-44ee-beaa-b3e0a144626e');
         $request = new RequestType();
-        $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
         $request->setIcon('fas fa-user-tie');
         $request->setName('Ondersteunings aanvraag ZZP');
         $request->setDescription('Met dit verzoek kunt u als ZZPer financiele hulp aanvragen');
@@ -110,7 +110,7 @@ class ZaakonlineFixtures extends Fixture
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('d78197df-af77-4b5e-bed0-054cba047550');
         $request = new RequestType();
-        $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
         $request->setIcon('fas fa-user-tie');
         $request->setName('Aanvraag bijzonder bijstand');
         $request->setDescription('Met dit verzoek kunt bijzondere bijstand aanvragen');
@@ -160,7 +160,7 @@ class ZaakonlineFixtures extends Fixture
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('64127a29-c452-4600-a9a0-b3f827b4d2e5');
         $request = new RequestType();
-        $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
         $request->setIcon('fas fa-user-tie');
         $request->setName('Ik wil helpen');
         $request->setDescription('Met dit verzoek kunt u aangeven dat u wilt bijdragen');
@@ -194,7 +194,7 @@ class ZaakonlineFixtures extends Fixture
         // Verztype Babs andere gemeente
         $id = Uuid::fromString('2201ebbd-f2b0-4ece-88e0-18ba0d2949e0');
         $request = new RequestType();
-        $request->setSourceOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
+        $request->setOrganization('https://wrc.zaakonline.nl/organizations/68b64145-0740-46df-a65a-9d3259c2fec8'); // dit moet de wrc verwijzing van utrecht zijn
         $request->setIcon('fas fa-user-tie');
         $request->setName('Ik heb hulp nodig');
         $request->setDescription('Met dit verzoek kunt u aangeven dat u hulp nodig heeft');
