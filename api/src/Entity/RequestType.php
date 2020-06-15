@@ -2,24 +2,23 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Doctrine\Common\Collections\Criteria;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * All properties contained in the RequestType type.
@@ -66,7 +65,7 @@ use Doctrine\Common\Collections\Criteria;
  *  }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RequestTypeRepository")
- * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
@@ -91,7 +90,8 @@ class RequestType
     private $id;
 
     /**
-     * @var string $resource A specific commonground organisation
+     * @var string A specific commonground organisation
+     *
      * @example https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f
      *
      * @Gedmo\Versioned
@@ -133,7 +133,7 @@ class RequestType
      * @Assert\Length(
      *      max = 2550
      * )
-	 * @Groups({"read", "write"})
+     * @Groups({"read", "write"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -147,6 +147,16 @@ class RequestType
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
     private $properties;
+
+    /**
+     * @var Property[]|ArrayCollection The tasks for this request type
+     *
+     * @Groups({"read"})
+     * @MaxDepth(1)
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
+     */
+    private $tasks;
 
     /**
      * @Groups({"read"})
@@ -191,7 +201,7 @@ class RequestType
     private $unique = false;
 
     /**
-     * @var bool $parentRequired If this request type needs a parent request
+     * @var bool If this request type needs a parent request
      *
      * @Groups({"read","write"})
      * @Assert\Type("bool")
@@ -218,7 +228,8 @@ class RequestType
     private $parent;
 
     /**
-     * @var string $caseType The default case type that is created when submiting this request
+     * @var string The default case type that is created when submiting this request
+     *
      * @example http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a
      *
      * @Gedmo\Versioned
@@ -231,7 +242,8 @@ class RequestType
     private $caseType;
 
     /**
-     * @var string $camundaProces The default camunda proces that is started when submiting this request
+     * @var string The default camunda proces that is started when submiting this request
+     *
      * @example http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a
      *
      * @Gedmo\Versioned
@@ -244,7 +256,7 @@ class RequestType
     private $camundaProces;
 
     /**
-     * @var Datetime $dateCreated The moment this request was created
+     * @var Datetime The moment this request was created
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="create")
@@ -253,7 +265,7 @@ class RequestType
     private $dateCreated;
 
     /**
-     * @var Datetime $dateModified  The moment this request last Modified
+     * @var Datetime The moment this request last Modified
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="update")
@@ -264,6 +276,7 @@ class RequestType
     public function __construct()
     {
         $this->properties = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
         $this->extendedBy = new ArrayCollection();
         $this->children = new ArrayCollection();
     }
@@ -280,28 +293,28 @@ class RequestType
         return $this;
     }
 
-    public function getSourceOrganization(): ?string
+    public function getOrganization(): ?string
     {
-        return $this->sourceOrganization;
+        return $this->organization;
     }
 
-    public function setSourceOrganization(string $sourceOrganization): self
+    public function setOrganization(string $organization): self
     {
-        $this->sourceOrganization = $sourceOrganization;
+        $this->organization = $organization;
 
         return $this;
     }
 
     public function getIcon(): ?string
     {
-    	return $this->icon;
+        return $this->icon;
     }
 
     public function setIcon(?string $icon): self
     {
-    	$this->icon = $icon;
+        $this->icon = $icon;
 
-    	return $this;
+        return $this;
     }
 
     public function getName(): ?string
@@ -346,6 +359,19 @@ class RequestType
         return $this;
     }
 
+    public function removeProperty(Property $property): self
+    {
+        if ($this->properties->contains($property)) {
+            $this->properties->removeElement($property);
+            // set the owning side to null (unless already changed)
+            if ($property->getRequestType() === $this) {
+                $property->setRequestType(null);
+            }
+        }
+
+        return $this;
+    }
+
     /*
      * Used for soft adding properties for the extension functionality
      */
@@ -358,13 +384,31 @@ class RequestType
         return $this;
     }
 
-    public function removeProperty(Property $property): self
+    /**
+     * @return Collection|Tasks[]
+     */
+    public function getTasks(): Collection
     {
-        if ($this->properties->contains($property)) {
-            $this->properties->removeElement($property);
+        return $this->tasks;
+    }
+
+    public function addTask(Task $property): self
+    {
+        if (!$this->tasks->contains(task)) {
+            $this->tasks[] = $task;
+            $property->setRequestType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTasks(Task $task): self
+    {
+        if ($this->tasks->contains($task)) {
+            $this->tasks->removeElement($task);
             // set the owning side to null (unless already changed)
-            if ($property->getRequestType() === $this) {
-                $property->setRequestType(null);
+            if ($task->getRequestType() === $this) {
+                $task->setRequestType(null);
             }
         }
 
@@ -477,14 +521,14 @@ class RequestType
 
     public function getUnique(): ?bool
     {
-    	return $this->unique;
+        return $this->unique;
     }
 
     public function setUnique(?bool $unique): self
     {
-    	$this->unique = $unique;
+        $this->unique = $unique;
 
-    	return $this;
+        return $this;
     }
 
     public function getParent(): ?self
@@ -494,7 +538,7 @@ class RequestType
 
     public function setParent(?self $parent): self
     {
-    	$this->parent = $parent;
+        $this->parent = $parent;
 
         return $this;
     }
@@ -507,6 +551,7 @@ class RequestType
     public function setCaseType(string $caseType): self
     {
         $this->caseType = $caseType;
+
         return $this;
     }
 
@@ -518,6 +563,7 @@ class RequestType
     public function setCamundaProces(string $camundaProces): self
     {
         $this->camundaProces = $camundaProces;
+
         return $this;
     }
 
@@ -531,9 +577,9 @@ class RequestType
 
     public function addChild(self $child): self
     {
-    	if (!$this->children->contains($child)) {
-    		$this->children[] = $child;
-    		$child->setParent($this);
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
+            $child->setParent($this);
         }
 
         return $this;
@@ -541,11 +587,11 @@ class RequestType
 
     public function removeChild(self $child): self
     {
-    	if ($this->children->contains($child)) {
-    		$this->children->removeElement($child);
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
             // set the owning side to null (unless already changed)
-    		if ($child->getParent() === $this) {
-    			$child->setParent(null);
+            if ($child->getParent() === $this) {
+                $child->setParent(null);
             }
         }
 
@@ -554,26 +600,26 @@ class RequestType
 
     public function getDateCreated(): ?\DateTimeInterface
     {
-    	return $this->dateCreated;
+        return $this->dateCreated;
     }
 
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
-    	$this->dateCreated= $dateCreated;
+        $this->dateCreated = $dateCreated;
 
-    	return $this;
+        return $this;
     }
 
     public function getDateModified(): ?\DateTimeInterface
     {
-    	return $this->dateModified;
+        return $this->dateModified;
     }
 
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
-    	$this->dateModified = $dateModified;
+        $this->dateModified = $dateModified;
 
-    	return $this;
+        return $this;
     }
 
     public function getParentRequired(): ?bool
