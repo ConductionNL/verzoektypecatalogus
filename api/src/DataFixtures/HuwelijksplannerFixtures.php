@@ -788,7 +788,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage0 = new Property();
         $stage0->setStart(true);
-        $stage0->setTitle('info-melding');
+        $stage0->setTitle('Info');
         $stage0->setIcon('fas fa-ring');
         $stage0->setSlug('info-melding');
         $stage0->setDescription('Hier wordt de benodigde informatie weergegeven voor het indienen van een melding.');
