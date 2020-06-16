@@ -81,9 +81,9 @@ class BegravenFixtures extends Fixture
         $id = Uuid::fromString('3b6a637d-19c6-4730-b322-c03d0d8301b6');
         $property = new Property();
         $property->setTitle('Soort graf');
+        $property->setIri('pdc/offer');
         $property->setType('string');
         $property->setFormat('string');
-        $property->setIri('grc/grave_type');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -111,7 +111,8 @@ class BegravenFixtures extends Fixture
         $id = Uuid::fromString('8f9adb13-d5e0-40de-a08c-a2ce5a648b1e');
         $property = new Property();
         $property->setTitle('Artikelen');
-        $property->setType('string');
+        $property->setIri('pdc/offer');
+        $property->setType('array');
         $property->setFormat('string');
         $property->setRequired(true);
         $property->setRequestType($requestType);
