@@ -826,7 +826,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage0 = new Property();
         $stage0->setStart(true);
-        $stage0->setTitle('Info');
+        $stage0->setTitle('info-melding');
         $stage0->setIcon('fas fa-ring');
         $stage0->setSlug('info-melding');
         $stage0->setDescription('Hier wordt de benodigde informatie weergegeven voor het indienen van een melding.');
@@ -835,7 +835,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage1= new Property();
         $stage1->addPrevious($stage0);
-        $stage1->setTitle('Datum');
+        $stage1->setTitle('datum-melding');
         $stage1->setIcon('fas fa-calendar-day');
         $stage1->setSlug('datum-melding');
         $stage1->setType('boolean');
@@ -845,7 +845,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage2= new Property();
         $stage2->addPrevious($stage1);
-        $stage2->setTitle('Partners');
+        $stage2->setTitle('partner-melding');
         $stage2->setIcon('fas fa-user-friends');
         $stage2->setSlug('partner-melding');
         $stage2->setIri('irc/assent');
@@ -860,7 +860,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage3= new Property();
         $stage3->addPrevious($stage2);
-        $stage3->setTitle('Getuigen');
+        $stage3->setTitle('getuige-melding');
         $stage3->setIcon('fas fa-users');
         $stage3->setSlug('getuige-melding');
         $stage3->setIri('irc/assent');
@@ -875,7 +875,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage4= new Property();
         $stage4->addPrevious($stage3);
-        $stage4->setTitle('Indienen');
+        $stage4->setTitle('indienen-melding');
         $stage4->setIcon('fal fa-paper-plane');
         $stage4->setSlug('indienen-melding');
         $stage4->setDescription('Wie zijn de getuigen van partner?');
