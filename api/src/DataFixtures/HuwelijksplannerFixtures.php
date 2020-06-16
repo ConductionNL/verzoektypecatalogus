@@ -1028,7 +1028,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage7->setType('array');
         $stage7->setFormat('url');
         $stage7->setIri('irc/assent');
-        $stage7->setMinItems(4);
+        $stage7->setMinItems(2);
         $stage7->setMaxItems(4);
         $stage7->setRequired(true);
         $stage7->setDescription('Wie zijn de getuigen van partner?');
