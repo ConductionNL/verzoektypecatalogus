@@ -712,7 +712,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage1 = new Property();
         $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
+        $stage1->setTitle('babs-andere-gemeente');
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('babs-andere-gemeente');
         $stage1->setType('array');
@@ -745,7 +745,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage1= new Property();
         $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
+        $stage1->setTitle('babs-voor-een-dag');
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('babs-voor-een-dag');
         $stage1->setIri('irc/assent');
@@ -774,7 +774,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage1 = new Property();
         $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
+        $stage1->setTitle('afwijkende-trouw-locatie');
         $stage1->setIcon('fal fa-paper-plane');
         $stage1->setSlug('afwijkende-trouw-locatie');
         $stage1->setType('array');
