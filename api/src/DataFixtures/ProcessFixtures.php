@@ -4,27 +4,33 @@ namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
+use App\Entity\Task;
+use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class HuwelijksplannerFixtures extends Fixture
+class ProcessFixtures extends Fixture
 {
+    private $commonGroundService;
     private $params;
 
-    public function __construct(ParameterBagInterface $params)
+    public function __construct(CommonGroundService $commonGroundService, ParameterBagInterface $params)
     {
+        $this->commonGroundService = $commonGroundService;
         $this->params = $params;
     }
 
     public function load(ObjectManager $manager)
     {
-        // Lets make sure we only run these fixtures on larping enviroment
-        if ($this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false) {
-            //return false;
+        if (
+            $this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false
+        ) {
+            return false;
         }
-
+        return false;
+        
         /*
          *  Bezwaar
          */
@@ -38,7 +44,7 @@ class HuwelijksplannerFixtures extends Fixture
         $bezwaar->setId($id);
         $manager->persist($bezwaar);
         $manager->flush();
-        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $stage1 = new Property();
         $stage1->setStart(true);
@@ -47,11 +53,11 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('form');
         $stage1->setType('string');
         $stage1->setFormat('date');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('Waarvoor vraagt u de vog aan');
         $stage1->setRequestType($bezwaar);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Indienen');
         $stage2->setIcon('fal fa-paper-plane');
@@ -73,7 +79,7 @@ class HuwelijksplannerFixtures extends Fixture
         $bezwaar->setId($id);
         $manager->persist($bezwaar);
         $manager->flush();
-        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $stage1 = new Property();
         $stage1->setStart(true);
@@ -82,11 +88,11 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('form');
         $stage1->setType('string');
         $stage1->setFormat('date');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('Waarom maakt u bezwaar');
         $stage1->setRequestType($bezwaar);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Indienen');
         $stage2->setIcon('fal fa-paper-plane');
@@ -94,7 +100,6 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setDescription('Wie zijn de getuigen van partner?');
         $stage2->setRequestType($bezwaar);
         $manager->persist($stage2);
-
 
         $id = Uuid::fromString('6aa060d4-ca79-45ac-9836-1522fd10eb42');
         $bezwaar = new RequestType();
@@ -106,7 +111,7 @@ class HuwelijksplannerFixtures extends Fixture
         $bezwaar->setId($id);
         $manager->persist($bezwaar);
         $manager->flush();
-        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $stage1 = new Property();
         $stage1->setStart(true);
@@ -115,11 +120,11 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('form');
         $stage1->setType('string');
         $stage1->setFormat('date');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('WOmschrijf hoe u uw rijbewijs bent kwijt graakt');
         $stage1->setRequestType($bezwaar);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Indienen');
         $stage2->setIcon('fal fa-paper-plane');
@@ -144,7 +149,7 @@ class HuwelijksplannerFixtures extends Fixture
         $bezwaar->setId($id);
         $manager->persist($bezwaar);
         $manager->flush();
-        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $stage1 = new Property();
         $stage1->setStart(true);
@@ -157,7 +162,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($bezwaar);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Indienen');
         $stage2->setIcon('fal fa-paper-plane');
@@ -179,7 +184,7 @@ class HuwelijksplannerFixtures extends Fixture
         $bezwaar->setId($id);
         $manager->persist($bezwaar);
         $manager->flush();
-        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $bezwaar = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $stage1 = new Property();
         $stage1->setStart(true);
@@ -192,7 +197,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($bezwaar);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Indienen');
         $stage2->setIcon('fal fa-paper-plane');
@@ -214,7 +219,7 @@ class HuwelijksplannerFixtures extends Fixture
         $wob->setId($id);
         $manager->persist($wob);
         $manager->flush();
-        $wob = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $wob = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $stage1 = new Property();
         $stage1->setStart(true);
@@ -223,11 +228,11 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('form');
         $stage1->setType('string');
         $stage1->setFormat('string');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('Wat is uw verzoek');
         $stage1->setRequestType($wob);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Indienen');
         $stage2->setIcon('fal fa-paper-plane');
@@ -249,9 +254,9 @@ class HuwelijksplannerFixtures extends Fixture
         $geboorte->setId($id);
         $manager->persist($geboorte);
         $manager->flush();
-        $geboorte = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $geboorte = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         $stage1->setTitle('Datum');
         $stage1->setIcon('fal fa-calendar-day');
@@ -262,7 +267,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($geboorte);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Ouders');
         $stage2->setIcon('fal fa-user-friends');
@@ -276,7 +281,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setRequestType($geboorte);
         $manager->persist($stage2);
 
-        $stage3= new Property();
+        $stage3 = new Property();
         $stage3->addPrevious($stage2);
         $stage3->setTitle('Gemeente');
         $stage3->setIcon('fal fa-university');
@@ -288,7 +293,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setRequestType($geboorte);
         $manager->persist($stage3);
 
-        $stage4= new Property();
+        $stage4 = new Property();
         $stage4->addPrevious($stage3);
         $stage4->setTitle('Naam');
         $stage4->setIcon('fal fa-user');
@@ -300,7 +305,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage4->setRequestType($geboorte);
         $manager->persist($stage4);
 
-        $stage5= new Property();
+        $stage5 = new Property();
         $stage5->addPrevious($stage4);
         $stage5->setTitle('Indienen');
         $stage5->setIcon('fal fa-paper-plane');
@@ -313,7 +318,7 @@ class HuwelijksplannerFixtures extends Fixture
          *  Overleiden
          */
         $id = Uuid::fromString('41ccbba0-241c-4801-a70d-f11894a1098a');
-        $overlijden= new RequestType();
+        $overlijden = new RequestType();
         $overlijden->setIcon('fal fa-tombstone');
         $overlijden->setOrganization('0000');
         $overlijden->setName('Overlijdens aangifte');
@@ -322,7 +327,7 @@ class HuwelijksplannerFixtures extends Fixture
         $overlijden->setId($id);
         $manager->persist($overlijden);
         $manager->flush();
-        $overlijden= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $overlijden = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $stage1 = new Property();
         $stage1->setStart(true);
@@ -331,11 +336,11 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setSlug('datum');
         $stage1->setType('string');
         $stage1->setFormat('date');
-        $stage1->setDescription('Wat is de verhuisdatum?');
+        $stage1->setDescription('Wat is de overleidens datum?');
         $stage1->setRequestType($overlijden);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Wie');
         $stage2->setIcon('fal fa-user');
@@ -347,7 +352,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setRequestType($overlijden);
         $manager->persist($stage2);
 
-        $stage3= new Property();
+        $stage3 = new Property();
         $stage3->addPrevious($stage2);
         $stage3->setTitle('Waar');
         $stage3->setIcon('fal fa-university');
@@ -359,7 +364,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setRequestType($overlijden);
         $manager->persist($stage3);
 
-        $stage4= new Property();
+        $stage4 = new Property();
         $stage4->addPrevious($stage3);
         $stage4->setTitle('Indienen');
         $stage4->setIcon('fal fa-paper-plane');
@@ -380,9 +385,9 @@ class HuwelijksplannerFixtures extends Fixture
         $reisdocument->setId($id);
         $manager->persist($reisdocument);
         $manager->flush();
-        $reisdocument= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $reisdocument = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         $stage1->setTitle('Type');
         $stage1->setIcon('fal fa-passport');
@@ -394,7 +399,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($reisdocument);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Foto');
         $stage2->setIcon('fal fa-portrait');
@@ -406,7 +411,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setRequestType($reisdocument);
         $manager->persist($stage2);
 
-        $stage3= new Property();
+        $stage3 = new Property();
         $stage3->addPrevious($stage2);
         $stage3->setTitle('Indienen');
         $stage3->setIcon('fal fa-paper-plane');
@@ -424,9 +429,9 @@ class HuwelijksplannerFixtures extends Fixture
         $reisdocument->setId($id);
         $manager->persist($reisdocument);
         $manager->flush();
-        $reisdocument= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $reisdocument = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         $stage1->setTitle('Type');
         $stage1->setIcon('fal fa-passport');
@@ -438,7 +443,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($reisdocument);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage2);
         $stage2->setTitle('Indienen');
         $stage2->setIcon('fal fa-paper-plane');
@@ -460,9 +465,9 @@ class HuwelijksplannerFixtures extends Fixture
         $mob->setId($id);
         $manager->persist($mob);
         $manager->flush();
-        $mob = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $mob = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         $stage1->setTitle('Wat');
         $stage1->setIcon('fal fa-map-marked');
@@ -474,7 +479,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($mob);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Melding');
         $stage2->setIcon('fal fa-comment');
@@ -486,7 +491,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setRequestType($mob);
         $manager->persist($stage2);
 
-        $stage3= new Property();
+        $stage3 = new Property();
         $stage3->addPrevious($stage2);
         $stage3->setTitle('Indiener');
         $stage3->setIcon('fal fa-user');
@@ -496,7 +501,6 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setDescription('Melding');
         $stage3->setRequestType($mob);
         $manager->persist($stage2);
-
 
         /*
     	 *  Verhuizen
@@ -511,7 +515,7 @@ class HuwelijksplannerFixtures extends Fixture
         $verhuizenNL->setId($id);
         $manager->persist($verhuizenNL);
         $manager->flush();
-        $verhuizenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $verhuizenNL = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $id = Uuid::fromString('69d16301-5e45-449d-b208-ba3efdca4f1d');
         $stage1 = new Property();
@@ -527,10 +531,10 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setId($id);
         $manager->persist($stage1);
         $manager->flush();
-        $stage1 = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
+        $stage1 = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
 
         $id = Uuid::fromString('368fc9ce-6238-4e7c-ad4c-09c797e1f3f9');
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->setTitle('Adres');
         $stage2->setIcon('fal fa-map-marked');
         $stage2->setSlug('adres');
@@ -543,13 +547,13 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setId($id);
         $manager->persist($stage2);
         $manager->flush();
-        $stage2 = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
+        $stage2 = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
         $stage2->addPrevious($stage1);
         $manager->persist($stage2);
         $manager->flush();
 
         $id = Uuid::fromString('b6942884-574a-45b3-b2ca-36733d800ca4');
-        $stage3= new Property();
+        $stage3 = new Property();
         //$property->setId('');
         $stage3->setTitle('Wie');
         $stage3->setIcon('fal fa-users');
@@ -563,7 +567,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setId($id);
         $manager->persist($stage3);
         $manager->flush();
-        $stage3 = $manager->getRepository('App:Property')->findOneBy(array('id'=>$id));
+        $stage3 = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
         $stage3->addPrevious($stage2);
         $manager->persist($stage3);
         $manager->flush();
@@ -579,9 +583,9 @@ class HuwelijksplannerFixtures extends Fixture
         $verhuizenDenBosh->setId($id);
         $manager->persist($verhuizenDenBosh);
         $manager->flush();
-        $verhuizenDenBosh= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $verhuizenDenBosh = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         //$verhuizenNL->setId('');
         $stage1->setTitle('Email');
@@ -594,7 +598,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($verhuizenDenBosh);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         //$verhuizenNL->setId('');
         $stage2->setTitle('Telefoon');
@@ -618,9 +622,9 @@ class HuwelijksplannerFixtures extends Fixture
         $verhuizenEindhoven->setId($id);
         $manager->persist($verhuizenEindhoven);
         $manager->flush();
-        $verhuizenEindhoven= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $verhuizenEindhoven = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         $stage1->setTitle('Eigenaar');
         $stage1->setIcon('fal fa-user');
@@ -632,7 +636,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($verhuizenEindhoven);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         //$verhuizenNL->setId('');
         $stage2->setTitle('Doorgeven gegevens');
@@ -663,36 +667,28 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setId($id);
         $manager->persist($request);
         $manager->flush();
-        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
         // einde hacky tacky
 
         $property = new Property();
-        $property->setStart(true);
         $property->setTitle('Partner 1');
-        // $property->setName('naamgebruikPartner1');
+        $property->setName('naamgebruikPartner1');
         $property->setIcon('fal fa-user');
-        $property->setSlug('naamgebruikPartner1');
         $property->setType('string');
         $property->setDescription('Welke naam wilt u');
         $property->setRequestType($request);
         $manager->persist($property);
 
         $property = new Property();
-        $property->setStart(true);
-        $property->setTitle('Gegevens');
-        //$property->setName('naamgebruikPartner2');
+        $property->setTitle('Partner 2');
+        $property->setName('naamgebruikPartner2');
         $property->setIcon('fal fa-user');
-        $property->setSlug('naamgebruikPartner2');
         $property->setType('string');
-        $property->setDescription('Welke naam wilt uw partner');
+        $property->setDescription('Welke naam wilt partner 2');
         $property->setRequestType($request);
         $manager->persist($property);
 
-
-        /*
-    	 *  Babs andere gemeente
-    	 */
-
+        // Verztype Babs andere gemeente
         $id = Uuid::fromString('27f6ecf0-34bb-4100-a375-d14f2d5ee1d0');
         $request = new RequestType();
         $request->setOrganization('002220647');
@@ -707,7 +703,7 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setId($id);
         $manager->persist($request);
         $manager->flush();
-        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
         // einde hacky tacky
 
         $stage1 = new Property();
@@ -721,17 +717,13 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($request);
         $manager->persist($stage1);
 
-
-        /*
-    	 *  Babs voor een dag
-    	 */
-
+        // Aanvraag babs voor een dag
         $id = Uuid::fromString('cdd7e88b-1890-425d-a158-7f9ec92c9508');
-        $request= new RequestType();
+        $request = new RequestType();
         $request->setIcon('fas fa-user-tie');
         $request->setOrganization('002220647');
         $request->setName('Aanvraag babs (niet beëdigd)');
-        $request->setDescription('Melding voorgenomen huwelijk');
+        $request->setDescription('Aanvraag babs (niet beëdigd)');
         $request->setCaseType('zaaktypen/86dcc827-db64-4466-8d83-5d2976a1926a');
         $request->setCamundaProces('Aanvraag_eigen_Babs_niet_beedigd_behandelen');
         $manager->persist($request);
@@ -740,10 +732,10 @@ class HuwelijksplannerFixtures extends Fixture
         $request->setId($id);
         $manager->persist($request);
         $manager->flush();
-        $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $request = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
         // einde hacky tacky
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         $stage1->setTitle('Gegevens');
         $stage1->setIcon('fal fa-user');
@@ -754,12 +746,9 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($request);
         $manager->persist($stage1);
 
-        /*
-    	 *  Trouwlocatie
-    	 */
-
+        // Aanvraag trouwlocatie
         $id = Uuid::fromString('c8704ea6-4962-4b7e-8d4e-69a257aa9577');
-        $aanvraagLocatie= new RequestType();
+        $aanvraagLocatie = new RequestType();
         $aanvraagLocatie->setIcon('fal fa-rings-wedding');
         $aanvraagLocatie->setOrganization('002220647');
         $aanvraagLocatie->setName('Aanvraag trouwlocatie');
@@ -770,21 +759,58 @@ class HuwelijksplannerFixtures extends Fixture
         $aanvraagLocatie->setId($id);
         $manager->persist($aanvraagLocatie);
         $manager->flush();
-        $aanvraagLocatie= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $aanvraagLocatie = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1 = new Property();
-        $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
-        $stage1->setIcon('fal fa-paper-plane');
-        $stage1->setSlug('afwijkende-trouw-locatie');
-        $stage1->setType('array');
-        $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde locatie');
-        $stage1->setRequestType($aanvraagLocatie);
-        $manager->persist($stage1);
+        $property = new Property();
+        $property->setStart(true);
+        $property->setTitle('Afwijkende trouw locatie');
+        $property->setName('afwijkende_trouw_locatie');
+        $property->setSlug('afwijkende_trouw_locatie');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('array');
+        $property->setDescription('Wat zijn de gegevens van uw locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
+
+        $property = new Property();
+        $property->setTitle('Naam');
+        $property->setName('locatieNaam');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('string');
+        $property->setDescription('Wat is de naam van uw beoogde locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
+
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setName('locatieTelefoon');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('string');
+        $property->setDescription('Wat is het telefoon nummer van uw beoogde locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
+
+        $property = new Property();
+        $property->setTitle('Adres');
+        $property->setName('locatieAdres');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('string');
+        $property->setDescription('Wat is het adress van uw beoogde locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
+
+        $property = new Property();
+        $property->setTitle('Omschrijving');
+        $property->setName('locatieOmschrijving');
+        $property->setIcon('fal fa-paper-plane');
+        $property->setType('string');
+        $property->setDescription('Kunt u een korte omschrijving geven van uw beoogde locatie');
+        $property->setRequestType($aanvraagLocatie);
+        $manager->persist($property);
 
         // Melding Huwelijk
         $id = Uuid::fromString('146cb7c8-46b9-4911-8ad9-3238bab4313e');
-        $meldingTrouwenNL= new RequestType();
+        $meldingTrouwenNL = new RequestType();
         $meldingTrouwenNL->setIcon('fal fa-ring');
         $meldingTrouwenNL->setOrganization('002220647');
         $meldingTrouwenNL->setName('Melding voorgenomen huwelijk');
@@ -795,18 +821,55 @@ class HuwelijksplannerFixtures extends Fixture
         $meldingTrouwenNL->setId($id);
         $manager->persist($meldingTrouwenNL);
         $manager->flush();
-        $meldingTrouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $meldingTrouwenNL = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Verlopen melding');
+        $task->setDescription('Deze task controleerd na 1 jaar het verlopen van de melding');
+        $task->setCode('controleer_meldingin');
+        $task->setEndpoint('trouwservice');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P1Y');
+
+        $manager->persist($task);
+
+        $task = new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Informeer Verlopen melding');
+        $task->setDescription('Deze task verstuurd na 300 dagen een waarschuwing voor het verlopen van de melding');
+        $task->setCode('informeren verlopen melding');
+        $task->setEndpoint('trouwservice');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P300D');
+
+        $manager->persist($task);
+
+        $task = new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Bevestig naar burger');
+        $task->setDescription('Deze ttaak bevestig het huwelijk naar de burger');
+        $task->setCode('bevestig_huwelijk');
+        $task->setEndpoint('trouwservice');
+        $task->setType('POST');
+        $task->setEvent('create');
+        $task->setTimeInterval('P0D'); // vertraging vna 0 dagen = meteen
+
+        $manager->persist($task);
 
         $stage0 = new Property();
         $stage0->setStart(true);
-        $stage0->setTitle('info-melding');
+        $stage0->setTitle('Info');
         $stage0->setIcon('fas fa-ring');
         $stage0->setSlug('info-melding');
         $stage0->setDescription('Hier wordt de benodigde informatie weergegeven voor het indienen van een melding.');
         $stage0->setRequestType($meldingTrouwenNL);
         $manager->persist($stage0);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->addPrevious($stage0);
         $stage1->setTitle('Datum');
         $stage1->setIcon('fas fa-calendar-day');
@@ -816,7 +879,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($meldingTrouwenNL);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Partners');
         $stage2->setIcon('fas fa-user-friends');
@@ -831,7 +894,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setRequestType($meldingTrouwenNL);
         $manager->persist($stage2);
 
-        $stage3= new Property();
+        $stage3 = new Property();
         $stage3->addPrevious($stage2);
         $stage3->setTitle('Getuigen');
         $stage3->setIcon('fas fa-users');
@@ -846,7 +909,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setRequestType($meldingTrouwenNL);
         $manager->persist($stage3);
 
-        $stage4= new Property();
+        $stage4 = new Property();
         $stage4->addPrevious($stage3);
         $stage4->setTitle('Indienen');
         $stage4->setIcon('fal fa-paper-plane');
@@ -854,10 +917,6 @@ class HuwelijksplannerFixtures extends Fixture
         $stage4->setDescription('Wie zijn de getuigen van partner?');
         $stage4->setRequestType($meldingTrouwenNL);
         $manager->persist($stage4);
-
-        /*
-    	 *  Omzetting (partnerschap naar huwelijk)
-    	 */
 
         $id = Uuid::fromString('432d3e81-5930-4c21-ab7f-c5541c948525');
         $omzettingNL = new RequestType();
@@ -869,9 +928,9 @@ class HuwelijksplannerFixtures extends Fixture
         $omzettingNL->setId($id);
         $manager->persist($omzettingNL);
         $manager->flush();
-        $omzettingNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $omzettingNL = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         $stage1->setTitle('Datum');
         $stage1->setIcon('fas fa-calendar-day');
@@ -882,7 +941,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setRequestType($omzettingNL);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Partners');
         $stage2->setIcon('fas fa-user-friends');
@@ -896,7 +955,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setRequestType($omzettingNL);
         $manager->persist($stage2);
 
-        $stage3= new Property();
+        $stage3 = new Property();
         $stage3->addPrevious($stage2);
         $stage3->setTitle('Indienen');
         $stage3->setIcon('fal fa-paper-plane');
@@ -904,10 +963,6 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setDescription('Wie zijn de getuigen van partner?');
         $stage3->setRequestType($meldingTrouwenNL);
         $manager->persist($stage3);
-
-        /*
-    	 *  Huwelijk Partnerschap
-    	 */
 
         $id = Uuid::fromString('5b10c1d6-7121-4be2-b479-7523f1b625f1');
         $trouwenNL = new RequestType();
@@ -920,7 +975,20 @@ class HuwelijksplannerFixtures extends Fixture
         $trouwenNL->setId($id);
         $manager->persist($trouwenNL);
         $manager->flush();
-        $trouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $trouwenNL = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($trouwenNL);
+        $task->setName('Activeren trouw service');
+        $task->setDescription('Deze task triggerd de trouwservice voor aanvullende logica');
+        $task->setCode('update');
+        $task->setEndpoint('https://ts.dev.huewlijksplanner.online/web_hooks');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P0D');
+
+        $manager->persist($task);
 
         // Inladen van de kinderen
         /*
@@ -929,32 +997,33 @@ class HuwelijksplannerFixtures extends Fixture
         $trouwenNL->addChild($meldingTrouwenNL);
         */
 
-        $stage0= new Property();
+        $stage0 = new Property();
         $stage0->setStart(true);
-        $stage0->setTitle('Uitleg');
-        $stage0->setIcon('fas fa-info');
-        $stage0->setSlug('start-huwelijk');
+        $stage0->setTitle('Start Huwelijk');
+        $stage0->setIcon('fas fa-ring');
+        $stage0->setName('start_huwelijk');
+        $stage0->setSlug('start_huwelijk');
         $stage0->setDescription('Wat moet u zo meteen invullen?');
         $stage0->setRequestType($trouwenNL);
         $manager->persist($stage0);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->addPrevious($stage0);
-        $stage1->setStart(true);
-        $stage1->setTitle('Type');
+        $stage1->setTitle('Ceremonie');
+        $stage1->setName('type');
         $stage1->setIcon('fas fa-ring');
         $stage1->setSlug('ceremonie');
         $stage1->setType('string');
         $stage1->setFormat('string');
         $stage1->setMaxLength('12');
         $stage1->setMinLength('7');
-        $stage1->setEnum(['trouwen','partnerschap','omzetten']);
+        $stage1->setEnum(['trouwen', 'partnerschap', 'omzetten']);
         $stage1->setRequired(true);
         $stage1->setDescription('Selecteer een huwelijk of partnerschap?');
         $stage1->setRequestType($trouwenNL);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         $stage2->setTitle('Partners');
         $stage2->setIcon('fas fa-user-friends');
@@ -969,7 +1038,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setRequestType($trouwenNL);
         $manager->persist($stage2);
 
-        $stage3= new Property();
+        $stage3 = new Property();
         $stage3->addPrevious($stage2);
         $stage3->setTitle('Plechtigheid  ');
         $stage3->setIcon('fas fa-glass-cheers');
@@ -977,11 +1046,12 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setType('string');
         $stage3->setFormat('url');
         $stage3->setIri('pdc/offer');
+        $stage3->setRequired(true);
         $stage3->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage3->setRequestType($trouwenNL);
         $manager->persist($stage3);
 
-        $stage4= new Property();
+        $stage4 = new Property();
         $stage4->addPrevious($stage3);
         $stage4->setTitle('Datum');
         $stage4->setIcon('fas fa-calendar-day');
@@ -992,7 +1062,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage4->setRequestType($trouwenNL);
         $manager->persist($stage4);
 
-        $stage5= new Property();
+        $stage5 = new Property();
         $stage5->addPrevious($stage4);
         $stage5->setTitle('Locatie');
         $stage5->setIcon('fas fa-building');
@@ -1006,7 +1076,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage5->setRequestType($trouwenNL);
         $manager->persist($stage5);
 
-        $stage6= new Property();
+        $stage6 = new Property();
         $stage6->addPrevious($stage5);
         $stage6->setTitle('Ambtenaar');
         $stage6->setIcon('fas fa-user-tie');
@@ -1020,7 +1090,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage6->setRequestType($trouwenNL);
         $manager->persist($stage6);
 
-        $stage7= new Property();
+        $stage7 = new Property();
         $stage7->addPrevious($stage6);
         $stage7->setTitle('Getuigen');
         $stage7->setIcon('fas fa-users');
@@ -1028,14 +1098,14 @@ class HuwelijksplannerFixtures extends Fixture
         $stage7->setType('array');
         $stage7->setFormat('url');
         $stage7->setIri('irc/assent');
-        $stage7->setMinItems(4);
+        $stage7->setMinItems(2);
         $stage7->setMaxItems(4);
         $stage7->setRequired(true);
         $stage7->setDescription('Wie zijn de getuigen van partner?');
         $stage7->setRequestType($trouwenNL);
         $manager->persist($stage7);
 
-        $stage8= new Property();
+        $stage8 = new Property();
         $stage8->addPrevious($stage7);
         $stage8->setTitle('Extras');
         $stage8->setIcon('fas fa-gift');
@@ -1063,7 +1133,7 @@ class HuwelijksplannerFixtures extends Fixture
         $overige->setRequestType($trouwenNL);
         $manager->persist($overige);
 
-        $stage9= new Property();
+        $stage9 = new Property();
         $stage9->addPrevious($overige);
         $stage9->setTitle('Melding ');
         $stage9->setIcon('fas fa-envelope');
@@ -1075,19 +1145,20 @@ class HuwelijksplannerFixtures extends Fixture
         $stage9->setRequestType($trouwenNL);
         $manager->persist($stage9);
 
-        $stage10= new Property();
+        $stage10 = new Property();
         $stage10->addPrevious($stage9);
-        $stage10->setTitle('Betalen ');
+        $stage10->setTitle('Betaling ');
+        $stage10->setName('Betalen');
         $stage10->setIcon('fas fa-cash-register');
         $stage10->setSlug('betalen');
         $stage10->setType('string');
         $stage10->setFormat('url');
-        $stage10->setIri('orc/order');
+        $stage10->setIri('bs/invoice');
         $stage10->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage10->setRequestType($trouwenNL);
         $manager->persist($stage10);
 
-        $stage11= new Property();
+        $stage11 = new Property();
         $stage11->addPrevious($stage10);
         $stage11->setTitle('Reserveren ');
         $stage11->setIcon('fas fa-calendar-check');
@@ -1096,15 +1167,70 @@ class HuwelijksplannerFixtures extends Fixture
         $stage11->setRequestType($trouwenNL);
         $manager->persist($stage11);
 
-        $property= new Property();
+        $property = new Property();
         //$property->setId('');
-        $property->setTitle('Order');
+        $property->setTitle('Bestelling');
+        $property->setName('order');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('orc/order');
         $property->setMaxLength('255');
         $property->setRequired(true);
         $property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('Leeftijd');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('ptc/leeftijdscheckhuwelijk');
+        $property->setRequired(true);
+        $property->setDescription('Zijn bijde parnters op de trouwdatum meerderjarig');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('Curatele');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('ptc/curatelecheckhuwelijk');
+        $property->setRequired(true);
+        $property->setDescription('Staan bijde partners niet onder curatele');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('Familiaregraad');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('ptc/familiaregraadhuwelijk');
+        $property->setRequired(true);
+        $property->setDescription('Zijn bijde parnters geen fammilie dichter dan de 4e graad');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('schijnhuwelijk');
+        $property->setType('array');
+        $property->setFormat('url');
+        $property->setIri('ptc/schijnhuwelijk');
+        $property->setRequired(true);
+        $property->setDescription('Hebben bijde partners aangegeven niet te trouwen onder dwang');
+        $property->setRequestType($trouwenNL);
+        $manager->persist($property);
+
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('Opmerkingen / Wensen');
+        $property->setName('wensen');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setDescription('zijn er vanuit de partners nog opmerkingen of wensen?');
         $property->setRequestType($trouwenNL);
         $manager->persist($property);
 
