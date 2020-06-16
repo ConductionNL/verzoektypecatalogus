@@ -799,7 +799,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage0 = new Property();
         $stage0->setStart(true);
-        $stage0->setTitle('Info');
+        $stage0->setTitle('info-melding');
         $stage0->setIcon('fas fa-ring');
         $stage0->setSlug('info-melding');
         $stage0->setDescription('Hier wordt de benodigde informatie weergegeven voor het indienen van een melding.');
@@ -950,7 +950,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setMinLength('7');
         $stage1->setEnum(['trouwen','partnerschap','omzetten']);
         $stage1->setRequired(true);
-        $stage1->setDescription('Selecteer een huwelijk of partnerschap?');
+        $stage1->setDescription('is het een huwelijk of partnerschap?');
         $stage1->setRequestType($trouwenNL);
         $manager->persist($stage1);
 
@@ -965,19 +965,19 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setMinItems(2);
         $stage2->setMaxItems(2);
         $stage2->setRequired(true);
-        $stage2->setDescription('Wie zijn de getuigen van partner 2?');
+        $stage2->setDescription('Het te trouwen koppel');
         $stage2->setRequestType($trouwenNL);
         $manager->persist($stage2);
 
         $stage3= new Property();
         $stage3->addPrevious($stage2);
-        $stage3->setTitle('Plechtigheid  ');
+        $stage3->setTitle('Plechtigheid');
         $stage3->setIcon('fas fa-glass-cheers');
         $stage3->setSlug('plechtigheid');
         $stage3->setType('string');
         $stage3->setFormat('url');
         $stage3->setIri('pdc/offer');
-        $stage3->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $stage3->setDescription('Welk soort huwelijk of partnerschap');
         $stage3->setRequestType($trouwenNL);
         $manager->persist($stage3);
 
@@ -988,7 +988,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage4->setSlug('datum');
         $stage4->setType('string');
         $stage4->setFormat('date');
-        $stage4->setDescription('Selecteer een datum voor de omzetting naar huwelijk');
+        $stage4->setDescription('De trouwdatum wanneer het huwelijk voltrokken wordt');
         $stage4->setRequestType($trouwenNL);
         $manager->persist($stage4);
 
@@ -1002,7 +1002,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage5->setIri('pdc/offer');
         $stage5->setMaxLength('255');
         $stage5->setRequired(true);
-        $stage5->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
+        $stage5->setDescription('De trouwlocatie waar het huwelijk wordt voltrokken');
         $stage5->setRequestType($trouwenNL);
         $manager->persist($stage5);
 
@@ -1016,7 +1016,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage6->setIri('pdc/offer');
         $stage6->setMaxLength('255');
         $stage6->setRequired(true);
-        $stage6->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
+        $stage6->setDescription('De ambtenaar van de burgerlijke stand die het huwelijk voltrekt');
         $stage6->setRequestType($trouwenNL);
         $manager->persist($stage6);
 
@@ -1028,10 +1028,10 @@ class HuwelijksplannerFixtures extends Fixture
         $stage7->setType('array');
         $stage7->setFormat('url');
         $stage7->setIri('irc/assent');
-        $stage7->setMinItems(4);
+        $stage7->setMinItems(2);
         $stage7->setMaxItems(4);
         $stage7->setRequired(true);
-        $stage7->setDescription('Wie zijn de getuigen van partner?');
+        $stage7->setDescription('De getuigen van het huwelijk');
         $stage7->setRequestType($trouwenNL);
         $manager->persist($stage7);
 
@@ -1071,19 +1071,19 @@ class HuwelijksplannerFixtures extends Fixture
         $stage9->setType('string');
         $stage9->setFormat('url');
         $stage9->setIri('vrc/request');
-        $stage9->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $stage9->setDescription('Is het huwelijk gemeld aan de gemeente?');
         $stage9->setRequestType($trouwenNL);
         $manager->persist($stage9);
 
         $stage10= new Property();
         $stage10->addPrevious($stage9);
-        $stage10->setTitle('Betalen ');
+        $stage10->setTitle('Betalen');
         $stage10->setIcon('fas fa-cash-register');
         $stage10->setSlug('betalen');
         $stage10->setType('string');
         $stage10->setFormat('url');
         $stage10->setIri('orc/order');
-        $stage10->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $stage10->setDescription('Is het huwelijk betaald?');
         $stage10->setRequestType($trouwenNL);
         $manager->persist($stage10);
 
