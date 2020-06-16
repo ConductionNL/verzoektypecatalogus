@@ -935,7 +935,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage0= new Property();
         $stage0->setStart(true);
         $stage0->setTitle('Uitleg');
-        $stage0->setIcon('fas fa-ring');
+        $stage0->setIcon('fas fa-info');
         $stage0->setSlug('start-huwelijk');
         $stage0->setDescription('Wat moet u zo meteen invullen?');
         $stage0->setRequestType($trouwenNL);
