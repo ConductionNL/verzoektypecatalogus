@@ -64,7 +64,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $manager->persist($task);
 
-        $id = Uuid::fromString('0e52ed41-1ce6-4e95-add4-1f70a4d92231');
+        $id = Uuid::fromString('81ea285b-41c1-43ae-80f6-a8dc3c6825ff');
         $property = new Property();
         $property->setTitle('Ceremonie');
         $property->setName('type');
@@ -82,7 +82,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        $id = Uuid::fromString('35e4e210-33a6-42a0-aff4-9bad5fcb685b');
+        $id = Uuid::fromString('963162eb-c4b7-42f2-9b37-b8bcbf84117a');
         $property = new Property();
         $property->setTitle('Partners');
         $property->setIcon('fas fa-user-friends');
@@ -99,9 +99,9 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        $id = Uuid::fromString('e879671d-0b64-4fdf-9422-39896d5139c2');
+        $id = Uuid::fromString('d16e3c3b-564b-4d8d-bad2-adb5ffac26ad');
         $property = new Property();
-        $property->setTitle('Plechtigheid  ');
+        $property->setTitle('Plechtigheid');
         $property->setIcon('fas fa-glass-cheers');
         $property->setType('string');
         $property->setFormat('url');
@@ -114,7 +114,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        $id = Uuid::fromString('200c0302-b30b-40bf-a8e2-b4b4b033b3f9');
+        $id = Uuid::fromString('e85fdb66-f8b6-4ca0-a3fb-32b11aaebcb2');
         $property = new Property();
         $property->setTitle('Datum');
         $property->setIcon('fas fa-calendar-day');
@@ -127,7 +127,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        $id = Uuid::fromString('b872204f-174a-4305-85f6-93ec7e6823d6');
+        $id = Uuid::fromString('7a59202e-c830-4a2e-839c-c11a1ce62a6a');
         $property = new Property();
         $property->setTitle('Locatie');
         $property->setIcon('fas fa-building');
@@ -143,7 +143,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        $id = Uuid::fromString('f569e850-83ea-4a92-a09a-fc18b1fa8b28');
+        $id = Uuid::fromString('c9937faf-ebc2-438c-b3bb-5590a3c63464');
         $property = new Property();
         $property->setTitle('Ambtenaar');
         $property->setIcon('fas fa-user-tie');
@@ -192,16 +192,37 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        $id = Uuid::fromString('c95d2310-4fab-4a0c-9595-ee27ea88434c');
+
+        $id = Uuid::fromString('492f4687-71f3-48f0-aad8-70a2f1f3cd1a');
         $property = new Property();
-        $property->setTitle('Overig');
-        $property->setIcon('fal fa-file-alt');
-        $property->setMinItems(3);
-        $property->setMaxItems(3);
-        $property->setType('array');
-        $property->setMinItems(4);
+        $property->setTitle('Naamsgebruik');
+        $property->setName('type');
+        $property->setIcon('fas fa-ring');
+        $property->setType('string');
         $property->setFormat('string');
-        $property->setDescription('Graag zouden wij u om wat extra informatie vragen');
+        $property->setMaxLength('12');
+        $property->setMinLength('7');
+        $property->setEnum(['trouwen', 'partnerschap', 'omzetten']);
+        $property->setRequired(true);
+        $property->setDescription('Selecteer een huwelijk of partnerschap?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('d07d6fd3-7118-4e75-9ee6-407d494e1613');
+        $property = new Property();
+        $property->setTitle('Taal');
+        $property->setName('type');
+        $property->setIcon('fas fa-ring');
+        $property->setType('string');
+        $property->setFormat('string');
+        $property->setMaxLength('12');
+        $property->setMinLength('7');
+        $property->setEnum(['nederlands', 'frans', 'engels']);
+        $property->setRequired(true);
+        $property->setDescription('In welke taal wilt u de huwelijks cermonie voltrekken');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -210,12 +231,24 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('8a047a87-61fe-435c-95a8-ffc843a8e362');
         $property = new Property();
+        $property->setTitle('Opmerkingen ');
+        $property->setIcon('fas fa-envelope');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Heeft u nog opmerking die u graag wil meegeven');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('d46c0a9c-b6db-40da-af77-09f0037def57');
+        $property = new Property();
         $property->setTitle('Melding ');
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('vrc/request');
-        $property->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $property->setFormat('boolean');
+        $property->setDescription('Wilt u met deze reservering tevens uw melding voorgenomen huwelijk (her) indienen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -308,7 +341,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('b817450a-1e20-4650-9c73-ca31e9153b8d');
         $property = new Property();
-        $property->setTitle('schijnhuwelijk');
+        $property->setTitle('Schijnhuwelijk');
         $property->setType('array');
         $property->setFormat('url');
         $property->setIri('ptc/schijnhuwelijk');
