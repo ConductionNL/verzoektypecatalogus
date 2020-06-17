@@ -56,6 +56,7 @@ class BegravenFixtures extends Fixture
         $property->setIri('wrc/organizations');
         $property->setRequired(true);
         $property->setRequestType($requestType);
+
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -122,21 +123,6 @@ class BegravenFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('2631df9f-abca-4f26-bcad-a56d8ec5c856');
-        $property = new Property();
-        $property->setTitle('Gemeente');
-        $property->setType('string');
-        $property->setFormat('string');
-        $property->setIri('wrc/organizations');
-        $property->setRequired(false);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
         $id = Uuid::fromString('24d3e05d-26c2-4adb-acd4-08bde88b4526');
         $property = new Property();
         $property->setTitle('Belanghebbende');
@@ -167,7 +153,7 @@ class BegravenFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        // Bijbehorende taken die in de queu worden gezet
+        // Bijbehorende taken die in de queue worden gezet
         $task = new Task();
         $task->setRequestType($requestType);
         $task->setName('Aaanmaken zaak');
