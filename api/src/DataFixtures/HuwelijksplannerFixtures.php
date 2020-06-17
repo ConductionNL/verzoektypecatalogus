@@ -1102,8 +1102,17 @@ class HuwelijksplannerFixtures extends Fixture
         $stage9->setRequestType($trouwenNL);
         $manager->persist($stage9);
 
+        $stage11= new Property();
+        $stage11->addPrevious($stage9);
+        $stage11->setTitle('Reserveren ');
+        $stage11->setIcon('fas fa-calendar-check');
+        $stage11->setSlug('checklist');
+        $stage11->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $stage11->setRequestType($trouwenNL);
+        $manager->persist($stage11);
+
         $stage10= new Property();
-        $stage10->addPrevious($stage9);
+        $stage10->addPrevious($stage11);
         $stage10->setTitle('Betalen ');
         $stage10->setIcon('fas fa-cash-register');
         $stage10->setSlug('betalen');
@@ -1113,15 +1122,6 @@ class HuwelijksplannerFixtures extends Fixture
         $stage10->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage10->setRequestType($trouwenNL);
         $manager->persist($stage10);
-
-        $stage11= new Property();
-        $stage11->addPrevious($stage10);
-        $stage11->setTitle('Reserveren ');
-        $stage11->setIcon('fas fa-calendar-check');
-        $stage11->setSlug('checklist');
-        $stage11->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
-        $stage11->setRequestType($trouwenNL);
-        $manager->persist($stage11);
 
         $property= new Property();
         //$property->setId('');
