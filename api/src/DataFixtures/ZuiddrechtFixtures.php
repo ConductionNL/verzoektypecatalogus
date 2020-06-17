@@ -192,7 +192,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-
         $id = Uuid::fromString('492f4687-71f3-48f0-aad8-70a2f1f3cd1a');
         $property = new Property();
         $property->setTitle('Naamsgebruik');
