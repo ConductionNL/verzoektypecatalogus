@@ -3,14 +3,14 @@ entries:
   vtc:
   - apiVersion: v1
     appVersion: V.0.1
-    created: "2020-06-17T15:01:58.6710112+02:00"
+    created: "2020-06-17T15:03:35.7537209+02:00"
     description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&#039;'
-    digest: 691bec2708a810370846708efca50dfb221a30d26f11ab495fa87ce16beadd45
+    digest: a7c08bdde70f7481f2d92c3d8c30c4fb1f72a8661f66919f3bbfe532eccc401e
     home: pc.zaakonline.nl
     icon: pc.zaakonline.nl
     name: vtc
     urls:
     - vtc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-06-17T15:01:58.6700111+02:00"
+generated: "2020-06-17T15:03:35.7527208+02:00"
