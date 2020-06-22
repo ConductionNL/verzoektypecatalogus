@@ -1085,7 +1085,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setMinItems(2);
         $stage2->setMaxItems(2);
         $stage2->setRequired(true);
-        $stage2->setDescription('Wie zijn de getuigen van partner 2?');
+        $stage2->setDescription('Wie zijn de partners');
         $stage2->setRequestType($trouwenNL);
         $manager->persist($stage2);
 
