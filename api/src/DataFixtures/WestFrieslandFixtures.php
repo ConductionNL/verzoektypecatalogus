@@ -39,6 +39,7 @@ class WestFrieslandFixtures extends Fixture
         $id = Uuid::fromString('c2e9824e-2566-460f-ab4c-905f20cddb6c');
         $requestType = new RequestType();
         $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc','type'=>'organizations','id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
+//        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc','type'=>'organizations','id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setIcon('fa fa-headstone');
         $requestType->setName('begrafenisplanner');
         $requestType->setDescription('Met dit verzoek kunt u een begrafenis plannen');
