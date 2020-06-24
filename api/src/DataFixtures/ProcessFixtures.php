@@ -25,12 +25,13 @@ class ProcessFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         if (
+            !$this->params->get('app_build_all_fixtures') &&
             $this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false
         ) {
             return false;
         }
         return false;
-        
+
         /*
          *  Bezwaar
          */

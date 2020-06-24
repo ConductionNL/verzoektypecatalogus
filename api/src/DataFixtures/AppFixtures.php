@@ -2,9 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Property;
+use App\Entity\RequestType;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class AppFixtures extends Fixture
@@ -21,7 +24,9 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         // Lets make sure we only run these fixtures on larping enviroment
-        if (strpos($this->params->get('app_domain'), 'conduction.nl') == false) {
+        if (
+            !$this->params->get('app_build_all_fixtures') &&
+            strpos($this->params->get('app_domain'), 'conduction.nl') == false) {
             return false;
         }
 
@@ -39,7 +44,7 @@ class AppFixtures extends Fixture
         $manager->persist($request);
         $request->setId($id);
         $manager->persist($request);
-        $request->flush();
+        $manager->flush();
         $request = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         $id = Uuid::fromString('1cf0c80b-df0c-4677-a98a-aefaf3ef101e');
@@ -49,7 +54,7 @@ class AppFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('date');
         $property->setDescription('Wat is de verhuisdatum?');
-        $property->setRequestType($requestType);
+        $property->setRequestType($request);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -64,7 +69,7 @@ class AppFixtures extends Fixture
         $property->setFormat('bag');
         $property->setRequired(true);
         $property->setDescription('Wat is het nieuwe adres?');
-        $property->setRequestType($requestType);
+        $property->setRequestType($request);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
