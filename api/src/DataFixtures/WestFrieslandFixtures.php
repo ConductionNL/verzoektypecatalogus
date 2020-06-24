@@ -11,7 +11,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-class BegravenFixtures extends Fixture
+class WestFrieslandFixtures extends Fixture
 {
     private $commonGroundService;
     private $params;
@@ -37,9 +37,10 @@ class BegravenFixtures extends Fixture
 
         $id = Uuid::fromString('c2e9824e-2566-460f-ab4c-905f20cddb6c');
         $requestType = new RequestType();
-        $requestType->setOrganization('https://wrc.begraven.zaakonline.nl/organizations/d736013f-ad6d-4885-b816-ce72ac3e1384');
+        $requestType->setOrganization($this->commonGroundService->cleanUrl("https://wrc.westfriesland.commonground.nu/organizations/d736013f-ad6d-4885-b816-ce72ac3e1384"));
+//        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc','type'=>'organizations','id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setIcon('fa fa-headstone');
-        $requestType->setName('Begravenisplanner');
+        $requestType->setName('begrafenisplanner');
         $requestType->setDescription('Met dit verzoek kunt u een begrafenis plannen');
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -56,6 +57,7 @@ class BegravenFixtures extends Fixture
         $property->setIri('wrc/organizations');
         $property->setRequired(true);
         $property->setRequestType($requestType);
+
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -122,21 +124,6 @@ class BegravenFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('2631df9f-abca-4f26-bcad-a56d8ec5c856');
-        $property = new Property();
-        $property->setTitle('Gemeente');
-        $property->setType('string');
-        $property->setFormat('string');
-        $property->setIri('wrc/organizations');
-        $property->setRequired(false);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
         $id = Uuid::fromString('24d3e05d-26c2-4adb-acd4-08bde88b4526');
         $property = new Property();
         $property->setTitle('Belanghebbende');
@@ -167,7 +154,7 @@ class BegravenFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        // Bijbehorende taken die in de queu worden gezet
+        // Bijbehorende taken die in de queue worden gezet
         $task = new Task();
         $task->setRequestType($requestType);
         $task->setName('Aaanmaken zaak');

@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
+use App\Entity\Task;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
@@ -22,7 +23,7 @@ class HuwelijksplannerFixtures extends Fixture
     {
         // Lets make sure we only run these fixtures on larping enviroment
         if ($this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false) {
-            //return false;
+            return false;
         }
 
         /*
@@ -666,6 +667,19 @@ class HuwelijksplannerFixtures extends Fixture
         $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
         // einde hacky tacky
 
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($request);
+        $task->setName('Bijwerken wijzigings naamsgebruik');
+        $task->setDescription('Deze task informeerd het QC dat een locatei aanvraag is bijgewerkt');
+        $task->setCode('update_wijzigingsnaamsgebruik');
+        $task->setEndpoint('https://ts.dev.huwelijksplanner.online/webhook');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P0D');
+
+        $manager->persist($task);
+
         $property = new Property();
         $property->setStart(true);
         $property->setTitle('Partner 1');
@@ -710,9 +724,22 @@ class HuwelijksplannerFixtures extends Fixture
         $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
         // einde hacky tacky
 
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($request);
+        $task->setName('Bijwerken aanvraag babs');
+        $task->setDescription('Deze task informeerd het QC dat een locatei aanvraag is bijgewerkt');
+        $task->setCode('update_babs_beidigd');
+        $task->setEndpoint('https://ts.dev.huwelijksplanner.online/webhook');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P0D');
+
+        $manager->persist($task);
+
         $stage1 = new Property();
         $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
+        $stage1->setTitle('babs-andere-gemeente');
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('babs-andere-gemeente');
         $stage1->setType('array');
@@ -720,6 +747,15 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde babs');
         $stage1->setRequestType($request);
         $manager->persist($stage1);
+
+        $stage2= new Property();
+        $stage2->addPrevious($stage1);
+        $stage2->setTitle('indienen-babs-andere-gemeente');
+        $stage2->setIcon('fas fa-user-friends');
+        $stage2->setSlug('indienen-babs-andere-gemeente');
+        $stage2->setDescription('Wie zijn de partners?');
+        $stage2->setRequestType($request);
+        $manager->persist($stage2);
 
 
         /*
@@ -743,9 +779,22 @@ class HuwelijksplannerFixtures extends Fixture
         $request = $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
         // einde hacky tacky
 
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($request);
+        $task->setName('Bijwerken aanvraag babs');
+        $task->setDescription('Deze task informeerd het QC dat een locatei aanvraag is bijgewerkt');
+        $task->setCode('update_babs_nietbeidigd');
+        $task->setEndpoint('https://ts.dev.huwelijksplanner.online/webhook');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P0D');
+
+        $manager->persist($task);
+
         $stage1= new Property();
         $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
+        $stage1->setTitle('babs-voor-een-dag');
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('babs-voor-een-dag');
         $stage1->setIri('irc/assent');
@@ -753,6 +802,15 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
         $stage1->setRequestType($request);
         $manager->persist($stage1);
+
+        $stage2= new Property();
+        $stage2->addPrevious($stage1);
+        $stage2->setTitle('indienen-babs-voor-een-dag');
+        $stage2->setIcon('fas fa-user-friends');
+        $stage2->setSlug('indienen-babs-voor-een-dag');
+        $stage2->setDescription('Wie zijn de partners?');
+        $stage2->setRequestType($request);
+        $manager->persist($stage2);
 
         /*
     	 *  Trouwlocatie
@@ -772,15 +830,37 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $aanvraagLocatie= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
 
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($aanvraagLocatie);
+        $task->setName('Bijwerken aanvraag locatie');
+        $task->setDescription('Deze task informeerd het QC dat een locatei aanvraag is bijgewerkt');
+        $task->setCode('update_locatie');
+        $task->setEndpoint('https://ts.dev.huwelijksplanner.online/webhook');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P0D');
+
+        $manager->persist($task);
+
         $stage1 = new Property();
         $stage1->setStart(true);
-        $stage1->setTitle('Gegevens');
+        $stage1->setTitle('afwijkende-trouw-locatie');
         $stage1->setIcon('fal fa-paper-plane');
         $stage1->setSlug('afwijkende-trouw-locatie');
         $stage1->setType('array');
         $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde locatie');
         $stage1->setRequestType($aanvraagLocatie);
         $manager->persist($stage1);
+
+        $stage2= new Property();
+        $stage2->addPrevious($stage1);
+        $stage2->setTitle('afwijkende-trouw-locatie');
+        $stage2->setIcon('fas fa-user-friends');
+        $stage2->setSlug('afwijkende-trouw-locatie');
+        $stage2->setDescription('Wie zijn de partners?');
+        $stage2->setRequestType($request);
+        $manager->persist($stage2);
 
         // Melding Huwelijk
         $id = Uuid::fromString('146cb7c8-46b9-4911-8ad9-3238bab4313e');
@@ -797,6 +877,20 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $meldingTrouwenNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
 
+
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($meldingTrouwenNL);
+        $task->setName('Bijwerken melding');
+        $task->setDescription('Deze task informeerd het QC dat een medling is bijgewerkt');
+        $task->setCode('update_melding');
+        $task->setEndpoint('https://ts.dev.huwelijksplanner.online/webhook');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P0D');
+
+        $manager->persist($task);
+
         $stage0 = new Property();
         $stage0->setStart(true);
         $stage0->setTitle('info-melding');
@@ -808,7 +902,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage1= new Property();
         $stage1->addPrevious($stage0);
-        $stage1->setTitle('Datum');
+        $stage1->setTitle('datum-melding');
         $stage1->setIcon('fas fa-calendar-day');
         $stage1->setSlug('datum-melding');
         $stage1->setType('boolean');
@@ -818,7 +912,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage2= new Property();
         $stage2->addPrevious($stage1);
-        $stage2->setTitle('Partners');
+        $stage2->setTitle('partner-melding');
         $stage2->setIcon('fas fa-user-friends');
         $stage2->setSlug('partner-melding');
         $stage2->setIri('irc/assent');
@@ -833,7 +927,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage3= new Property();
         $stage3->addPrevious($stage2);
-        $stage3->setTitle('Getuigen');
+        $stage3->setTitle('getuige-melding');
         $stage3->setIcon('fas fa-users');
         $stage3->setSlug('getuige-melding');
         $stage3->setIri('irc/assent');
@@ -848,7 +942,7 @@ class HuwelijksplannerFixtures extends Fixture
 
         $stage4= new Property();
         $stage4->addPrevious($stage3);
-        $stage4->setTitle('Indienen');
+        $stage4->setTitle('indienen-melding');
         $stage4->setIcon('fal fa-paper-plane');
         $stage4->setSlug('indienen-melding');
         $stage4->setDescription('Wie zijn de getuigen van partner?');
@@ -870,6 +964,19 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($omzettingNL);
         $manager->flush();
         $omzettingNL= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($omzettingNL);
+        $task->setName('Bijwerken omzetting');
+        $task->setDescription('Deze task informeerd het QC dat een omzetting is bijgewerkt');
+        $task->setCode('update_omzetting');
+        $task->setEndpoint('https://ts.dev.huwelijksplanner.online/webhook');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P0D');
+
+        $manager->persist($task);
 
         $stage1= new Property();
         $stage1->setStart(true);
@@ -906,7 +1013,7 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($stage3);
 
         /*
-    	 *  Huwelijk Partnerschap
+    	 *  Huwelijk / Partnerschap
     	 */
 
         $id = Uuid::fromString('5b10c1d6-7121-4be2-b479-7523f1b625f1');
@@ -929,6 +1036,19 @@ class HuwelijksplannerFixtures extends Fixture
         $trouwenNL->addChild($meldingTrouwenNL);
         */
 
+        // Bijbehorende taken die in de queu worden gezet
+        $task = new Task();
+        $task->setRequestType($trouwenNL);
+        $task->setName('Bijwerken reservering');
+        $task->setDescription('Deze task informeerd het QC dat een reservering is bijgewerkt');
+        $task->setCode('update_huwelijk');
+        $task->setEndpoint('https://ts.dev.huwelijksplanner.online/webhook');
+        $task->setType('POST');
+        $task->setEvent('update');
+        $task->setTimeInterval('P0D');
+
+        $manager->persist($task);
+
         $stage0= new Property();
         $stage0->setStart(true);
         $stage0->setTitle('Uitleg');
@@ -950,7 +1070,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setMinLength('7');
         $stage1->setEnum(['trouwen','partnerschap','omzetten']);
         $stage1->setRequired(true);
-        $stage1->setDescription('is het een huwelijk of partnerschap?');
+        $stage1->setDescription('Selecteer een huwelijk of partnerschap?');
         $stage1->setRequestType($trouwenNL);
         $manager->persist($stage1);
 
@@ -965,19 +1085,19 @@ class HuwelijksplannerFixtures extends Fixture
         $stage2->setMinItems(2);
         $stage2->setMaxItems(2);
         $stage2->setRequired(true);
-        $stage2->setDescription('Het te trouwen koppel');
+        $stage2->setDescription('Wie zijn de partners');
         $stage2->setRequestType($trouwenNL);
         $manager->persist($stage2);
 
         $stage3= new Property();
         $stage3->addPrevious($stage2);
-        $stage3->setTitle('Plechtigheid');
+        $stage3->setTitle('Plechtigheid  ');
         $stage3->setIcon('fas fa-glass-cheers');
         $stage3->setSlug('plechtigheid');
         $stage3->setType('string');
         $stage3->setFormat('url');
         $stage3->setIri('pdc/offer');
-        $stage3->setDescription('Welk soort huwelijk of partnerschap');
+        $stage3->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage3->setRequestType($trouwenNL);
         $manager->persist($stage3);
 
@@ -988,7 +1108,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage4->setSlug('datum');
         $stage4->setType('string');
         $stage4->setFormat('date');
-        $stage4->setDescription('De trouwdatum wanneer het huwelijk voltrokken wordt');
+        $stage4->setDescription('Selecteer een datum voor de omzetting naar huwelijk');
         $stage4->setRequestType($trouwenNL);
         $manager->persist($stage4);
 
@@ -1002,7 +1122,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage5->setIri('pdc/offer');
         $stage5->setMaxLength('255');
         $stage5->setRequired(true);
-        $stage5->setDescription('De trouwlocatie waar het huwelijk wordt voltrokken');
+        $stage5->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
         $stage5->setRequestType($trouwenNL);
         $manager->persist($stage5);
 
@@ -1016,7 +1136,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage6->setIri('pdc/offer');
         $stage6->setMaxLength('255');
         $stage6->setRequired(true);
-        $stage6->setDescription('De ambtenaar van de burgerlijke stand die het huwelijk voltrekt');
+        $stage6->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
         $stage6->setRequestType($trouwenNL);
         $manager->persist($stage6);
 
@@ -1031,7 +1151,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage7->setMinItems(2);
         $stage7->setMaxItems(4);
         $stage7->setRequired(true);
-        $stage7->setDescription('De getuigen van het huwelijk');
+        $stage7->setDescription('Wie zijn de getuigen van partner?');
         $stage7->setRequestType($trouwenNL);
         $manager->persist($stage7);
 
@@ -1071,19 +1191,19 @@ class HuwelijksplannerFixtures extends Fixture
         $stage9->setType('string');
         $stage9->setFormat('url');
         $stage9->setIri('vrc/request');
-        $stage9->setDescription('Is het huwelijk gemeld aan de gemeente?');
+        $stage9->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage9->setRequestType($trouwenNL);
         $manager->persist($stage9);
 
         $stage10= new Property();
         $stage10->addPrevious($stage9);
-        $stage10->setTitle('Betalen');
+        $stage10->setTitle('Betalen ');
         $stage10->setIcon('fas fa-cash-register');
         $stage10->setSlug('betalen');
         $stage10->setType('string');
         $stage10->setFormat('url');
         $stage10->setIri('orc/order');
-        $stage10->setDescription('Is het huwelijk betaald?');
+        $stage10->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
         $stage10->setRequestType($trouwenNL);
         $manager->persist($stage10);
 
