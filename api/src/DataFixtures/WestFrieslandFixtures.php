@@ -25,9 +25,12 @@ class WestFrieslandFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         if (
+            // If build all fixtures is true we build all the fixtures
             !$this->params->get('app_build_all_fixtures') &&
+            // Specific domain names
             $this->params->get('app_domain') != "begraven.zaakonline.nl" && strpos($this->params->get('app_domain'), "begraven.zaakonline.nl") == false &&
-            $this->params->get('app_domain') != "westfriesland.commonground.nu" && strpos($this->params->get('app_domain'), "westfriesland.commonground.nu") == false
+            $this->params->get('app_domain') != "westfriesland.commonground.nu" && strpos($this->params->get('app_domain'), "westfriesland.commonground.nu") == false &&
+            $this->params->get('app_domain') != "zuid-drecht.nl" && strpos($this->params->get('app_domain'), "zuid-drecht.nl") == false
         ) {
             return false;
         }
