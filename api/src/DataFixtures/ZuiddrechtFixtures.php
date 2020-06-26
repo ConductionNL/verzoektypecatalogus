@@ -328,23 +328,6 @@ class ZuiddrechtFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         /*
-         *  Ballie Afspraak
-         */
-
-        $id = Uuid::fromString('32293766-8b3a-43ee-9f16-ed67234ac309');
-        $requestType = new RequestType();
-        $requestType->setIcon('fas calendar-check');
-        $requestType->setOrganization('002220647');
-        $requestType->setName(' Ballie Afspraak');
-        $requestType->setDescription('Via dit formulier kunt u een ballie afspraak bij ons inplannen');
-        $requestType->setUnique(true);
-        $manager->persist($requestType);
-        $requestType->setId($id);
-        $manager->persist($requestType);
-        $manager->flush();
-        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
-
-        /*
          *  Huwelijk
          *
          *  Dit is het opgeschoonde en iets samengetrokken huwelijks verzoek van west-friesland
