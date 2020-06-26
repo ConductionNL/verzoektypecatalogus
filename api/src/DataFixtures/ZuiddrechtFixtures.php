@@ -36,6 +36,154 @@ class ZuiddrechtFixtures extends Fixture
         }
 
         /*
+         * Parkeer Vergunning
+         */
+
+        $id = Uuid::fromString('f86591ef-6964-412b-84de-261fd47c3288');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-parking processIcon');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Parkeer vergunning');
+        $requestType->setDescription('Met dit procces start u de aanvraag voor een parkeer vergunning');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('92461726-dc0a-4132-a466-4968a37f4620');
+        $property = new Property();
+        $property->setTitle('Parkeergelegenheid');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('string');
+        $property->setRequired(true);
+        $property->setDescription('Is er een eigen parkeergelegenheid bij uw woning?');
+        $property->setEnum(['Ik heb een eigen parkeergelegenheid','Alle parkeergelegenheden zijn in gebruik','Ik heb geen eigen parkeergelegenheid bij mijn woning']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('3539cb5f-6801-4f45-838f-9c592946a592');
+        $property = new Property();
+        $property->setTitle('Vergunning oud adres');
+        $property->setIcon('fas fa-parking');
+        $property->setType('boolean');
+        $property->setRequired(true);
+        $property->setDescription('Ik heb een vergunning op mijn oude adres en wil ook een vergunning op mijn nieuwe adres:');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('a719f9c2-4565-488e-b0dd-f153fb6f4756');
+        $property = new Property();
+        $property->setTitle('einddatum vergunning oud adres');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setRequired(true);
+        $property->setDescription('Gewenste einddatum vergunning op het oude adres:');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('c3102b38-b07c-4392-8a31-e57d81b39d70');
+        $property = new Property();
+        $property->setTitle('naam kentekenbewijs');
+        $property->setIcon('fas fa-parking');
+        $property->setType('boolean');
+        $property->setRequired(true);
+        $property->setDescription('Staat uw naam op het kentenbewijs?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('b3ebaedc-578b-43bd-bc7e-91e5a5235de4');
+        $property = new Property();
+        $property->setTitle('betalen');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('string');
+        $property->setRequired(true);
+        $property->setDescription('Hoe wilt u betalen?');
+        $property->setEnum(['Automatische incasso','Acceptgiro']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+
+        $id = Uuid::fromString('ee8acd31-8a5e-48e9-ac16-0f73543d18c5');
+        $property = new Property();
+        $property->setTitle('type voertuig');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('string');
+        $property->setRequired(true);
+        $property->setDescription('U vraagt een parkeervergunning aan voor een:');
+        $property->setEnum(['Huur- of lease-auto','BedrijfsAuto']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('be3cfd9c-176d-4e29-bbfd-008217dcc6e3');
+        $property = new Property();
+        $property->setTitle('bedrijfsauto');
+        $property->setIcon('fas fa-parking');
+        $property->setType('boolean');
+        $property->setRequired(true);
+        $property->setDescription('Staat de bedrijfsauto op naam van de eigenaar van het bedrijf?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('c427f035-f2f4-440a-967d-4c879de728f2');
+        $property = new Property();
+        $property->setTitle('huur- of lease-auto');
+        $property->setIcon('fas fa-parking');
+        $property->setType('boolean');
+        $property->setRequired(true);
+        $property->setDescription('Staat in het huur- of lease-contract naast het kenteken ook uw naam?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('fb7e4a71-c927-4c95-ae78-401eddcfe07a');
+        $property = new Property();
+        $property->setTitle('documenten');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(false);
+        $property->setDescription('Hebt u nog niet alle documenten verzameld? Mail deze lijst naar uzelf');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+
+
+
+
+
+        /*
          *  Huwelijk
          *
          *  Dit is het opgeschoonde en iets samengetrokken huwelijks verzoek van west-friesland
