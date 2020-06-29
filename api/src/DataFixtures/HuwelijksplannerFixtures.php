@@ -569,45 +569,6 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($stage3);
         $manager->flush();
 
-        $id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
-        $verhuizenDenBosh = new RequestType();
-        $verhuizenDenBosh->setName('Verhuizen');
-        $verhuizenDenBosh->setIcon('fal fa-truck-moving');
-        $verhuizenDenBosh->setDescription('Het doorgeven van een verhuizing aan de gemeente \'s-Hertogenbosch');
-        $verhuizenDenBosh->setOrganization('001709124');
-        $verhuizenDenBosh->setExtends($verhuizenNL);
-        $manager->persist($verhuizenDenBosh);
-        $verhuizenDenBosh->setId($id);
-        $manager->persist($verhuizenDenBosh);
-        $manager->flush();
-        $verhuizenDenBosh= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
-
-        $stage1= new Property();
-        $stage1->setStart(true);
-        //$verhuizenNL->setId('');
-        $stage1->setTitle('Email');
-        $stage1->setIcon('fal fa-envelope');
-        $stage1->setSlug('email');
-        $stage1->setDescription('Het e-mail addres dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
-        $stage1->setType('string');
-        $stage1->setFormat('email');
-        $stage1->setRequired(true);
-        $stage1->setRequestType($verhuizenDenBosh);
-        $manager->persist($stage1);
-
-        $stage2= new Property();
-        $stage2->addPrevious($stage1);
-        //$verhuizenNL->setId('');
-        $stage2->setTitle('Telefoon');
-        $stage2->setIcon('fal fa-phone');
-        $stage2->setSlug('telefoon');
-        $stage2->setDescription('Het telefoon nummer dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
-        $stage2->setType('string');
-        $stage2->setFormat('string');
-        $stage2->setRequired(true);
-        $stage2->setRequestType($verhuizenDenBosh);
-        $manager->persist($stage2);
-
         $id = Uuid::fromString('fc79c4c9-b3b3-4258-bdbb-449262f3e5d7');
         $verhuizenEindhoven = new RequestType();
         $verhuizenEindhoven->setName('Verhuizen');
