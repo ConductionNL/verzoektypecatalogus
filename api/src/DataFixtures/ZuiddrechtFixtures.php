@@ -57,7 +57,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Parkeergelegenheid');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Is er een eigen parkeergelegenheid bij uw woning?');
         $property->setEnum(['Ik heb een eigen parkeergelegenheid','Alle parkeergelegenheden zijn in gebruik','Ik heb geen eigen parkeergelegenheid bij mijn woning']);
@@ -72,6 +72,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Vergunning oud adres');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Ik heb een vergunning op mijn oude adres en wil ook een vergunning op mijn nieuwe adres:');
         $property->setRequestType($requestType);
@@ -99,6 +100,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('naam kentekenbewijs');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Staat uw naam op het kentenbewijs?');
         $property->setRequestType($requestType);
@@ -112,7 +114,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('betalen');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Hoe wilt u betalen?');
         $property->setEnum(['Automatische incasso','Acceptgiro']);
@@ -143,6 +145,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('bedrijfsauto');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Staat de bedrijfsauto op naam van de eigenaar van het bedrijf?');
         $property->setRequestType($requestType);
@@ -156,6 +159,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('huur- of lease-auto');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Staat in het huur- of lease-contract naast het kenteken ook uw naam?');
         $property->setRequestType($requestType);
@@ -201,6 +205,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setDescription('waarover gaat uw vraag');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -215,6 +220,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('text');
         $property->setDescription('Om schrrijv uw vraag');
+        $property->setFormat('textarea');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -410,6 +416,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Onderwerp');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
+        $property->setFormat('text');
         $property->setDescription('waarover gaat uw vraag');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -424,7 +431,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Beschrijving');
         $property->setIcon('fal fa-map-marked');
         $property->setType('text');
-        $property->setDescription('Om schrrijv uw vraag');
+        $property->setFormat('text-area');
+        $property->setDescription('Omschrijf uw vraag');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
