@@ -28,9 +28,9 @@ class ZuiddrechtFixtures extends Fixture
             // If build all fixtures is true we build all the fixtures
             !$this->params->get('app_build_all_fixtures') &&
             // Specific domain names
-            $this->params->get('app_domain') != "zuiddrecht.nl" && strpos($this->params->get('app_domain'), "zuiddrecht.nl") == false &&
-            $this->params->get('app_domain') != "zuid-drecht.nl" && strpos($this->params->get('app_domain'), "zuid-drecht.nl") == false &&
-            $this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false
+            $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
+            $this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false
         ) {
             return false;
         }
@@ -60,7 +60,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Is er een eigen parkeergelegenheid bij uw woning?');
-        $property->setEnum(['Ik heb een eigen parkeergelegenheid','Alle parkeergelegenheden zijn in gebruik','Ik heb geen eigen parkeergelegenheid bij mijn woning']);
+        $property->setEnum(['Ik heb een eigen parkeergelegenheid', 'Alle parkeergelegenheden zijn in gebruik', 'Ik heb geen eigen parkeergelegenheid bij mijn woning']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -117,13 +117,12 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Hoe wilt u betalen?');
-        $property->setEnum(['Automatische incasso','Acceptgiro']);
+        $property->setEnum(['Automatische incasso', 'Acceptgiro']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
 
         $id = Uuid::fromString('ee8acd31-8a5e-48e9-ac16-0f73543d18c5');
         $property = new Property();
@@ -133,7 +132,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('U vraagt een parkeervergunning aan voor een:');
-        $property->setEnum(['Huur- of lease-auto','BedrijfsAuto']);
+        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -378,8 +377,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
-
         /*
          *  Melding openbare ruimte
          */
@@ -440,7 +437,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         $id = Uuid::fromString('e7ffde88-60cc-41a7-a670-42ec4e8d17b8');
         $property = new Property();

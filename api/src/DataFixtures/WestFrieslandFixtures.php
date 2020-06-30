@@ -28,9 +28,9 @@ class WestFrieslandFixtures extends Fixture
             // If build all fixtures is true we build all the fixtures
             !$this->params->get('app_build_all_fixtures') &&
             // Specific domain names
-            $this->params->get('app_domain') != "begraven.zaakonline.nl" && strpos($this->params->get('app_domain'), "begraven.zaakonline.nl") == false &&
-            $this->params->get('app_domain') != "westfriesland.commonground.nu" && strpos($this->params->get('app_domain'), "westfriesland.commonground.nu") == false &&
-            $this->params->get('app_domain') != "zuid-drecht.nl" && strpos($this->params->get('app_domain'), "zuid-drecht.nl") == false
+            $this->params->get('app_domain') != 'begraven.zaakonline.nl' && strpos($this->params->get('app_domain'), 'begraven.zaakonline.nl') == false &&
+            $this->params->get('app_domain') != 'westfriesland.commonground.nu' && strpos($this->params->get('app_domain'), 'westfriesland.commonground.nu') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false
         ) {
             return false;
         }
@@ -41,7 +41,7 @@ class WestFrieslandFixtures extends Fixture
 
         $id = Uuid::fromString('c2e9824e-2566-460f-ab4c-905f20cddb6c');
         $requestType = new RequestType();
-        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc','type'=>'organizations','id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
 //        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc','type'=>'organizations','id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setIcon('fa fa-headstone');
         $requestType->setName('begrafenisplanner');
