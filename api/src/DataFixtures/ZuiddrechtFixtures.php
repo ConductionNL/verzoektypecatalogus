@@ -178,10 +178,289 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
+        /*
+         *  Contact Formulier
+         */
+
+        $id = Uuid::fromString('3b76447e-1b4b-4b86-a582-8f6b4a5a8c6f');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-question');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Contact Formulier');
+        $requestType->setDescription('Via dit formulier neemt u contact met ons op');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('4f34ac1b-8c0c-4f3d-b1c4-07e086be43fd');
+        $property = new Property();
+        $property->setTitle('Onderwerp');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setDescription('waarover gaat uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('54b86107-aa93-45ce-a02f-8516390fd92b');
+        $property = new Property();
+        $property->setTitle('Beschrijving');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('text');
+        $property->setDescription('Om schrrijv uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('78ede193-a0b4-4851-af0d-84252b1903d1');
+        $property = new Property();
+        $property->setTitle('Product of dienst');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('pdc/offer');
+        $property->setDescription('Heeft uw vraag betrekking op een product of dienst?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('beb0f9c5-fe0d-4826-84a6-6c91429f3235');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1eb5f485-4e26-489f-a65d-9cf035e5da43');
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        /*
+         *  Ballie Afspraak
+         */
+
+        $id = Uuid::fromString('32293766-8b3a-43ee-9f16-ed67234ac309');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas calendar-check');
+        $requestType->setOrganization('002220647');
+        $requestType->setName(' Ballie Afspraak');
+        $requestType->setDescription('Via dit formulier kunt u een ballie afspraak bij ons inplannen');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('bb4fd6ee-5dce-4b9f-a28a-c566d5542d07');
+        $property = new Property();
+        $property->setTitle('Datum');
+        $property->setIcon('fal fa-calendar-day');
+        $property->setType('string');
+        $property->setFormat('date-time');
+        $property->setDescription('Wanneer wilt u uw afspraak');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('af3fefb1-3a47-4d17-8837-a0ffc4901dd8');
+        $property = new Property();
+        $property->setTitle('Onderwerp');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('waarover gaat uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1db8bb40-aa1d-4ddd-b4d7-d43c987869cb');
+        $property = new Property();
+        $property->setTitle('Beschrijving');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('text');
+        $property->setFormat('textarea');
+        $property->setDescription('Om schrrijv uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('b90265da-379e-4254-b6df-14f962a68212');
+        $property = new Property();
+        $property->setTitle('Product of dienst');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('pdc/offer');
+        $property->setDescription('Heeft uw vraag betrekking op een product of dienst?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('3ed36d5b-349f-42f2-a084-f2feb20899be');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('c4e88952-bd02-4832-886f-316bcbaf6ed4');
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
 
 
+        /*
+         *  Melding openbare ruimte
+         */
 
+        $id = Uuid::fromString('6541d18b-1666-4600-98e3-6f5df1a67423');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas calendar-check');
+        $requestType->setOrganization('002220647');
+        $requestType->setName(' Ballie Afspraak');
+        $requestType->setDescription('Via dit formulier kunt u een ballie afspraak bij ons inplannen');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('67201efb-73e1-4aab-b28f-28ce5c9b5014');
+        $property = new Property();
+        $property->setTitle('Locatie');
+        $property->setIcon('fal fa-calendar-day');
+        $property->setType('string');
+        $property->setFormat('date-time');
+        $property->setDescription('Wanneer wilt u uw afspraak');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('2f09a068-410e-4053-983a-604220c4facc');
+        $property = new Property();
+        $property->setTitle('Onderwerp');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setDescription('waarover gaat uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('49da683f-3001-437b-99ab-9c8065e47269');
+        $property = new Property();
+        $property->setTitle('Beschrijving');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('text');
+        $property->setDescription('Om schrrijv uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+
+        $id = Uuid::fromString('e7ffde88-60cc-41a7-a670-42ec4e8d17b8');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('b82581b4-04d5-4d9a-8b3f-90646505bf80');
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         /*
          *  Huwelijk

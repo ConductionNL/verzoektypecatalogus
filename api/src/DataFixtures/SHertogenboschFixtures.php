@@ -130,7 +130,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setTitle('Telefoon');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
-        $property->setFormat('phonenumber');
+        $property->setFormat('tel');
         $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
