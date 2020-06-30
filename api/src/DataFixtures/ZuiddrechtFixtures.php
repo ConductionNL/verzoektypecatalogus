@@ -130,7 +130,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('type voertuig');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('U vraagt een parkeervergunning aan voor een:');
         $property->setEnum(['Huur- of lease-auto','BedrijfsAuto']);
