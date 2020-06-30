@@ -304,6 +304,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Onderwerp');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
+        $property->setFormat('text');
         $property->setDescription('waarover gaat uw vraag');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -318,6 +319,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Beschrijving');
         $property->setIcon('fal fa-map-marked');
         $property->setType('text');
+        $property->setFormat('textarea');
         $property->setDescription('Om schrrijv uw vraag');
         $property->setRequired(true);
         $property->setRequestType($requestType);
