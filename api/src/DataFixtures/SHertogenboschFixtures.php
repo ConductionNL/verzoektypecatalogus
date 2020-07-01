@@ -33,7 +33,7 @@ class SHertogenboschFixtures extends Fixture
             $this->params->get('app_domain') != 's-hertogenbosch.commonground.nu' && $this->params->get('app_domain') != 'verhuizen.accp.s-hertogenbosch.nl' &&
             strpos($this->params->get('app_domain'), 'verhuizen.accp.s-hertogenbosch.nl') == false && $this->params->get('app_domain') != 'verhuizen=.s-hertogenbosch.nl' &&
             strpos($this->params->get('app_domain'), 'verhuizen.s-hertogenbosch.nl') == false && strpos($this->params->get('app_domain'), 's-hertogenbosch.commonground.nu') == false &&
-            $this->params->get('app_domain') != "zuid-drecht.nl" && strpos($this->params->get('app_domain'), "zuid-drecht.nl") == false
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false
         ) {
             return false;
         }
@@ -158,7 +158,7 @@ class SHertogenboschFixtures extends Fixture
         $task->setRequestType($requestType);
         $task->setName('Updaten burger service nummers');
         $task->setDescription('Deze task roept een webhook aan als er een verzoek vanhet type verhuizen wordt gecrieërd');
-        $task->setEndpoint($this->commonGroundService->cleanUrl(["component"=>"vs","type"=>"webhook"]));
+        $task->setEndpoint($this->commonGroundService->cleanUrl(['component'=>'vs', 'type'=>'webhook']));
         $task->setType('GET');
         $task->setCode('set_bsn');
         $task->setEvent('create');

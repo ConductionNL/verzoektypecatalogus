@@ -28,9 +28,9 @@ class ZuiddrechtFixtures extends Fixture
             // If build all fixtures is true we build all the fixtures
             !$this->params->get('app_build_all_fixtures') &&
             // Specific domain names
-            $this->params->get('app_domain') != "zuiddrecht.nl" && strpos($this->params->get('app_domain'), "zuiddrecht.nl") == false &&
-            $this->params->get('app_domain') != "zuid-drecht.nl" && strpos($this->params->get('app_domain'), "zuid-drecht.nl") == false &&
-            $this->params->get('app_domain') != "huwelijksplanner.online" && strpos($this->params->get('app_domain'), "huwelijksplanner.online") == false
+            $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
+            $this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false
         ) {
             return false;
         }
@@ -57,10 +57,10 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Parkeergelegenheid');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Is er een eigen parkeergelegenheid bij uw woning?');
-        $property->setEnum(['Ik heb een eigen parkeergelegenheid','Alle parkeergelegenheden zijn in gebruik','Ik heb geen eigen parkeergelegenheid bij mijn woning']);
+        $property->setEnum(['Ik heb een eigen parkeergelegenheid', 'Alle parkeergelegenheden zijn in gebruik', 'Ik heb geen eigen parkeergelegenheid bij mijn woning']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -72,6 +72,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Vergunning oud adres');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Ik heb een vergunning op mijn oude adres en wil ook een vergunning op mijn nieuwe adres:');
         $property->setRequestType($requestType);
@@ -99,6 +100,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('naam kentekenbewijs');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Staat uw naam op het kentenbewijs?');
         $property->setRequestType($requestType);
@@ -112,26 +114,25 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('betalen');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Hoe wilt u betalen?');
-        $property->setEnum(['Automatische incasso','Acceptgiro']);
+        $property->setEnum(['Automatische incasso', 'Acceptgiro']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
 
-
         $id = Uuid::fromString('ee8acd31-8a5e-48e9-ac16-0f73543d18c5');
         $property = new Property();
         $property->setTitle('type voertuig');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('U vraagt een parkeervergunning aan voor een:');
-        $property->setEnum(['Huur- of lease-auto','BedrijfsAuto']);
+        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -143,6 +144,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('bedrijfsauto');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Staat de bedrijfsauto op naam van de eigenaar van het bedrijf?');
         $property->setRequestType($requestType);
@@ -156,6 +158,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('huur- of lease-auto');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('Staat in het huur- of lease-contract naast het kenteken ook uw naam?');
         $property->setRequestType($requestType);
@@ -201,6 +204,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setDescription('waarover gaat uw vraag');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -215,6 +219,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('text');
         $property->setDescription('Om schrrijv uw vraag');
+        $property->setFormat('textarea');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -374,8 +379,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
-
         /*
          *  Melding openbare ruimte
          */
@@ -412,6 +415,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Onderwerp');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
+        $property->setFormat('text');
         $property->setDescription('waarover gaat uw vraag');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -426,7 +430,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Beschrijving');
         $property->setIcon('fal fa-map-marked');
         $property->setType('text');
-        $property->setDescription('Om schrrijv uw vraag');
+        $property->setFormat('text-area');
+        $property->setDescription('Omschrijf uw vraag');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -434,7 +439,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         $id = Uuid::fromString('e7ffde88-60cc-41a7-a670-42ec4e8d17b8');
         $property = new Property();
