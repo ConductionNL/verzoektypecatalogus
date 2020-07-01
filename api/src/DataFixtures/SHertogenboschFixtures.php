@@ -104,9 +104,9 @@ class SHertogenboschFixtures extends Fixture
         $verhuizenDenBosh->setId($id);
         $manager->persist($verhuizenDenBosh);
         $manager->flush();
-        $verhuizenDenBosh= $manager->getRepository('App:RequestType')->findOneBy(array('id'=> $id));
+        $verhuizenDenBosh = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $stage1= new Property();
+        $stage1 = new Property();
         $stage1->setStart(true);
         //$verhuizenNL->setId('');
         $stage1->setTitle('Email');
@@ -119,7 +119,7 @@ class SHertogenboschFixtures extends Fixture
         $stage1->setRequestType($verhuizenDenBosh);
         $manager->persist($stage1);
 
-        $stage2= new Property();
+        $stage2 = new Property();
         $stage2->addPrevious($stage1);
         //$verhuizenNL->setId('');
         $stage2->setTitle('Telefoon');
