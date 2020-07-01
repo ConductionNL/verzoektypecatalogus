@@ -230,6 +230,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'bbc03703-27b5-442a-9b20-57dfff95be9b']);
         $property->setDescription('Heeft uw vraag betrekking op een product of dienst?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -336,6 +337,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'1baea858-1512-454b-ad58-0d30ac5ef10e']);
         $property->setDescription('Heeft uw vraag betrekking op een product of dienst?');
         $property->setRequestType($requestType);
         $manager->persist($property);
