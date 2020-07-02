@@ -387,8 +387,8 @@ class ZuiddrechtFixtures extends Fixture
         $requestType = new RequestType();
         $requestType->setIcon('fas calendar-check');
         $requestType->setOrganization('002220647');
-        $requestType->setName(' Ballie Afspraak');
-        $requestType->setDescription('Via dit formulier kunt u een ballie afspraak bij ons inplannen');
+        $requestType->setName('Melding openbare ruimte');
+        $requestType->setDescription('Via dit formulier doet u een melding openbare ruimte');
         $requestType->setUnique(true);
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -446,7 +446,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -460,7 +460,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
