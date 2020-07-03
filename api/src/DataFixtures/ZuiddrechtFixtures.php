@@ -526,7 +526,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setMinLength('7');
         $property->setEnum(['trouwen', 'partnerschap', 'omzetten']);
         $property->setRequired(true);
-        $property->setDescription('Selecteer een huwelijk of partnerschap?');
+        $property->setDescription('Wat wilt u doen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -543,7 +543,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setMinItems(2);
         $property->setMaxItems(2);
         $property->setRequired(true);
-        $property->setDescription('Wie zijn de getuigen van partner 2?');
+        $property->setDescription('Wie zijn de partners binnen dit huwelijk / partnerschap?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -572,7 +572,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-calendar-day');
         $property->setType('string');
         $property->setFormat('date');
-        $property->setDescription('Selecteer een datum voor de omzetting naar huwelijk');
+        $property->setDescription('Selecteer een datum voor de voltrekking');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -589,7 +589,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setQuery(["audience"=>'public','products.groups.id'=>'170788e7-b238-4c28-8efc-97bdada02c2e']);
         $property->setMaxLength('255');
         $property->setRequired(true);
-        $property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
+        $property->setDescription('Waar wilt u de voltrekking laten plaatsvinden');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -606,7 +606,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setQuery(["audience"=>'public','products.groups.id'=>'7f4ff7ae-ed1b-45c9-9a73-3ed06a36b9cc']);
         $property->setMaxLength('255');
         $property->setRequired(true);
-        $property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
+        $property->setDescription('Door wie wilt u de plechtigheid laten voltrekken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -623,7 +623,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setMinItems(2);
         $property->setMaxItems(4);
         $property->setRequired(true);
-        $property->setDescription('Wie zijn de getuigen van partner?');
+        $property->setDescription('Wie zijn de getuigen van de voltrekking?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -640,7 +640,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setQuery(["audience"=>'public','products.groups.id'=>'f8298a12-91eb-46d0-b8a9-e7095f81be6f']);
         $property->setMinItems(1);
         $property->setRequired(true);
-        $property->setDescription('Wie zijn de getuigen van partner?');
+        $property->setDescription('Zijn er nog extra producten of diensten waar u gebruik van wilt maken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -656,9 +656,9 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
-        $property->setEnum(['trouwen', 'partnerschap', 'omzetten']);
+        $property->setEnum(['geen wijziginng', 'naam partner 1', 'naam partner 2']);
         $property->setRequired(true);
-        $property->setDescription('Selecteer een huwelijk of partnerschap?');
+        $property->setDescription('Hoe wilt u heten na de voltrekking');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -676,7 +676,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setMinLength('7');
         $property->setEnum(['nederlands', 'frans', 'engels']);
         $property->setRequired(true);
-        $property->setDescription('In welke taal wilt u de huwelijks cermonie voltrekken');
+        $property->setDescription('In welke taal wilt u de plechtigheid voltrekken');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -717,7 +717,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('bs/invoice');
-        $property->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $property->setDescription('Heeft er reeds een betaling plaats gevonden');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -758,7 +758,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('url');
         $property->setIri('ptc/leeftijdscheckhuwelijk');
         $property->setRequired(true);
-        $property->setDescription('Zijn bijde parnters op de trouwdatum meerderjarig');
+        $property->setDescription('Zijn bijde partners op de trouwdatum meerderjarig');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -786,7 +786,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('url');
         $property->setIri('ptc/familiaregraadhuwelijk');
         $property->setRequired(true);
-        $property->setDescription('Zijn bijde parnters geen fammilie dichter dan de 4e graad');
+        $property->setDescription('Zijn bijde partners geen fammilie dichter dan de 4e graad');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -799,6 +799,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('array');
         $property->setFormat('url');
         $property->setIri('ptc/schijnhuwelijk');
+        $property->setMinItems(2);
+        $property->setMaxItems(2);
         $property->setRequired(true);
         $property->setDescription('Hebben bijde partners aangegeven niet te trouwen onder dwang');
         $property->setRequestType($requestType);
