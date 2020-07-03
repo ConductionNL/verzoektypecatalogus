@@ -144,7 +144,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setTitle('notificatie');
         $property->setIcon('fal fa-map-marked');
         $property->setType('boolean');
-        $property->setFormat('bsn');
+        $property->setFormat('radio');
         $property->setDescription('Mogen wij andere op de hoogte stellen van uw verhuizing');
         $property->setRequestType($requestType);
         $manager->persist($property);
