@@ -653,7 +653,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
         $property->setEnum(['geen wijziginng', 'naam partner 1', 'naam partner 2']);
@@ -671,7 +671,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
         $property->setEnum(['nederlands', 'frans', 'engels']);
