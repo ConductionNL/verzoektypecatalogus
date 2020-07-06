@@ -153,6 +153,20 @@ class SHertogenboschFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
+        $id = Uuid::fromString('a5f3c372-37b3-495d-b0b2-d1cd24990e46');
+        $property = new Property();
+        $property->setTitle('Mee verhuizers');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('meeverhuizen');
+        $property->setDescription('Zijn er mensen die mee verhuizen');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
         // Bijbehorende taken die in de queu worden gezet
         $task = new Task();
         $task->setRequestType($requestType);
