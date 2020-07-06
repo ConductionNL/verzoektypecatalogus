@@ -35,7 +35,7 @@ class MijnclusterFixtures extends Fixture
         $id = Uuid::fromString('23d4803a-67cd-4720-82d0-e1e0a776d8c4');
         $requestType = new RequestType();
         $requestType->setIcon('fal fa-truck-moving');
-        $requestType->setOrganization('0000');
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'cc935415-a674-4235-b99d-0c7bfce5c7aa']));
         $requestType->setName('Verhuizen');
         $requestType->setDescription('Het doorgeven van een verhuizing aan een gemeente');
         $manager->persist($requestType);
