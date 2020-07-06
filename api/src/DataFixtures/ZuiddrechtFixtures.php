@@ -484,6 +484,68 @@ class ZuiddrechtFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         /*
+         *  Geboorte aangifte
+         */
+
+        $id = Uuid::fromString('504b2a88-223f-4e35-8043-f061ea8a6623');
+        $requestType = new RequestType();
+        $requestType->setIcon('fal fa-baby');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Geboorte aangifte');
+        $requestType->setDescription('Het aangeven van een nieuw geboren kind');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('2c4446ed-1b3a-42c4-86bd-2587f010895b');
+        $property = new Property();
+        $property->setTitle('Datum');
+        $property->setIcon('fal fa-calendar-day');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setDescription('Wat is de geboorte datum?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('467d0c0e-6533-46fa-8ff5-2508e40cca65');
+        $property = new Property();
+        $property->setTitle('Ouders');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('array');
+        $property->setFormat('bsn');
+        $property->setDescription('Wie zijn de ouders');
+        $property->setMinItems(2);
+        $property->setMaxItems(2);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('c00cacae-1edd-44dc-bda2-9eb0c970318e');
+        $property = new Property();
+        $property->setTitle('Naam');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is de naam van het kind?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+
+        /*
          *  Huwelijk
          *
          *  Dit is het opgeschoonde en iets samengetrokken huwelijks verzoek van west-friesland
@@ -656,7 +718,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
-        $property->setEnum(['geen wijziginng', 'naam partner 1', 'naam partner 2']);
+        $property->setEnum(['geen wijziging', 'naam partner 1', 'naam partner 2']);
         $property->setRequired(true);
         $property->setDescription('Hoe wilt u heten na de voltrekking');
         $property->setRequestType($requestType);
