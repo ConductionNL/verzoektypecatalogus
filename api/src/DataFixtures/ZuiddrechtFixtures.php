@@ -621,7 +621,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIri('pdc/offer');
         $property->setQuery(["audience"=>'public','products.groups.id'=>'0c1f993d-f9e2-46c5-8d83-0b6dfb702069']);
         $property->setRequired(true);
-        $property->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $property->setDescription('Welke plechtigheid wenst u?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -711,7 +711,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('492f4687-71f3-48f0-aad8-70a2f1f3cd1a');
         $property = new Property();
-        $property->setTitle('Naamsgebruik');
+        $property->setTitle('Naamgebruik');
         $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
@@ -720,7 +720,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setMinLength('7');
         $property->setEnum(['geen wijziging', 'naam partner 1', 'naam partner 2']);
         $property->setRequired(true);
-        $property->setDescription('Hoe wilt u heten na de voltrekking');
+        $property->setDescription('Welke achternaam wilt u gebruiken na de huwelijksvoltrekking');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -779,7 +779,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('bs/invoice');
-        $property->setDescription('Heeft er reeds een betaling plaats gevonden');
+        $property->setDescription('Heeft er reeds een betaling plaatsgevonden');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -820,7 +820,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('url');
         $property->setIri('ptc/leeftijdscheckhuwelijk');
         $property->setRequired(true);
-        $property->setDescription('Zijn bijde partners op de trouwdatum meerderjarig');
+        $property->setDescription('Zijn beide partners op de trouwdatum meerderjarig');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -834,7 +834,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('url');
         $property->setIri('ptc/curatelecheckhuwelijk');
         $property->setRequired(true);
-        $property->setDescription('Staan bijde partners niet onder curatele');
+        $property->setDescription('Staan beide partners niet onder curatele');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -843,12 +843,12 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('3bdbb9f2-937f-4998-a335-ec3cf8901458');
         $property = new Property();
-        $property->setTitle('Familiaregraad');
+        $property->setTitle('Familiare graad');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('ptc/familiaregraadhuwelijk');
         $property->setRequired(true);
-        $property->setDescription('Zijn bijde partners geen fammilie dichter dan de 4e graad');
+        $property->setDescription('Zijn beide partners geen familie dichter dan de 4e graad');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -864,7 +864,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setMinItems(2);
         $property->setMaxItems(2);
         $property->setRequired(true);
-        $property->setDescription('Hebben bijde partners aangegeven niet te trouwen onder dwang');
+        $property->setDescription('Hebben beide partners aangegeven niet te trouwen onder dwang');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
