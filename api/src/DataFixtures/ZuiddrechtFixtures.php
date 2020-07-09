@@ -586,7 +586,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
-        $property->setEnum(['trouwen', 'partnerschap', 'omzetten']);
+        $property->setEnum(['trouwen', 'partnerschap']);
         $property->setRequired(true);
         $property->setDescription('Wat wilt u doen?');
         $property->setRequestType($requestType);
