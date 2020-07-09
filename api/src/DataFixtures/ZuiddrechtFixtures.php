@@ -633,7 +633,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Datum');
         $property->setIcon('fas fa-calendar-day');
         $property->setType('string');
-        $property->setFormat('date');
+        $property->setFormat('calendar');
         $property->setDescription('Selecteer een datum voor de voltrekking');
         $property->setRequestType($requestType);
         $manager->persist($property);
