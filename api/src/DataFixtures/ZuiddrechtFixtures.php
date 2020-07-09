@@ -586,7 +586,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
-        $property->setEnum(['trouwen', 'partnerschap', 'omzetten']);
+        $property->setEnum(['trouwen', 'partnerschap']);
         $property->setRequired(true);
         $property->setDescription('Wat wilt u doen?');
         $property->setRequestType($requestType);
@@ -619,7 +619,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'0c1f993d-f9e2-46c5-8d83-0b6dfb702069']);
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'1cad775c-c2d0-48af-858f-a12029af24b3']);
         $property->setRequired(true);
         $property->setDescription('Welke plechtigheid wenst u?');
         $property->setRequestType($requestType);
@@ -750,7 +750,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Opmerkingen ');
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('textarea');
         $property->setDescription('Heeft u nog opmerking die u graag wil meegeven');
         $property->setRequestType($requestType);
         $manager->persist($property);
