@@ -750,7 +750,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Opmerkingen ');
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('textarea');
         $property->setDescription('Heeft u nog opmerking die u graag wil meegeven');
         $property->setRequestType($requestType);
         $manager->persist($property);
