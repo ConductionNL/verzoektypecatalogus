@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
-use App\Entity\Task;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -260,7 +259,7 @@ class ConductionFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('9df44ef0-9493-4353-8321-9b6fb1ab37d9');
+        $id = Uuid::fromString('120e3ea0-c164-4282-9ad8-920e4b7ea932');
         $property = new Property();
         $property->setTitle('Doel');
         $property->setIcon('fa fa-dot-circle-o');
