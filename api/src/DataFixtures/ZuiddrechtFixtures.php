@@ -619,7 +619,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'0c1f993d-f9e2-46c5-8d83-0b6dfb702069']);
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'1cad775c-c2d0-48af-858f-a12029af24b3']);
         $property->setRequired(true);
         $property->setDescription('Welke plechtigheid wenst u?');
         $property->setRequestType($requestType);
