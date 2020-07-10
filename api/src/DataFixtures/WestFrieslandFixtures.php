@@ -87,7 +87,7 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Soort graf');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'17c09fb9-a3a1-4fc9-9617-5ebcf73e06cc']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'17c09fb9-a3a1-4fc9-9617-5ebcf73e06cc']);
         $property->setType('string');
         $property->setFormat('url');
         $property->setRequired(true);
@@ -118,7 +118,7 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Artikelen');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'9f9a78cb-f708-447f-8795-23f6cf13c39d']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'9f9a78cb-f708-447f-8795-23f6cf13c39d']);
         $property->setType('array');
         $property->setFormat('string');
         $property->setRequired(true);
