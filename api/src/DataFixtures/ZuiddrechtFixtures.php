@@ -132,7 +132,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('U vraagt een parkeervergunning aan voor een:');
-        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto']);
+        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto', 'Eigen auto']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -250,7 +250,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -265,7 +265,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -357,7 +357,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -371,7 +371,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
