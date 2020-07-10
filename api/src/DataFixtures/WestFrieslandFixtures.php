@@ -25,8 +25,12 @@ class WestFrieslandFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         if (
+            // If build all fixtures is true we build all the fixtures
+            !$this->params->get('app_build_all_fixtures') &&
+            // Specific domain names
             $this->params->get('app_domain') != 'begraven.zaakonline.nl' && strpos($this->params->get('app_domain'), 'begraven.zaakonline.nl') == false &&
-            $this->params->get('app_domain') != 'westfriesland.commonground.nu' && strpos($this->params->get('app_domain'), 'westfriesland.commonground.nu') == false
+            $this->params->get('app_domain') != 'westfriesland.commonground.nu' && strpos($this->params->get('app_domain'), 'westfriesland.commonground.nu') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false
         ) {
             return false;
         }
@@ -38,6 +42,7 @@ class WestFrieslandFixtures extends Fixture
         $id = Uuid::fromString('c2e9824e-2566-460f-ab4c-905f20cddb6c');
         $requestType = new RequestType();
         $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
+//        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc','type'=>'organizations','id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setIcon('fa fa-headstone');
         $requestType->setName('begrafenisplanner');
         $requestType->setDescription('Met dit verzoek kunt u een begrafenis plannen');
@@ -82,8 +87,9 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Soort graf');
         $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'17c09fb9-a3a1-4fc9-9617-5ebcf73e06cc']);
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('url');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -112,6 +118,7 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Artikelen');
         $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'9f9a78cb-f708-447f-8795-23f6cf13c39d']);
         $property->setType('array');
         $property->setFormat('string');
         $property->setRequired(true);

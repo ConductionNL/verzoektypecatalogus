@@ -25,12 +25,525 @@ class ZuiddrechtFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         if (
+            // If build all fixtures is true we build all the fixtures
+            !$this->params->get('app_build_all_fixtures') &&
+            // Specific domain names
             $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
             $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
             $this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false
         ) {
             return false;
         }
+
+        /*
+         * Parkeer Vergunning
+         */
+
+        $id = Uuid::fromString('f86591ef-6964-412b-84de-261fd47c3288');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-parking processIcon');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Parkeer vergunning');
+        $requestType->setDescription('Met dit procces start u de aanvraag voor een parkeer vergunning');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('92461726-dc0a-4132-a466-4968a37f4620');
+        $property = new Property();
+        $property->setTitle('Parkeergelegenheid');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setDescription('Is er een eigen parkeergelegenheid bij uw woning?');
+        $property->setEnum(['Ik heb een eigen parkeergelegenheid', 'Alle parkeergelegenheden zijn in gebruik', 'Ik heb geen eigen parkeergelegenheid bij mijn woning']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('3539cb5f-6801-4f45-838f-9c592946a592');
+        $property = new Property();
+        $property->setTitle('Vergunning oud adres');
+        $property->setIcon('fas fa-parking');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setDescription('Ik heb een vergunning op mijn oude adres en wil ook een vergunning op mijn nieuwe adres:');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('a719f9c2-4565-488e-b0dd-f153fb6f4756');
+        $property = new Property();
+        $property->setTitle('einddatum vergunning oud adres');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setRequired(true);
+        $property->setDescription('Gewenste einddatum vergunning op het oude adres:');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('c3102b38-b07c-4392-8a31-e57d81b39d70');
+        $property = new Property();
+        $property->setTitle('naam kentekenbewijs');
+        $property->setIcon('fas fa-parking');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setDescription('Staat uw naam op het kentenbewijs?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('b3ebaedc-578b-43bd-bc7e-91e5a5235de4');
+        $property = new Property();
+        $property->setTitle('betalen');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setDescription('Hoe wilt u betalen?');
+        $property->setEnum(['Automatische incasso', 'Acceptgiro']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('ee8acd31-8a5e-48e9-ac16-0f73543d18c5');
+        $property = new Property();
+        $property->setTitle('type voertuig');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setDescription('U vraagt een parkeervergunning aan voor een:');
+        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('be3cfd9c-176d-4e29-bbfd-008217dcc6e3');
+        $property = new Property();
+        $property->setTitle('bedrijfsauto');
+        $property->setIcon('fas fa-parking');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setDescription('Staat de bedrijfsauto op naam van de eigenaar van het bedrijf?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('c427f035-f2f4-440a-967d-4c879de728f2');
+        $property = new Property();
+        $property->setTitle('huur- of lease-auto');
+        $property->setIcon('fas fa-parking');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setDescription('Staat in het huur- of lease-contract naast het kenteken ook uw naam?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('fb7e4a71-c927-4c95-ae78-401eddcfe07a');
+        $property = new Property();
+        $property->setTitle('documenten');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(false);
+        $property->setDescription('Hebt u nog niet alle documenten verzameld? Mail deze lijst naar uzelf');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        /*
+         *  Contact Formulier
+         */
+
+        $id = Uuid::fromString('3b76447e-1b4b-4b86-a582-8f6b4a5a8c6f');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-question');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Contact Formulier');
+        $requestType->setDescription('Via dit formulier neemt u contact met ons op');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('4f34ac1b-8c0c-4f3d-b1c4-07e086be43fd');
+        $property = new Property();
+        $property->setTitle('Onderwerp');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setDescription('waarover gaat uw vraag');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('54b86107-aa93-45ce-a02f-8516390fd92b');
+        $property = new Property();
+        $property->setTitle('Beschrijving');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('text');
+        $property->setDescription('Om schrrijv uw vraag');
+        $property->setFormat('textarea');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('78ede193-a0b4-4851-af0d-84252b1903d1');
+        $property = new Property();
+        $property->setTitle('Product of dienst');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'bbc03703-27b5-442a-9b20-57dfff95be9b']);
+        $property->setDescription('Heeft uw vraag betrekking op een product of dienst?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('beb0f9c5-fe0d-4826-84a6-6c91429f3235');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1eb5f485-4e26-489f-a65d-9cf035e5da43');
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        /*
+         *  Ballie Afspraak
+         */
+
+        $id = Uuid::fromString('32293766-8b3a-43ee-9f16-ed67234ac309');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas calendar-check');
+        $requestType->setOrganization('002220647');
+        $requestType->setName(' Ballie Afspraak');
+        $requestType->setDescription('Via dit formulier kunt u een ballie afspraak bij ons inplannen');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('bb4fd6ee-5dce-4b9f-a28a-c566d5542d07');
+        $property = new Property();
+        $property->setTitle('Datum');
+        $property->setIcon('fal fa-calendar-day');
+        $property->setType('string');
+        $property->setFormat('date-time');
+        $property->setDescription('Wanneer wilt u uw afspraak');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('af3fefb1-3a47-4d17-8837-a0ffc4901dd8');
+        $property = new Property();
+        $property->setTitle('Onderwerp');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('waarover gaat uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1db8bb40-aa1d-4ddd-b4d7-d43c987869cb');
+        $property = new Property();
+        $property->setTitle('Beschrijving');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('text');
+        $property->setFormat('textarea');
+        $property->setDescription('Om schrrijv uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('b90265da-379e-4254-b6df-14f962a68212');
+        $property = new Property();
+        $property->setTitle('Product of dienst');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'1baea858-1512-454b-ad58-0d30ac5ef10e']);
+        $property->setDescription('Heeft uw vraag betrekking op een product of dienst?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('3ed36d5b-349f-42f2-a084-f2feb20899be');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('c4e88952-bd02-4832-886f-316bcbaf6ed4');
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        /*
+         *  Melding openbare ruimte
+         */
+
+        $id = Uuid::fromString('6541d18b-1666-4600-98e3-6f5df1a67423');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas calendar-check');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Melding openbare ruimte');
+        $requestType->setDescription('Via dit formulier doet u een melding openbare ruimte');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('67201efb-73e1-4aab-b28f-28ce5c9b5014');
+        $property = new Property();
+        $property->setTitle('Locatie');
+        $property->setIcon('fal fa-calendar-day');
+        $property->setType('string');
+        $property->setFormat('location');
+        $property->setDescription('Wat is de locatie van de melding');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('2f09a068-410e-4053-983a-604220c4facc');
+        $property = new Property();
+        $property->setTitle('Onderwerp');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('waarover gaat uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('a6d1c29b-90dc-43de-824b-f0673db3893b');
+        $property = new Property();
+        $property->setTitle('Afbeelding');
+        $property->setIcon('far fa-images');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setDescription('Upload een foto waar deze melding over gaat');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('49da683f-3001-437b-99ab-9c8065e47269');
+        $property = new Property();
+        $property->setTitle('Beschrijving');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('text');
+        $property->setFormat('text-area');
+        $property->setDescription('Omschrijf uw vraag');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('e7ffde88-60cc-41a7-a670-42ec4e8d17b8');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('b82581b4-04d5-4d9a-8b3f-90646505bf80');
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        /*
+         *  Geboorte aangifte
+         */
+
+        $id = Uuid::fromString('504b2a88-223f-4e35-8043-f061ea8a6623');
+        $requestType = new RequestType();
+        $requestType->setIcon('fal fa-baby');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Geboorte aangifte');
+        $requestType->setDescription('Het aangeven van een nieuw geboren kind');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('2c4446ed-1b3a-42c4-86bd-2587f010895b');
+        $property = new Property();
+        $property->setTitle('Datum');
+        $property->setIcon('fal fa-calendar-day');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setDescription('Wat is de geboorte datum?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('467d0c0e-6533-46fa-8ff5-2508e40cca65');
+        $property = new Property();
+        $property->setTitle('Ouders');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('array');
+        $property->setFormat('bsn');
+        $property->setDescription('Wie zijn de ouders');
+        $property->setMinItems(2);
+        $property->setMaxItems(2);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('c00cacae-1edd-44dc-bda2-9eb0c970318e');
+        $property = new Property();
+        $property->setTitle('Naam');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is de naam van het kind?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
 
         /*
          *  Huwelijk
@@ -70,12 +583,12 @@ class ZuiddrechtFixtures extends Fixture
         $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
-        $property->setEnum(['trouwen', 'partnerschap', 'omzetten']);
+        $property->setEnum(['trouwen', 'partnerschap']);
         $property->setRequired(true);
-        $property->setDescription('Selecteer een huwelijk of partnerschap?');
+        $property->setDescription('Wat wilt u doen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -92,7 +605,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setMinItems(2);
         $property->setMaxItems(2);
         $property->setRequired(true);
-        $property->setDescription('Wie zijn de getuigen van partner 2?');
+        $property->setDescription('Wie zijn de partners binnen dit huwelijk / partnerschap?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -106,8 +619,9 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'1cad775c-c2d0-48af-858f-a12029af24b3']);
         $property->setRequired(true);
-        $property->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $property->setDescription('Welke plechtigheid wenst u?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -119,8 +633,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Datum');
         $property->setIcon('fas fa-calendar-day');
         $property->setType('string');
-        $property->setFormat('date');
-        $property->setDescription('Selecteer een datum voor de omzetting naar huwelijk');
+        $property->setFormat('calendar');
+        $property->setDescription('Selecteer een datum voor de voltrekking');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -134,9 +648,10 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('uri');
         $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'170788e7-b238-4c28-8efc-97bdada02c2e']);
         $property->setMaxLength('255');
         $property->setRequired(true);
-        $property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
+        $property->setDescription('Waar wilt u de voltrekking laten plaatsvinden');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -150,9 +665,10 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'7f4ff7ae-ed1b-45c9-9a73-3ed06a36b9cc']);
         $property->setMaxLength('255');
         $property->setRequired(true);
-        $property->setDescription('We gebruiken de order om de bestelling (bestaande uit locatie, ambtenaar en eventuele extra\'s) op te slaan');
+        $property->setDescription('Door wie wilt u de plechtigheid laten voltrekken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -169,7 +685,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setMinItems(2);
         $property->setMaxItems(4);
         $property->setRequired(true);
-        $property->setDescription('Wie zijn de getuigen van partner?');
+        $property->setDescription('Wie zijn de getuigen van de voltrekking?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -183,9 +699,10 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('array');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
+        $property->setQuery(["audience"=>'public','products.groups.id'=>'f8298a12-91eb-46d0-b8a9-e7095f81be6f']);
         $property->setMinItems(1);
         $property->setRequired(true);
-        $property->setDescription('Wie zijn de getuigen van partner?');
+        $property->setDescription('Zijn er nog extra producten of diensten waar u gebruik van wilt maken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -194,16 +711,16 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('492f4687-71f3-48f0-aad8-70a2f1f3cd1a');
         $property = new Property();
-        $property->setTitle('Naamsgebruik');
+        $property->setTitle('Naamgebruik');
         $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
-        $property->setEnum(['trouwen', 'partnerschap', 'omzetten']);
+        $property->setEnum(['geen wijziging', 'naam partner 1', 'naam partner 2']);
         $property->setRequired(true);
-        $property->setDescription('Selecteer een huwelijk of partnerschap?');
+        $property->setDescription('Welke achternaam wilt u gebruiken na de huwelijksvoltrekking');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -216,12 +733,12 @@ class ZuiddrechtFixtures extends Fixture
         $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
         $property->setEnum(['nederlands', 'frans', 'engels']);
         $property->setRequired(true);
-        $property->setDescription('In welke taal wilt u de huwelijks cermonie voltrekken');
+        $property->setDescription('In welke taal wilt u de plechtigheid voltrekken');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -233,7 +750,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Opmerkingen ');
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('textarea');
         $property->setDescription('Heeft u nog opmerking die u graag wil meegeven');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -245,8 +762,8 @@ class ZuiddrechtFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Melding ');
         $property->setIcon('fas fa-envelope');
-        $property->setType('string');
-        $property->setFormat('boolean');
+        $property->setType('boolean');
+        $property->setFormat('radio');
         $property->setDescription('Wilt u met deze reservering tevens uw melding voorgenomen huwelijk (her) indienen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -262,7 +779,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('bs/invoice');
-        $property->setDescription('Onder welke uri kunnen we de bestaande \'melding voorgenomen huwelijk\' terugvinden?');
+        $property->setDescription('Heeft er reeds een betaling plaatsgevonden');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -303,7 +820,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('url');
         $property->setIri('ptc/leeftijdscheckhuwelijk');
         $property->setRequired(true);
-        $property->setDescription('Zijn bijde parnters op de trouwdatum meerderjarig');
+        $property->setDescription('Zijn beide partners op de trouwdatum meerderjarig');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -317,7 +834,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('url');
         $property->setIri('ptc/curatelecheckhuwelijk');
         $property->setRequired(true);
-        $property->setDescription('Staan bijde partners niet onder curatele');
+        $property->setDescription('Staan beide partners niet onder curatele');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -326,12 +843,12 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('3bdbb9f2-937f-4998-a335-ec3cf8901458');
         $property = new Property();
-        $property->setTitle('Familiaregraad');
+        $property->setTitle('Familiare graad');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('ptc/familiaregraadhuwelijk');
         $property->setRequired(true);
-        $property->setDescription('Zijn bijde parnters geen fammilie dichter dan de 4e graad');
+        $property->setDescription('Zijn beide partners geen familie dichter dan de 4e graad');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -344,8 +861,10 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('array');
         $property->setFormat('url');
         $property->setIri('ptc/schijnhuwelijk');
+        $property->setMinItems(2);
+        $property->setMaxItems(2);
         $property->setRequired(true);
-        $property->setDescription('Hebben bijde partners aangegeven niet te trouwen onder dwang');
+        $property->setDescription('Hebben beide partners aangegeven niet te trouwen onder dwang');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
