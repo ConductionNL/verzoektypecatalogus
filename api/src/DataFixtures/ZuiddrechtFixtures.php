@@ -132,7 +132,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('U vraagt een parkeervergunning aan voor een:');
-        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto']);
+        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto', 'Eigen auto']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -250,7 +250,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -265,7 +265,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -357,7 +357,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -371,7 +371,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -519,7 +519,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Ouders');
         $property->setIcon('fal fa-user-friends');
         $property->setType('array');
-        $property->setFormat('bsn');
+        $property->setFormat('url');
+        $property->setIri('irc/assent');
         $property->setDescription('Wie zijn de ouders');
         $property->setMinItems(2);
         $property->setMaxItems(2);
@@ -613,12 +614,12 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('d16e3c3b-564b-4d8d-bad2-adb5ffac26ad');
         $property = new Property();
-        $property->setTitle('Plechtigheid');
+        $property->setTitle('');
         $property->setIcon('fas fa-glass-cheers');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'1cad775c-c2d0-48af-858f-a12029af24b3']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'ea494037-773c-4a32-a363-76857e5f0c46']);
         $property->setRequired(true);
         $property->setDescription('Welke plechtigheid wenst u?');
         $property->setRequestType($requestType);
