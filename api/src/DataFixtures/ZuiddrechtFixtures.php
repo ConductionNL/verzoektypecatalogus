@@ -235,7 +235,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'bbc03703-27b5-442a-9b20-57dfff95be9b']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'bbc03703-27b5-442a-9b20-57dfff95be9b']);
         $property->setDescription('Heeft uw vraag betrekking op een product of dienst?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -342,7 +342,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'1baea858-1512-454b-ad58-0d30ac5ef10e']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'1baea858-1512-454b-ad58-0d30ac5ef10e']);
         $property->setDescription('Heeft uw vraag betrekking op een product of dienst?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -544,7 +544,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         /*
          *  Huwelijk
          *
@@ -586,7 +585,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setMaxLength('12');
         $property->setMinLength('7');
-        $property->setEnum(['trouwen', 'partnerschap', 'omzetten']);
+        $property->setEnum(['trouwen', 'partnerschap']);
         $property->setRequired(true);
         $property->setDescription('Wat wilt u doen?');
         $property->setRequestType($requestType);
@@ -619,7 +618,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'0c1f993d-f9e2-46c5-8d83-0b6dfb702069']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'1cad775c-c2d0-48af-858f-a12029af24b3']);
         $property->setRequired(true);
         $property->setDescription('Welke plechtigheid wenst u?');
         $property->setRequestType($requestType);
@@ -648,7 +647,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('uri');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'170788e7-b238-4c28-8efc-97bdada02c2e']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'170788e7-b238-4c28-8efc-97bdada02c2e']);
         $property->setMaxLength('255');
         $property->setRequired(true);
         $property->setDescription('Waar wilt u de voltrekking laten plaatsvinden');
@@ -665,7 +664,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'7f4ff7ae-ed1b-45c9-9a73-3ed06a36b9cc']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'7f4ff7ae-ed1b-45c9-9a73-3ed06a36b9cc']);
         $property->setMaxLength('255');
         $property->setRequired(true);
         $property->setDescription('Door wie wilt u de plechtigheid laten voltrekken?');
@@ -699,7 +698,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('array');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(["audience"=>'public','products.groups.id'=>'f8298a12-91eb-46d0-b8a9-e7095f81be6f']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'f8298a12-91eb-46d0-b8a9-e7095f81be6f']);
         $property->setMinItems(1);
         $property->setRequired(true);
         $property->setDescription('Zijn er nog extra producten of diensten waar u gebruik van wilt maken?');
@@ -750,7 +749,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Opmerkingen ');
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('textarea');
         $property->setDescription('Heeft u nog opmerking die u graag wil meegeven');
         $property->setRequestType($requestType);
         $manager->persist($property);
