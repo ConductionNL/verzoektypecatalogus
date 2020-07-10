@@ -519,7 +519,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Ouders');
         $property->setIcon('fal fa-user-friends');
         $property->setType('array');
-        $property->setFormat('bsn');
+        $property->setFormat('url');
+        $property->setIri('irc/assent');
         $property->setDescription('Wie zijn de ouders');
         $property->setMinItems(2);
         $property->setMaxItems(2);
