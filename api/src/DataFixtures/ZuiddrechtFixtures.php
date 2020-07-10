@@ -614,6 +614,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('d16e3c3b-564b-4d8d-bad2-adb5ffac26ad');
         $property = new Property();
+        $property->setTitle('');
         $property->setIcon('fas fa-glass-cheers');
         $property->setType('string');
         $property->setFormat('url');
