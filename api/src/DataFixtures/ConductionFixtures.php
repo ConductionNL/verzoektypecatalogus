@@ -33,7 +33,7 @@ class ConductionFixtures extends Fixture
         }
 
         /*
-         *  Student (Stage)
+         *  Student aanmelden (Stage)
          */
 
         $id = Uuid::fromString('8c687f26-e272-4b4f-9a92-337d9bfd7d10');
@@ -148,7 +148,7 @@ class ConductionFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
         /*
-         *  Organisatie (Stage)
+         *  Organisatie aanmelden (Stage)
          */
 
         $id = Uuid::fromString('b45d71d2-9792-4e0e-ac87-0b7cef422e61');
@@ -267,6 +267,71 @@ class ConductionFixtures extends Fixture
         $property->setFormat('textarea');
         $property->setDescription('Met welk doel meld u uw organisatie aan?');
         $property->setRequired(false);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        /*
+         *  Opdracht uitzetten (Stage)
+         */
+
+        $id = Uuid::fromString('b8a221d2-4b5e-4439-9880-dbcd9d22f6b8');
+        $requestType = new RequestType();
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'6a001c4c-911b-4b29-877d-122e362f519d']));
+        $requestType->setIcon('fa fa-briefcase');
+        $requestType->setName('Opdracht uitzetten');
+        $requestType->setDescription('Met dit verzoek kunt u een nieuwe opdracht uitzetten');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('b58bcc05-ce2f-494a-ab38-94bcde883bc9');
+        $property = new Property();
+        $property->setTitle('Organisatie');
+        $property->setIcon('fa fa-building');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('wrc/organization');
+        $property->setDescription('Bij welke organisatie werkt u?');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('de43ecc0-4833-4d9d-a6ff-74ef8968b36e');
+        $property = new Property();
+        $property->setTitle('Opdracht titel');
+        $property->setIcon('fa fa-briefcase');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is de titel voor uw opdracht?');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('6e911c19-13ac-47da-a329-6328cbfaf449');
+        $property = new Property();
+        $property->setTitle('Opdracht beschrijving');
+        $property->setIcon('fa fa-briefcase');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setDescription('Hoe zou u uw opdracht beschrijven?');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
 
         $manager->persist($property);
