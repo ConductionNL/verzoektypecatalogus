@@ -275,15 +275,15 @@ class ZuiddrechtFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         /*
-         *  Ballie Afspraak
+         *  Balie Afspraak
          */
 
         $id = Uuid::fromString('32293766-8b3a-43ee-9f16-ed67234ac309');
         $requestType = new RequestType();
         $requestType->setIcon('fas calendar-check');
         $requestType->setOrganization('002220647');
-        $requestType->setName(' Ballie Afspraak');
-        $requestType->setDescription('Via dit formulier kunt u een ballie afspraak bij ons inplannen');
+        $requestType->setName(' Balie Afspraak');
+        $requestType->setDescription('Via dit formulier kunt u een balie afspraak bij ons inplannen');
         $requestType->setUnique(true);
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -296,7 +296,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Datum');
         $property->setIcon('fal fa-calendar-day');
         $property->setType('string');
-        $property->setFormat('date-time');
+        $property->setFormat('calendar');
         $property->setDescription('Wanneer wilt u uw afspraak');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -490,6 +490,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('504b2a88-223f-4e35-8043-f061ea8a6623');
         $requestType = new RequestType();
         $requestType->setIcon('fal fa-baby');
+        $property->setTitle('Geboorte aangifte');
         $requestType->setOrganization('002220647');
         $requestType->setName('Geboorte aangifte');
         $requestType->setDescription('Het aangeven van een nieuw geboren kind');
