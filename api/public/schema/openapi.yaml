@@ -8477,12 +8477,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8667,12 +8667,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8879,12 +8879,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -9044,12 +9044,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
     required: []
   AuditTrail-write:
     properties:
@@ -9097,12 +9097,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-07-10 12:34:44'
+        example: '2020-07-22 08:35:12'
     required: []
   ChangeLog-write:
     properties:
@@ -9166,8 +9166,8 @@ securityDefinitions:
 host: irc.zaakonline.nl
 servers:
   -
-    name: huwelijksplanner.online
-    url: vtc.dev.huwelijksplanner.online
+    name: zuid-drecht.nl
+    url: vtc.dev.zuid-drecht.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
