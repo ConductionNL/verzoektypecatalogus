@@ -187,7 +187,7 @@ class SHertogenboschFixtures extends Fixture
         $verhuizenDenBosh->setIcon('fal fa-truck-moving');
         $verhuizenDenBosh->setDescription('Het doorgeven van een verhuizing aan de gemeente \'s-Hertogenbosch');
         $verhuizenDenBosh->setOrganization('001709124');
-        $verhuizenDenBosh->setExtends($verhuizenNL);
+        $verhuizenDenBosh->setExtends($requestType);
         $manager->persist($verhuizenDenBosh);
         $verhuizenDenBosh->setId($id);
         $manager->persist($verhuizenDenBosh);

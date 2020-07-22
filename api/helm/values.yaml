@@ -14,7 +14,7 @@ settings:
   repro: https://github.com/ConductionNL/verzoektypecatalogus
   demo: pc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/vtc-php
-  domain: dev
+  domain: zuid-drecht.nl
   subdomain: vtc
   organisationName: Conduction
   email: info@conduction.nl

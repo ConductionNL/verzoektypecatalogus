@@ -132,49 +132,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setDescription('U vraagt een parkeervergunning aan voor een:');
-        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto']);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        $id = Uuid::fromString('be3cfd9c-176d-4e29-bbfd-008217dcc6e3');
-        $property = new Property();
-        $property->setTitle('bedrijfsauto');
-        $property->setIcon('fas fa-parking');
-        $property->setType('boolean');
-        $property->setFormat('radio');
-        $property->setRequired(true);
-        $property->setDescription('Staat de bedrijfsauto op naam van de eigenaar van het bedrijf?');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        $id = Uuid::fromString('c427f035-f2f4-440a-967d-4c879de728f2');
-        $property = new Property();
-        $property->setTitle('huur- of lease-auto');
-        $property->setIcon('fas fa-parking');
-        $property->setType('boolean');
-        $property->setFormat('radio');
-        $property->setRequired(true);
-        $property->setDescription('Staat in het huur- of lease-contract naast het kenteken ook uw naam?');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        $id = Uuid::fromString('fb7e4a71-c927-4c95-ae78-401eddcfe07a');
-        $property = new Property();
-        $property->setTitle('documenten');
-        $property->setIcon('fas fa-parking');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequired(false);
-        $property->setDescription('Hebt u nog niet alle documenten verzameld? Mail deze lijst naar uzelf');
+        $property->setEnum(['Huur- of lease-auto', 'BedrijfsAuto', 'Eigen auto']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -250,7 +208,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -265,7 +223,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -275,15 +233,15 @@ class ZuiddrechtFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         /*
-         *  Ballie Afspraak
+         *  Balie Afspraak
          */
 
         $id = Uuid::fromString('32293766-8b3a-43ee-9f16-ed67234ac309');
         $requestType = new RequestType();
         $requestType->setIcon('fas calendar-check');
         $requestType->setOrganization('002220647');
-        $requestType->setName(' Ballie Afspraak');
-        $requestType->setDescription('Via dit formulier kunt u een ballie afspraak bij ons inplannen');
+        $requestType->setName(' Balie Afspraak');
+        $requestType->setDescription('Via dit formulier kunt u een balie afspraak bij ons inplannen');
         $requestType->setUnique(true);
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -296,7 +254,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Datum');
         $property->setIcon('fal fa-calendar-day');
         $property->setType('string');
-        $property->setFormat('date-time');
+        $property->setFormat('calendar');
         $property->setDescription('Wanneer wilt u uw afspraak');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -357,7 +315,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -371,7 +329,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -398,7 +356,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('67201efb-73e1-4aab-b28f-28ce5c9b5014');
         $property = new Property();
-        $property->setTitle('Locatie');
+        $property->setTitle('Waar is het:');
         $property->setIcon('fal fa-calendar-day');
         $property->setType('string');
         $property->setFormat('location');
@@ -412,10 +370,10 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('2f09a068-410e-4053-983a-604220c4facc');
         $property = new Property();
-        $property->setTitle('Onderwerp');
+        $property->setTitle('Waar gaat het om:');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('text-area');
         $property->setDescription('waarover gaat uw vraag');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -425,28 +383,28 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        $id = Uuid::fromString('a6d1c29b-90dc-43de-824b-f0673db3893b');
-        $property = new Property();
-        $property->setTitle('Afbeelding');
-        $property->setIcon('far fa-images');
-        $property->setType('string');
-        $property->setFormat('file');
-        $property->setDescription('Upload een foto waar deze melding over gaat');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+//        $id = Uuid::fromString('a6d1c29b-90dc-43de-824b-f0673db3893b');
+//        $property = new Property();
+//        $property->setTitle('Afbeelding');
+//        $property->setIcon('far fa-images');
+//        $property->setType('string');
+//        $property->setFormat('file');
+//        $property->setDescription('Upload een foto waar deze melding over gaat');
+//        $property->setRequired(true);
+//        $property->setRequestType($requestType);
+//        $manager->persist($property);
+//        $property->setId($id);
+//        $manager->persist($property);
+//        $manager->flush();
+//        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         $id = Uuid::fromString('49da683f-3001-437b-99ab-9c8065e47269');
         $property = new Property();
-        $property->setTitle('Beschrijving');
+        $property->setTitle('Geef tijdstip:');
         $property->setIcon('fal fa-map-marked');
         $property->setType('text');
-        $property->setFormat('text-area');
-        $property->setDescription('Omschrijf uw vraag');
+        $property->setFormat('date-time');
+        $property->setDescription('Tijdstip');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -461,7 +419,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
+        $property->setDescription('Op welk E-Mail adres kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -490,6 +448,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('504b2a88-223f-4e35-8043-f061ea8a6623');
         $requestType = new RequestType();
         $requestType->setIcon('fal fa-baby');
+        $property->setTitle('Geboorte aangifte');
         $requestType->setOrganization('002220647');
         $requestType->setName('Geboorte aangifte');
         $requestType->setDescription('Het aangeven van een nieuw geboren kind');
@@ -519,7 +478,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Ouders');
         $property->setIcon('fal fa-user-friends');
         $property->setType('array');
-        $property->setFormat('bsn');
+        $property->setFormat('url');
+        $property->setIri('irc/assent');
         $property->setDescription('Wie zijn de ouders');
         $property->setMinItems(2);
         $property->setMaxItems(2);
@@ -613,12 +573,12 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('d16e3c3b-564b-4d8d-bad2-adb5ffac26ad');
         $property = new Property();
-        $property->setTitle('Plechtigheid');
+        $property->setTitle('plechtigheid');
         $property->setIcon('fas fa-glass-cheers');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
-        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'1cad775c-c2d0-48af-858f-a12029af24b3']);
+        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'ea494037-773c-4a32-a363-76857e5f0c46']);
         $property->setRequired(true);
         $property->setDescription('Welke plechtigheid wenst u?');
         $property->setRequestType($requestType);
