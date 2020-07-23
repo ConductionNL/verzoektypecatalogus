@@ -329,6 +329,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setRequired(true);
         $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -340,6 +341,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('c4e88952-bd02-4832-886f-316bcbaf6ed4');
         $property = new Property();
         $property->setTitle('Telefoon');
+        $property->setRequired(true);
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
@@ -412,27 +414,13 @@ class ZuiddrechtFixtures extends Fixture
 //        $manager->flush();
 //        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        $id = Uuid::fromString('49da683f-3001-437b-99ab-9c8065e47269');
-        $property = new Property();
-        $property->setTitle('Geef tijdstip:');
-        $property->setIcon('fal fa-map-marked');
-        $property->setType('text');
-        $property->setFormat('date-time');
-        $property->setDescription('Tijdstip');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
         $id = Uuid::fromString('e7ffde88-60cc-41a7-a670-42ec4e8d17b8');
         $property = new Property();
         $property->setTitle('Email');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setRequired(true);
         $property->setDescription('Op welk E-Mail adres kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -444,6 +432,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('b82581b4-04d5-4d9a-8b3f-90646505bf80');
         $property = new Property();
         $property->setTitle('Telefoon');
+        $property->setRequired(true);
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
