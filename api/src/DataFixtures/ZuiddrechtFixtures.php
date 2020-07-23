@@ -138,7 +138,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        
+
         /*
          *  Contact Formulier
          */
