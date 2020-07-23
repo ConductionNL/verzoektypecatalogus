@@ -52,6 +52,20 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('0ab3fbc1-ee3c-40d6-881b-84b5b331710f');
+        $property = new Property();
+        $property->setTitle('Wat is uw kenteken?');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('rdw');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw kenteken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         $id = Uuid::fromString('92461726-dc0a-4132-a466-4968a37f4620');
         $property = new Property();
         $property->setTitle('Parkeergelegenheid');
