@@ -277,21 +277,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        $id = Uuid::fromString('af3fefb1-3a47-4d17-8837-a0ffc4901dd8');
-        $property = new Property();
-        $property->setTitle('Onderwerp');
-        $property->setIcon('fal fa-map-marked');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setDescription('waarover gaat uw vraag');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
         $id = Uuid::fromString('1db8bb40-aa1d-4ddd-b4d7-d43c987869cb');
         $property = new Property();
         $property->setTitle('Beschrijving');
@@ -309,7 +294,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('b90265da-379e-4254-b6df-14f962a68212');
         $property = new Property();
-        $property->setTitle('Product of dienst');
+        $property->setTitle('Onderwerp');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('url');
