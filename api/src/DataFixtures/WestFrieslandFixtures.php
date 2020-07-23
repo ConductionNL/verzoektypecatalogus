@@ -101,9 +101,9 @@ class WestFrieslandFixtures extends Fixture
 
         $id = Uuid::fromString('b1fd7b38-384b-47ec-a0f2-6f81949cdece');
         $property = new Property();
-        $property->setTitle('Event');
+        $property->setTitle('Datum');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('calendar');
         $property->setIri('arc/event');
         $property->setRequired(true);
         $property->setRequestType($requestType);
