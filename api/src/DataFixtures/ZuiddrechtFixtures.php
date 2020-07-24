@@ -436,7 +436,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('504b2a88-223f-4e35-8043-f061ea8a6623');
         $requestType = new RequestType();
         $requestType->setIcon('fal fa-baby');
-        $property->setTitle('Geboorte aangifte');
+        $requestType->setTitle('Geboorte aangifte');
         $requestType->setOrganization('002220647');
         $requestType->setName('Geboorte aangifte');
         $requestType->setDescription('Het aangeven van een nieuw geboren kind');
