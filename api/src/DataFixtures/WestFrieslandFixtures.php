@@ -101,18 +101,16 @@ class WestFrieslandFixtures extends Fixture
 
         $id = Uuid::fromString('b1fd7b38-384b-47ec-a0f2-6f81949cdece');
         $property = new Property();
-        $property->setTitle('Event');
+        $property->setTitle('Datum');
+        $property->setIcon('fas fa-calendar-day');
         $property->setType('string');
-        $property->setFormat('string');
-        $property->setIri('arc/event');
-        $property->setRequired(true);
+        $property->setFormat('calendar');
+        $property->setDescription('Selecteer een datum voor de voltrekking');
         $property->setRequestType($requestType);
-
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
         $id = Uuid::fromString('8f9adb13-d5e0-40de-a08c-a2ce5a648b1e');
         $property = new Property();
