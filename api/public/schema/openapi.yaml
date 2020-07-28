@@ -12,7 +12,7 @@ info:
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/vtc-php) 
     - Datamodel: [postman](/schema/vtc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
     
-    'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
+    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
 paths:
   /audit_trails:
@@ -8477,12 +8477,20 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8667,12 +8675,20 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8879,12 +8895,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -8978,12 +9002,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
     required: []
   ChangeLog-write:
     properties:
@@ -9097,12 +9129,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-07-28 13:14:17'
+=======
         example: '2020-07-28 11:31:30'
+>>>>>>> development
     required: []
   AuditTrail-write:
     properties:
