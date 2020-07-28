@@ -52,6 +52,22 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('f22037e8-8088-4f15-a24c-d1be880d495e');
+        $property = new Property();
+        $property->setTitle('Instructies');
+//        $property->setIcon('fa fa-headstone');
+//        $property->setType('string');
+//        $property->setFormat('string');
+//        $property->setIri('wrc/organizations');
+        $property->setRequired(false);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
         $id = Uuid::fromString('72fdd281-c60d-4e2d-8b7d-d266303bdc46');
         $property = new Property();
         $property->setTitle('Gemeente');
