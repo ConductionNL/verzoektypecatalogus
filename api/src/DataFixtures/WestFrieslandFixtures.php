@@ -51,7 +51,7 @@ class WestFrieslandFixtures extends Fixture
         $manager->persist($requestType);
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
-        
+
         $id = Uuid::fromString('72fdd281-c60d-4e2d-8b7d-d266303bdc46');
         $property = new Property();
         $property->setTitle('Gemeente');
