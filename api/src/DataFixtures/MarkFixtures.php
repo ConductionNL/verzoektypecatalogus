@@ -141,7 +141,7 @@ class MarkFixtures extends Fixture
         //textarea reden bijstand
         $id = Uuid::fromString('8835b122-7a8a-4dfc-86d9-e12254e9f676');
         $property = new Property();
-        $property->setTitle("Voor welke kosten wilt u bijzondere bijstand aanvragen?");
+        $property->setTitle('Voor welke kosten wilt u bijzondere bijstand aanvragen?');
         $property->setType('string');
         $property->setFormat('textarea');
         $property->setRequestType($requestType);
@@ -205,7 +205,5 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
-
     }
 }
