@@ -189,7 +189,7 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        
+
         //ingevuld naar waarheid
         $id = Uuid::fromString('b2c127a1-c963-46dd-ae77-1a63de2c0b4c');
         $property = new Property();
