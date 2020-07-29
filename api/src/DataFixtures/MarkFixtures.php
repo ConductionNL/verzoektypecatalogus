@@ -1,21 +1,17 @@
 <?php
 
-
 namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
-use App\Entity\Task;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-
 class MarkFixtures extends Fixture
 {
-
     private $commonGroundService;
     private $params;
 
@@ -32,7 +28,7 @@ class MarkFixtures extends Fixture
         //reqeust type
         $id = Uuid::fromString('7e3998c0-4e9d-41e2-b9dc-f0840efc44d9');
         $requestType = new RequestType();
-        $requestType->setName("Ja/Nee sticker bestellen");
+        $requestType->setName('Ja/Nee sticker bestellen');
         $requestType->setDescription('Bestel via dit formulier een JA/NEE of NEE/NEE sticker.');
         $manager->persist($requestType);
         $requestType->setId($id);
