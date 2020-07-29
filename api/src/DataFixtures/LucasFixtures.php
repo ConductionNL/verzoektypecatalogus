@@ -1,21 +1,17 @@
 <?php
 
-
 namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
-use App\Entity\Task;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-
 class LucasFixtures extends Fixture
 {
-
     private $commonGroundService;
     private $params;
 
@@ -27,7 +23,15 @@ class LucasFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-
+        if (
+            // If build all fixtures is true we build all the fixtures
+            !$this->params->get('app_build_all_fixtures') &&
+            // Specific domain names
+            $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
+        ) {
+            return false;
+        }
         /* Documenten Inleveren */
 
         $id = Uuid::fromString('ff3a0263-350f-407a-84d4-bd12e89ce040');
