@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\DataFixtures;
 
 use App\Entity\Property;
@@ -11,10 +10,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-
 class LucasFixtures extends Fixture
 {
-
     private $commonGroundService;
     private $params;
 
@@ -26,7 +23,6 @@ class LucasFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-
         /* Documenten Inleveren */
 
         $id = Uuid::fromString('ff3a0263-350f-407a-84d4-bd12e89ce040');
