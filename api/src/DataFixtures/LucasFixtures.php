@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
-use App\Entity\Task;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -60,6 +59,7 @@ class LucasFixtures extends Fixture
         $property->setType('string');
         $property->setDescription('Maximaal 10 documenten en in totaal maximaal 24 MB.');
         $property->setFormat('file');
+        $property->setMaxItems(10);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
