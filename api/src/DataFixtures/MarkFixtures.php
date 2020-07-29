@@ -58,7 +58,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Voornaam en achternaam:');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -71,7 +71,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Postcode:');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -84,7 +84,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Huisnummer:');
         $property->setType('integer');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -97,7 +97,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Huisnummer toevoeging:');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -109,7 +109,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Straatnaam:');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -122,7 +122,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Woonplaats:');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
