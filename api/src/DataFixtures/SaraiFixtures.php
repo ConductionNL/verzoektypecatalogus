@@ -160,7 +160,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Voornamen');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -173,7 +173,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Tussenvoegsel(s)');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -185,7 +185,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Achternaam');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -198,7 +198,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Postcode');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -246,7 +246,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Straatnaam');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -258,7 +258,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Woonplaats');
         $property->setType('string');
-        $property->setFormat('string');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -306,7 +306,7 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('642c8a72-8f73-4531-ad1b-63e0580a7a77');
         $property = new Property();
         $property->setTitle('Geboortedatum');
-        $property->setType('string');
+        $property->setType('number');
         $property->setFormat('calender');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -427,6 +427,137 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        //Afschrift Burgerlijke Stand
+        $id = Uuid::fromString('');
+        $requestType = new RequestType();
+        $requestType->setOrganization('1');
+        $requestType->setName('Afschrift Burgerlijke Stand');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('');
+        $property = new Property();
+        $property->setTitle('Van welke akte wilt u een afschrift aanvragen?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setEnum(['geboorteakte', 'huwelijksakte', 'partnerschapakte', 'echtscheidingsakte', 'ontbinding/beëindiging partnerschapsregistratie', 'overlijdensakte']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('');
+        $property = new Property();
+        $property->setTitle('Is de akte gemaakt in de gemeente Zuid Drecht?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setEnum(['Ja', 'Nee']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('');
+        $property = new Property();
+        $property->setTitle('Van wie vraagt u het afschrift aan?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setEnum(['van mijzelf', 'van mijn kind']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //als het voor je kind is
+        //voornaam
+        $id = Uuid::fromString('');
+        $property = new Property();
+        $property->setTitle('Voornamen');
+        $property->setType('string');
+        $property->setFormat('string');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //tussenvoegsel
+        $id = Uuid::fromString('');
+        $property = new Property();
+        $property->setTitle('Tussenvoegsel(s)');
+        $property->setType('string');
+        $property->setFormat('string');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //achternaam
+        $id = Uuid::fromString('');
+        $property = new Property();
+        $property->setTitle('Achternaam');
+        $property->setType('string');
+        $property->setFormat('string');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('');
+        $property = new Property();
+        $property->setTitle('Geboortedatum');
+        $property->setType('string');
+        $property->setFormat('calender');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //als het voor jezelf is.
+        $id = Uuid::fromString('');
+        $property = new Property();
+        $property->setTitle('Heeft u het afschrift in het buitenland nodig?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setDescription('Voor het buitenland ontvangt u een internationaal uittreksel. Dit is een actuele samenvatting (geen afschrift) van de akte met een toelichting in meerdere talen. Op de voorzijde Nederlands, Frans, Duits en Engels. Op de achterzijde in het Spaans, Italiaans, Turks, Portugees, Grieks en Esperanto.');
+        $property->setRequired(true);
+        $property->setEnum(['ja', 'nee']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //als je de afschrift nodig hebt in het buitenland
+        $property = new Property();
+        $property->setTitle('In welke taal heeft u het afschrift nodig?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setEnum(['Nederlands', 'Internationaal']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+
 
     }
 }
