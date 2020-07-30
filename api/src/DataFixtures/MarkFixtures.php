@@ -204,5 +204,95 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        //Stel uw vraag aan 1.Hoorn formuliier
+
+        $id = Uuid::fromString('a3844f30-74d7-4fcc-84c0-5c81fea5dc2e');
+        $requestType = new RequestType();
+        $requestType->setName('Stel uw vraag aan 1.Zuid-drecht');
+        $property->setTitle('Stel uw vraag aan 1.Zuid-drecht');
+        $requestType->setDescription('Dit formulier gebruikt u als u een algemene vraag over zorg en ondersteuning wilt stellen. Als u uw gegevens invult, ontvangt u een antwoord via e-mail of telefoon. U kunt ook anoniem een melding maken. Als u hiervoor kiest, kunnen wij geen contact met u opnemen.');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+        //Anoniem cantact
+        $id = Uuid::fromString('fcbd0781-4f77-4943-a1e4-37e75afb3cc2');
+        $property = new Property();
+        $property->setTitle('Wilt u anoniem iets melden?');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setEnum(['Ja', 'Nee']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Aangeven vraag of melding
+        $id = Uuid::fromString('24d9151f-abfe-45c6-9b87-5b543acae91d');
+        $property = new Property();
+        $property->setTitle('Uw vraag of melding betreft');
+        $property->setDescription('Kunt u aangeven op welk gebied u een vraag of melding heeft?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Wonen', 'Werk en inkomen', 'Opvoeden en opgroeien', 'Gezondheid en ondersteuning']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //textarea vraag of opmerking
+        $id = Uuid::fromString('36708885-716b-4e12-a93a-614952217b4e');
+        $property = new Property();
+        $property->setTitle('Vraag of opmerking');
+        $property->setType('string');
+        $property->setFormat('textarea');;
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //telefoonnummer
+        $id = Uuid::fromString('9410db4d-331f-4a54-9322-5db9148b9c90');
+        $property = new Property();
+        $property->setTitle('Telefoon');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('telefoon nummer:');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Emailadres
+        $id = Uuid::fromString('3493c557-83b8-4284-9653-09f7028b5676');
+        $property = new Property();
+        $property->setTitle('E-mailadres:');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Contact over vraag
+        $id = Uuid::fromString('12e64bca-dd12-4c25-b119-01e9416fb1be');
+        $property = new Property();
+        $property->setTitle('Wilt u persoonlijk contact over deze vraag of melding?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Ja', 'Nee']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
     }
 }
