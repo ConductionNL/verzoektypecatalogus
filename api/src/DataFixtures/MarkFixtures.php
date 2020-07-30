@@ -294,5 +294,73 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        //Formulier Activiteit organiseren
+        //reqeust type
+        $id = Uuid::fromString('6a2b39fc-669d-4b6e-bbcc-27c8d8063f4e');
+        $requestType = new RequestType();
+        $requestType->setName('Activiteit organiseren');
+        $property->setTitle('Activiteit organiseren');
+        $requestType->setDescription('Wilt u een klein evenement organiseren in onze gemeente vul dan dit formulier in');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+        //Naam evenement
+        $id = Uuid::fromString('3210089c-30e7-4e32-b0ee-c7120924ff4a');
+        $property = new Property();
+        $property->setName('Naam klein evenement');
+        $property->setTitle('Naam klein evenement');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Omschrijving klein evenement
+        $id = Uuid::fromString('a92e3830-0c45-406b-a955-dfd00e01905c');
+        $property = new Property();
+        $property->setName('Omschrijving klein evenement');
+        $property->setTitle('Omschrijving klein evenement');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setDescription("Omschrijf de activiteiten op uw evenement");
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Datum evenement
+        $id = Uuid::fromString('b7415265-4f0f-4e35-9ee1-1774c5242ee3');
+        $property = new Property();
+        $property->setTitle('Datum klein evenement');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //mobilenummer
+        $id = Uuid::fromString('dc3d50fb-106d-4fea-acb8-1323ac412744');
+        $property = new Property();
+        $property->setTitle('Mobiel nummer (tijdens evenement)');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Mobiel nummer:');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
     }
 }
