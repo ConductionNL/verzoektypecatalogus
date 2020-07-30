@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\DataFixtures;
 
 use App\Entity\Property;
@@ -12,10 +11,8 @@ use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-
 class SaraiFixtures extends Fixture
 {
-
     private $commonGroundService;
     private $params;
 
@@ -67,7 +64,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-
         //email-adres
         $id = Uuid::fromString('91d4faea-2fec-4a48-85f1-4b03a261a56b');
         $property = new Property();
@@ -80,7 +76,6 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
 
         //Telefoonnummer
         $id = Uuid::fromString('303b4bc2-198d-4fd7-9123-7c736fc45e80');
@@ -95,12 +90,10 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-
         /*
          * issue #65
          * Aanmeldformulier: direct zorg aanvragen.
          */
-
 
         $id = Uuid::fromString('ffa22c00-6622-4cf3-8e97-682459a28d2d');
         $requestType = new RequestType();
@@ -427,6 +420,5 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
     }
 }
