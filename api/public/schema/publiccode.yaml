@@ -5,7 +5,11 @@ applicationSuite: commonground
 url: "https://github.com/ConductionNL/verzoektypecatalogus"
 landingURL: "pc.zaakonline.nl" 
 isBasedOn: "https://github.com/ConductionNL/Proto-component-commonground.git" 
+<<<<<<< HEAD
 softwareVersion: "V.0.1"
+=======
+softwareVersion: "V1.0"
+>>>>>>> development
 releaseDate: "2020-28-07"
 logo: pc.zaakonline.nl 
 monochromeLogo: img/logo-mono.svg
