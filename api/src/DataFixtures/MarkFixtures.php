@@ -250,7 +250,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Vraag of opmerking');
         $property->setType('string');
-        $property->setFormat('textarea');;
+        $property->setFormat('textarea');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
