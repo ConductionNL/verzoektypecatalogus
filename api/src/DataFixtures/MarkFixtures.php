@@ -294,5 +294,169 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        //Formulier Activiteit organiseren
+        //reqeust type
+        $id = Uuid::fromString('6a2b39fc-669d-4b6e-bbcc-27c8d8063f4e');
+        $requestType = new RequestType();
+        $requestType->setName('Activiteit organiseren');
+        $property->setTitle('Activiteit organiseren');
+        $requestType->setDescription('Wilt u een klein evenement organiseren in onze gemeente vul dan dit formulier in');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+        //Naam evenement
+        $id = Uuid::fromString('3210089c-30e7-4e32-b0ee-c7120924ff4a');
+        $property = new Property();
+        $property->setName('Naam klein evenement');
+        $property->setTitle('Naam klein evenement');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Omschrijving klein evenement
+        $id = Uuid::fromString('a92e3830-0c45-406b-a955-dfd00e01905c');
+        $property = new Property();
+        $property->setName('Omschrijving klein evenement');
+        $property->setTitle('Omschrijving klein evenement');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setDescription('Omschrijf de activiteiten op uw evenement');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Datum evenement
+        $id = Uuid::fromString('b7415265-4f0f-4e35-9ee1-1774c5242ee3');
+        $property = new Property();
+        $property->setTitle('Datum klein evenement');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //mobilenummer
+        $id = Uuid::fromString('dc3d50fb-106d-4fea-acb8-1323ac412744');
+        $property = new Property();
+        $property->setTitle('Mobiel nummer (tijdens evenement)');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Mobiel nummer:');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Begintijd event
+        $id = Uuid::fromString('2b34d5f1-37fb-40a9-b171-61a9ccea3e16');
+        $property = new Property();
+        $property->setTitle('Begin evenement)');
+        $property->setType('string');
+        $property->setFormat('time');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Einddatum evenement
+        $id = Uuid::fromString('ef793831-d09b-428f-a2d5-338943abe8b5');
+        $property = new Property();
+        $property->setTitle('Eind evenement');
+        $property->setType('string');
+        $property->setFormat('time');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //locatie evenement
+        $id = Uuid::fromString('ee10e23b-0722-4744-95d9-db3d3a77291f');
+        $property = new Property();
+        $property->setTitle('locatie evenement');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //bezoekers evenement
+        $id = Uuid::fromString('a4079fc0-7386-4262-8497-ba2ecb272395');
+        $property = new Property();
+        $property->setTitle('Aantal verwachte deelnamers/bezoekers');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //afsluiten evenement
+        $id = Uuid::fromString('18271026-961a-4577-834b-f00c68df6a7a');
+        $property = new Property();
+        $property->setTitle('Wenst u straten en/of parkeerplaatsen af te sluiten?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Ja', 'Nee']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Situatieschets
+        $id = Uuid::fromString('5a57828b-1232-4225-ad59-50c9347fbb98');
+        $property = new Property();
+        $property->setTitle('Situatieschets');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setDescription('In te dienen bijlage: situatieschets op schaal 1:1000 waaruit blijkt waaar het evenement wordt gehouden
+        en welke objecten (met maatvoering) en afstanden op welke locatie worden geplaatst met, indien van toepassing de wegafsluiting.
+        Uit de situatieschets moet duidelijk blijken ook past op de betreffende locatie en dat er vrije doorgang overblijft voor hulpdiensten van minimaal 3.50 meter.');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //ingevuld naar waarheid
+        $id = Uuid::fromString('81000444-8880-4ad4-82a3-0b53e9c1a233');
+        $property = new Property();
+        $property->setTitle('Zijn alle gegevens naar waarheid ingevuld?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Ja']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
     }
 }
