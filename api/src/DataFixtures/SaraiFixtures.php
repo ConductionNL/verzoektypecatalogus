@@ -429,8 +429,7 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
-
+        
         // uw gegevens
         // telefoonnummer
         $id = Uuid::fromString('ed376dae-ef61-43f4-968f-9fa0f7be507b');
@@ -469,7 +468,6 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
 
         /*
          * Leerlingen vervoer wijziging doorgeven
