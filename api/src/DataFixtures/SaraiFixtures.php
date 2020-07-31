@@ -395,7 +395,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Geef de datum van de gebeurtenis op');
         $property->setType('string');
-        $property->setFormat('calendar');
+        $property->setFormat('date');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
