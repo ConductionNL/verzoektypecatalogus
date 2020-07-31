@@ -8478,18 +8478,34 @@ definitions:
         description: 'The moment from which this value is available'
         type: string
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+        example: '2020-07-31 09:49:31'
+=======
+        example: '2020-07-31 10:27:10'
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
         example: '2020-07-31 09:51:30'
 =======
         example: '2020-07-31 09:49:31'
+>>>>>>> development
 >>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+        example: '2020-07-31 09:49:31'
+=======
+        example: '2020-07-31 10:27:10'
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
         example: '2020-07-31 09:51:30'
 =======
         example: '2020-07-31 09:49:31'
+>>>>>>> development
 >>>>>>> development
         format: date-time
       minDate:
@@ -8676,18 +8692,34 @@ definitions:
         description: 'The moment from which this value is available'
         type: string
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+        example: '2020-07-31 09:49:31'
+=======
+        example: '2020-07-31 10:27:10'
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
         example: '2020-07-31 09:51:30'
 =======
         example: '2020-07-31 09:49:31'
+>>>>>>> development
 >>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+        example: '2020-07-31 09:49:31'
+=======
+        example: '2020-07-31 10:27:10'
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
         example: '2020-07-31 09:51:30'
 =======
         example: '2020-07-31 09:49:31'
+>>>>>>> development
 >>>>>>> development
         format: date-time
       minDate:
@@ -8896,18 +8928,34 @@ definitions:
         type: string
         format: date-time
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+        example: '2020-07-31 09:49:31'
+=======
+        example: '2020-07-31 10:27:10'
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
         example: '2020-07-31 09:51:30'
 =======
         example: '2020-07-31 09:49:31'
+>>>>>>> development
 >>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+        example: '2020-07-31 09:49:31'
+=======
+        example: '2020-07-31 10:27:10'
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
         example: '2020-07-31 09:51:30'
 =======
         example: '2020-07-31 09:49:31'
+>>>>>>> development
 >>>>>>> development
       requestType:
         description: 'The requestType that this task belongs to'
@@ -8964,6 +9012,62 @@ definitions:
         type: object
     required:
       - name
+<<<<<<< Updated upstream
+=======
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-07-31 10:27:10'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-07-31 10:27:10'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
+>>>>>>> Stashed changes
   AuditTrail-read:
     properties:
       id:
@@ -9069,18 +9173,34 @@ definitions:
         type: string
         format: date-time
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+        example: '2020-07-31 09:49:31'
+=======
+        example: '2020-07-31 10:27:10'
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
         example: '2020-07-31 09:51:30'
 =======
         example: '2020-07-31 09:49:31'
+>>>>>>> development
 >>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+        example: '2020-07-31 09:49:31'
+=======
+        example: '2020-07-31 10:27:10'
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
         example: '2020-07-31 09:51:30'
 =======
         example: '2020-07-31 09:49:31'
+>>>>>>> development
 >>>>>>> development
     required: []
   AuditTrail-write:
