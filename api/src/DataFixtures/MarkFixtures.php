@@ -209,8 +209,8 @@ class MarkFixtures extends Fixture
 
         $id = Uuid::fromString('a3844f30-74d7-4fcc-84c0-5c81fea5dc2e');
         $requestType = new RequestType();
-        $requestType->setName('Stel uw vraag aan 1.Zuid-drecht');
-        $property->setTitle('Stel uw vraag aan 1.Zuid-drecht');
+        $requestType->setName('Stel uw vraag aan Zuid-Drecht');
+        $property->setTitle('Stel uw vraag aan Zuid-Drecht');
         $requestType->setDescription('Dit formulier gebruikt u als u een algemene vraag over zorg en ondersteuning wilt stellen. Als u uw gegevens invult, ontvangt u een antwoord via e-mail of telefoon. U kunt ook anoniem een melding maken. Als u hiervoor kiest, kunnen wij geen contact met u opnemen.');
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -234,8 +234,9 @@ class MarkFixtures extends Fixture
         //Aangeven vraag of melding
         $id = Uuid::fromString('24d9151f-abfe-45c6-9b87-5b543acae91d');
         $property = new Property();
-        $property->setTitle('Uw vraag of melding betreft');
+        $property->setTitle('');
         $property->setDescription('Kunt u aangeven op welk gebied u een vraag of melding heeft?');
+        $property->setRequired(true);
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Wonen', 'Werk en inkomen', 'Opvoeden en opgroeien', 'Gezondheid en ondersteuning']);
@@ -250,6 +251,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Vraag of opmerking');
         $property->setType('string');
+        $property->setRequired(true);
         $property->setFormat('textarea');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -288,6 +290,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wilt u persoonlijk contact over deze vraag of melding?');
         $property->setType('string');
         $property->setFormat('radio');
+        $property->setRequired(true);
         $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -366,7 +369,7 @@ class MarkFixtures extends Fixture
         //Begintijd event
         $id = Uuid::fromString('2b34d5f1-37fb-40a9-b171-61a9ccea3e16');
         $property = new Property();
-        $property->setTitle('Begin evenement)');
+        $property->setTitle('Begin evenement');
         $property->setType('string');
         $property->setFormat('time');
         $property->setRequired(true);
@@ -450,7 +453,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Zijn alle gegevens naar waarheid ingevuld?');
         $property->setType('string');
-        $property->setFormat('radio');
+        $property->setFormat('checkbox');
         $property->setEnum(['Ja']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
