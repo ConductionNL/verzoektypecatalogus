@@ -362,5 +362,101 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        //Begintijd event
+        $id = Uuid::fromString('2b34d5f1-37fb-40a9-b171-61a9ccea3e16');
+        $property = new Property();
+        $property->setTitle('Begin evenement)');
+        $property->setType('string');
+        $property->setFormat('time');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Einddatum evenement
+        $id = Uuid::fromString('ef793831-d09b-428f-a2d5-338943abe8b5');
+        $property = new Property();
+        $property->setTitle('Eind evenement');
+        $property->setType('string');
+        $property->setFormat('time');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //locatie evenement
+        $id = Uuid::fromString('ee10e23b-0722-4744-95d9-db3d3a77291f');
+        $property = new Property();
+        $property->setTitle('locatie evenement');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //bezoekers evenement
+        $id = Uuid::fromString('a4079fc0-7386-4262-8497-ba2ecb272395');
+        $property = new Property();
+        $property->setTitle('Aantal verwachte deelnamers/bezoekers');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //afsluiten evenement
+        $id = Uuid::fromString('18271026-961a-4577-834b-f00c68df6a7a');
+        $property = new Property();
+        $property->setTitle('Wenst u straten en/of parkeerplaatsen af te sluiten?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Ja','Nee']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Situatieschets
+        $id = Uuid::fromString('5a57828b-1232-4225-ad59-50c9347fbb98');
+        $property = new Property();
+        $property->setTitle('Situatieschets');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setDescription('In te dienen bijlage: situatieschets op schaal 1:1000 waaruit blijkt waaar het evenement wordt gehouden
+        en welke objecten (met maatvoering) en afstanden op welke locatie worden geplaatst met, indien van toepassing de wegafsluiting. 
+        Uit de situatieschets moet duidelijk blijken ook past op de betreffende locatie en dat er vrije doorgang overblijft voor hulpdiensten van minimaal 3.50 meter.');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //ingevuld naar waarheid
+        $id = Uuid::fromString('81000444-8880-4ad4-82a3-0b53e9c1a233');
+        $property = new Property();
+        $property->setTitle('Zijn alle gegevens naar waarheid ingevuld?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Ja']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
     }
 }
