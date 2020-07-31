@@ -328,7 +328,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Omschrijving klein evenement');
         $property->setType('string');
         $property->setFormat('textarea');
-        $property->setDescription("Omschrijf de activiteiten op uw evenement");
+        $property->setDescription('Omschrijf de activiteiten op uw evenement');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -421,7 +421,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wenst u straten en/of parkeerplaatsen af te sluiten?');
         $property->setType('string');
         $property->setFormat('radio');
-        $property->setEnum(['Ja','Nee']);
+        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -436,7 +436,7 @@ class MarkFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('file');
         $property->setDescription('In te dienen bijlage: situatieschets op schaal 1:1000 waaruit blijkt waaar het evenement wordt gehouden
-        en welke objecten (met maatvoering) en afstanden op welke locatie worden geplaatst met, indien van toepassing de wegafsluiting. 
+        en welke objecten (met maatvoering) en afstanden op welke locatie worden geplaatst met, indien van toepassing de wegafsluiting.
         Uit de situatieschets moet duidelijk blijken ook past op de betreffende locatie en dat er vrije doorgang overblijft voor hulpdiensten van minimaal 3.50 meter.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
