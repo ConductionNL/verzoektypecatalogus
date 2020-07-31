@@ -543,7 +543,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Geboortedatum');
         $property->setType('string');
-        $property->setFormat('calendar');
+        $property->setFormat('date');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
