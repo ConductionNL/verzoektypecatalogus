@@ -234,7 +234,7 @@ class MarkFixtures extends Fixture
         //Aangeven vraag of melding
         $id = Uuid::fromString('24d9151f-abfe-45c6-9b87-5b543acae91d');
         $property = new Property();
-        $property->setTitle('');
+        $property->setTitle('Uw vraag of melding betreft:');
         $property->setDescription('Kunt u aangeven op welk gebied u een vraag of melding heeft?');
         $property->setRequired(true);
         $property->setType('string');
@@ -379,7 +379,7 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Einddatum evenement
+        //Eindtijd evenement
         $id = Uuid::fromString('ef793831-d09b-428f-a2d5-338943abe8b5');
         $property = new Property();
         $property->setTitle('Eind evenement');
@@ -408,7 +408,7 @@ class MarkFixtures extends Fixture
         //bezoekers evenement
         $id = Uuid::fromString('a4079fc0-7386-4262-8497-ba2ecb272395');
         $property = new Property();
-        $property->setTitle('Aantal verwachte deelnamers/bezoekers');
+        $property->setTitle('Aantal verwachte deelnemers/bezoekers');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -456,6 +456,54 @@ class MarkFixtures extends Fixture
         $property->setFormat('checkbox');
         $property->setEnum(['Ja']);
         $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Postcode
+        $id = Uuid::fromString('145f99ba-3319-41d9-b035-a178239eeec1');
+        $property = new Property();
+        $property->setTitle('Postcode:');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisnummer
+        $id = Uuid::fromString('234daa9c-f4ae-4a54-b1d2-a57ae7cbaeff');
+        $property = new Property();
+        $property->setTitle('Huisnummer:');
+        $property->setType('integer');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //straat
+        $id = Uuid::fromString('abed58a6-3e16-42fb-bb15-8b4f197fb7fc');
+        $property = new Property();
+        $property->setTitle('Straatnaam:');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //plaats
+        $id = Uuid::fromString('4b3faaf9-f8f4-422c-869b-19103892316f');
+        $property = new Property();
+        $property->setTitle('Plaats:');
+        $property->setType('string');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
