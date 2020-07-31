@@ -302,7 +302,7 @@ class SaraiFixtures extends Fixture
          *
          */
 
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('a535b49a-6a0c-4010-b14d-25b850b32380');
         $requestType = new RequestType();
         $requestType->setOrganization('1');
         $requestType->setName('Afschrift Burgerlijke Stand');
@@ -313,7 +313,7 @@ class SaraiFixtures extends Fixture
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         //van welke akte wilt u een afschrift aanvragen?
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('c91562a2-87d2-48f2-8aff-acd045116314');
         $property = new Property();
         $property->setTitle('Van welke akte wilt u een afschrift aanvragen?');
         $property->setType('string');
@@ -327,7 +327,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         // akte gemaakt in de gemeente?
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('15c6173a-a826-4dae-a2e0-3ba91ec83aa5');
         $property = new Property();
         $property->setTitle('Is de akte gemaakt in de gemeente Zuid Drecht?');
         $property->setType('string');
@@ -341,7 +341,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //geboorteakte + overleidingsakte
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('f2b68e37-f6d2-447c-a374-0fd9cb68b93e');
         $property = new Property();
         $property->setTitle('Van wie vraagt u het afschrift aan?');
         $property->setType('string');
@@ -355,7 +355,7 @@ class SaraiFixtures extends Fixture
 
         //persoonsgegevens van de ander
         //voornaam
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('eddf6606-e470-4a93-b1dd-00af4f7673c8');
         $property = new Property();
         $property->setTitle('Voornamen');
         $property->setType('string');
@@ -367,7 +367,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //tussenvoegsel
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('320a94f5-8d09-4386-ada8-d0e2b4b03a87');
         $property = new Property();
         $property->setTitle('Tussenvoegsel(s)');
         $property->setType('string');
@@ -379,7 +379,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //achternaam
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('b9545eb0-8b83-42ef-84ba-d5f547826bde');
         $property = new Property();
         $property->setTitle('Achternaam');
         $property->setType('string');
@@ -391,7 +391,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //datum
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('d654a2aa-b0de-49e2-9c14-829356e05a59');
         $property = new Property();
         $property->setTitle('Geef de datum van de gebeurtenis op');
         $property->setType('string');
@@ -403,7 +403,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //als het voor jezelf is.
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('320b941f-d295-4fd9-bb50-69bba5b55f78');
         $property = new Property();
         $property->setTitle('Heeft u het afschrift in het buitenland nodig?');
         $property->setType('string');
@@ -418,6 +418,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //als je de afschrift nodig hebt in het buitenland
+        $id = Uuid::fromString('4f096b36-23cb-4b29-ac97-08152563e920');
         $property = new Property();
         $property->setTitle('In welke taal heeft u het afschrift nodig?');
         $property->setType('string');
@@ -432,7 +433,7 @@ class SaraiFixtures extends Fixture
 
         // uw gegevens
         // telefoonnummer
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('ed376dae-ef61-43f4-968f-9fa0f7be507b');
         $property = new Property();
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
@@ -445,7 +446,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //e-mailadres
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('7db65c5a-1443-412e-9342-bfde7d0908ca');
         $property = new Property();
         $property->setTitle('E-mailadres');
         $property->setType('string');
@@ -457,7 +458,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //herhaal emailadres
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('78e675c9-f5b0-438d-bc68-9b4edc48a354');
         $property = new Property();
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
@@ -474,7 +475,7 @@ class SaraiFixtures extends Fixture
          * Leerlingen vervoer wijziging doorgeven
          */
 
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('51665b5d-e727-442c-9b48-cf704d1f958c');
         $requestType = new RequestType();
         $requestType->setOrganization('002220647');
         $requestType->setName('Leerlingen vervoer wijziging doorgeven');
@@ -487,7 +488,7 @@ class SaraiFixtures extends Fixture
         //doorgeven
         //gegevens ouder/verzorger
         //voor- en achternaam
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('31cfa8b3-96f2-4af2-8d36-166334f45875');
         $property = new Property();
         $property->setTitle('Voor- en achternaam');
         $property->setType('string');
@@ -500,7 +501,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //telefoonnummer
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('7c38580e-bb71-4259-b4dd-76a0e9d60a36');
         $property = new Property();
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
@@ -513,7 +514,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //e-mailadres
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('8b403a94-f257-4664-8191-d72bfba4a9ee');
         $property = new Property();
         $property->setTitle('E-mailadres');
         $property->setType('string');
@@ -527,7 +528,7 @@ class SaraiFixtures extends Fixture
 
         //gegevens leerling
         //Naam
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('bc2434be-bae8-4e5d-992a-522e1306c350');
         $property = new Property();
         $property->setTitle('Naam');
         $property->setType('string');
@@ -540,7 +541,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //geboortedatum
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('50385e5e-d172-467b-a88c-d23fea1381f3');
         $property = new Property();
         $property->setTitle('Geboortedatum');
         $property->setType('string');
@@ -553,7 +554,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //school
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('684d769d-8e54-4008-b788-a40bb35a98e9');
         $property = new Property();
         $property->setTitle('School');
         $property->setType('string');
@@ -566,7 +567,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //wat wilt u doorgeven
-        $id = Uuid::fromString('');
+        $id = Uuid::fromString('9a59aa5b-c959-4611-b745-04965f1db214');
         $property = new Property();
         $property->setTitle('Wat wilt u doorgeven?');
         $property->setType('string');
