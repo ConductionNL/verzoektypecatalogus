@@ -430,7 +430,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        
         // uw gegevens
         // telefoonnummer
         $id = Uuid::fromString('ed376dae-ef61-43f4-968f-9fa0f7be507b');
