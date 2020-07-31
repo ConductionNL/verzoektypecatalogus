@@ -429,6 +429,7 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
         
         // uw gegevens
         // telefoonnummer
