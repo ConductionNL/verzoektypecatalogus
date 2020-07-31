@@ -8477,20 +8477,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8675,20 +8667,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8895,20 +8879,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -9068,20 +9044,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
     required: []
   AuditTrail-write:
     properties:
@@ -9129,20 +9097,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-07-28 10:09:33'
-=======
-        example: '2020-07-29 12:55:22'
->>>>>>> development
+        example: '2020-07-31 09:51:30'
     required: []
   ChangeLog-write:
     properties:
