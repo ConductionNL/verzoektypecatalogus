@@ -577,15 +577,5 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //bericht aan het einde
-        $id = Uuid::fromString('d3ab8f45-8ae0-42e0-829c-512d109389c3');
-        $property = new Property();
-        $property->setTitle('Bedankt voor het doorgeven');
-        $property->setDescription('U ontvangt een bevestigings op het door u opgegeven e-mailardes. daarin staat een overzicht van uw gegevens.');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
     }
 }
