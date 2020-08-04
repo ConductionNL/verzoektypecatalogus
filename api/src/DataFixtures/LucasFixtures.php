@@ -315,5 +315,113 @@ class LucasFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
             # End uw gegevens
         /* End Vraag Stellen */
+
+        /* Kraskaartvergunning aanvragen */
+        $id = Uuid::fromString('c64bb62c-670a-4cde-bd29-f50c220a6442');
+        $requestType = new RequestType();
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Kraskaarten');
+        $requestType->setDescription('Aanvraag kraskaarten (parkeren voor uw bezoek');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('aa636080-5e9d-4909-80fd-0df8a6cb8754');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setType('string');
+        $property->setFormat('phonenumber');
+        $property->setRequired(false);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('87eec012-befe-45f8-b64d-62f3b2d26f11');
+        $property = new Property();
+        $property->setTitle('E-mailadres:');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1ec4376e-c5e9-47cf-aa36-617615bf5b28');
+        $property = new Property();
+        $property->setTitle('Herhaal e-mailadres:');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // parkeertegoed kopen
+
+        $id = Uuid::fromString('bed1d4f6-b16f-414d-a951-1ca7c41be66e');
+        $property = new Property();
+        $property->setTitle('Machtigingen incasso');
+        $property->setDescription('Door ondertekening geek ik toestemming aan Parkeerdiesnten van de gemeente Amsterdam het volgende bedrag van mijn rekening af te schrijven.');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setEnum(['€ 15', '€ 30', '€ 45', '€ 60', '€ 75']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('19f3f27c-ae2f-41b2-874d-883020a7f472');
+        $property = new Property();
+        $property->setTitle('Automatisch opladen');
+        $property->setDescription('Ik wil dat mijn parkeertegoed automatisch wordt verhoogd al is het lager dan.');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setEnum(['€ 15', '€ 30', '€ 45', '€ 60', '€ 75']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('2762debf-a021-40c2-8f5b-83c29bb833cc');
+        $property = new Property();
+        $property->setTitle('Rekeningnummer');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('eace7bd9-8bff-4f6c-badb-e028a338890f');
+        $property = new Property();
+        $property->setTitle('Naam rekeninghouder');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
     }
 }
