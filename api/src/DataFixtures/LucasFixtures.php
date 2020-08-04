@@ -183,7 +183,7 @@ class LucasFixtures extends Fixture
         /* End Jeugdlintje */
 
         /* Vraag Stellen */
-            # Omschrijving
+        //Omschrijving
         $id = Uuid::fromString('cf2482fd-5bed-4843-8f54-895cabdf6251');
         $requestType = new RequestType();
         $requestType->setOrganization('002220647');
@@ -234,8 +234,8 @@ class LucasFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-            # End omschrijving
-            # Uw gegevens
+        //End omschrijving
+        //Uw gegevens
         $id = Uuid::fromString('66df1173-ccb4-45f6-86e3-689f517a693c');
         $property = new Property();
         $property->setTitle('Voornamen');
@@ -313,7 +313,7 @@ class LucasFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-            # End uw gegevens
+        //End uw gegevens
         /* End Vraag Stellen */
 
         /* Kraskaartvergunning aanvragen */
