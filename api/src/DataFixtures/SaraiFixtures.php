@@ -1050,8 +1050,7 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
-
+        
         //aanvullende gegevens
         //sportvereniging
         //tak van sport
@@ -1118,7 +1117,6 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
 
         //postadres
         //postcode
@@ -1206,6 +1204,5 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
     }
 }
