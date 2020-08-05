@@ -101,6 +101,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -113,6 +114,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -241,7 +243,7 @@ class SaraiFixtures extends Fixture
         $requestType = new RequestType();
         $requestType->setOrganization('1');
         $requestType->setName('Afschrift Burgerlijke Stand');
-        $requestType->setDescription('Vraag hier een afschrift aan.');
+        $requestType->setDescription('Vraag hier een afschrift aan');
         $manager->persist($requestType);
         $requestType->setId($id);
         $manager->persist($requestType);
@@ -413,14 +415,14 @@ class SaraiFixtures extends Fixture
         $requestType = new RequestType();
         $requestType->setOrganization('002220647');
         $requestType->setName('Leerlingen vervoer wijziging doorgeven');
-        $requestType->setDescription('Geef hier uw leerlingen vervoer wijziging door.');
+        $requestType->setDescription('Geef hier uw leerlingen vervoer wijziging door');
         $manager->persist($requestType);
         $requestType->setId($id);
         $manager->persist($requestType);
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        //doorgeven
+        //gegevens doorgeven
         //gegevens ouder/verzorger
         //voor- en achternaam
         $id = Uuid::fromString('31cfa8b3-96f2-4af2-8d36-166334f45875');
@@ -441,6 +443,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
