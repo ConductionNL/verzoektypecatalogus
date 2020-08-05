@@ -1051,7 +1051,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        
         //aanvullende gegevens
         //sportvereniging
         //tak van sport
