@@ -1375,9 +1375,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Op grond van welke schadeveroorzakende maatregel wordt de aanvraag gedaan?');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setEnum(['Een nieuw bestemmingsplan', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Tijdelijke afwijking van het bestemmingsplan',
-           'Een binnenplanse afwijking van het bestemmingsplan ', 'Het binnen een bestemmingsplan stellen van nadere eisen', 'Het afwijken van een beheersverordening',  'Het buiten toepassing verklaren van een beheersverordening',
-            'Een provinciaal of rijks inpassingsplan (bestemmingsplan)', 'Een bepaling uit de provinciale verordening', 'De aanhouding van een beslissing omtrent een bouw-, sloop- of aanlegvergunning']);
+        $property->setEnum(['Een nieuw bestemmingsplan', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Tijdelijke afwijking van het bestemmingsplan', 'Een binnenplanse afwijking van het bestemmingsplan ', 'Het binnen een bestemmingsplan stellen van nadere eisen', 'Het afwijken van een beheersverordening',  'Het buiten toepassing verklaren van een beheersverordening', 'Een provinciaal of rijks inpassingsplan (bestemmingsplan)', 'Een bepaling uit de provinciale verordening', 'De aanhouding van een beslissing omtrent een bouw-, sloop- of aanlegvergunning']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1391,8 +1389,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Waarom vind u dat u recht heeft op tegemoetkoming in planschade?');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setEnum(['Het vervallen of beperken van eigen bouwmogelijkheden', 'Een inbreuk op de privacy door nieuwe bebouwing ', 'Het vervallen van een waardebepalend vrij uitzicht', 'Belemmering van bezonning',
-            'Onevenredige verslechtering van bereikbaarheid of parkeermogelijkheden ', 'Verslechtering milieuomstandigheden', 'Verslechtering van de situeringswaarde van het eigendom']);
+        $property->setEnum(['Het vervallen of beperken van eigen bouwmogelijkheden', 'Een inbreuk op de privacy door nieuwe bebouwing ', 'Het vervallen van een waardebepalend vrij uitzicht', 'Belemmering van bezonning', 'Onevenredige verslechtering van bereikbaarheid of parkeermogelijkheden ', 'Verslechtering milieuomstandigheden', 'Verslechtering van de situeringswaarde van het eigendom']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1449,7 +1446,5 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
-
     }
 }
