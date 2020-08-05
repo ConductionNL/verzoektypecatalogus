@@ -1050,6 +1050,7 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
         
         //aanvullende gegevens
         //sportvereniging
