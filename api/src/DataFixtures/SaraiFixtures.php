@@ -796,10 +796,10 @@ class SaraiFixtures extends Fixture
         //is het gebouw vóór 1950 gebouwd?
         $id = Uuid::fromString('97c5aa5c-9d03-4401-b95e-debcabe6523e');
         $property = new Property();
-        $property->setTitle('waar wilt u een bouwtekening van hebben?');
+        $property->setTitle('Is het gebouw vóór 1950 gebouwd?');
         $property->setType('string');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
+        $property->setEnum(['', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
