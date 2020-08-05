@@ -1204,5 +1204,252 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        /*
+         *
+         * Aanvragen tegemoetkoming in schade (planschadevergoeding)
+         *
+         */
+
+        $id = Uuid::fromString('3bb7a27a-82a0-4e38-afba-b4b3a9de4306');
+        $requestType = new RequestType();
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Aanvragen tegemoetkoming in schade (planschadevergoeding)');
+        $requestType->setDescription('Vraag hier een tegemoetkoming in schade aan');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        //ontroerende zaak
+        //postcode
+        $id = Uuid::fromString('e61264de-4f93-4d75-97a2-a9b8516c0c01');
+        $property = new Property();
+        $property->setTitle('Postcode');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisnummer
+        $id = Uuid::fromString('1f4cf91e-6a04-44b6-9e49-d701bfecf7b5');
+        $property = new Property();
+        $property->setTitle('Huisnummer');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisletter
+        $id = Uuid::fromString('819139d1-e660-4bab-bcbf-dd42514872ac');
+        $property = new Property();
+        $property->setTitle('Huisletter');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisnummer toevoeging
+        $id = Uuid::fromString('291e038a-f9db-4b4b-823b-6063f1dadee5');
+        $property = new Property();
+        $property->setTitle('Huisnummer toevoeging');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //straatnaam
+        $id = Uuid::fromString('9d9833ba-1d3c-4f68-9c40-a62364f30d83');
+        $property = new Property();
+        $property->setTitle('Straatnaam');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //woonplaats
+        $id = Uuid::fromString('527241ec-bff9-492f-9e22-e93d1b7a7fd5');
+        $property = new Property();
+        $property->setTitle('Woonplaats');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //uw relatie met de ontroerende zaak
+        $id = Uuid::fromString('a28e6787-2740-402e-aca3-eff225b711f8');
+        $property = new Property();
+        $property->setTitle('Wat is uw relatie tot de ontroerende zaak?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Eigenaar', 'Huurder', 'Gemachtigde van de eigenaar', 'Gemachtigde van de huurder']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //welke schade heeft het geleden?
+        $id = Uuid::fromString('8c0ffbcc-9e38-451e-b628-a8e8ad1abb50');
+        $property = new Property();
+        $property->setTitle('Welke schade heeft de ontroerende zaak geleden?');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setEnum(['Waardevermindering', 'Inkomensderving']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //uw gegevens
+        //telefoonnummer
+        $id = Uuid::fromString('7bbd0593-4284-4f2f-a918-3a99670e8136');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setType('string');
+        $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //emailadres
+        $id = Uuid::fromString('2ab5126f-af53-4c88-8734-b08fd564994b');
+        $property = new Property();
+        $property->setTitle('E-mailadres');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //herhaal e-mailadres
+        $id = Uuid::fromString('cf60c928-6b05-44ee-afe5-29909ba441f8');
+        $property = new Property();
+        $property->setTitle('Herhaal e-mailadres');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //de grond van aanvraag
+        //schade veroorzakende maatregel
+        $id = Uuid::fromString('4970f85e-cc4e-4f05-b8b5-b6e7bee8aecb');
+        $property = new Property();
+        $property->setTitle('Op grond van welke schadeveroorzakende maatregel wordt de aanvraag gedaan?');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setEnum(['Een nieuw bestemmingsplan', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Tijdelijke afwijking van het bestemmingsplan',
+           'Een binnenplanse afwijking van het bestemmingsplan ', 'Het binnen een bestemmingsplan stellen van nadere eisen', 'Het afwijken van een beheersverordening',  'Het buiten toepassing verklaren van een beheersverordening',
+            'Een provinciaal of rijks inpassingsplan (bestemmingsplan)', 'Een bepaling uit de provinciale verordening', 'De aanhouding van een beslissing omtrent een bouw-, sloop- of aanlegvergunning']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //aarde van de schade
+        //recht op tegemoetkoming
+        $id = Uuid::fromString('de2fe24a-4e99-41dc-a7a8-d776c909b739');
+        $property = new Property();
+        $property->setTitle('Waarom vind u dat u recht heeft op tegemoetkoming in planschade?');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setEnum(['Het vervallen of beperken van eigen bouwmogelijkheden', 'Een inbreuk op de privacy door nieuwe bebouwing ', 'Het vervallen van een waardebepalend vrij uitzicht', 'Belemmering van bezonning',
+            'Onevenredige verslechtering van bereikbaarheid of parkeermogelijkheden ', 'Verslechtering milieuomstandigheden', 'Verslechtering van de situeringswaarde van het eigendom']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //hoogte gevraagde tegemoetkoming
+        $id = Uuid::fromString('892a67d9-a1a4-4ebd-bb86-baa772b01bef');
+        $property = new Property();
+        $property->setTitle('Hoogte gevraagde tegemoetkoming');
+        $property->setType('string');
+        $property->setFormat('number');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //is de schade anderzins vergoed?
+        $id = Uuid::fromString('bc564bc6-e47d-413e-b1f8-72c9e7fd72c7');
+        $property = new Property();
+        $property->setTitle('Is de schade anderzins vergoed?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Ja', 'Nee']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //zo ja, omschrijf hoe
+        $id = Uuid::fromString('4e34f490-1910-4f7a-b0ea-135c347b5b49');
+        $property = new Property();
+        $property->setTitle('Zo ja, omschrijf hoe');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //Als u geen vergoeding in geld wenst, op welke wijze wilt u de schade tegemoetgekomen zien?
+        $id = Uuid::fromString('e17baaac-d192-4fad-ade7-9606dff4932d');
+        $property = new Property();
+        $property->setTitle('Als u geen vergoeding in geld wenst, op welke wijze wilt u de schade tegemoetgekomen zien?');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+
     }
 }
