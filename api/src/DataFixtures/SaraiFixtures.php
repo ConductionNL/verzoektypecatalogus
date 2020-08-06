@@ -540,7 +540,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -799,7 +798,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Is het gebouw vóór 1950 gebouwd?');
         $property->setType('string');
         $property->setFormat('radio');
-        $property->setEnum(['', 'Nee']);
+        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -808,6 +807,82 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //Toelichting
+        //postcode
+        $id = Uuid::fromString('f17d1d5b-2d0d-4fa6-b674-491dadc5601d');
+        $property = new Property();
+        $property->setTitle('Postcode');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisnummer
+        $id = Uuid::fromString('d53aa76f-aad6-42ec-8be7-6f50d8109ef2');
+        $property = new Property();
+        $property->setTitle('Huisnummer');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisletter
+        $id = Uuid::fromString('891ec347-13d9-4d3e-89c1-d7db32b28691');
+        $property = new Property();
+        $property->setTitle('Huisletter');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisnummer toevoeging
+        $id = Uuid::fromString('eb1c128b-d4b0-49d2-9a3e-6064027adeef');
+        $property = new Property();
+        $property->setTitle('Huisnummer toevoeging');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //straatnaam
+        $id = Uuid::fromString('69be5e95-dbd3-4518-b08d-95bd232c4271');
+        $property = new Property();
+        $property->setTitle('Straatnaam');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //plaats
+        $id = Uuid::fromString('76539609-7734-4f6b-acec-0a91c80e9ffb');
+        $property = new Property();
+        $property->setTitle('Plaats');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         //Welke tekeningen heeft u nodig?
         $id = Uuid::fromString('2b4e9b1e-b3b4-4a36-ad08-c3d2836ac41c');
         $property = new Property();
@@ -857,7 +932,7 @@ class SaraiFixtures extends Fixture
         //gegevens kvk
         $id = Uuid::fromString('0dbc66a2-5112-4efd-a094-0a5a8b1bfb23');
         $property = new Property();
-        $property->setTitle('Gegevens Kamer van Koophandel');
+        $property->setTitle('Inschrijfnummer KvK');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
@@ -924,7 +999,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Huisnummer toevoeging');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -977,7 +1051,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Tussenvoegsel(s)');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
