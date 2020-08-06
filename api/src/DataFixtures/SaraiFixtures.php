@@ -883,7 +883,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-
         //Welke tekeningen heeft u nodig?
         $id = Uuid::fromString('2b4e9b1e-b3b4-4a36-ad08-c3d2836ac41c');
         $property = new Property();
