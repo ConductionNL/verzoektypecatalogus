@@ -845,6 +845,5 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
     }
 }
