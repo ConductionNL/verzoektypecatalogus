@@ -806,7 +806,22 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Toelichting
+        //een toelichting
+        //Welke tekeningen heeft u nodig?
+        $id = Uuid::fromString('2b4e9b1e-b3b4-4a36-ad08-c3d2836ac41c');
+        $property = new Property();
+        $property->setTitle('Welke tekeningen heeft u nodig?');
+        $property->setDescription('Op bouwkundige tekeningen staan de afmetingen en de gebruikte materialen van het gebouw. Op constructietekeningen staan de draagstructuren van het gebouw. Het gaat om de constructieopbouw, palenplan, fundering, vloeren, dakconstructie en/of staalconstructie.');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Bouwkundige tekeningen', 'Bouwkundige en contructie tekeningen']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         //postcode
         $id = Uuid::fromString('f17d1d5b-2d0d-4fa6-b674-491dadc5601d');
         $property = new Property();
@@ -870,10 +885,10 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //plaats
+        //woonplaats
         $id = Uuid::fromString('76539609-7734-4f6b-acec-0a91c80e9ffb');
         $property = new Property();
-        $property->setTitle('Plaats');
+        $property->setTitle('Woonplaats');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -883,26 +898,11 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Welke tekeningen heeft u nodig?
-        $id = Uuid::fromString('2b4e9b1e-b3b4-4a36-ad08-c3d2836ac41c');
-        $property = new Property();
-        $property->setTitle('Welke tekeningen heeft u nodig?');
-        $property->setDescription('Op bouwkundige tekeningen staan de afmetingen en de gebruikte materialen van het gebouw. Op constructietekeningen staan de draagstructuren van het gebouw. Het gaat om de constructieopbouw, palenplan, fundering, vloeren, dakconstructie en/of staalconstructie.');
-        $property->setType('string');
-        $property->setFormat('radio');
-        $property->setEnum(['Bouwkundige tekeningen', 'Bouwkundige en contructie tekeningen']);
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
         //welke gegevens heeft u nodig?
+        //omschrijf
         $id = Uuid::fromString('542f5cfa-e2a8-4e08-99a3-589bb891ef7f');
         $property = new Property();
-        $property->setTitle('Welke gegevens heeft u nodig?');
-        $property->setDescription('Omschrijf zo duidelijk en volledig mogelijk');
+        $property->setTitle('Omschrijf zo duidelijk en volledig mogelijk');
         $property->setType('string');
         $property->setFormat('textarea');
         $property->setRequired(true);
