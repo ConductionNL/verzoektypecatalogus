@@ -1390,7 +1390,7 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('8c0ffbcc-9e38-451e-b628-a8e8ad1abb50');
         $property = new Property();
         $property->setTitle('Welke schade heeft de ontroerende zaak geleden?');
-        $property->setType('string');
+        $property->setType('array');
         $property->setFormat('checkbox');
         $property->setEnum(['Waardevermindering', 'Inkomensderving']);
         $property->setRequired(true);
@@ -1446,7 +1446,7 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('4970f85e-cc4e-4f05-b8b5-b6e7bee8aecb');
         $property = new Property();
         $property->setTitle('Op grond van welke schadeveroorzakende maatregel wordt de aanvraag gedaan?');
-        $property->setType('string');
+        $property->setType('array');
         $property->setFormat('checkbox');
         $property->setEnum(['Een nieuw bestemmingsplan', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Tijdelijke afwijking van het bestemmingsplan', 'Een binnenplanse afwijking van het bestemmingsplan ', 'Het binnen een bestemmingsplan stellen van nadere eisen', 'Het afwijken van een beheersverordening',  'Het buiten toepassing verklaren van een beheersverordening', 'Een provinciaal of rijks inpassingsplan (bestemmingsplan)', 'Een bepaling uit de provinciale verordening', 'De aanhouding van een beslissing omtrent een bouw-, sloop- of aanlegvergunning']);
         $property->setRequestType($requestType);
@@ -1455,12 +1455,12 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //aarde van de schade
+        //aard van de schade
         //recht op tegemoetkoming
         $id = Uuid::fromString('de2fe24a-4e99-41dc-a7a8-d776c909b739');
         $property = new Property();
         $property->setTitle('Waarom vind u dat u recht heeft op tegemoetkoming in planschade?');
-        $property->setType('string');
+        $property->setType('array');
         $property->setFormat('checkbox');
         $property->setEnum(['Het vervallen of beperken van eigen bouwmogelijkheden', 'Een inbreuk op de privacy door nieuwe bebouwing ', 'Het vervallen van een waardebepalend vrij uitzicht', 'Belemmering van bezonning', 'Onevenredige verslechtering van bereikbaarheid of parkeermogelijkheden ', 'Verslechtering milieuomstandigheden', 'Verslechtering van de situeringswaarde van het eigendom']);
         $property->setRequestType($requestType);
