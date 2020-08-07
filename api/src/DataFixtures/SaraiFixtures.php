@@ -1631,26 +1631,12 @@ class SaraiFixtures extends Fixture
 //De vergunning meot minimaal 1 week en mag maximaal 3 maanden van tevoren aangevraagd worden.
 //De vergunning kan maximaal voor de duur van 1 jaar aangevraagd worden.
 
-        // Vanaf
+        // Vanaf tot en met
         $id = Uuid::fromString('9a5e4cfc-e67e-4163-a516-f1c133e49f59');
         $property = new Property();
-        $property->setTitle('Vanaf');
+        $property->setTitle('oor welke periode heeft u de vergunning nodig?');
         $property->setType('string');
-        $property->setFormat('date');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        // Tot en met
-        $id = Uuid::fromString('12cfd36c-330c-4e6c-820e-17e232b318eb');
-        $property = new Property();
-        $property->setTitle('Tot en met:');
-        $property->setType('string');
-        $property->setFormat('date');
+        $property->setFormat('tofrom-time');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
