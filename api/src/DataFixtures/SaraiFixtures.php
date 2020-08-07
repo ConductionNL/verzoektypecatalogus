@@ -1578,7 +1578,6 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         //vergunning gegevens
         // Kenteken
         //voer het kenteken in
@@ -1627,9 +1626,9 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-//Voor welke periode heeft u de vergunning nodig?
-//De vergunning meot minimaal 1 week en mag maximaal 3 maanden van tevoren aangevraagd worden.
-//De vergunning kan maximaal voor de duur van 1 jaar aangevraagd worden.
+        //Voor welke periode heeft u de vergunning nodig?
+        //De vergunning meot minimaal 1 week en mag maximaal 3 maanden van tevoren aangevraagd worden.
+        //De vergunning kan maximaal voor de duur van 1 jaar aangevraagd worden.
 
         // Vanaf tot en met
         $id = Uuid::fromString('9a5e4cfc-e67e-4163-a516-f1c133e49f59');
@@ -1702,7 +1701,6 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         /*
          *
          * Ligplaats klein bootje
@@ -1728,7 +1726,7 @@ class SaraiFixtures extends Fixture
         $property->setFormat('radio');
         $property->setEnum(['de Delft in Overveen - Kennemerpark e.o', 'Houtvaart tussen Aerdenhout en Haarlem - Houtvaartkade en t.h.v. Goudsbloemplein',
             'Leidse Trekvaart en Beukenvaart - Bennebroek -Leidsevaart en Beukenlaan', 'Bennebroekervaart - Bennebroek - t.h.v. Van Lieroppark en Reek en Meerweg',
-            'Leidse Trekvaart - Vogelenzang - ten westen en oosten van spoorlijn', 'Bennebroekervaart - Haventje Bennebroek']);
+            'Leidse Trekvaart - Vogelenzang - ten westen en oosten van spoorlijn', 'Bennebroekervaart - Haventje Bennebroek', ]);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1960,6 +1958,5 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
     }
 }
