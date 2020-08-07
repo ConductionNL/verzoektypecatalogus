@@ -1051,7 +1051,6 @@ class MarkFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         //stage 2
         //aanpassingen aan de woning
         //description = Welke maatregelen of werkzaamheden aan uw woning gaat u uitvoeren?
