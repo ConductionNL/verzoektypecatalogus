@@ -934,7 +934,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Inschrijfnummer KvK');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('kvk');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1854,7 +1854,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Kenteken van de boot (indien kentekenplichtig)');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
