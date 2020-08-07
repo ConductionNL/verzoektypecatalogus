@@ -1634,7 +1634,7 @@ class SaraiFixtures extends Fixture
         // Vanaf tot en met
         $id = Uuid::fromString('9a5e4cfc-e67e-4163-a516-f1c133e49f59');
         $property = new Property();
-        $property->setTitle('oor welke periode heeft u de vergunning nodig?');
+        $property->setTitle('Voor welke periode heeft u de vergunning nodig?');
         $property->setType('string');
         $property->setFormat('tofrom-time');
         $property->setRequired(true);
@@ -1644,7 +1644,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         //Machtiging stage 3
         // Bankrekeningnummer
