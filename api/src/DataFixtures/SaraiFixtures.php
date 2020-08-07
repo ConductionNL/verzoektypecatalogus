@@ -1726,7 +1726,7 @@ class SaraiFixtures extends Fixture
         $property->setFormat('radio');
         $property->setEnum(['de Delft in Overveen - Kennemerpark e.o', 'Houtvaart tussen Aerdenhout en Haarlem - Houtvaartkade en t.h.v. Goudsbloemplein',
             'Leidse Trekvaart en Beukenvaart - Bennebroek -Leidsevaart en Beukenlaan', 'Bennebroekervaart - Bennebroek - t.h.v. Van Lieroppark en Reek en Meerweg',
-            'Leidse Trekvaart - Vogelenzang - ten westen en oosten van spoorlijn', 'Bennebroekervaart - Haventje Bennebroek']);
+            'Leidse Trekvaart - Vogelenzang - ten westen en oosten van spoorlijn', 'Bennebroekervaart - Haventje Bennebroek', ]);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
