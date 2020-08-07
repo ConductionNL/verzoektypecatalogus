@@ -45,6 +45,7 @@ class ZuiddrechtFixtures extends Fixture
         $requestType->setOrganization('002220647');
         $requestType->setName('Parkeer vergunning');
         $requestType->setDescription('Met dit procces start u de aanvraag voor een parkeer vergunning');
+        $requestType->setCaseType('https://openzaak.dev.zuid-drecht.nl/catalogi/api/v1/zaaktypen/1fd3595c-8964-4b15-806a-7349e1edb3b1');
         $requestType->setUnique(true);
         $manager->persist($requestType);
         $requestType->setId($id);
