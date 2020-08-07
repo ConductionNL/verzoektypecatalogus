@@ -1578,7 +1578,6 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         //vergunning gegevens
         // Kenteken
         //voer het kenteken in
@@ -1627,9 +1626,9 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-//Voor welke periode heeft u de vergunning nodig?
-//De vergunning meot minimaal 1 week en mag maximaal 3 maanden van tevoren aangevraagd worden.
-//De vergunning kan maximaal voor de duur van 1 jaar aangevraagd worden.
+        //Voor welke periode heeft u de vergunning nodig?
+        //De vergunning meot minimaal 1 week en mag maximaal 3 maanden van tevoren aangevraagd worden.
+        //De vergunning kan maximaal voor de duur van 1 jaar aangevraagd worden.
 
         // Vanaf tot en met
         $id = Uuid::fromString('9a5e4cfc-e67e-4163-a516-f1c133e49f59');
@@ -1644,7 +1643,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         //Machtiging stage 3
         // Bankrekeningnummer
@@ -1702,7 +1700,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         /*
          *
@@ -1961,6 +1958,5 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
     }
 }
