@@ -1586,7 +1586,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Voer het kenteken in met streepjes tussen de letter/cijfer-combinaties
         (bijvoorbeeld 00-AB-AB of 00-ABC-0)');
         $property->setType('string');
-        $property->setFormat('rdw');
+        $property->setFormat('text');
         $property->setExample('(00-AB-AB) of (00-ABC-0)');
         $property->setRequired(true);
         $property->setRequestType($requestType);
