@@ -46,7 +46,7 @@ class WestFrieslandFixtures extends Fixture
         $requestType->setIcon('fa fa-headstone');
         $requestType->setName('begrafenisplanner');
         $requestType->setDescription('Met dit verzoek kunt u een begrafenis plannen');
-        $requestType->setCaseType('https://openzaak.dev.westfriesland.commonground.nu/catalogi/api/v1/zaaktypenf4bc3fee-6b58-4e2a-856a-f0d5e9d15c3b');
+        $requestType->setCaseType('https://openzaak.dev.westfriesland.commonground.nu/catalogi/api/v1/zaaktypen/f4bc3fee-6b58-4e2a-856a-f0d5e9d15c3b');
         $manager->persist($requestType);
         $requestType->setId($id);
         $manager->persist($requestType);
