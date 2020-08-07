@@ -637,7 +637,7 @@ class MarkFixtures extends Fixture
         //vragen over instelling
         $id = Uuid::fromString('9f05249d-bcc2-4f24-8580-0fd3de0a6d4d');
         $property = new Property();
-        $property->setTitle('Wordt deze vergunning wordt aangevraagd voor een natuurlijke of rechtspersoon?');
+        $property->setTitle('Wordt deze vergunning aangevraagd voor een natuurlijke of rechtspersoon?');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['natuurlijke persoon', 'rechtspersoon/rechtspersonen']);
@@ -1275,7 +1275,6 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //formulier Vraag stellen over (ver)bouwen
         $id = Uuid::fromString('15fa03c2-a654-45be-8153-f2df32bcc6cb');
