@@ -540,7 +540,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -796,7 +795,7 @@ class SaraiFixtures extends Fixture
         //is het gebouw vóór 1950 gebouwd?
         $id = Uuid::fromString('97c5aa5c-9d03-4401-b95e-debcabe6523e');
         $property = new Property();
-        $property->setTitle('waar wilt u een bouwtekening van hebben?');
+        $property->setTitle('Is het gebouw vóór 1950 gebouwd?');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
@@ -807,7 +806,7 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Toelichting
+        //een toelichting
         //Welke tekeningen heeft u nodig?
         $id = Uuid::fromString('2b4e9b1e-b3b4-4a36-ad08-c3d2836ac41c');
         $property = new Property();
@@ -823,11 +822,87 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
+        //postcode
+        $id = Uuid::fromString('f17d1d5b-2d0d-4fa6-b674-491dadc5601d');
+        $property = new Property();
+        $property->setTitle('Postcode');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisnummer
+        $id = Uuid::fromString('d53aa76f-aad6-42ec-8be7-6f50d8109ef2');
+        $property = new Property();
+        $property->setTitle('Huisnummer');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisletter
+        $id = Uuid::fromString('891ec347-13d9-4d3e-89c1-d7db32b28691');
+        $property = new Property();
+        $property->setTitle('Huisletter');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //huisnummer toevoeging
+        $id = Uuid::fromString('eb1c128b-d4b0-49d2-9a3e-6064027adeef');
+        $property = new Property();
+        $property->setTitle('Huisnummer toevoeging');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //straatnaam
+        $id = Uuid::fromString('69be5e95-dbd3-4518-b08d-95bd232c4271');
+        $property = new Property();
+        $property->setTitle('Straatnaam');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //woonplaats
+        $id = Uuid::fromString('76539609-7734-4f6b-acec-0a91c80e9ffb');
+        $property = new Property();
+        $property->setTitle('Woonplaats');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         //welke gegevens heeft u nodig?
+        //omschrijf
         $id = Uuid::fromString('542f5cfa-e2a8-4e08-99a3-589bb891ef7f');
         $property = new Property();
-        $property->setTitle('Welke gegevens heeft u nodig?');
-        $property->setDescription('Omschrijf zo duidelijk en volledig mogelijk');
+        $property->setTitle('Omschrijf zo duidelijk en volledig mogelijk');
         $property->setType('string');
         $property->setFormat('textarea');
         $property->setRequired(true);
@@ -857,9 +932,9 @@ class SaraiFixtures extends Fixture
         //gegevens kvk
         $id = Uuid::fromString('0dbc66a2-5112-4efd-a094-0a5a8b1bfb23');
         $property = new Property();
-        $property->setTitle('Gegevens Kamer van Koophandel');
+        $property->setTitle('Inschrijfnummer KvK');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('kvk');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -924,7 +999,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Huisnummer toevoeging');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -977,7 +1051,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Tussenvoegsel(s)');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1317,7 +1390,7 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('8c0ffbcc-9e38-451e-b628-a8e8ad1abb50');
         $property = new Property();
         $property->setTitle('Welke schade heeft de ontroerende zaak geleden?');
-        $property->setType('string');
+        $property->setType('array');
         $property->setFormat('checkbox');
         $property->setEnum(['Waardevermindering', 'Inkomensderving']);
         $property->setRequired(true);
@@ -1373,7 +1446,7 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('4970f85e-cc4e-4f05-b8b5-b6e7bee8aecb');
         $property = new Property();
         $property->setTitle('Op grond van welke schadeveroorzakende maatregel wordt de aanvraag gedaan?');
-        $property->setType('string');
+        $property->setType('array');
         $property->setFormat('checkbox');
         $property->setEnum(['Een nieuw bestemmingsplan', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Een wijziging of uitwerking van een bestaand bestemmingsplan ', 'Tijdelijke afwijking van het bestemmingsplan', 'Een binnenplanse afwijking van het bestemmingsplan ', 'Het binnen een bestemmingsplan stellen van nadere eisen', 'Het afwijken van een beheersverordening',  'Het buiten toepassing verklaren van een beheersverordening', 'Een provinciaal of rijks inpassingsplan (bestemmingsplan)', 'Een bepaling uit de provinciale verordening', 'De aanhouding van een beslissing omtrent een bouw-, sloop- of aanlegvergunning']);
         $property->setRequestType($requestType);
@@ -1382,12 +1455,12 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //aarde van de schade
+        //aard van de schade
         //recht op tegemoetkoming
         $id = Uuid::fromString('de2fe24a-4e99-41dc-a7a8-d776c909b739');
         $property = new Property();
         $property->setTitle('Waarom vind u dat u recht heeft op tegemoetkoming in planschade?');
-        $property->setType('string');
+        $property->setType('array');
         $property->setFormat('checkbox');
         $property->setEnum(['Het vervallen of beperken van eigen bouwmogelijkheden', 'Een inbreuk op de privacy door nieuwe bebouwing ', 'Het vervallen van een waardebepalend vrij uitzicht', 'Belemmering van bezonning', 'Onevenredige verslechtering van bereikbaarheid of parkeermogelijkheden ', 'Verslechtering milieuomstandigheden', 'Verslechtering van de situeringswaarde van het eigendom']);
         $property->setRequestType($requestType);
@@ -1446,5 +1519,443 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        /*
+         * Parkeervergunning Incidenteel
+         *
+         */
+        $id = Uuid::fromString('06ede3d9-2146-4250-a06b-00d1d4822a78');
+        $requestType = new RequestType();
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Parkeervergunning Incidenteel');
+        $requestType->setDescription('Parkeervergunning Incidenteel aanvragen.');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+        //Uw gegevens
+        // Telefoonnummer
+        $id = Uuid::fromString('89bb3781-56a7-4c3e-b121-1cb2f153badc');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setType('string');
+        $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
+        $property->setRequired(false);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // E-mailares
+        $id = Uuid::fromString('68990cc6-c8bb-4ae0-bf3a-6dcd38eb1577');
+        $property = new Property();
+        $property->setTitle('E-mailadres:');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // Herhaal e-mailadres
+        $id = Uuid::fromString('a736d736-af06-44f4-adde-a6083dc0f3ec');
+        $property = new Property();
+        $property->setTitle('Herhaal e-mailadres:');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //vergunning gegevens
+        // Kenteken
+        //voer het kenteken in
+        $id = Uuid::fromString('c7b529a5-a201-457d-b968-6b95254a6a12');
+        $property = new Property();
+        $property->setTitle('Voer het kenteken in met streepjes tussen de letter/cijfer-combinaties
+        (bijvoorbeeld 00-AB-AB of 00-ABC-0)');
+        $property->setType('string');
+        $property->setFormat('rdw');
+        $property->setExample('(00-AB-AB) of (00-ABC-0)');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // Vergunningsgegevens
+        //waarvoor heeft u een vergunning nodig?
+        $id = Uuid::fromString('4214131b-33c6-491d-a1ff-6631855a006d');
+        $property = new Property();
+        $property->setTitle('Waarvoor heeft u de vergunning nodig?');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // Gebied
+        $id = Uuid::fromString('55c56c50-1f9f-48fc-ba0c-303386bf296c');
+        $property = new Property();
+        $property->setTitle('Voor welk gebied heeft u de vergunning nodig?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Centrum', 'Noord Holland/ Venenlaankwartier of Grote Waal']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //Voor welke periode heeft u de vergunning nodig?
+        //De vergunning meot minimaal 1 week en mag maximaal 3 maanden van tevoren aangevraagd worden.
+        //De vergunning kan maximaal voor de duur van 1 jaar aangevraagd worden.
+
+        // Vanaf tot en met
+        $id = Uuid::fromString('9a5e4cfc-e67e-4163-a516-f1c133e49f59');
+        $property = new Property();
+        $property->setTitle('Voor welke periode heeft u de vergunning nodig?');
+        $property->setType('string');
+        $property->setFormat('tofrom-time');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //Machtiging stage 3
+        // Bankrekeningnummer
+        $id = Uuid::fromString('d5eafe00-910e-4f83-9f5b-f17cd9c5ed85');
+        $property = new Property();
+        $property->setTitle('Bankrekeningnummer');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // Op naam van
+        $id = Uuid::fromString('380b25c1-9cc5-41e0-90f9-413ad4fef80b');
+        $property = new Property();
+        $property->setTitle('Op naam van');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // Plaats
+        $id = Uuid::fromString('4d8bc0b6-f15a-4dba-be8e-8a3ae4ce7d07');
+        $property = new Property();
+        $property->setTitle('Plaats}');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // Akkoord
+        $id = Uuid::fromString('fac8ae29-a2ab-4576-88f8-01a68c59d368');
+        $property = new Property();
+        $property->setTitle('Akkoord');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        /*
+         *
+         * Ligplaats klein bootje
+         *
+         */
+
+        $id = Uuid::fromString('ebff7783-2a8a-482c-882b-9d478e7d0a12');
+        $requestType = new RequestType();
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Ligplaats klein bootje');
+        $requestType->setDescription('Via dit formulier vraagt u een ligplaats voor een klein bootje aan.');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+        //Wat is de gewenste locatie ligplaats?
+        $id = Uuid::fromString('ca4251ab-8c59-431a-b7c4-22f6805c387c');
+        $property = new Property();
+        $property->setTitle('Wat is de gewenste locatie ligplaats?');
+        $property->setDescription('Hier kunt u aangeven voor welke locatie u een ligplaatsvergunning wenst.');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['de Delft in Overveen - Kennemerpark e.o', 'Houtvaart tussen Aerdenhout en Haarlem - Houtvaartkade en t.h.v. Goudsbloemplein',
+            'Leidse Trekvaart en Beukenvaart - Bennebroek -Leidsevaart en Beukenlaan', 'Bennebroekervaart - Bennebroek - t.h.v. Van Lieroppark en Reek en Meerweg',
+            'Leidse Trekvaart - Vogelenzang - ten westen en oosten van spoorlijn', 'Bennebroekervaart - Haventje Bennebroek', ]);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //is het een nieuw of bestaand voertuig?
+        $id = Uuid::fromString('e509701b-aa0e-420f-8c69-9c0eed109ba0');
+        $property = new Property();
+        $property->setTitle('Is het een nieuw of bestaand vaartuig?');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Nieuw vaartuig', 'Bestaand vaartuig']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //soort vaartuig
+        $id = Uuid::fromString('0b234ca7-e3ba-4565-a3e5-fdf51c972a1d');
+        $property = new Property();
+        $property->setTitle('Soort vaartuig');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //naam vaartuig
+        $id = Uuid::fromString('7d4244f3-2deb-44d0-864c-9be410f03c99');
+        $property = new Property();
+        $property->setTitle('Naam vaartuig');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //lengte vaartuig
+        $id = Uuid::fromString('cdb311fb-8304-44b3-b9cb-88b02c0be648');
+        $property = new Property();
+        $property->setTitle('Lengte vaartuig (in cm)');
+        $property->setType('string');
+        $property->setFormat('number');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //breedte vaartuig
+        $id = Uuid::fromString('5020f873-2faf-4391-ba7a-a8e4da22d307');
+        $property = new Property();
+        $property->setTitle('Breedte vaartuig (in cm)');
+        $property->setType('string');
+        $property->setFormat('number');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //hoogte vaartuig
+        $id = Uuid::fromString('594b38f9-229a-453b-87a5-ec448be4375d');
+        $property = new Property();
+        $property->setTitle('Hoogte vaartuig (in cm)');
+        $property->setType('string');
+        $property->setFormat('number');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //wijze van voorstuwing
+        $id = Uuid::fromString('ab94af43-1036-46eb-ba84-fef19275206c');
+        $property = new Property();
+        $property->setTitle('Wijze van voorstuwing');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //kleur van de boot
+        $id = Uuid::fromString('76be117a-26d3-480e-8747-4a104dbca088');
+        $property = new Property();
+        $property->setTitle('Kleur van de boot');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //kenteken van de boot
+        $id = Uuid::fromString('e38cc577-cf07-4a08-ad4e-748c6c18707c');
+        $property = new Property();
+        $property->setTitle('Kenteken van de boot (indien kentekenplichtig)');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //toelichting
+        $id = Uuid::fromString('d7ea4d24-23f3-428f-a3d4-a655554eb5d6');
+        $property = new Property();
+        $property->setTitle('Toelichting');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //akkoord verklaring
+        $id = Uuid::fromString('689bec79-a955-4588-b889-3b90bb56147c');
+        $property = new Property();
+        $property->setTitle('Zijn alle gegevens naar waarheid ingevuld?');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //bijlagen
+        $id = Uuid::fromString('6356938a-1c34-456d-b006-963028c3aacd');
+        $property = new Property();
+        $property->setTitle('Foto van de boot');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //telefoonnummer
+        $id = Uuid::fromString('47c29397-4509-4d6d-9f26-13695cb68cc5');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setType('string');
+        $property->setFormat('phonenumber');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //e-mailadres
+        $id = Uuid::fromString('28b09e40-99e0-4dd4-be7b-b6e1b0f00f29');
+        $property = new Property();
+        $property->setTitle('Email-adres');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //Herhaal e-mailadres
+        $id = Uuid::fromString('2c47f95b-b940-4914-b35f-d0b516df29b8');
+        $property = new Property();
+        $property->setTitle('Email-adres');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //status bericht
+        $id = Uuid::fromString('9a5cb50d-9556-4154-afd7-ca4613cfed54');
+        $property = new Property();
+        $property->setTitle('Statusberichten via e-mail op dit e-mailadres ontvangen?');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setEnum(['Ja', 'Nee']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
     }
 }
