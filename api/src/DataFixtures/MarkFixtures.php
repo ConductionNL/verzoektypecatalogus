@@ -1839,7 +1839,7 @@ class MarkFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setEnum(['Berkhouterweg', 'Keern','Zuiderveld','Zwaag']);
+        $property->setEnum(['Berkhouterweg', 'Keern', 'Zuiderveld', 'Zwaag']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
