@@ -1958,7 +1958,6 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         /*
          * Contactformulier schuldhulpverlening
          *
@@ -2190,7 +2189,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         /*
          * Verzoek tot geheimhouding persoonsgegevens
@@ -2452,7 +2450,6 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         /*
         * Fraude melden
         *
@@ -2702,7 +2699,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         /*
         * Subsidie verantwoording
