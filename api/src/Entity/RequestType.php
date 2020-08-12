@@ -650,7 +650,7 @@ class RequestType
         return $this->templates;
     }
 
-    public function addTemplate(RequestType $template): self
+    public function addTemplate(Template $template): self
     {
         if (!$this->templates->contains($template)) {
             $this->templates[] = $template;
@@ -659,7 +659,7 @@ class RequestType
         return $this;
     }
 
-    public function removeTemplate(RequestType $template): self
+    public function removeTemplate(Template $template): self
     {
         if ($this->templates->contains($template)) {
             $this->templates->removeElement($template);
