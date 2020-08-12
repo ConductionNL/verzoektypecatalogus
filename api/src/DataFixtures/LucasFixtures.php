@@ -509,7 +509,6 @@ class LucasFixtures extends Fixture
         $property->setTitle('E-mailadres:');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -522,7 +521,6 @@ class LucasFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres:');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -536,7 +534,7 @@ class LucasFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Machtigingen incasso');
         $property->setDescription('Door ondertekening geek ik toestemming aan Parkeerdiesnten van de gemeente Amsterdam het volgende bedrag van mijn rekening af te schrijven.');
-        $property->setType('boolean');
+        $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setEnum(['€ 15', '€ 30', '€ 45', '€ 60', '€ 75']);
@@ -551,7 +549,7 @@ class LucasFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Automatisch opladen');
         $property->setDescription('Ik wil dat mijn parkeertegoed automatisch wordt verhoogd al is het lager dan.');
-        $property->setType('boolean');
+        $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setEnum(['€ 15', '€ 30', '€ 45', '€ 60', '€ 75']);
