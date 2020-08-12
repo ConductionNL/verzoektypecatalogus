@@ -258,7 +258,7 @@ class RequestType
     /**
      * @Groups({"read","write"})
      * @MaxDepth(1)
-     * @ORM\ManyToMany(targetEntity="App\Entity\Template", inversedBy="requestTypes")
+     * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="requestType", cascade={"persist"})
      */
     private $templates;
 
@@ -654,6 +654,7 @@ class RequestType
     {
         if (!$this->templates->contains($template)) {
             $this->templates[] = $template;
+            $template->setRequestType($this);
         }
 
         return $this;
@@ -663,6 +664,10 @@ class RequestType
     {
         if ($this->templates->contains($template)) {
             $this->templates->removeElement($template);
+            // set the owning side to null (unless already changed)
+            if ($template->getRequestType() === $this) {
+                $template->setRequestType(null);
+            }
         }
 
         return $this;
