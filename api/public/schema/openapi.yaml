@@ -9743,12 +9743,20 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
+<<<<<<< Updated upstream
         example: '2020-08-11 13:26:54'
+=======
+        example: '2020-08-12 10:53:32'
+>>>>>>> Stashed changes
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
+<<<<<<< Updated upstream
         example: '2020-08-11 13:26:54'
+=======
+        example: '2020-08-12 10:53:32'
+>>>>>>> Stashed changes
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9933,12 +9941,20 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
+<<<<<<< Updated upstream
         example: '2020-08-11 13:26:54'
+=======
+        example: '2020-08-12 10:53:32'
+>>>>>>> Stashed changes
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
+<<<<<<< Updated upstream
         example: '2020-08-11 13:26:54'
+=======
+        example: '2020-08-12 10:53:32'
+>>>>>>> Stashed changes
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -10147,12 +10163,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< Updated upstream
         example: '2020-08-11 13:26:54'
+=======
+        example: '2020-08-12 10:53:32'
+>>>>>>> Stashed changes
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< Updated upstream
         example: '2020-08-11 13:26:54'
+=======
+        example: '2020-08-12 10:53:32'
+>>>>>>> Stashed changes
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -10238,6 +10262,7 @@ definitions:
         maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
+<<<<<<< Updated upstream
         type: \DateTime
       dateModified:
         description: 'The moment this request last Modified'
@@ -10248,6 +10273,18 @@ definitions:
       - uri
       - type
   Template-write:
+=======
+        type: string
+        format: date-time
+        example: '2020-08-12 10:53:32'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-08-12 10:53:32'
+    required: []
+  ChangeLog-write:
+>>>>>>> Stashed changes
     properties:
       name:
         description: 'Name of the template'
@@ -10379,12 +10416,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< Updated upstream
         example: '2020-08-11 13:26:54'
+=======
+        example: '2020-08-12 10:53:32'
+>>>>>>> Stashed changes
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< Updated upstream
         example: '2020-08-11 13:26:54'
+=======
+        example: '2020-08-12 10:53:32'
+>>>>>>> Stashed changes
     required: []
   AuditTrail-write:
     properties:
