@@ -9,6 +9,7 @@ use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class WestFrieslandFixtures extends Fixture
@@ -52,6 +53,13 @@ class WestFrieslandFixtures extends Fixture
         $manager->persist($requestType);
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $template = new \App\Entity\Template();
+        $template->setName('HO Akte');
+        $template->setDescription('Ho Akte test document');
+        $template->setType('word');
+        $template->setUri('https://wrc.dev.zuid-drecht.nl/templates/9a974240-adce-4a47-a3e6-52c2e81e35ea');
+        $template->setRequestType($requestType);
 
         $id = Uuid::fromString('72fdd281-c60d-4e2d-8b7d-d266303bdc46');
         $property = new Property();
