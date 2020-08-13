@@ -59,6 +59,8 @@ class WestFrieslandFixtures extends Fixture
         $template->setType('word');
         $template->setUri('https://wrc.dev.zuid-drecht.nl/templates/9a974240-adce-4a47-a3e6-52c2e81e35ea');
         $template->setRequestType($requestType);
+        $manager->persist($template);
+        $manager->flush();
 
         $id = Uuid::fromString('72fdd281-c60d-4e2d-8b7d-d266303bdc46');
         $property = new Property();
