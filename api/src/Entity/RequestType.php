@@ -263,6 +263,40 @@ class RequestType
     private $templates;
 
     /**
+     * @var string The deposit requered for this process
+     *
+     * @example 50.00
+     *
+     * @Gedmo\Versioned
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="decimal", precision=8, scale=2, nullable=true)
+     */
+    private $deposit;
+
+    /**
+     * @var string The currency of the deposit price in an [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format
+     *
+     * @example EUR
+     *
+     * @Gedmo\Versioned
+     * @Assert\Currency
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $depositCurrency;
+
+    /**
+     * @var integer The deposit percentage requered for this proces
+     *
+     * @example 25
+     *
+     * @Gedmo\Versioned
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $depositpercentage;
+
+    /**
      * @var Datetime The moment this request was created
      *
      * @Groups({"read"})
@@ -672,4 +706,42 @@ class RequestType
 
         return $this;
     }
+
+    public function getDeposit()
+    {
+        return $this->deposit;
+    }
+
+    public function setDeposit($deposit): self
+    {
+        $this->deposit = $deposit;
+
+        return $this;
+    }
+
+    public function getDepositCurrency(): ?string
+    {
+        return $this->depositCurrency;
+    }
+
+    public function setDepositCurrency(string $depositCurrency): self
+    {
+        $this->depositCurrency = $depositCurrency;
+
+        return $this;
+    }
+
+
+    public function getDepositPercentage()
+    {
+        return $this->depositPercentage;
+    }
+
+    public function setDepositPercentage($depositPercentage): self
+    {
+        $this->depositPercentage = $depositPercentage;
+
+        return $this;
+    }
+
 }
