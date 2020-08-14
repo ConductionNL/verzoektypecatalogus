@@ -97,7 +97,7 @@ class LucasFixtures extends Fixture
         $requestType = new RequestType();
         $requestType->setName('Jeugdlintje aanvragen');
         $property->setTitle('Jeugdlintje aanvragen');
-        $requestType->setDescription('');
+        $requestType->setDescription('Doe hier een aanvraag voor een jeugdlintje voor iemand in de gemeenschap');
         $manager->persist($requestType);
         $requestType->setId($id);
         $manager->flush();
@@ -222,7 +222,8 @@ class LucasFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Wat is de relatie tussen de nomineerder en de jeugdige?');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('textarea');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -235,6 +236,7 @@ class LucasFixtures extends Fixture
         $property->setTitle('De jeugdige komt in aanmerking voor een jeugdlintje omdat:');
         $property->setType('string');
         $property->setFormat('textarea');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -344,6 +346,20 @@ class LucasFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        //Datum
+        $id = Uuid::fromString('e1df079b-22b1-4952-a333-b70384a93f01');
+        $property = new Property();
+        $property->setTitle('Datum:');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         /* End Jeugdlintje */
 
         /* Vraag Stellen */
@@ -509,7 +525,6 @@ class LucasFixtures extends Fixture
         $property->setTitle('E-mailadres:');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -522,7 +537,6 @@ class LucasFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres:');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -536,7 +550,7 @@ class LucasFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Machtigingen incasso');
         $property->setDescription('Door ondertekening geek ik toestemming aan Parkeerdiesnten van de gemeente Amsterdam het volgende bedrag van mijn rekening af te schrijven.');
-        $property->setType('boolean');
+        $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setEnum(['€ 15', '€ 30', '€ 45', '€ 60', '€ 75']);
@@ -551,7 +565,7 @@ class LucasFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Automatisch opladen');
         $property->setDescription('Ik wil dat mijn parkeertegoed automatisch wordt verhoogd al is het lager dan.');
-        $property->setType('boolean');
+        $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
         $property->setEnum(['€ 15', '€ 30', '€ 45', '€ 60', '€ 75']);
