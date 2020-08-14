@@ -97,7 +97,7 @@ class LucasFixtures extends Fixture
         $requestType = new RequestType();
         $requestType->setName('Jeugdlintje aanvragen');
         $property->setTitle('Jeugdlintje aanvragen');
-        $requestType->setDescription('');
+        $requestType->setDescription('Doe hier een aanvraag voor een jeugdlintje voor iemand in de gemeenschap');
         $manager->persist($requestType);
         $requestType->setId($id);
         $manager->flush();
