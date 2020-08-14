@@ -1877,7 +1877,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Extra informatie:');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('textarea');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2067,6 +2067,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Achternaam:');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
