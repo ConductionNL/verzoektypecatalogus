@@ -57,7 +57,16 @@ class WestFrieslandFixtures extends Fixture
         $template->setName('HO Akte');
         $template->setDescription('Ho Akte test document');
         $template->setType('word');
-        $template->setUri('https://wrc.dev.zuid-drecht.nl/templates/9a974240-adce-4a47-a3e6-52c2e81e35ea');
+        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'9a974240-adce-4a47-a3e6-52c2e81e35ea']));
+        $template->setRequestType($requestType);
+        $manager->persist($template);
+        $manager->flush();
+
+        $template = new \App\Entity\Template();
+        $template->setName('Ontvangs bevestiging');
+        $template->setDescription('Ontvangs bevestiging voor verzoeken');
+        $template->setType('pdf');
+        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'7a3d7d9a-269f-4699-a622-2ad0114d8e86']));
         $template->setRequestType($requestType);
         $manager->persist($template);
         $manager->flush();
