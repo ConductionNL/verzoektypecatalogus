@@ -180,5 +180,60 @@ class WestFrieslandFixtures extends Fixture
         $task->setTimeInterval('P0D'); // We zetten een vertraging van nul minuten zodat de taka meteen wordt uitgevoerd
 
         $manager->persist($task);
+
+        $id = Uuid::fromString('5223c58e-75a5-4a9d-86ca-47b77b4656e8');
+        $requestType = new RequestType();
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
+        $requestType->setIcon('fa fa-edit');
+        $requestType->setName('Wijzigings verzoek');
+        $requestType->setDescription('Met dit verzoek kunt u een reeds in behandeling zijnd verzoek wijzigen');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('6c5e6a94-1b31-4db3-97a7-c9a0bb3e6eda');
+        $property = new Property();
+        $property->setTitle('Wijziging');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setDescription('wat wil u wijzigen aan uw verzoek');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('5013042b-ffab-4933-9fd8-edfbc0c82b22');
+        $requestType = new RequestType();
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
+        $requestType->setIcon('fa fa-hand-paper');
+        $requestType->setName('Bezwaar');
+        $requestType->setDescription('Met dit verzoek kunt bezwaar maken tegen de uitkomst van een procedure');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+
+        $id = Uuid::fromString('efc8430d-73b5-44ae-a217-d95b663b7d09');
+        $property = new Property();
+        $property->setTitle('Argumentatie');
+        $property->setIcon('fal fa-map-marked');
+        $property->setType('string');
+        $property->setDescription('waarom maakt u bezwaar?');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
     }
 }
