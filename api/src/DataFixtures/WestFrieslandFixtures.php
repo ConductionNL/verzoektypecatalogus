@@ -129,7 +129,6 @@ class WestFrieslandFixtures extends Fixture
         $property->setQuery(['audience'=>'public', 'products.groups.id'=>'9f9a78cb-f708-447f-8795-23f6cf13c39d']);
         $property->setType('array');
         $property->setFormat('string');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
 
         $manager->persist($property);
