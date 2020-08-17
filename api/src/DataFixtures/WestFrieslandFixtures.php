@@ -129,7 +129,6 @@ class WestFrieslandFixtures extends Fixture
         $property->setQuery(['audience'=>'public', 'products.groups.id'=>'9f9a78cb-f708-447f-8795-23f6cf13c39d']);
         $property->setType('array');
         $property->setFormat('string');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
 
         $manager->persist($property);
@@ -219,7 +218,6 @@ class WestFrieslandFixtures extends Fixture
         $manager->persist($requestType);
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
-
 
         $id = Uuid::fromString('efc8430d-73b5-44ae-a217-d95b663b7d09');
         $property = new Property();
