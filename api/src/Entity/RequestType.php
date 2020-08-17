@@ -256,6 +256,13 @@ class RequestType
     private $camundaProces;
 
     /**
+     * @Groups({"read","write"})
+     * @MaxDepth(1)
+     * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="requestType", cascade={"persist"})
+     */
+    private $templates;
+
+    /**
      * @var Datetime The moment this request was created
      *
      * @Groups({"read"})
@@ -279,6 +286,7 @@ class RequestType
         $this->tasks = new ArrayCollection();
         $this->extendedBy = new ArrayCollection();
         $this->children = new ArrayCollection();
+        $this->templates = new ArrayCollection();
     }
 
     public function getId(): Uuid
@@ -630,6 +638,37 @@ class RequestType
     public function setParentRequired(bool $parentRequired): self
     {
         $this->parentRequired = $parentRequired;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Template[]
+     */
+    public function getTemplates(): Collection
+    {
+        return $this->templates;
+    }
+
+    public function addTemplate(Template $template): self
+    {
+        if (!$this->templates->contains($template)) {
+            $this->templates[] = $template;
+            $template->setRequestType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTemplate(Template $template): self
+    {
+        if ($this->templates->contains($template)) {
+            $this->templates->removeElement($template);
+            // set the owning side to null (unless already changed)
+            if ($template->getRequestType() === $this) {
+                $template->setRequestType(null);
+            }
+        }
 
         return $this;
     }
