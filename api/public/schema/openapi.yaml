@@ -9454,10 +9454,11 @@ components:
         type:
           description: 'Type of document you want to receive'
           type: string
-        requestTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestType-read'
+        requestType:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -9495,10 +9496,11 @@ components:
         type:
           description: 'Type of document you want to receive'
           type: string
-        requestTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestType-write'
+        requestType:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType-write'
     'Template:jsonld-read':
       type: object
       description: ''
@@ -9534,10 +9536,11 @@ components:
         type:
           description: 'Type of document you want to receive'
           type: string
-        requestTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestType:jsonld-read'
+        requestType:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType:jsonld-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -9584,10 +9587,11 @@ components:
         type:
           description: 'Type of document you want to receive'
           type: string
-        requestTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestType:jsonld-write'
+        requestType:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType:jsonld-write'
 definitions:
   Property-read:
     properties:
@@ -9743,20 +9747,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-<<<<<<< Updated upstream
-        example: '2020-08-11 13:26:54'
-=======
-        example: '2020-08-12 10:53:32'
->>>>>>> Stashed changes
+        example: '2020-08-17 08:42:27'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-<<<<<<< Updated upstream
-        example: '2020-08-11 13:26:54'
-=======
-        example: '2020-08-12 10:53:32'
->>>>>>> Stashed changes
+        example: '2020-08-17 08:42:27'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9941,20 +9937,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-<<<<<<< Updated upstream
-        example: '2020-08-11 13:26:54'
-=======
-        example: '2020-08-12 10:53:32'
->>>>>>> Stashed changes
+        example: '2020-08-17 08:42:27'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-<<<<<<< Updated upstream
-        example: '2020-08-11 13:26:54'
-=======
-        example: '2020-08-12 10:53:32'
->>>>>>> Stashed changes
+        example: '2020-08-17 08:42:27'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -10163,20 +10151,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< Updated upstream
-        example: '2020-08-11 13:26:54'
-=======
-        example: '2020-08-12 10:53:32'
->>>>>>> Stashed changes
+        example: '2020-08-17 08:42:27'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< Updated upstream
-        example: '2020-08-11 13:26:54'
-=======
-        example: '2020-08-12 10:53:32'
->>>>>>> Stashed changes
+        example: '2020-08-17 08:42:27'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -10262,29 +10242,16 @@ definitions:
         maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
-<<<<<<< Updated upstream
         type: \DateTime
       dateModified:
         description: 'The moment this request last Modified'
         type: \DateTime
-      requestTypes: []
+      requestType: []
     required:
       - name
       - uri
       - type
   Template-write:
-=======
-        type: string
-        format: date-time
-        example: '2020-08-12 10:53:32'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-08-12 10:53:32'
-    required: []
-  ChangeLog-write:
->>>>>>> Stashed changes
     properties:
       name:
         description: 'Name of the template'
@@ -10307,7 +10274,7 @@ definitions:
         type: string
         example: pdf
         maxLength: 255
-      requestTypes: []
+      requestType: []
     required:
       - name
       - uri
@@ -10416,20 +10383,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< Updated upstream
-        example: '2020-08-11 13:26:54'
-=======
-        example: '2020-08-12 10:53:32'
->>>>>>> Stashed changes
+        example: '2020-08-17 08:42:27'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< Updated upstream
-        example: '2020-08-11 13:26:54'
-=======
-        example: '2020-08-12 10:53:32'
->>>>>>> Stashed changes
+        example: '2020-08-17 08:42:27'
     required: []
   AuditTrail-write:
     properties:
@@ -10477,12 +10436,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-11 13:26:54'
+        example: '2020-08-17 08:42:27'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-11 13:26:54'
+        example: '2020-08-17 08:42:27'
     required: []
   ChangeLog-write:
     properties:
