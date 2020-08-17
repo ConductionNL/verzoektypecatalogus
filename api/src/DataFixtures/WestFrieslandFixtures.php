@@ -219,7 +219,6 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-
         $id = Uuid::fromString('efc8430d-73b5-44ae-a217-d95b663b7d09');
         $property = new Property();
         $property->setTitle('Argumentatie');
