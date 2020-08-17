@@ -127,6 +127,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setTitle('Artikelen');
         $property->setIri('pdc/offer');
         $property->setQuery(['audience'=>'public', 'products.groups.id'=>'9f9a78cb-f708-447f-8795-23f6cf13c39d']);
+        $property->setRequired(false);
         $property->setType('array');
         $property->setFormat('string');
         $property->setRequestType($requestType);
