@@ -3196,7 +3196,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        #misschien een voorbeeld foto van geslachtsnaam kind
+        //#misschien een voorbeeld foto van geslachtsnaam kind
 
         //4. Gegevens ouder
         //Gegevens moeder
@@ -3214,7 +3214,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        #ja
+        //#ja
         //voornamen
         $id = Uuid::fromString('04724836-2dd9-49a5-ba62-75b4ec88c75a');
         $property = new Property();
@@ -3267,7 +3267,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        #nee en vader/meemoeder
+        //#nee en vader/meemoeder
         //voornamen
         $id = Uuid::fromString('e11e7114-8799-4a38-b426-31e5b958fb99');
         $property = new Property();
@@ -3280,7 +3280,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         //achternaam
         $id = Uuid::fromString('36c34686-94c0-44c8-bb44-a6f70c8f4941');
@@ -3399,7 +3398,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        #moeder
+        //#moeder
         //Gegevens ouder
         $id = Uuid::fromString('d778b647-a981-4eec-bf5b-2a032f9f41bf');
         $property = new Property();
@@ -3414,7 +3413,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        #ja #nee
+        //#ja #nee
         //Woont de andere ouder op hetzelfde adres?
         $id = Uuid::fromString('5252aebf-cc48-4cd4-93a2-ca55a93bfa01');
         $property = new Property();
