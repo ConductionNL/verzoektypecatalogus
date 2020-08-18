@@ -153,6 +153,8 @@ class WestFrieslandFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('string');
         $property->setIri('irc/assent');
+        $property->setMaxItems(1);
+        $property->setDefaultValue('{{ app_user_person }}');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
