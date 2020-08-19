@@ -250,7 +250,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        id = Uuid::fromString('eb5ce9c9-5718-473d-8fc4-2896b1fb5ed5');
+        $id = Uuid::fromString('eb5ce9c9-5718-473d-8fc4-2896b1fb5ed5');
         $property = new Property();
         $property->setTitle('E-mail adres');
         $property->setType('string');
