@@ -98,10 +98,9 @@ class RequestType
      * @Assert\Length(
      *     max = 255
      * )
-     * @Assert\NotNull
      * @Assert\Url
      * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $organization;
 
@@ -145,7 +144,6 @@ class RequestType
      * @var Property[]|ArrayCollection The properties for this request type
      *
      * @Groups({"read"})
-     * @MaxDepth(1)
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
@@ -155,7 +153,6 @@ class RequestType
      * @var Property[]|ArrayCollection The tasks for this request type
      *
      * @Groups({"read"})
-     * @MaxDepth(1)
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
@@ -216,7 +213,6 @@ class RequestType
      * @var ArrayCollection|RequestType[] The children of this request type
      *
      * @Groups({"read", "write"})
-     * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\RequestType", mappedBy="parent")
      */
     private $children;
@@ -260,7 +256,6 @@ class RequestType
 
     /**
      * @Groups({"read","write"})
-     * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="requestType", cascade={"persist"})
      */
     private $templates;
