@@ -341,7 +341,6 @@ class TimFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
-
         // section 1  inloggen met digiD
 
         // section 2
@@ -496,4 +495,3 @@ class TimFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
     }
 }
-
