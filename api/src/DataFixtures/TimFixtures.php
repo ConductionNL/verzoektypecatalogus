@@ -329,6 +329,179 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
+
+// formulier gegevens inzien en aanpassen
+
+        $id = Uuid::fromString('4dcf25f2-c2dc-4a82-8a78-33e4d3d7241d');
+        $requestType = new RequestType();
+        $requestType->setOrganization('002220647');
+        $requestType->setName('formulier gegevens inzien en aanpassen');
+        $requestType->setDescription('hier kunt u uw eigen gegevens aanpassen en/of bekijken');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+
+// section 1  inloggen met digiD
+
+        // section 2
+        $id = Uuid::fromString('07a5c63f-faa2-4a50-8d56-6ac29eb2a20e');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setType('sting');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('858eedae-5cab-48ed-94fe-4607af1df047');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setType('sting');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('cad8e40a-ce4b-4c6d-a702-3d72f7910402');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setType('sting');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('d3070f7f-2762-4d8e-b05b-f36183f60a1e');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setType('sting');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('bdd227ca-b2f9-4847-8e40-eaddc070545e');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setType('sting');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('6c8ade97-1281-42db-af85-eaeca7385df2');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setType('sting');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('8de289e5-e361-4639-9b9e-5c2e88493b6b');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setType('sting');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //section 3
+        $id = Uuid::fromString('f44234ab-1e3e-403e-87a0-6b2945f84969');
+        $property = new Property();
+        $property->setTitle('maak uw keuze');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setEnum(['mijn  persoonsgegevens bekijken', 'mijn persoonsgegevens aanpassen of aanvullen',
+            'mijn persoonsgegevens verwijderen', 'mijn toestemming intrekken', 'mijn persoongegevens overdragen']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // section 4
+        $id = Uuid::fromString('a9c105be-3265-4ccb-bd48-c18a571d5fde');
+        $property = new Property();
+        $property->setTitle('redening voor product of dienst');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('fa528567-6f94-45f6-a2ca-bf8c2ba261a0');
+        $property = new Property();
+        $property->setTitle('zaaknummers');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1f4f5156-5528-4cdc-b8af-91ea7c60f771');
+        $property = new Property();
+        $property->setTitle('bijlage');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+
+        // section 5 controleren
+        $id = Uuid::fromString('f44234ab-1e3e-403e-87a0-6b2945f84969');
+        $property = new Property();
+        $property->setTitle('maak uw keuze');
+        $property->setType('boolian');
+        $property->setFormat('checkbox');
+        $property->setEnum(['ja']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+
+
+
+
     }
 }
 
