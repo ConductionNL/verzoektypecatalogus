@@ -1,4 +1,4 @@
-<?php
+<?
 
 namespace App\DataFixtures;
 
@@ -429,7 +429,7 @@ class TimFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //section 3
-        $id = Uuid::fromString('f44234ab-1e3e-403e-87a0-6b2945f84969');
+        $id = Uuid::fromString('195c7e03-e3f5-4c71-bf66-b023d9f1bfe9');
         $property = new Property();
         $property->setTitle('maak uw keuze');
         $property->setType('string');
