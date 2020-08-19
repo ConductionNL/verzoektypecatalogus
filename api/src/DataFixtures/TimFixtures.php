@@ -39,7 +39,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('898ba684-a579-4690-8a44-42f3bc7c132c');
         $property = new Property();
         $property->setTitle('aantal keer Uittreksels Basisregistratie personen (BRP) à € 8,77');
-        $property->setType('integer');
+        $property->setType('string');
         $property->setFormat('number');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -50,8 +50,8 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('2b248c60-8449-4a41-ae2d-0dfa9d7cfd71');
         $property = new Property();
-        $property->setTitle('Afschriften Burgerlijke stand à € 13,80');
-        $property->setType('integer');
+        $property->setTitle('aantal keer Afschriften Burgerlijke stand à € 13,80');
+        $property->setType('string');
         $property->setFormat('number');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -63,7 +63,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('fba5b39d-6694-4c53-962a-28529fbbab1d');
         $property = new Property();
         $property->setTitle('aantal keer Nalatenschap / Erfgenamenonderzoek à € 25,64');
-        $property->setType('integer');
+        $property->setType('string');
         $property->setFormat('number');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -347,7 +347,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('07a5c63f-faa2-4a50-8d56-6ac29eb2a20e');
         $property = new Property();
         $property->setTitle('voornaam');
-        $property->setType('sting');
+        $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -358,8 +358,8 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('858eedae-5cab-48ed-94fe-4607af1df047');
         $property = new Property();
-        $property->setTitle('voornaam');
-        $property->setType('sting');
+        $property->setTitle('achternaam');
+        $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -370,8 +370,8 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('cad8e40a-ce4b-4c6d-a702-3d72f7910402');
         $property = new Property();
-        $property->setTitle('voornaam');
-        $property->setType('sting');
+        $property->setTitle('adres');
+        $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -382,8 +382,8 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('d3070f7f-2762-4d8e-b05b-f36183f60a1e');
         $property = new Property();
-        $property->setTitle('voornaam');
-        $property->setType('sting');
+        $property->setTitle('postcode');
+        $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -394,8 +394,8 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('bdd227ca-b2f9-4847-8e40-eaddc070545e');
         $property = new Property();
-        $property->setTitle('voornaam');
-        $property->setType('sting');
+        $property->setTitle('woonplaats');
+        $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -406,10 +406,11 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('6c8ade97-1281-42db-af85-eaeca7385df2');
         $property = new Property();
-        $property->setTitle('voornaam');
-        $property->setType('sting');
+        $property->setTitle('E-mail adres');
+        $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
+        $property->setRequired(true);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -418,10 +419,11 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('8de289e5-e361-4639-9b9e-5c2e88493b6b');
         $property = new Property();
-        $property->setTitle('voornaam');
-        $property->setType('sting');
+        $property->setTitle('herhaal E-mail adres');
+        $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
+        $property->setRequired(true);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
