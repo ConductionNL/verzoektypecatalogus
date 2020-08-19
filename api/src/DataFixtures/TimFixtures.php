@@ -23,7 +23,7 @@ class TimFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-// formulier Inlichtingen BRP / Burgerlijke stand
+        // formulier Inlichtingen BRP / Burgerlijke stand
 
         $id = Uuid::fromString('d6b1f1ab-82f5-4a0d-b808-b0a63c72a201');
         $requestType = new RequestType();
@@ -35,7 +35,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
-// wat vraagt u aan?
+        // wat vraagt u aan?
         $id = Uuid::fromString('898ba684-a579-4690-8a44-42f3bc7c132c');
         $property = new Property();
         $property->setTitle('aantal keer Uittreksels Basisregistratie personen (BRP) à € 8,77');
@@ -250,7 +250,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        id = Uuid::fromString('eb5ce9c9-5718-473d-8fc4-2896b1fb5ed5');
+        $id = Uuid::fromString('eb5ce9c9-5718-473d-8fc4-2896b1fb5ed5');
         $property = new Property();
         $property->setTitle('E-mail adres');
         $property->setType('string');
@@ -263,7 +263,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        id = Uuid::fromString('cc0ceb38-1273-4668-b750-c4f7da9121b4');
+        $id = Uuid::fromString('cc0ceb38-1273-4668-b750-c4f7da9121b4');
         $property = new Property();
         $property->setTitle('herhaal E-mail adres');
         $property->setType('string');
@@ -329,8 +329,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
-// formulier gegevens inzien en aanpassen
+        // formulier gegevens inzien en aanpassen
 
         $id = Uuid::fromString('4dcf25f2-c2dc-4a82-8a78-33e4d3d7241d');
         $requestType = new RequestType();
@@ -342,8 +341,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
-
-// section 1  inloggen met digiD
+        // section 1  inloggen met digiD
 
         // section 2
         $id = Uuid::fromString('07a5c63f-faa2-4a50-8d56-6ac29eb2a20e');
@@ -436,8 +434,7 @@ class TimFixtures extends Fixture
         $property->setTitle('maak uw keuze');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setEnum(['mijn  persoonsgegevens bekijken', 'mijn persoonsgegevens aanpassen of aanvullen',
-            'mijn persoonsgegevens verwijderen', 'mijn toestemming intrekken', 'mijn persoongegevens overdragen']);
+        $property->setEnum(['mijn  persoonsgegevens bekijken', 'mijn persoonsgegevens aanpassen of aanvullen', 'mijn persoonsgegevens verwijderen', 'mijn toestemming intrekken', 'mijn persoongegevens overdragen']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -483,7 +480,6 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         // section 5 controleren
         $id = Uuid::fromString('f44234ab-1e3e-403e-87a0-6b2945f84969');
         $property = new Property();
@@ -497,11 +493,5 @@ class TimFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-
-
-
-
     }
 }
-
