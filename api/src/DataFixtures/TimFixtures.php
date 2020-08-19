@@ -318,7 +318,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('74125607-0c91-4037-813e-43b87df15972');
         $property = new Property();
         $property->setTitle('naar waarheid ingevult');
-        $property->setType('string');
+        $property->setType('boolian');
         $property->setFormat('checkbox');
         $property->setEnum(['ja']);
         $property->setRequired(true);
