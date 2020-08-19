@@ -45,12 +45,22 @@ class ZuiddrechtFixtures extends Fixture
         $requestType->setOrganization('002220647');
         $requestType->setName('Parkeer vergunning');
         $requestType->setDescription('Met dit procces start u de aanvraag voor een parkeer vergunning');
+        $requestType->setCaseType('https://openzaak.dev.zuid-drecht.nl/catalogi/api/v1/zaaktypen/1fd3595c-8964-4b15-806a-7349e1edb3b1');
         $requestType->setUnique(true);
         $manager->persist($requestType);
         $requestType->setId($id);
         $manager->persist($requestType);
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $template = new \App\Entity\Template();
+        $template->setName('Ontvangs bevestiging');
+        $template->setDescription('Ontvangs bevestiging voor verzoeken');
+        $template->setType('pdf');
+        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'bf8aff0a-ab65-4761-923b-890785c5d2fb']));
+        $template->setRequestType($requestType);
+        $manager->persist($template);
+        $manager->flush();
 
         $id = Uuid::fromString('0ab3fbc1-ee3c-40d6-881b-84b5b331710f');
         $property = new Property();
@@ -815,6 +825,7 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
+
         $manager->flush();
     }
 }
