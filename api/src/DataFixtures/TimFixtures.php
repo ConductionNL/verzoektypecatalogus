@@ -435,8 +435,7 @@ class TimFixtures extends Fixture
         $property->setTitle('maak uw keuze');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setEnum(['mijn  persoonsgegevens bekijken', 'mijn persoonsgegevens aanpassen of aanvullen',
-            'mijn persoonsgegevens verwijderen', 'mijn toestemming intrekken', 'mijn persoongegevens overdragen']);
+        $property->setEnum(['mijn  persoonsgegevens bekijken', 'mijn persoonsgegevens aanpassen of aanvullen', 'mijn persoonsgegevens verwijderen', 'mijn toestemming intrekken', 'mijn persoongegevens overdragen', ]);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
