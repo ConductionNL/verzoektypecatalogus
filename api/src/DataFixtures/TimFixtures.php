@@ -315,7 +315,7 @@ class TimFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //controleren
-        $id = Uuid::fromString('f423d067-1aba-44f3-ac77-3923a6c748c6');
+        $id = Uuid::fromString('74125607-0c91-4037-813e-43b87df15972');
         $property = new Property();
         $property->setTitle('naar waarheid ingevult');
         $property->setType('string');
