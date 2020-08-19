@@ -9747,12 +9747,20 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9937,12 +9945,20 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -10151,12 +10167,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -10383,12 +10407,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
     required: []
   AuditTrail-write:
     properties:
@@ -10436,12 +10468,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
+        example: '2020-08-12 11:09:28'
+=======
         example: '2020-08-17 09:20:45'
+>>>>>>> development
     required: []
   ChangeLog-write:
     properties:
