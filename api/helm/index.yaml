@@ -3,7 +3,7 @@ entries:
   vtc:
   - apiVersion: v1
     appVersion: V.0.1
-    created: "2020-08-19T11:37:51.730498712Z"
+    created: "2020-08-19T11:40:55.441905797Z"
     description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
       beschikbaar.
     digest: 15a994b2a13898420165bbc686ef329524980be3af1e746b49747718bb4b3a00
@@ -13,4 +13,4 @@ entries:
     urls:
     - vtc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-08-19T11:37:51.725326212Z"
+generated: "2020-08-19T11:40:55.436914697Z"
