@@ -792,5 +792,233 @@ class TimFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // formulier aanspraakelijk stellen
+        $id = Uuid::fromString('60f392ca-fdf7-497c-baef-6dfb44f1a56d');
+        $requestType = new RequestType();
+        $requestType->setOrganization('002220647');
+        $requestType->setName('formulier aanspraakelijk stellen');
+        $requestType->setDescription('met dit formulier kunt u schade aanspraakelijk stellen voor de gemeente');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+        //1e pagina
+        //belangrijke informatie
+        //Voor het invullen heeft u nodig:
+
+        //DigiD.
+        //Bijlage(n) om uw verhaal duidelijk te maken. Bijvoorbeeld: foto's, tekening van de situatie, offerte, nota of kassabon.
+        //inloggen via digiD
+
+        //2e pagina uw gegevens
+        $id = Uuid::fromString('b93ed2e5-28ea-4ea6-af32-2ff4e6f588c9');
+        $property = new Property();
+        $property->setTitle('voornamen');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('6442816e-4657-4eb2-9d1b-ace895d01bd0');
+        $property = new Property();
+        $property->setTitle('achternamen');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('0f7117f2-91bf-4718-99cf-f6334285e03e');
+        $property = new Property();
+        $property->setTitle('adres');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('7a64a89a-ed40-474f-bfda-2e597d55df4f');
+        $property = new Property();
+        $property->setTitle('postcode');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('e778b034-42fd-4675-a3de-98a557273d76');
+        $property = new Property();
+        $property->setTitle('woonplaats');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('bd8e85ec-5f4d-4dcf-b5b4-3b808460ad3b');
+        $property = new Property();
+        $property->setTitle('telefoonnummrt');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('93dd4314-22a6-49e4-aab8-ee2ea6c07703');
+        $property = new Property();
+        $property->setTitle('E-mail adres');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('d4686644-8093-47d3-b3f8-f32a6843c556');
+        $property = new Property();
+        $property->setTitle('herhaal E-mail adres');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+
+        //3e pagina schade
+        $id = Uuid::fromString('0aea6d71-cc37-4385-96aa-d0840ec98c63');
+        $property = new Property();
+        $property->setTitle('op welke datum is uw schade ontstaan?');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('76eef960-8900-4a48-8d4f-e713bf0482b9');
+        $property = new Property();
+        $property->setTitle('wat is het bedrag van de schade');
+        $property->setType('string');
+        $property->setFormat('number');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('b5d4615e-c4b6-46c4-961a-8bf3d603d8c5');
+        $property = new Property();
+        $property->setTitle('waar is de schade ontstaan');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('c6a5f469-33ed-45a1-ad97-12f0c8946247');
+        $property = new Property();
+        $property->setTitle('hoe is de schade ontstaan');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('f0cc0767-987b-4aa4-8679-4ef46a8f7e2b');
+        $property = new Property();
+        $property->setTitle('omschrijf de schade');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('7b128adb-c509-4758-83b9-73f4ed90d712');
+        $property = new Property();
+        $property->setTitle('waarom vind u dat de gemeente uw schade moet vergoeden?');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('bb217564-0cdc-4e4c-929d-540259eddfb2');
+        $property = new Property();
+        $property->setTitle('bijlage');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        // 4e pagina
+        $id = Uuid::fromString('1a195ef3-670b-40f6-8b69-c3f4e35a97d9');
+        $property = new Property();
+        $property->setTitle('controleren van gegevens');
+        $property->setType('boolain');
+        $property->setFormat('chechbox');
+        $property->setEnum(['ja']);
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
     }
 }
