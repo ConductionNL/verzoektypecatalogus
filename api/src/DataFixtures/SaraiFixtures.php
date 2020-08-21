@@ -4041,7 +4041,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Netto loon, uitkering');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4054,7 +4053,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Aow:');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4067,7 +4065,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Pensioen');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4080,7 +4077,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Alimentatie');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4093,7 +4089,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Heffingskortingen');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4106,7 +4101,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Vakantiegeld');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4119,7 +4113,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Zorgtoeslag');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4132,7 +4125,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Huurtoeslag');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4145,7 +4137,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Studiefinanciering');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4158,7 +4149,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Toeslag kinderopvang');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4171,7 +4161,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Voorlopige belastingteruggave');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4184,7 +4173,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Verhuur kamer(s)/ kostgangers');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4197,7 +4185,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Overige inkomsten');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4211,7 +4198,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Hypotheekrente');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4224,7 +4210,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Kale huur (incl. subsidiabele kosten)');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4237,7 +4222,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Ziektekostenpremie');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4250,7 +4234,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Alimentatie');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4263,7 +4246,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Kinderopvang');
         $property->setType('string');
         $property->setFormat('number');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
