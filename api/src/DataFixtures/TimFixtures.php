@@ -496,7 +496,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-// Aanvraagformulier mantelzorgwaardering
+        // Aanvraagformulier mantelzorgwaardering
 
         $id = Uuid::fromString('b5007212-5a5d-4203-ba82-704111ed678a');
         $requestType = new RequestType();
@@ -912,7 +912,6 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         //3e pagina schade
         $id = Uuid::fromString('0aea6d71-cc37-4385-96aa-d0840ec98c63');
         $property = new Property();
@@ -1019,6 +1018,5 @@ class TimFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
     }
 }
