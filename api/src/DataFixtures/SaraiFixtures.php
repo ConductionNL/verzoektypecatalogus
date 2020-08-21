@@ -4286,10 +4286,10 @@ class SaraiFixtures extends Fixture
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
         //1. Belangrijk
-        //Gaat u verhuizen naar de gemeente Hoorn?
+        //Gaat u verhuizen naar de gemeente Zuid-Drecht?
         $id = Uuid::fromString('eddeca63-ce31-4593-85b6-bd2f7ca4146a');
         $property = new Property();
-        $property->setTitle('Gaat u verhuizen naar de gemeente Hoorn?');
+        $property->setTitle('Gaat u verhuizen naar de gemeente Zuid-Drecht?');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
