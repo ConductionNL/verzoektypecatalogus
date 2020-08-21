@@ -23,7 +23,16 @@ class MarkFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        //JA/NEE sticker bestellen
+        if (
+            // If build all fixtures is true we build all the fixtures
+            !$this->params->get('app_build_all_fixtures') &&
+            // Specific domain names
+            $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
+            $this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false
+        ) {
+            return false;
+        }
 
         //reqeust type
         $id = Uuid::fromString('7e3998c0-4e9d-41e2-b9dc-f0840efc44d9');
