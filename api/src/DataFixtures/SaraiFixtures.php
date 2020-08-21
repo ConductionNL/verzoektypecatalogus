@@ -3737,10 +3737,10 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-      /*
-       * Nederlander worden
-       *
-       */
+       /*
+        * Nederlander worden
+        *
+        */
         $id = Uuid::fromString('19b72d6b-1614-43cd-8ea0-d99d006d0eff');
         $requestType = new RequestType();
         $requestType->setOrganization('002220647');
@@ -4000,8 +4000,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Kies de situatie die voor u van toepassing is');
         $property->setType('string');
         $property->setFormat('radio');
-        $property->setEnum(['alleenstaande, jonger dan 65', 'alleenstaande, 65 of ouder', 'alleenstaande ouder, jonger dan 65', 'alleenstaande ouder, ouder dan 65 jaar',
-            'partners, jonger dan 65', 'partners, waarvan één ouder dan 65', 'partners, waarvan beiden ouder dan 65']);
+        $property->setEnum(['alleenstaande, jonger dan 65', 'alleenstaande, 65 of ouder', 'alleenstaande ouder, jonger dan 65', 'alleenstaande ouder, ouder dan 65 jaar', 'partners, jonger dan 65', 'partners, waarvan één ouder dan 65', 'partners, waarvan beiden ouder dan 65']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
