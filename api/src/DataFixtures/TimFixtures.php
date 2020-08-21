@@ -75,7 +75,7 @@ class TimFixtures extends Fixture
         //bijlage toevoegen
         $id = Uuid::fromString('9b72c217-3186-4378-99b1-48cb74438f81');
         $property = new Property();
-        $property->setTitle('bijlage toevoegen');
+        $property->setTitle('bijlagen toevoegen');
         $property->setType('string');
         $property->setFormat('file');
         $property->setRequired(true);
@@ -252,7 +252,7 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('eb5ce9c9-5718-473d-8fc4-2896b1fb5ed5');
         $property = new Property();
-        $property->setTitle('E-mail adres');
+        $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
@@ -265,7 +265,7 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('cc0ceb38-1273-4668-b750-c4f7da9121b4');
         $property = new Property();
-        $property->setTitle('herhaal E-mail adres');
+        $property->setTitle('herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
@@ -318,7 +318,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('74125607-0c91-4037-813e-43b87df15972');
         $property = new Property();
         $property->setTitle('naar waarheid ingevult');
-        $property->setType('boolian');
+        $property->setType('string');
         $property->setFormat('checkbox');
         $property->setEnum(['ja']);
         $property->setRequired(true);
@@ -411,7 +411,7 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('6c8ade97-1281-42db-af85-eaeca7385df2');
         $property = new Property();
-        $property->setTitle('E-mail adres');
+        $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequestType($requestType);
@@ -424,7 +424,7 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('8de289e5-e361-4639-9b9e-5c2e88493b6b');
         $property = new Property();
-        $property->setTitle('herhaal E-mail adres');
+        $property->setTitle('herhaal E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequestType($requestType);
@@ -439,7 +439,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('195c7e03-e3f5-4c71-bf66-b023d9f1bfe9');
         $property = new Property();
         $property->setTitle('maak uw keuze');
-        $property->setType('string');
+        $property->setType('array');
         $property->setFormat('checkbox');
         $property->setEnum(['mijn  persoonsgegevens bekijken', 'mijn persoonsgegevens aanpassen of aanvullen', 'mijn persoonsgegevens verwijderen', 'mijn toestemming intrekken', 'mijn persoongegevens overdragen']);
         $property->setRequestType($requestType);
@@ -477,7 +477,7 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('1f4f5156-5528-4cdc-b8af-91ea7c60f771');
         $property = new Property();
-        $property->setTitle('bijlage');
+        $property->setTitle('bijlagen');
         $property->setType('string');
         $property->setFormat('file');
         $property->setRequestType($requestType);
@@ -491,7 +491,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('f44234ab-1e3e-403e-87a0-6b2945f84969');
         $property = new Property();
         $property->setTitle('maak uw keuze');
-        $property->setType('boolian');
+        $property->setType('string');
         $property->setFormat('checkbox');
         $property->setEnum(['ja']);
         $property->setRequestType($requestType);
@@ -526,7 +526,7 @@ class TimFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+        $propberty = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         $id = Uuid::fromString('d0322d63-d10f-4463-998e-09b569625c37');
         $property = new Property();
@@ -794,8 +794,8 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('1bebc7fc-ef67-4a2b-9999-628ea747a64d');
         $property = new Property();
         $property->setTitle('zijn de gegevens juist ingevult?');
-        $property->setType('boolian');
-        $property->setFormat('radio');
+        $property->setType('string');
+        $property->setFormat('checkbox');
         $property->setEnum(['ja']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -905,7 +905,7 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('93dd4314-22a6-49e4-aab8-ee2ea6c07703');
         $property = new Property();
-        $property->setTitle('E-mail adres');
+        $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
@@ -918,7 +918,7 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('d4686644-8093-47d3-b3f8-f32a6843c556');
         $property = new Property();
-        $property->setTitle('herhaal E-mail adres');
+        $property->setTitle('herhaal E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
@@ -1010,7 +1010,7 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('bb217564-0cdc-4e4c-929d-540259eddfb2');
         $property = new Property();
-        $property->setTitle('bijlage');
+        $property->setTitle('bijlagen');
         $property->setType('string');
         $property->setFormat('file');
         $property->setRequired(true);
@@ -1025,7 +1025,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('1a195ef3-670b-40f6-8b69-c3f4e35a97d9');
         $property = new Property();
         $property->setTitle('controleren van gegevens');
-        $property->setType('boolain');
+        $property->setType('boolean');
         $property->setFormat('chechbox');
         $property->setEnum(['ja']);
         $property->setRequired(true);
