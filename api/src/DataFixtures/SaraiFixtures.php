@@ -900,8 +900,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('4b27eeea-7a1e-4660-8b4b-85c8d63b2371');
         $property = new Property();
         $property->setTitle('E-mailadres');
-        $property->setType('email');
-        $property->setFormat('text');
+        $property->setType('string');
+        $property->setFormat('email');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
