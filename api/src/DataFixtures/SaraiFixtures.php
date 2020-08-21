@@ -41,7 +41,7 @@ class SaraiFixtures extends Fixture
 
         $id = Uuid::fromString('ffa22c00-6622-4cf3-8e97-682459a28d2d');
         $requestType = new RequestType();
-        $requestType->setOrganization('1');
+        $requestType->setOrganization('002220647');
         $requestType->setName('Aanmeldformulier: direct zorg aanvragen');
         $requestType->setDescription('Dit formulier is voor bewoners van Zuid Drecht die zorg en/of ondersteuning nodig hebben.');
         $manager->persist($requestType);
@@ -69,10 +69,9 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('e5b77291-5ba1-49f3-a8c7-0e94a1df0dfe');
         $property = new Property();
         $property->setTitle('Betreft het een verlenging van de huidige zorg?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -189,10 +188,9 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('688a2e68-55c3-4dde-aaf6-339b918ae137');
         $property = new Property();
         $property->setTitle('Spreekt u Nederlands?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -276,9 +274,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('cc9d2eba-b050-46e2-bc90-407e0bde4baf');
         $property = new Property();
         $property->setTitle('Zijn er zorgen over de veiligheid van (één van) de gezinsleden?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -323,7 +320,7 @@ class SaraiFixtures extends Fixture
 
         $id = Uuid::fromString('a535b49a-6a0c-4010-b14d-25b850b32380');
         $requestType = new RequestType();
-        $requestType->setOrganization('1');
+        $requestType->setOrganization('002220647');
         $requestType->setName('Afschrift Burgerlijke Stand');
         $requestType->setDescription('Vraag hier een afschrift aan');
         $manager->persist($requestType);
@@ -352,10 +349,9 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('15c6173a-a826-4dae-a2e0-3ba91ec83aa5');
         $property = new Property();
         $property->setTitle('Is de akte gemaakt in de gemeente Zuid Drecht?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -842,9 +838,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('6d6f8b0c-2446-4043-9e94-3f3d6bf097e1');
         $property = new Property();
         $property->setTitle('Zijn de direct omwonende akkoord?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -952,9 +947,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('97c5aa5c-9d03-4401-b95e-debcabe6523e');
         $property = new Property();
         $property->setTitle('Is het gebouw vóór 1950 gebouwd?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1759,9 +1753,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('bc564bc6-e47d-413e-b1f8-72c9e7fd72c7');
         $property = new Property();
         $property->setTitle('Is de schade anderzins vergoed?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2254,7 +2247,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Statusberichten via e-mail op dit e-mailadres ontvangen?');
         $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2298,9 +2290,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('fe566195-405e-43fa-802f-7b9240caf872');
         $property = new Property();
         $property->setTitle('Bent u werkzaam als zelfstandig ondernemer?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2314,9 +2305,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('1a2b9a41-0d36-4fb7-b57f-b47e90e6df7e');
         $property = new Property();
         $property->setTitle('Is er sprake van een definitieve datum voor ontruiming/afsluiting?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2330,9 +2320,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('13116bd7-ffea-452a-969b-e094b42a0695');
         $property = new Property();
         $property->setTitle('Heeft u een bewindvoerder?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2392,9 +2381,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('7189aa48-5dc2-4196-b7de-adab3ef17069');
         $property = new Property();
         $property->setTitle('Bent u gehuwd/geregistreerd partner onder huwelijkse voorwaarden/partnerschapsvoorwaarden?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2407,9 +2395,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('f7fd5290-dce2-4a6a-9bef-be79b8702a8c');
         $property = new Property();
         $property->setTitle('Heeft uw partner ook schulden?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2895,7 +2882,6 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Maakt de persoon, over wie u de melding doet, gebruik van voertuigen?');
         $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -3275,9 +3261,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('751b828d-b129-43ed-ac39-9ed7ac86eeec');
         $property = new Property();
         $property->setTitle('Heeft u al een melding gedaan?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -3290,9 +3275,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('b68aeaca-ee68-4547-b7dc-1c2312197c96');
         $property = new Property();
         $property->setTitle('Is uw kind geboren in de gemeente?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -3570,9 +3554,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('fa71df86-6746-48a0-bfb8-71c27f84645e');
         $property = new Property();
         $property->setTitle('Woont de moeder op hetzelfde adres als de vader of meemoeder?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -3769,9 +3752,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('d778b647-a981-4eec-bf5b-2a032f9f41bf');
         $property = new Property();
         $property->setTitle('Is er nog een ouder?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -3784,9 +3766,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('5252aebf-cc48-4cd4-93a2-ca55a93bfa01');
         $property = new Property();
         $property->setTitle('Woont de andere ouder op hetzelfde adres?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -4610,9 +4591,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('eddeca63-ce31-4593-85b6-bd2f7ca4146a');
         $property = new Property();
         $property->setTitle('Gaat u verhuizen naar de gemeente Zuid-Drecht?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -4799,9 +4779,8 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('49ae832e-4c4a-4901-941e-c02ef3c4a930');
         $property = new Property();
         $property->setTitle('Verhuizen er gezinsleden mee?');
-        $property->setType('string');
+        $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setEnum(['Ja', 'Nee']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
