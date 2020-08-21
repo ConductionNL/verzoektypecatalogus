@@ -3737,10 +3737,10 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-       /*
-        * Nederlander worden
-        *
-        */
+        /*
+         * Nederlander worden
+         *
+         */
         $id = Uuid::fromString('19b72d6b-1614-43cd-8ea0-d99d006d0eff');
         $requestType = new RequestType();
         $requestType->setOrganization('002220647');
