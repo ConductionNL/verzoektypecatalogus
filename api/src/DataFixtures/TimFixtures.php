@@ -349,6 +349,7 @@ class TimFixtures extends Fixture
         $property->setTitle('voornaam');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).naam.voornamen}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -361,6 +362,7 @@ class TimFixtures extends Fixture
         $property->setTitle('achternaam');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).naam.geslachtsnaam}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -373,6 +375,7 @@ class TimFixtures extends Fixture
         $property->setTitle('adres');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.straatnaam}} ' and ' {{commonground_resource(app.user.persoon).verblijfplaats.huisnummer}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -385,6 +388,7 @@ class TimFixtures extends Fixture
         $property->setTitle('postcode');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.postcode}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -397,6 +401,7 @@ class TimFixtures extends Fixture
         $property->setTitle('woonplaats');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.woonplaatsnaam}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -515,6 +520,7 @@ class TimFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).naam.voornamen}}' and '{{commonground_resource(app.user.persoon).naam.geslachtsnaam}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -528,6 +534,7 @@ class TimFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.postcode}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -541,6 +548,7 @@ class TimFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.huinummer}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -553,6 +561,7 @@ class TimFixtures extends Fixture
         $property->setTitle('huisletter');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.huisletter}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -565,6 +574,7 @@ class TimFixtures extends Fixture
         $property->setTitle('huisnummer toevoeging');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.huisnummertoevoeging}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -578,6 +588,7 @@ class TimFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.straatnaam}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -591,6 +602,7 @@ class TimFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.woonplaatsnaam}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -754,7 +766,7 @@ class TimFixtures extends Fixture
         //3e pagina
         $id = Uuid::fromString('86906596-ab1a-43bc-bd15-36cf3e71d78c');
         $property = new Property();
-        $property->setTitle('aantal uur per wwek');
+        $property->setTitle('aantal uur per week');
         $property->setType('string');
         $property->setFormat('number');
         $property->setRequired(true);
@@ -818,6 +830,7 @@ class TimFixtures extends Fixture
         $property->setTitle('voornamen');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).naam.voornamen}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -830,6 +843,7 @@ class TimFixtures extends Fixture
         $property->setTitle('achternamen');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).naam.geslachtsnaam}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -842,6 +856,7 @@ class TimFixtures extends Fixture
         $property->setTitle('adres');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.straatnaam}}' and '{{commonground_resource(app.user.persoon).verblijfplaats.huisnummer}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -854,6 +869,7 @@ class TimFixtures extends Fixture
         $property->setTitle('postcode');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.postcode}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -866,6 +882,7 @@ class TimFixtures extends Fixture
         $property->setTitle('woonplaats');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setDefaultValue('{{commonground_resource(app.user.persoon).verblijfplaats.woonplaatsnaam}}');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -875,9 +892,9 @@ class TimFixtures extends Fixture
 
         $id = Uuid::fromString('bd8e85ec-5f4d-4dcf-b5b4-3b808460ad3b');
         $property = new Property();
-        $property->setTitle('telefoonnummrt');
+        $property->setTitle('telefoonnummer');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('phonenumber');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -911,7 +928,6 @@ class TimFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         //3e pagina schade
         $id = Uuid::fromString('0aea6d71-cc37-4385-96aa-d0840ec98c63');

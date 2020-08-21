@@ -369,8 +369,8 @@ class LucasFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
         /* End Jeugdlintje */
+
 
         /* Vraag Stellen */
         //Omschrijving
@@ -664,7 +664,6 @@ class LucasFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         // Uw aanvraag
-
         $id = Uuid::fromString('2c039392-2a56-44eb-bccd-abff50a738be');
         $property = new Property();
         $property->setTitle('Is dit uw eerste koopwoning?');
