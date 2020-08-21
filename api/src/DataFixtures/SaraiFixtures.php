@@ -83,7 +83,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //postcode
-        $id = Uuid::fromString('f17d1d5b-2d0d-4fa6-b674-491dadc5601d');
+        $id = Uuid::fromString('2a33e22a-b9de-46e9-89d5-0bd2da2cceba');
         $property = new Property();
         $property->setTitle('Postcode');
         $property->setType('string');
