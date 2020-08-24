@@ -57,7 +57,7 @@ class WestFrieslandFixtures extends Fixture
         $template->setName('HO Akte');
         $template->setDescription('Ho Akte test document');
         $template->setType('word');
-        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'9a974240-adce-4a47-a3e6-52c2e81e35ea']));
+        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'3807993a-ed98-4570-8a05-09c9454bcac5']));
         $template->setRequestType($requestType);
         $manager->persist($template);
         $manager->flush();
@@ -154,7 +154,6 @@ class WestFrieslandFixtures extends Fixture
         $property->setFormat('string');
         $property->setIri('irc/assent');
         $property->setMaxItems(1);
-        $property->setDefaultValue('{{ app.user.person }}');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
