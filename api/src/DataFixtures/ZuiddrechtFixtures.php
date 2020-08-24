@@ -559,6 +559,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setFormat('url');
         $property->setIri('irc/assent');
         $property->setMinItems(2);
+        $property->setDefaultValue('{{ app.user.person }}');
         $property->setMaxItems(2);
         $property->setRequired(true);
         $property->setDescription('Wie zijn de partners binnen dit huwelijk / partnerschap?');

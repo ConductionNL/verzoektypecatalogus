@@ -9743,12 +9743,28 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9933,12 +9949,28 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -10146,12 +10178,28 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -10378,12 +10426,28 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
     required: []
   AuditTrail-write:
     properties:
@@ -10393,6 +10457,10 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> development
   ChangeLog-read:
     properties:
       id:
@@ -10431,12 +10499,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+        example: '2020-08-21 09:47:43'
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
+<<<<<<< HEAD
         example: '2020-08-22 13:00:32'
+=======
+        example: '2020-08-21 09:47:43'
+>>>>>>> development
     required: []
   ChangeLog-write:
     properties:
@@ -10446,6 +10522,11 @@ definitions:
         example: 'This log line is suspicius'
         maxLength: 2555
     required: []
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> development
+>>>>>>> development
 tags:
   -
     name: Property
