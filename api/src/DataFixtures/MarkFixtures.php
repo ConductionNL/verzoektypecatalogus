@@ -40,7 +40,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Welke sticker wilt u hebben?');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('radio');
         $property->setRequired(true);
         $property->setEnum(['NEE/JA (u krijgt geen reclamedrukwerk, maar wel huis-aan-huisbladen)', 'NEE/NEE (u krijgt geen reclamedrukwerk en geen huis-aan-huisbladen)']);
         $property->setRequestType($requestType);
@@ -144,6 +144,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Voor welke kosten wilt u bijzondere bijstand aanvragen?');
         $property->setType('string');
         $property->setFormat('textarea');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -155,7 +156,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Telefoon');
         $property->setType('string');
-        $property->setFormat('tel');
+        $property->setFormat('phonenumber');
         $property->setDescription('telefoon nummer:');
         $property->setRequired(true);
         $property->setRequestType($requestType);
