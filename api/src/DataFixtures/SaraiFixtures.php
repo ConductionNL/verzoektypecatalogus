@@ -4463,7 +4463,6 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         //Herhaal e-mailadres
         $id = Uuid::fromString('802bc991-6ffe-4c2a-8ff8-55caf97cc9ae');
         $property = new Property();
@@ -4477,7 +4476,6 @@ class SaraiFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
 
         //3. Uw verhuizing
         //section - Uw nieuwe adres
