@@ -371,7 +371,6 @@ class LucasFixtures extends Fixture
         $manager->flush();
         /* End Jeugdlintje */
 
-
         /* Vraag Stellen */
         //Omschrijving
         $id = Uuid::fromString('cf2482fd-5bed-4843-8f54-895cabdf6251');
