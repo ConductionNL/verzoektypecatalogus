@@ -535,9 +535,10 @@ class MarkFixtures extends Fixture
         //bedrijfnaam
         $id = Uuid::fromString('889d5fc0-6709-42c5-b910-b992638e2755');
         $property = new Property();
-        $property->setTitle('Naam bedrijf:');
+        $property->setTitle('Naam:');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -549,7 +550,8 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('KvK-nummer:');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('kvk');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -559,10 +561,11 @@ class MarkFixtures extends Fixture
         //Adres bedrijf
         $id = Uuid::fromString('b2163bf1-1247-4670-a146-d9bd2ce703ef');
         $property = new Property();
-        $property->setTitle('Adres bedrijf');
+        $property->setTitle('Adres');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
+        $property->setRequired(true);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -571,9 +574,23 @@ class MarkFixtures extends Fixture
         //postcode bedrijf
         $id = Uuid::fromString('9d3e1f91-51c3-4c55-9440-0e09aa19957a');
         $property = new Property();
-        $property->setTitle('Postcode en woonplaats bedrijf:');
+        $property->setTitle('Postcode:');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //woonplaats
+        $id = Uuid::fromString('2913ff39-5888-452c-9171-0594d47c9513');
+        $property = new Property();
+        $property->setTitle('Plaats:');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -846,7 +863,7 @@ class MarkFixtures extends Fixture
         //beroep horecawet
         $id = Uuid::fromString('a61c80cb-54d6-415a-8e46-ef5caa9fbd09');
         $property = new Property();
-        $property->setTitle('Wilt U beroep doen op artiekel 46 van de drank en horecawet?');
+        $property->setTitle('Wilt u beroep doen op artiekel 46 van de drank en horecawet?');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
