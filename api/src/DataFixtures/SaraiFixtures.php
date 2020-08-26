@@ -1839,7 +1839,7 @@ class SaraiFixtures extends Fixture
         // Plaats
         $id = Uuid::fromString('4d8bc0b6-f15a-4dba-be8e-8a3ae4ce7d07');
         $property = new Property();
-        $property->setTitle('Plaats}');
+        $property->setTitle('Plaats');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
