@@ -460,6 +460,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -473,6 +474,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -533,6 +535,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -633,8 +636,9 @@ class SaraiFixtures extends Fixture
         $id = Uuid::fromString('0f48762c-d6c6-42fe-a682-77c2d047e107');
         $property = new Property();
         $property->setTitle('E-mailadres');
-        $property->setType('email');
-        $property->setFormat('text');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -649,6 +653,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -854,6 +859,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -868,6 +874,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1225,6 +1232,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('email');
         $property->setFormat('text');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1239,6 +1247,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1581,6 +1590,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1595,6 +1605,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1723,6 +1734,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres:');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1737,6 +1749,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres:');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2103,6 +2116,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Email-adres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2117,6 +2131,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Email-adres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2318,6 +2333,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2332,6 +2348,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2404,6 +2421,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2418,6 +2436,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2844,6 +2863,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2857,6 +2877,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2931,6 +2952,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2945,6 +2967,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -3151,6 +3174,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -3165,6 +3189,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -4029,6 +4054,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -4043,6 +4069,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -4483,6 +4510,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('E-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -4497,6 +4525,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Herhaal e-mailadres');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setExample('example@hotmail.com');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
