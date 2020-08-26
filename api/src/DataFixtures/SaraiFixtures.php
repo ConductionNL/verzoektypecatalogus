@@ -1796,9 +1796,23 @@ class SaraiFixtures extends Fixture
         // Vanaf tot en met
         $id = Uuid::fromString('9a5e4cfc-e67e-4163-a516-f1c133e49f59');
         $property = new Property();
-        $property->setTitle('Voor welke periode heeft u de vergunning nodig?');
+        $property->setTitle('Vanaf');
         $property->setType('string');
-        $property->setFormat('tofrom-time');
+        $property->setFormat('date');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //tot en met
+        $id = Uuid::fromString('39522b70-6f87-4b99-9d9d-5037ce020c49');
+        $property = new Property();
+        $property->setTitle('Tot en met');
+        $property->setType('string');
+        $property->setFormat('date');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
