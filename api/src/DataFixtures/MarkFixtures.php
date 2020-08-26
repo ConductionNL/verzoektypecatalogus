@@ -2473,7 +2473,6 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-
         $id = Uuid::fromString('4feaec4f-eee3-4083-b2ca-558caaeb1b85');
         $property = new Property();
         $property->setTitle('Wat is de reden van verandering?');
