@@ -12,7 +12,7 @@ info:
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/vtc-php) 
     - Datamodel: [postman](/schema/vtc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
     
-    'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
+    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
 paths:
   /audit_trails:
@@ -6582,6 +6582,1096 @@ paths:
             schema:
               $ref: '#/components/schemas/Task-write'
         description: 'The updated Task resource'
+  /templates:
+    get:
+      tags:
+        - Template
+      operationId: getTemplateCollection
+      summary: 'Retrieves the collection of Template resources.'
+      responses:
+        200:
+          description: 'Template collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Template:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Template:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            application/json+vnd.api:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template-read'
+      parameters:
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[name]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[description]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[uri]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[type]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: id
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'id[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'name[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: description
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'description[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: uri
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'uri[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: type
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'type[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: dateCreated
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: dateModified
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - Template
+      operationId: postTemplateCollection
+      summary: 'Creates a Template resource.'
+      responses:
+        201:
+          description: 'Template resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+          links:
+            GetTemplateItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getTemplateItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /templates/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Template:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Template:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+        description: 'The new Template resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/templates/{id}':
+    get:
+      tags:
+        - Template
+      operationId: getTemplateItem
+      summary: 'Retrieves a Template resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Template resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+    put:
+      tags:
+        - Template
+      operationId: putTemplateItem
+      summary: 'Replaces the Template resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Template resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Template:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Template:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Template-write'
+        description: 'The updated Template resource'
+    delete:
+      tags:
+        - Template
+      operationId: deleteTemplateItem
+      summary: 'Removes the Template resource.'
+      responses:
+        204:
+          description: 'Template resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/templates/{id}/audit_trail':
+    get:
+      tags:
+        - Template
+      operationId: get_audit_trailTemplateItem
+      summary: 'Retrieves a Template resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Template resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  '/templates/{id}/change_log':
+    get:
+      tags:
+        - Template
+      operationId: get_change_logsTemplateItem
+      summary: 'Retrieves a Template resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Template resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Template:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Template-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
 components:
   schemas:
     AuditTrail-read:
@@ -7858,6 +8948,10 @@ components:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -7869,14 +8963,10 @@ components:
           format: date-time
           nullable: true
       required:
-        - organization
         - name
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
-      required:
-        - organization
-        - name
       properties:
         organization:
           description: 'A specific commonground organisation'
@@ -7921,6 +9011,12 @@ components:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template-write'
+      required:
+        - name
     'RequestType:jsonld-read':
       type: object
       description: 'All properties contained in the RequestType type.'
@@ -7996,6 +9092,10 @@ components:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template:jsonld-read'
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -8007,14 +9107,10 @@ components:
           format: date-time
           nullable: true
       required:
-        - organization
         - name
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
-      required:
-        - organization
-        - name
       properties:
         '@context':
           readOnly: true
@@ -8068,6 +9164,12 @@ components:
           description: 'The default camunda proces that is started when submiting this request'
           type: string
           nullable: true
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template:jsonld-write'
+      required:
+        - name
     Task-read:
       type: object
       description: ''
@@ -8322,6 +9424,170 @@ components:
           description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
           type: string
           nullable: true
+    Template-read:
+      type: object
+      description: ''
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this resource'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        name:
+          description: 'Name of the template'
+          type: string
+        description:
+          description: 'Description of the template'
+          type: string
+          nullable: true
+        uri:
+          description: 'The uri of the template in WRC'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        type:
+          description: 'Type of document you want to receive'
+          type: string
+        requestType:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType-read'
+        dateCreated:
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - name
+        - uri
+        - type
+    Template-write:
+      type: object
+      description: ''
+      required:
+        - name
+        - uri
+        - type
+      properties:
+        name:
+          description: 'Name of the template'
+          type: string
+        description:
+          description: 'Description of the template'
+          type: string
+          nullable: true
+        uri:
+          description: 'The uri of the template in WRC'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        type:
+          description: 'Type of document you want to receive'
+          type: string
+        requestType:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType-write'
+    'Template:jsonld-read':
+      type: object
+      description: ''
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this resource'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        name:
+          description: 'Name of the template'
+          type: string
+        description:
+          description: 'Description of the template'
+          type: string
+          nullable: true
+        uri:
+          description: 'The uri of the template in WRC'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        type:
+          description: 'Type of document you want to receive'
+          type: string
+        requestType:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType:jsonld-read'
+        dateCreated:
+          description: 'The moment this request was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this request last Modified'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - name
+        - uri
+        - type
+    'Template:jsonld-write':
+      type: object
+      description: ''
+      required:
+        - name
+        - uri
+        - type
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        name:
+          description: 'Name of the template'
+          type: string
+        description:
+          description: 'Description of the template'
+          type: string
+          nullable: true
+        uri:
+          description: 'The uri of the template in WRC'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+        type:
+          description: 'Type of document you want to receive'
+          type: string
+        requestType:
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/RequestType:jsonld-write'
 definitions:
   Property-read:
     properties:
@@ -8477,12 +9743,28 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-07-28 11:31:30'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-07-28 11:31:30'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8667,12 +9949,28 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-07-28 11:31:30'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-07-28 11:31:30'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8713,6 +10011,7 @@ definitions:
         description: 'A specific commonground organisation'
         type: string
         example: 'https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f'
+        maxLength: 255
         format: url
       icon:
         description: 'The icon of this property'
@@ -8765,8 +10064,8 @@ definitions:
       parent:
         description: 'The parent of this request type'
         type: \RequestType
+      templates: []
     required:
-      - organization
       - name
   RequestType-write:
     properties:
@@ -8774,6 +10073,7 @@ definitions:
         description: 'A specific commonground organisation'
         type: string
         example: 'https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f'
+        maxLength: 255
         format: url
       icon:
         description: 'The icon of this property'
@@ -8814,8 +10114,8 @@ definitions:
       parent:
         description: 'The parent of this request type'
         type: \RequestType
+      templates: []
     required:
-      - organization
       - name
   RequestType-write-requesttype:
     properties:
@@ -8823,7 +10123,6 @@ definitions:
         description: 'The requestType that this requestType extends'
         type: object
     required:
-      - organization
       - name
   Task-read:
     properties:
@@ -8879,12 +10178,28 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-07-28 11:31:30'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-07-28 11:31:30'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -8940,59 +10255,73 @@ definitions:
         type: object
     required:
       - name
-  ChangeLog-read:
+  Template-read:
     properties:
       id:
-        description: 'The UUID identifier of this object'
+        description: 'The UUID identifier of this resource'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      note:
-        description: 'A note conserning this log lin'
+      name:
+        description: 'Name of the template'
         type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
+        example: 'Person info Document'
+        maxLength: 255
+      description:
+        description: 'Description of the template'
         type: string
-      objectId:
-        description: ''
+        example: 'This document is about a person'
+        maxLength: 255
+      uri:
+        description: 'The uri of the template in WRC'
         type: string
-      objectClass:
-        description: ''
+        example: 'https://wrc.dev.zuid-drecht.nl/templates/6d38b11f-2edb-4a4e-894a-5b4677da2c53'
+        maxLength: 255
+        format: url
+      type:
+        description: 'Type of document you want to receive'
         type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
+        example: pdf
         maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-07-28 11:31:30'
+        type: \DateTime
       dateModified:
         description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-07-28 11:31:30'
-    required: []
-  ChangeLog-write:
+        type: \DateTime
+      requestType: []
+    required:
+      - name
+      - uri
+      - type
+  Template-write:
     properties:
-      note:
-        description: 'A note conserning this log lin'
+      name:
+        description: 'Name of the template'
         type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
+        example: 'Person info Document'
+        maxLength: 255
+      description:
+        description: 'Description of the template'
+        type: string
+        example: 'This document is about a person'
+        maxLength: 255
+      uri:
+        description: 'The uri of the template in WRC'
+        type: string
+        example: 'https://wrc.dev.zuid-drecht.nl/templates/6d38b11f-2edb-4a4e-894a-5b4677da2c53'
+        maxLength: 255
+        format: url
+      type:
+        description: 'Type of document you want to receive'
+        type: string
+        example: pdf
+        maxLength: 255
+      requestType: []
+    required:
+      - name
+      - uri
+      - type
   AuditTrail-read:
     properties:
       id:
@@ -9097,12 +10426,28 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-07-28 11:31:30'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-07-28 11:31:30'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
     required: []
   AuditTrail-write:
     properties:
@@ -9112,6 +10457,76 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> development
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+        example: '2020-08-21 09:47:43'
+>>>>>>> development
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+        example: '2020-08-21 09:47:43'
+>>>>>>> development
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> development
+>>>>>>> development
 tags:
   -
     name: Property
@@ -9135,13 +10550,19 @@ tags:
       
       
   -
-    name: ChangeLog
+    name: Template
+    description: |
+      
+      
+      
+  -
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: AuditTrail
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
@@ -9152,16 +10573,16 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
 host: irc.zaakonline.nl
 servers:
