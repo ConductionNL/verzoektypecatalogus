@@ -106,7 +106,6 @@ class LucasFixtures extends Fixture
         $requestType = new RequestType();
         $requestType->setName('Jeugdlintje aanvragen');
         $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
-        $property->setTitle('Jeugdlintje aanvragen');
         $requestType->setDescription('Doe hier een aanvraag voor een jeugdlintje voor iemand in de gemeenschap');
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -369,7 +368,6 @@ class LucasFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
         /* End Jeugdlintje */
 
         /* Vraag Stellen */
@@ -664,7 +662,6 @@ class LucasFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         // Uw aanvraag
-
         $id = Uuid::fromString('2c039392-2a56-44eb-bccd-abff50a738be');
         $property = new Property();
         $property->setTitle('Is dit uw eerste koopwoning?');
