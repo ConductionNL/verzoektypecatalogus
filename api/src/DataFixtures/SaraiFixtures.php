@@ -445,6 +445,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -620,6 +621,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -837,6 +839,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1207,6 +1210,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2085,6 +2089,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2225,6 +2230,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer (overdag bereikbaar)');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2297,6 +2303,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2382,6 +2389,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2822,6 +2830,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2907,6 +2916,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -3126,6 +3136,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -3715,6 +3726,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer instantie');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -4002,6 +4014,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -4455,6 +4468,7 @@ class SaraiFixtures extends Fixture
         $property->setTitle('Telefoonnummer');
         $property->setType('string');
         $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
