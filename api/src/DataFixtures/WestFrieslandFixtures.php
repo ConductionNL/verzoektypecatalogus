@@ -91,6 +91,7 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Begraafplaats');
         $property->setType('string');
+        $property->setQuery(['organization'=>'request.properties.gemeente']);
         $property->setFormat('string');
         $property->setIri('grc/cemetery');
         $property->setRequired(true);
@@ -153,6 +154,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('string');
         $property->setIri('irc/assent');
+        $property->setMaxItems(1);
         $property->setRequired(true);
         $property->setRequestType($requestType);
 

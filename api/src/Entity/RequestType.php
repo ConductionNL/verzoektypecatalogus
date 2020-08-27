@@ -95,9 +95,11 @@ class RequestType
      * @example https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f
      *
      * @Gedmo\Versioned
-     * @Assert\NotNull
+     * @Assert\Length(
+     *     max = 255
+     * )
      * @Assert\Url
-     * @Groups({"read", "write"})
+     * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $organization;
@@ -142,7 +144,6 @@ class RequestType
      * @var Property[]|ArrayCollection The properties for this request type
      *
      * @Groups({"read"})
-     * @MaxDepth(1)
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
@@ -152,7 +153,6 @@ class RequestType
      * @var Property[]|ArrayCollection The tasks for this request type
      *
      * @Groups({"read"})
-     * @MaxDepth(1)
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
      */
@@ -213,7 +213,6 @@ class RequestType
      * @var ArrayCollection|RequestType[] The children of this request type
      *
      * @Groups({"read", "write"})
-     * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\RequestType", mappedBy="parent")
      */
     private $children;
@@ -257,7 +256,6 @@ class RequestType
 
     /**
      * @Groups({"read","write"})
-     * @MaxDepth(1)
      * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="requestType", cascade={"persist"})
      */
     private $templates;

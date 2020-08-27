@@ -8963,14 +8963,10 @@ components:
           format: date-time
           nullable: true
       required:
-        - organization
         - name
     RequestType-write:
       type: object
       description: 'All properties contained in the RequestType type.'
-      required:
-        - organization
-        - name
       properties:
         organization:
           description: 'A specific commonground organisation'
@@ -9019,6 +9015,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Template-write'
+      required:
+        - name
     'RequestType:jsonld-read':
       type: object
       description: 'All properties contained in the RequestType type.'
@@ -9109,14 +9107,10 @@ components:
           format: date-time
           nullable: true
       required:
-        - organization
         - name
     'RequestType:jsonld-write':
       type: object
       description: 'All properties contained in the RequestType type.'
-      required:
-        - organization
-        - name
       properties:
         '@context':
           readOnly: true
@@ -9174,6 +9168,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Template:jsonld-write'
+      required:
+        - name
     Task-read:
       type: object
       description: ''
@@ -9747,12 +9743,28 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9937,12 +9949,28 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9983,6 +10011,7 @@ definitions:
         description: 'A specific commonground organisation'
         type: string
         example: 'https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f'
+        maxLength: 255
         format: url
       icon:
         description: 'The icon of this property'
@@ -10037,7 +10066,6 @@ definitions:
         type: \RequestType
       templates: []
     required:
-      - organization
       - name
   RequestType-write:
     properties:
@@ -10045,6 +10073,7 @@ definitions:
         description: 'A specific commonground organisation'
         type: string
         example: 'https://wrc.zaakonline.nl/organisations/16353702-4614-42ff-92af-7dd11c8eef9f'
+        maxLength: 255
         format: url
       icon:
         description: 'The icon of this property'
@@ -10087,7 +10116,6 @@ definitions:
         type: \RequestType
       templates: []
     required:
-      - organization
       - name
   RequestType-write-requesttype:
     properties:
@@ -10095,7 +10123,6 @@ definitions:
         description: 'The requestType that this requestType extends'
         type: object
     required:
-      - organization
       - name
   Task-read:
     properties:
@@ -10151,12 +10178,28 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -10383,12 +10426,28 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+<<<<<<< HEAD
+        example: '2020-08-21 09:47:43'
+=======
+        example: '2020-08-19 15:28:47'
+>>>>>>> development
+>>>>>>> development
     required: []
   AuditTrail-write:
     properties:
@@ -10398,6 +10457,10 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> development
   ChangeLog-read:
     properties:
       id:
@@ -10436,12 +10499,20 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+        example: '2020-08-21 09:47:43'
+>>>>>>> development
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-17 09:20:45'
+<<<<<<< HEAD
+        example: '2020-08-22 13:00:32'
+=======
+        example: '2020-08-21 09:47:43'
+>>>>>>> development
     required: []
   ChangeLog-write:
     properties:
@@ -10451,6 +10522,11 @@ definitions:
         example: 'This log line is suspicius'
         maxLength: 2555
     required: []
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> development
+>>>>>>> development
 tags:
   -
     name: Property
