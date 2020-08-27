@@ -94,6 +94,103 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
+        //wanneer loopt de huidige zorg af
+        //als het een verlening betreft
+        $id = Uuid::fromString('aa6703c7-b631-4384-8542-51242ffcc8d2');
+        $property = new Property();
+        $property->setTitle('Wanneer loopt de huidige zorg af?');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //is de persoon die u aanmeldt op de hoogte van deze aanmelding?
+        //als deze vraag in beeld komt op required
+        $id = Uuid::fromString('886b7291-b02a-4240-a766-58be9d1b8bdb');
+        $property = new Property();
+        $property->setTitle('Is de persoon die u aanmeldt op de hoogte van deze aanmelding?');
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //wat is uw relatie tot de persoon?
+        $id = Uuid::fromString('1579d7d1-60a6-49f0-a543-ba75d55802c0');
+        $property = new Property();
+        $property->setTitle('Wat is uw relatie tot deze persoon');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setEnum(['Ik ben de ouder van deze persoon', 'Ik ben de broer/zus van deze persoon', 'Ik ben het kind van deze persoon', 'Anders']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+//        //als je anders hebt gekozen
+//        //anders, namelijk
+//        $id = Uuid::fromString('6dda3c89-b3a1-4b58-aa00-5b19e30dcfeb');
+//        $property = new Property();
+//        $property->setTitle('Anders, namelijk');
+//        $property->setType('string');
+//        $property->setFormat('text');
+//        $property->setRequestType($requestType);
+//        $manager->persist($property);
+//        $property->setId($id);
+//        $manager->persist($property);
+//        $manager->flush();
+//        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //voornamen
+        $id = Uuid::fromString('21d83244-73b5-4224-86f7-8467250842c2');
+        $property = new Property();
+        $property->setTitle('Voornamen');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //tussenvoegsel(s)
+        $id = Uuid::fromString('455229ec-fa28-4486-a577-7bf960adb03b');
+        $property = new Property();
+        $property->setTitle('Tussenvoegsel(s)');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //achternaam
+        $id = Uuid::fromString('823b964e-6d61-403a-b5a7-aa3fde5584f9');
+        $property = new Property();
+        $property->setTitle('Achternaam');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
         //postcode
         $id = Uuid::fromString('2a33e22a-b9de-46e9-89d5-0bd2da2cceba');
         $property = new Property();
@@ -176,13 +273,79 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
+        //Telefoonnummer
+        $id = Uuid::fromString('1b440979-1d35-4b5f-a8a1-1aa6e24cb452');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setType('string');
+        $property->setFormat('phonenumber');
+        $property->setExample('0612345678');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //E-mailadres
+        $id = Uuid::fromString('25e3f002-9ea6-4df6-b31d-6ab84639d885');
+        $property = new Property();
+        $property->setTitle('E-mailadres');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //Herhaal e-mailadres
+        $id = Uuid::fromString('462b9fa8-8161-4a7a-a56d-2009e4e1a612');
+        $property = new Property();
+        $property->setTitle('Herhaal e-mailadres');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //geboortedatum
+        $id = Uuid::fromString('dcd1852f-c5ee-4b35-a5f3-df8c3ee5a460');
+        $property = new Property();
+        $property->setTitle('Geboortedatum');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
         //taal
         $id = Uuid::fromString('688a2e68-55c3-4dde-aaf6-339b918ae137');
         $property = new Property();
         $property->setTitle('Spreekt u Nederlands?');
         $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        //Welke taal/talen spreekt u?
+        $id = Uuid::fromString('17042565-56ed-4eac-946f-76372d55f42c');
+        $property = new Property();
+        $property->setTitle('Welke taal/talen spreekt u?');
+        $property->setType('string');
+        $property->setFormat('textarea');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -195,7 +358,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Naam huisarts');
         $property->setType('string');
-        $property->setFormat('textarea');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -544,7 +707,7 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        //gegevens leerling
+        //gegevens kind(eren)
         //Naam
         $id = Uuid::fromString('bc2434be-bae8-4e5d-992a-522e1306c350');
         $property = new Property();
