@@ -25,7 +25,7 @@ class MarkFixtures extends Fixture
     {
         if (
             // If build all fixtures is true we build all the fixtures
-            !$this->params->get('app_build_all_fixtures') &&
+            //!$this->params->get('app_build_all_fixtures') &&
             // Specific domain names
             $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
             $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
@@ -975,7 +975,7 @@ class MarkFixtures extends Fixture
         //geboortedatum
         $id = Uuid::fromString('813286e8-0743-4353-ac32-1a04a819f333');
         $property = new Property();
-        $property->setTitle('Voor- en achternaam');
+        $property->setTitle('geboortedatum');
         $property->setType('string');
         $property->setFormat('date');
         $property->setRequestType($requestType);
@@ -2067,6 +2067,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('b3aa2e1e-8d3f-458e-96e9-c37aa194512f');
         $property = new Property();
         $property->setTitle('Voornamen:');
+        $property->setName('aangever_voornamen');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -2080,6 +2081,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('7872224c-10ec-488c-8b70-703ea42fbdf3');
         $property = new Property();
         $property->setTitle('Tussenvoegsel(s):');
+        $property->setName('aangever_tussenvoegels');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
@@ -2092,6 +2094,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('8d55d760-d5a6-4967-a29b-f41a80bb9109');
         $property = new Property();
         $property->setTitle('Achternaam:');
+        $property->setName('aangever_achternaam');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -2105,6 +2108,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('6a23a136-0dce-457b-9b15-fbd60ac5f835');
         $property = new Property();
         $property->setTitle('Telefoon');
+        $property->setName('aangever_telefoon');
         $property->setType('string');
         $property->setFormat('tel');
         $property->setDescription('telefoon nummer:');
@@ -2118,6 +2122,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('90594152-2302-43e9-a544-ae120bb249da');
         $property = new Property();
         $property->setTitle('E-mailadres:');
+        $property->setName('aangever_email');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
@@ -2131,6 +2136,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('75dcaddf-9a42-48d7-a2b6-4eb0e527e4cd');
         $property = new Property();
         $property->setTitle('Herhaal e-mailadres:');
+        $property->setName('aangever_herhaal_email');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
@@ -2183,7 +2189,8 @@ class MarkFixtures extends Fixture
         //voornamen
         $id = Uuid::fromString('c49b417a-f0d2-49b2-bcfb-11946b2636f0');
         $property = new Property();
-        $property->setTitle('Voornamen:');
+        $property->setTitle('Voornamen');
+        $property->setTitle('overledenen_voornamen');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -2196,7 +2203,8 @@ class MarkFixtures extends Fixture
         //tussenvoegsels
         $id = Uuid::fromString('2ff7dbf5-099c-4f24-9419-584ed6bc2e55');
         $property = new Property();
-        $property->setTitle('Tussenvoegsel(s):');
+        $property->setTitle('Tussenvoegsel(s)');
+        $property->setTitle('overledenen_tussenvoegsel');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
@@ -2209,6 +2217,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('a3cd3ea3-762c-4022-94eb-bb698083d62f');
         $property = new Property();
         $property->setTitle('Geslachtsnaam:');
+        $property->setTitle('overledenen_gelsachtsnaam');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -2222,6 +2231,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('c2393ead-43ea-4d0d-a6d1-28836e46b7f0');
         $property = new Property();
         $property->setTitle('Geboortedatum:');
+        $property->setTitle('overledenen_geboortedatum');
         $property->setType('string');
         $property->setFormat('date');
         $property->setRequired(true);
@@ -2235,6 +2245,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('dd1bdc9a-87bd-429e-921c-7b39f53c6033');
         $property = new Property();
         $property->setTitle('Laatste woonplaats:');
+        $property->setTitle('overledenen_woonplaats');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
