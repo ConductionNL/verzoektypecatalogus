@@ -669,7 +669,6 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('492f4687-71f3-48f0-aad8-70a2f1f3cd1a');
         $property = new Property();
         $property->setTitle('Naamgebruik');
-        $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
         $property->setFormat('radio');
@@ -687,7 +686,6 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('d07d6fd3-7118-4e75-9ee6-407d494e1613');
         $property = new Property();
         $property->setTitle('Taal');
-        $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
         $property->setFormat('radio');

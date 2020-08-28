@@ -2107,6 +2107,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[name]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[order]'
           in: query
           required: false
@@ -2649,6 +2658,22 @@ paths:
             type: string
         -
           name: 'title[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'name[]'
           in: query
           required: false
           schema:
@@ -9602,6 +9627,12 @@ definitions:
         example: 'My Property'
         maxLength: 255
         minLength: 3
+      name:
+        description: 'The name of the property as used in api calls, extracted from title on snake_case basis'
+        type: string
+        example: my_property
+        maxLength: 255
+        minLength: 15
       order:
         description: 'The order in wichs this propertie is desplayed'
         type: int
@@ -9743,28 +9774,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-<<<<<<< HEAD
-        example: '2020-08-21 09:47:43'
-=======
-        example: '2020-08-19 15:28:47'
->>>>>>> development
->>>>>>> development
+        example: '2020-08-28 09:15:39'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-<<<<<<< HEAD
-        example: '2020-08-21 09:47:43'
-=======
-        example: '2020-08-19 15:28:47'
->>>>>>> development
->>>>>>> development
+        example: '2020-08-28 09:15:39'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9949,28 +9964,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-<<<<<<< HEAD
-        example: '2020-08-21 09:47:43'
-=======
-        example: '2020-08-19 15:28:47'
->>>>>>> development
->>>>>>> development
+        example: '2020-08-28 09:15:39'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-<<<<<<< HEAD
-        example: '2020-08-21 09:47:43'
-=======
-        example: '2020-08-19 15:28:47'
->>>>>>> development
->>>>>>> development
+        example: '2020-08-28 09:15:39'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -10178,28 +10177,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-<<<<<<< HEAD
-        example: '2020-08-21 09:47:43'
-=======
-        example: '2020-08-19 15:28:47'
->>>>>>> development
->>>>>>> development
+        example: '2020-08-28 09:15:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-<<<<<<< HEAD
-        example: '2020-08-21 09:47:43'
-=======
-        example: '2020-08-19 15:28:47'
->>>>>>> development
->>>>>>> development
+        example: '2020-08-28 09:15:39'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -10426,28 +10409,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-<<<<<<< HEAD
-        example: '2020-08-21 09:47:43'
-=======
-        example: '2020-08-19 15:28:47'
->>>>>>> development
->>>>>>> development
+        example: '2020-08-28 09:15:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-<<<<<<< HEAD
-        example: '2020-08-21 09:47:43'
-=======
-        example: '2020-08-19 15:28:47'
->>>>>>> development
->>>>>>> development
+        example: '2020-08-28 09:15:39'
     required: []
   AuditTrail-write:
     properties:
@@ -10457,10 +10424,6 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> development
   ChangeLog-read:
     properties:
       id:
@@ -10499,20 +10462,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-        example: '2020-08-21 09:47:43'
->>>>>>> development
+        example: '2020-08-28 09:15:39'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-<<<<<<< HEAD
-        example: '2020-08-22 13:00:32'
-=======
-        example: '2020-08-21 09:47:43'
->>>>>>> development
+        example: '2020-08-28 09:15:39'
     required: []
   ChangeLog-write:
     properties:
@@ -10522,11 +10477,6 @@ definitions:
         example: 'This log line is suspicius'
         maxLength: 2555
     required: []
-<<<<<<< HEAD
-=======
-=======
->>>>>>> development
->>>>>>> development
 tags:
   -
     name: Property
