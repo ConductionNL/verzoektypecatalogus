@@ -23,11 +23,20 @@ class LucasFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        /* Documenten Inleveren */
+        if (
+            // If build all fixtures is true we build all the fixtures
+            !$this->params->get('app_build_all_fixtures') &&
+            // Specific domain names
+            $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
+            $this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false
+        ) {
+            return false;
+        }
 
         $id = Uuid::fromString('ff3a0263-350f-407a-84d4-bd12e89ce040');
         $requestType = new RequestType();
-        $requestType->setOrganization('002220647');
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setName('Documenten Inleveren');
         $requestType->setDescription('Heeft u al contact met de gemeente gehad en wilt u aanvullende informatie geven of documenten inleveren? Gebruik dan dit formulier.');
         $manager->persist($requestType);
@@ -96,7 +105,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('466e7a07-1388-40f7-964b-b9d8725d4a60');
         $requestType = new RequestType();
         $requestType->setName('Jeugdlintje aanvragen');
-        $property->setTitle('Jeugdlintje aanvragen');
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setDescription('Doe hier een aanvraag voor een jeugdlintje voor iemand in de gemeenschap');
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -359,14 +368,13 @@ class LucasFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
         /* End Jeugdlintje */
 
         /* Vraag Stellen */
         //Omschrijving
         $id = Uuid::fromString('cf2482fd-5bed-4843-8f54-895cabdf6251');
         $requestType = new RequestType();
-        $requestType->setOrganization('002220647');
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setName('Vraag stellen');
         $requestType->setDescription('Algemene contactformulier');
         $manager->persist($requestType);
@@ -499,7 +507,7 @@ class LucasFixtures extends Fixture
         /* Kraskaartvergunning aanvragen */
         $id = Uuid::fromString('c64bb62c-670a-4cde-bd29-f50c220a6442');
         $requestType = new RequestType();
-        $requestType->setOrganization('002220647');
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setName('Kraskaarten');
         $requestType->setDescription('Aanvraag kraskaarten (parkeren voor uw bezoek');
         $manager->persist($requestType);
@@ -606,7 +614,7 @@ class LucasFixtures extends Fixture
         /* Starterslening */
         $id = Uuid::fromString('2f3f2c71-f9b0-463d-8cf3-8dc5cdfeeaeb');
         $requestType = new RequestType();
-        $requestType->setOrganization('002220647');
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
         $requestType->setName('Starterslening');
         $requestType->setDescription('Starterslening aanvragen');
         $manager->persist($requestType);
@@ -654,7 +662,6 @@ class LucasFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         // Uw aanvraag
-
         $id = Uuid::fromString('2c039392-2a56-44eb-bccd-abff50a738be');
         $property = new Property();
         $property->setTitle('Is dit uw eerste koopwoning?');

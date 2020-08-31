@@ -10,7 +10,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\TemplateRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
@@ -133,10 +132,10 @@ class Template
 
     /**
      * @Groups({"read","write"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="templates")
      * @MaxDepth(1)
-     * @ORM\ManyToMany(targetEntity="App\Entity\RequestType", inversedBy="templates")
      */
-    private $requestTypes;
+    private $requestType;
 
     /**
      * @var DateTime The moment this request was created
@@ -238,28 +237,14 @@ class Template
         return $this;
     }
 
-    /**
-     * @return Collection|RequestType[]
-     */
-    public function getRequestTypes(): Collection
+    public function getRequestType(): ?RequestType
     {
-        return $this->requestTypes;
+        return $this->requestType;
     }
 
-    public function addRequestType(RequestType $requestType): self
+    public function setRequestType(?RequestType $requestType): self
     {
-        if (!$this->requestTypes->contains($requestType)) {
-            $this->requestTypes[] = $requestType;
-        }
-
-        return $this;
-    }
-
-    public function removeRequestType(RequestType $requestType): self
-    {
-        if ($this->requestTypes->contains($requestType)) {
-            $this->requestTypes->removeElement($requestType);
-        }
+        $this->requestType = $requestType;
 
         return $this;
     }
