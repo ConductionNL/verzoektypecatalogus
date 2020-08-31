@@ -58,7 +58,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/people');
-        $property->setDescription('Vul hier uw naam in');
+        $property->setDescription('Vul hier uw gegevens in');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
