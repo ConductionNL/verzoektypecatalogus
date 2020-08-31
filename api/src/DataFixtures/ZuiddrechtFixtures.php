@@ -36,6 +36,56 @@ class ZuiddrechtFixtures extends Fixture
         }
 
         /*
+         *  Deelname verzoek horeca ondernemer (Checkin)
+         */
+
+        $id = Uuid::fromString('c328e6b4-77f6-4c58-8544-4128452acc80');
+        $requestType = new RequestType();
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $requestType->setIcon('fa fa-user');
+        $requestType->setName('onboarding');
+        $requestType->setDescription('Met dit verzoek kunt u als horeca ondernemer een verzoek tot deelname indienen');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('5fe949b5-6ce7-4394-a4c9-6ae0297dad5d');
+        $property = new Property();
+        $property->setTitle('Naam ondernemer');
+        $property->setIcon('fa fa-user');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setDescription('Vul hier uw naam in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('49170072-00f1-4b68-a926-5e6e6e49e946');
+        $property = new Property();
+        $property->setTitle('Horeca firma');
+        $property->setIcon('fa fa-building');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('wrc/organization');
+        $property->setDescription('Vul hier de gegevens van uw horeca firma in.');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        /*
          * Parkeer Vergunning
          */
 
