@@ -131,7 +131,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        $id = Uuid::fromString('2384f44d-4090-4029-b5c3-8c90680daeaf');
+        $id = Uuid::fromString('38f796bc-d31c-4285-957b-1efbec38a653');
         $property = new Property();
         $property->setTitle('vestegings adres');
         $property->setName('adres vesteging');
@@ -146,9 +146,9 @@ class TimFixtures extends Fixture
         $manager->flush();
 
         //5e pagina
-        $$id = Uuid::fromString('2d8a9acb-653b-468e-8d0d-d5beb16e1c26');
+        $id = Uuid::fromString('2d8a9acb-653b-468e-8d0d-d5beb16e1c26');
         $property = new Property();
-        $property->setTitle('persoon gegevens');
+        $property->setTitle('persoons gegevens');
         $property->setName('gegevens contact persoon');
         $property->setType('string');
         $property->setFormat('url');
