@@ -91,6 +91,7 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Begraafplaats');
         $property->setType('string');
+        $property->setQuery(['organization'=>'request.properties.gemeente']);
         $property->setFormat('string');
         $property->setIri('grc/cemetery');
         $property->setRequired(true);
@@ -106,7 +107,7 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Soort graf');
         $property->setIri('pdc/offer');
-        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'17c09fb9-a3a1-4fc9-9617-5ebcf73e06cc']);
+        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
         $property->setType('string');
         $property->setFormat('url');
         $property->setRequired(true);
@@ -165,13 +166,27 @@ class WestFrieslandFixtures extends Fixture
 
         $id = Uuid::fromString('db69ce35-4ae1-4aac-936f-bdb5d4d1ff18');
         $property = new Property();
-        $property->setTitle('Overledene');
+        $property->setTitle('Overledene met bsn');
+        $property->setName('OverledeneBsn');
         $property->setType('string');
         $property->setFormat('string');
         $property->setIri('brp/ingeschrevenpersoon');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
 
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('e532635f-70d2-4a4a-9245-b28d8a4a6ad6');
+        $property = new Property();
+        $property->setTitle('overledene zonder bsn');
+        $property->setName('OverledeneNoBsn');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);

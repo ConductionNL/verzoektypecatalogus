@@ -106,7 +106,6 @@ class LucasFixtures extends Fixture
         $requestType = new RequestType();
         $requestType->setName('Jeugdlintje aanvragen');
         $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'d736013f-ad6d-4885-b816-ce72ac3e1384']));
-        $property->setTitle('Jeugdlintje aanvragen');
         $requestType->setDescription('Doe hier een aanvraag voor een jeugdlintje voor iemand in de gemeenschap');
         $manager->persist($requestType);
         $requestType->setId($id);
