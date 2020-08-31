@@ -85,6 +85,23 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('5c5f8837-c42c-4b83-8bec-6d1760e0e0f7');
+        $property = new Property();
+        $property->setTitle('Locatie');
+        $property->setIcon('fa fa-building');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('lc/accommodation');
+        $property->setDescription('Vul hier de gegevens van uw locatie in.');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         /*
          * Parkeer Vergunning
          */
