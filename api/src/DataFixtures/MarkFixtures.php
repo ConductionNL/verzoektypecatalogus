@@ -87,7 +87,6 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-
         //Contactformulier bijzondere bijstand
 
         //reqeust type
@@ -1508,7 +1507,6 @@ class MarkFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
 
         //locatie overleiden
         $id = Uuid::fromString('1abb6b5a-4534-4957-8ab1-6e5a46a864bf');
