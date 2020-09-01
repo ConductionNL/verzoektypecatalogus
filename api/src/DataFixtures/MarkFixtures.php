@@ -64,7 +64,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wat is uw adres?');
         $property->setName('adres_Sticker');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -78,7 +78,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Wat zijn uw gegevens?');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -120,7 +120,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wat zijn uw gegevens?');
         $property->setType('string');
         $property->setName('gegevens_bijstand');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -206,7 +206,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wat zijn uw gegevens?');
         $property->setName('gegevens_aanmelden');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -399,7 +399,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wat is het adres van uw evenement?');
         $property->setName('adres_evenement');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -451,7 +451,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Wat is het adres van uw bedrijf?');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $property->setRequired(true);
@@ -463,7 +463,7 @@ class MarkFixtures extends Fixture
         //vergunninghouder
         $id = Uuid::fromString('574e80ce-8ec5-4c85-9a06-0057d6c20b5e');
         $property = new Property();
-        $property->setTitle('De vergunning wordt aangevraagd voor de hiervoor genoemde natuurlijke of rechtspersoon.');
+        $property->setTitle('De vergunning wordt aangevraagd voor de hiervoor genoemde natuuriijke of rechtspersoon.');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
@@ -501,10 +501,10 @@ class MarkFixtures extends Fixture
         //vragen over instelling
         $id = Uuid::fromString('9f05249d-bcc2-4f24-8580-0fd3de0a6d4d');
         $property = new Property();
-        $property->setTitle('Wordt deze vergunning aangevraagd voor een natuurlijke of rechtspersoon?');
+        $property->setTitle('Wordt deze vergunning aangevraagd voor een natuuriijke of rechtspersoon?');
         $property->setType('string');
         $property->setFormat('radio');
-        $property->setEnum(['natuurlijke persoon', 'rechtspersoon/rechtspersonen']);
+        $property->setEnum(['natuuriijke persoon', 'rechtspersoon/rechtspersonen']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -731,7 +731,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Wat zijn uw gegevens?');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -748,7 +748,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Gegevens partner');
         $property->setName('partner');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -776,7 +776,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Op welke datum werd u de eigenaar van de woning?');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1080,7 +1080,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wat is adres van de locatie?');
         $property->setName('locatie_verbouwing');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1107,7 +1107,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wat zijn uw gegevens?');
         $property->setName('gegevens_verbouwer');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -1169,7 +1169,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wat is het adres van uw bedrijf?');
         $property->setName('adres_uitvaart');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -1316,7 +1316,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Wat is het adres van de rechthebbende?');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -1483,7 +1483,7 @@ class MarkFixtures extends Fixture
         $property->setTitle('Wat is het adres van uw bedrijf?');
         $property->setName('bedrijf_uitvaartverzorger');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $property->setRequired(true);
@@ -1499,7 +1499,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Wat zijn de gegevens van de aangever?');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -1528,7 +1528,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Gegevens van de overledene');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1557,7 +1557,7 @@ class MarkFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setEnum(['natuurlijk', 'niet natuurlijk']);
+        $property->setEnum(['natuuriijk', 'niet natuuriijk']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
