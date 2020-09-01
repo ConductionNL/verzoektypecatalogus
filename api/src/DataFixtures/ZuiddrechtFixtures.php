@@ -126,6 +126,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
+        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Checkin Producten', 'products.name'=>'Abbonnement']);
         $property->setDescription('Kies hier een abbonnement.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
