@@ -85,6 +85,23 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
+        $property = new Property();
+        $property->setTitle('Horeca firma contact');
+        $property->setIcon('fa fa-building');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/organization');
+        $property->setDescription('Vul hier het adres van uw horeca firma in.');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('5c5f8837-c42c-4b83-8bec-6d1760e0e0f7');
         $property = new Property();
         $property->setTitle('Locatie');
