@@ -102,6 +102,23 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('3fbb0356-a362-4b70-b914-dd27919ff99c');
+        $property = new Property();
+        $property->setTitle('Abbonnement');
+        $property->setIcon('fa fa-money-check');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('pdc/offer');
+        $property->setDescription('Kies hier een abbonnement.');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         /*
          * Parkeer Vergunning
          */
