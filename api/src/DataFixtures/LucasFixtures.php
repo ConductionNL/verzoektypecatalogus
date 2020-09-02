@@ -154,7 +154,8 @@ class LucasFixtures extends Fixture
         //geboortedatum jeugd
         $id = Uuid::fromString('198cc25b-1ce3-4e9b-a468-0796527574b8');
         $property = new Property();
-        $property->setTitle('Geboortedatum:');
+        $property->setTitle('Geboortedatum');
+        $property->setName('geboortedatum');
         $property->setType('string');
         $property->setFormat('date');
         $property->setRequired(true);
@@ -191,7 +192,8 @@ class LucasFixtures extends Fixture
         //geboortedatum aanmelder
         $id = Uuid::fromString('9cca2fd5-1f93-444d-938a-f801aea96e3a');
         $property = new Property();
-        $property->setTitle('Geboortedatum:');
+        $property->setTitle('Geboortedatum');
+        $property->setName('melder-geboortedatum');
         $property->setType('string');
         $property->setFormat('date');
         $property->setRequired(true);
@@ -205,6 +207,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('4c268c2f-0a79-4c88-a0dc-beb4c389064b');
         $property = new Property();
         $property->setTitle('Telefoonnummer:');
+        $property->setName('melder-telefoonnummer');
         $property->setType('string');
         $property->setFormat('tel');
         $property->setRequired(true);
@@ -255,7 +258,8 @@ class LucasFixtures extends Fixture
         //naam ref1
         $id = Uuid::fromString('185e24de-1f32-4da3-a81c-0993941b8419');
         $property = new Property();
-        $property->setTitle('Naam:');
+        $property->setTitle('Naam');
+        $property->setName('ref1-naam');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -269,6 +273,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('a0602115-6d16-41c4-97ef-81de1d4a32d9');
         $property = new Property();
         $property->setTitle('Geboortedatum:');
+        $property->setName('ref1-geboortedatum');
         $property->setType('string');
         $property->setFormat('date');
         $property->setRequired(true);
@@ -282,6 +287,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('580ff714-0ce6-4398-93a2-d5a036609c3f');
         $property = new Property();
         $property->setTitle('Telefoonnummer:');
+        $property->setName('ref1-telefoonnummer');
         $property->setType('string');
         $property->setFormat('tel');
         $property->setRequired(true);
@@ -295,6 +301,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('8f414746-89fe-440b-a3f0-6c920cab48de');
         $property = new Property();
         $property->setTitle('Relatie tot de genomineerde:');
+        $property->setName('ref1-relatie');
         $property->setType('string');
         $property->setFormat('textarea');
         $property->setRequired(true);
@@ -308,6 +315,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('99fe1089-bdf4-4db1-be70-fcb85d19efdf');
         $property = new Property();
         $property->setTitle('Naam:');
+        $property->setName('ref2-naam');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -321,6 +329,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('5a6f7003-ec42-46fd-b595-ff05dbd01f2e');
         $property = new Property();
         $property->setTitle('Geboortedatum:');
+        $property->setName('ref2-geboortedatum');
         $property->setType('string');
         $property->setFormat('date');
         $property->setRequired(true);
@@ -334,6 +343,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('6ee02cdf-b3df-484f-bf6d-d9a309f3f3b0');
         $property = new Property();
         $property->setTitle('Telefoonnummer:');
+        $property->setName('ref2-telefoonnummer');
         $property->setType('string');
         $property->setFormat('tel');
         $property->setRequired(true);
@@ -347,6 +357,7 @@ class LucasFixtures extends Fixture
         $id = Uuid::fromString('313d1d67-20ef-4886-86b8-ca682099a0a4');
         $property = new Property();
         $property->setTitle('Relatie tot de genomineerde:');
+        $property->setName('ref2-relatie');
         $property->setRequired(true);
         $property->setType('string');
         $property->setFormat('textarea');
