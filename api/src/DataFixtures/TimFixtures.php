@@ -206,7 +206,7 @@ class TimFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Naar waarheid ingevult?');
         $property->setName('NaarWaarheidIngevult?');
-        $property->setType('array');
+        $property->setType('string');
         $property->setFormat('checkbox');
         $property->setEnum(['ja']);
         $property->setRequired(true);
@@ -439,7 +439,7 @@ class TimFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Zijn de gegevens juist ingevult?');
         $property->setName('JuistIngevult?');
-        $property->setType('array');
+        $property->setType('string');
         $property->setFormat('checkbox');
         $property->setEnum(['ja']);
         $property->setRequired(true);
@@ -602,8 +602,8 @@ class TimFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Controleren van gegevens');
         $property->setName('GegevensControleren');
-        $property->setType('array');
-        $property->setFormat('chechbox');
+        $property->setType('string');
+        $property->setFormat('checkbox');
         $property->setEnum(['ja']);
         $property->setRequired(true);
         $property->setRequestType($requestType);
