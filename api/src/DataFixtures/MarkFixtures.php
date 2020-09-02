@@ -300,7 +300,7 @@ class MarkFixtures extends Fixture
         //Begintijd event
         $id = Uuid::fromString('2b34d5f1-37fb-40a9-b171-61a9ccea3e16');
         $property = new Property();
-        $property->setTitle('Begin evenement');
+        $property->setTitle('Begintijd evenement');
         $property->setType('string');
         $property->setFormat('time');
         $property->setRequired(true);
@@ -313,7 +313,7 @@ class MarkFixtures extends Fixture
         //Eindtijd evenement
         $id = Uuid::fromString('ef793831-d09b-428f-a2d5-338943abe8b5');
         $property = new Property();
-        $property->setTitle('Eind evenement');
+        $property->setTitle('Eindtijd evenement');
         $property->setType('string');
         $property->setFormat('time');
         $property->setRequired(true);
@@ -410,8 +410,8 @@ class MarkFixtures extends Fixture
         //Formulier alchol schenken
         $id = Uuid::fromString('30d63557-53e5-4393-a613-ca1debf278f4');
         $requestType = new RequestType();
-        $requestType->setName('Aanvraag verguning Drank en Horicawet');
-        $property->setTitle('Aanvraag verguning Drank en Horicawet');
+        $requestType->setName('Aanvraag verguning Drank -en Horicawet');
+        $property->setTitle('Aanvraag verguning Drank -en Horicawet');
         $property->setDescription('Een ondernemer moet een drank- en horecavergunning hebben om alcoholische dranken te schenken, Vraag deze hier aan.');
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -463,7 +463,7 @@ class MarkFixtures extends Fixture
         //vergunninghouder
         $id = Uuid::fromString('574e80ce-8ec5-4c85-9a06-0057d6c20b5e');
         $property = new Property();
-        $property->setTitle('De vergunning wordt aangevraagd voor de hiervoor genoemde natuuriijke of rechtspersoon.');
+        $property->setTitle('De vergunning wordt aangevraagd voor de hiervoor genoemde natuurlijke of rechtspersoon.');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
@@ -501,10 +501,10 @@ class MarkFixtures extends Fixture
         //vragen over instelling
         $id = Uuid::fromString('9f05249d-bcc2-4f24-8580-0fd3de0a6d4d');
         $property = new Property();
-        $property->setTitle('Wordt deze vergunning aangevraagd voor een natuuriijke of rechtspersoon?');
+        $property->setTitle('Wordt deze vergunning aangevraagd voor een natuurlijke of rechtspersoon?');
         $property->setType('string');
         $property->setFormat('radio');
-        $property->setEnum(['natuuriijke persoon', 'rechtspersoon/rechtspersonen']);
+        $property->setEnum(['natuurlijke persoon', 'rechtspersoon/rechtspersonen']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -674,7 +674,7 @@ class MarkFixtures extends Fixture
         //aanwezigheid
         $id = Uuid::fromString('66ccac5c-969a-4879-9f6a-a151f414c3f4');
         $property = new Property();
-        $property->setTitle('Kunnen er, op enig moment meer dan 50 persoonen (incl. personeel) in de ruimte aanwezig zijn?');
+        $property->setTitle('Kunnen er, op enig moment meer dan 50 personen (incl. personeel) in de ruimte aanwezig zijn?');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
@@ -700,7 +700,7 @@ class MarkFixtures extends Fixture
         //beroep horecawet
         $id = Uuid::fromString('a61c80cb-54d6-415a-8e46-ef5caa9fbd09');
         $property = new Property();
-        $property->setTitle('Wilt u beroep doen op artiekel 46 van de drank en horecawet?');
+        $property->setTitle('Wilt u beroep doen op artikel 46 van de drank -en horecawet?');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
@@ -758,19 +758,6 @@ class MarkFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //gegevens van uw woning + description
-        //adres
-        $id = Uuid::fromString('f9f7bf4e-a798-45b9-9fab-e5e68aa48718');
-        $property = new Property();
-        $property->setTitle('Wat is het adres?');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
         //wanneer eigenaar
         $id = Uuid::fromString('a012a629-3f02-43f8-8037-9f91609385fc');
         $property = new Property();
@@ -1132,7 +1119,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('KvK-nummer:');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('kvk');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1247,8 +1234,8 @@ class MarkFixtures extends Fixture
         //voornamen
         $id = Uuid::fromString('734fc710-ce4d-4ee6-9b02-8e8288e99edd');
         $property = new Property();
-        $property->setTitle('wat zijn de gegevens van de overledene?');
-        $property->setName('gegevens_overleidene');
+        $property->setTitle('wat zijn de gegevens van de overledenen?');
+        $property->setName('gegevens_overleidenen');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -1408,6 +1395,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('55298664-0121-4272-933c-ee217628dc33');
         $property = new Property();
         $property->setTitle('Rijdende baar?');
+        $property->setDescription('Een rijdende baar is een platvorm op 4 wielen dat kan worden gebruikt om de kist te dragen als de loopafstand te ver is en de auto er niet bij kan');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['ja', 'nee']);
@@ -1446,7 +1434,7 @@ class MarkFixtures extends Fixture
         //formulier aangeven overlijden
         $id = Uuid::fromString('24962583-a3a2-4453-88b8-970114ebb89b');
         $requestType = new RequestType();
-        $requestType->setName('Aangeven overlijden');
+        $requestType->setName('Aangifte overlijden');
         $requestType->setDescription('Met dit formulier kan de uitvaartverzorger een overleden persoon digitaal aangeven bij de gemeente Zuid-Drecht. ');
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -1459,7 +1447,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('KvK-nummer:');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('kvk');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1526,7 +1514,7 @@ class MarkFixtures extends Fixture
         //BSN
         $id = Uuid::fromString('9c90a629-5aab-4194-a8bf-39ea57f219a6');
         $property = new Property();
-        $property->setTitle('Gegevens van de overledene');
+        $property->setTitle('Gegevens van de overledenen');
         $property->setType('string');
         $property->setFormat('uri');
         $property->setIri('cc/people');
@@ -1557,7 +1545,7 @@ class MarkFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setEnum(['natuuriijk', 'niet natuuriijk']);
+        $property->setEnum(['Natuurlijk', 'Niet natuurlijk']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
