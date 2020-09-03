@@ -91,7 +91,7 @@ class CheckinFixtures extends Fixture
         $property->setName('kvk');
         $property->setIcon('fa fa-building');
         $property->setType('string');
-        $property->setFormat('kvk');
+        $property->setFormat('text');
         $property->setDescription('Vul hier het KVK Nummer van uw horeca firma in.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -108,7 +108,7 @@ class CheckinFixtures extends Fixture
         $property->setName('btw');
         $property->setIcon('fa fa-building');
         $property->setType('string');
-        $property->setFormat('btw');
+        $property->setFormat('text');
         $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft facturen wij zonder BTW');
         $property->setRequestType($requestType);
 
