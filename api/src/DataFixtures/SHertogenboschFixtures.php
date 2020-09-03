@@ -72,7 +72,8 @@ class SHertogenboschFixtures extends Fixture
         $property->setTitle('Adres');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
-        $property->setFormat('bag');
+        $property->setFormat('url');
+        $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setDescription('Wat is het nieuwe adres?');
         $property->setRequestType($requestType);
