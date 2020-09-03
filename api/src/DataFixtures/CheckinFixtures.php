@@ -142,7 +142,7 @@ class CheckinFixtures extends Fixture
         $property->setName('verwerkingsovereenkomst');
         $property->setIcon('fa fa-building');
         $property->setType('boolean');
-        $property->setFormat('boolean');
+        $property->setFormat('checkbox');
         $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft facturen wij zonder BTW');
         $property->setRequestType($requestType);
         $property->setRequired(true);
@@ -160,7 +160,7 @@ class CheckinFixtures extends Fixture
         $property->setName('algemenevoorwaarden');
         $property->setIcon('fa fa-building');
         $property->setType('boolean');
-        $property->setFormat('boolean');
+        $property->setFormat('checkbox');
         $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft facturen wij zonder BTW');
         $property->setRequestType($requestType);
         $property->setRequired(true);
