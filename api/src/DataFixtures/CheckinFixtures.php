@@ -130,6 +130,12 @@ class CheckinFixtures extends Fixture
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
