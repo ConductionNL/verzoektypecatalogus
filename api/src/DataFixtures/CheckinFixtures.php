@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Property;
 use App\Entity\RequestType;
-use App\Entity\Task;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -91,7 +90,7 @@ class CheckinFixtures extends Fixture
         $property->setName('kvk');
         $property->setIcon('fa fa-building');
         $property->setType('string');
-        $property->setFormat('kvk');
+        $property->setFormat('text');
         $property->setDescription('Vul hier het KVK Nummer van uw horeca firma in.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -108,7 +107,7 @@ class CheckinFixtures extends Fixture
         $property->setName('btw');
         $property->setIcon('fa fa-building');
         $property->setType('string');
-        $property->setFormat('btw');
+        $property->setFormat('text');
         $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft facturen wij zonder BTW');
         $property->setRequestType($requestType);
 
@@ -153,7 +152,6 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-
         $id = Uuid::fromString('ce876e7e-8157-4468-b4ae-f72e04eabb74');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
@@ -176,6 +174,5 @@ class CheckinFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
     }
 }
