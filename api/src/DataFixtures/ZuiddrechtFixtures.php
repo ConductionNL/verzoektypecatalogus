@@ -36,107 +36,6 @@ class ZuiddrechtFixtures extends Fixture
         }
 
         /*
-         *  Deelname verzoek horeca ondernemer (Checkin)
-         */
-
-        $id = Uuid::fromString('c328e6b4-77f6-4c58-8544-4128452acc80');
-        $requestType = new RequestType();
-        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
-        $requestType->setIcon('fa fa-user');
-        $requestType->setName('onboarding');
-        $requestType->setDescription('Met dit verzoek kunt u als horeca ondernemer een verzoek tot deelname indienen');
-        $manager->persist($requestType);
-        $requestType->setId($id);
-        $manager->persist($requestType);
-        $manager->flush();
-        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('5fe949b5-6ce7-4394-a4c9-6ae0297dad5d');
-        $property = new Property();
-        $property->setTitle('Naam ondernemer');
-        $property->setIcon('fa fa-user');
-        $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('cc/people');
-        $property->setDescription('Vul hier uw gegevens in');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('49170072-00f1-4b68-a926-5e6e6e49e946');
-        $property = new Property();
-        $property->setTitle('Horeca firma');
-        $property->setIcon('fa fa-building');
-        $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('wrc/organization');
-        $property->setDescription('Vul hier de gegevens van uw horeca firma in.');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
-        $property = new Property();
-        $property->setTitle('Horeca firma contact');
-        $property->setIcon('fa fa-building');
-        $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('cc/organization');
-        $property->setDescription('Vul hier het adres van uw horeca firma in.');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('5c5f8837-c42c-4b83-8bec-6d1760e0e0f7');
-        $property = new Property();
-        $property->setTitle('Locatie');
-        $property->setIcon('fa fa-building');
-        $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('lc/accommodation');
-        $property->setDescription('Vul hier de gegevens van uw locatie in.');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('3fbb0356-a362-4b70-b914-dd27919ff99c');
-        $property = new Property();
-        $property->setTitle('Abbonnement');
-        $property->setIcon('fa fa-money-check');
-        $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('pdc/offer');
-        $property->setDescription('Kies hier een abbonnement.');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        /*
          * Parkeer Vergunning
          */
 
@@ -770,7 +669,6 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('492f4687-71f3-48f0-aad8-70a2f1f3cd1a');
         $property = new Property();
         $property->setTitle('Naamgebruik');
-        $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
         $property->setFormat('radio');
@@ -788,7 +686,6 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('d07d6fd3-7118-4e75-9ee6-407d494e1613');
         $property = new Property();
         $property->setTitle('Taal');
-        $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
         $property->setFormat('radio');

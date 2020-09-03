@@ -136,7 +136,7 @@ class TimFixtures extends Fixture
         $property->setTitle('vestegings adres');
         $property->setName('adres vesteging');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -151,7 +151,7 @@ class TimFixtures extends Fixture
         $property->setTitle('persoons gegevens');
         $property->setName('gegevens contact persoon');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -237,7 +237,7 @@ class TimFixtures extends Fixture
         $property->setTitle('persoons gegevens invullen');
         $property->setName('persoons gegevens');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -251,7 +251,7 @@ class TimFixtures extends Fixture
         $property->setTitle('adres gegevens invullen');
         $property->setName('persoon adres');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -339,7 +339,7 @@ class TimFixtures extends Fixture
         $property->setTitle('persons gegevens aanvrager');
         $property->setName('persoon aanvrager');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -353,7 +353,7 @@ class TimFixtures extends Fixture
         $property->setTitle('adres gegevens aanvrager');
         $property->setName('adres aanvrager');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -368,7 +368,7 @@ class TimFixtures extends Fixture
         $property->setTitle('persons gegevens verzorger');
         $property->setName('persoon verzorger');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -382,7 +382,7 @@ class TimFixtures extends Fixture
         $property->setTitle('adres gegevens verzorger');
         $property->setName('adres verzorger');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -475,7 +475,7 @@ class TimFixtures extends Fixture
         $property->setTitle('gegevens invoeren');
         $property->setName('persoons gegevens');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -489,7 +489,7 @@ class TimFixtures extends Fixture
         $property->setTitle('Wat is uw adres?');
         $property->setName('adres');
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
