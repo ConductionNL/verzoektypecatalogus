@@ -2795,7 +2795,6 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         //geboortedatum
         $id = Uuid::fromString('9cd123f4-9650-41b0-95f4-aac9b5790486');
         $property = new Property();

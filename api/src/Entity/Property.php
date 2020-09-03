@@ -632,7 +632,7 @@ class Property
      *  */
     public function prePersist()
     {
-        if(!$this->name){
+        if (!$this->name) {
             // titles wil be used as strings so lets convert the to camelcase
             $string = $this->title;
             $string = trim($string); //removes whitespace at begin and ending
