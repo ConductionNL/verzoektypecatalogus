@@ -84,6 +84,23 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('2abb52b1-bf30-4359-a027-fede87b63f64');
+        $property = new Property();
+        $property->setTitle('Verwerkingsovereenkomst');
+        $property->setIcon('fa fa-building');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setIri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'b7049936-bef1-45a1-a70e-9160f795a6cd']));
+        $property->setDescription('Verwerkingsovereenkomst');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('9e5c34dc-99da-423d-9a88-a4a3875a66fb');
         $property = new Property();
         $property->setTitle('KVK Nummer');
