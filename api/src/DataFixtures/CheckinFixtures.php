@@ -155,7 +155,7 @@ class CheckinFixtures extends Fixture
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
-        $property->setName('verwerkingsovereenkomst');
+        $property->setName('akkoord');
         $property->setIcon('fa fa-building');
         $property->setType('boolean');
         $property->setFormat('checkbox');
