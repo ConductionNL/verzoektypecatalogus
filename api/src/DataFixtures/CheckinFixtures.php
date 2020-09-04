@@ -69,12 +69,12 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
-        $property->setTitle('Horeca firma contact');
+        $property->setTitle('Horeca onderneming contact');
         $property->setIcon('fa fa-building');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/organization');
-        $property->setDescription('Vul hier het adres van uw horeca firma in.');
+        $property->setDescription('Vul hier het adres van uw horeca onderneming in.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -91,7 +91,7 @@ class CheckinFixtures extends Fixture
         $property->setIcon('fa fa-building');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setDescription('Vul hier het KVK Nummer van uw horeca firma in.');
+        $property->setDescription('Vul hier het KVK Nummer van uw horeca onderneming in.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
