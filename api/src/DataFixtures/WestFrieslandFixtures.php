@@ -92,7 +92,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setTitle('Begraafplaats');
         $property->setType('string');
         $property->setQuery(['organization'=>'request.properties.gemeente']);
-        $property->setFormat('string');
+        $property->setFormat('uri');
         $property->setIri('grc/cemetery');
         $property->setRequired(true);
         $property->setRequestType($requestType);
@@ -109,7 +109,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setIri('pdc/offer');
         $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
         $property->setType('string');
-        $property->setFormat('url');
+        $property->setFormat('uri');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -139,7 +139,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setQuery(['audience'=>'public', 'products.groups.id'=>'9f9a78cb-f708-447f-8795-23f6cf13c39d']);
         $property->setRequired(false);
         $property->setType('array');
-        $property->setFormat('string');
+        $property->setFormat('uri');
         $property->setRequestType($requestType);
 
         $manager->persist($property);

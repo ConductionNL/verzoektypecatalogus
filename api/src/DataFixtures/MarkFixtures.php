@@ -1276,6 +1276,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('efc87f8a-e503-4648-b465-28d7c98f25ba');
         $property = new Property();
         $property->setTitle('Geslacht');
+        $property->setName('opdrachtgever_geslacht');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['man', 'vrouw']);
@@ -1528,6 +1529,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('dd1bdc9a-87bd-429e-921c-7b39f53c6033');
         $property = new Property();
         $property->setTitle('Laatste woonplaats:');
+        $property->setTitle('overledenen_woonplaats');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -1776,34 +1778,6 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //form element maken voor inlog digid of vragen aan gino
-
-        //gegevens aanmelder stage 3
-
-        $id = Uuid::fromString('cb4d1e1a-34af-4514-86ec-0235be82cb82');
-        $property = new Property();
-        $property->setTitle('Wat is de gewenste voornaam/voornamen?');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        $id = Uuid::fromString('4feaec4f-eee3-4083-b2ca-558caaeb1b85');
-        $property = new Property();
-        $property->setTitle('Wat is de reden van verandering?');
-        $property->setType('string');
-        $property->setFormat('textarea');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
         //voornaam
         $id = Uuid::fromString('6818aeee-1935-49e1-92ba-a5a8b73a9c78');
         $property = new Property();
@@ -1914,26 +1888,13 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //stage 5 Gegevens advocaat
-        //Naam advocaat
+        // Stage 5 Gegevens advocaat
         $id = Uuid::fromString('6b191a31-9e2a-42c6-85c5-672765e42793');
         $property = new Property();
-        $property->setTitle('Voornaam:');
+        $property->setTitle('gegevens advocaat:');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //achternaam advocaat
-        $id = Uuid::fromString('6a0b189b-fc65-4cb1-99ad-cc8a17b461e6');
-        $property = new Property();
-        $property->setTitle('Achternaam:');
-        $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1944,9 +1905,10 @@ class MarkFixtures extends Fixture
         //e-mailadress advocaat
         $id = Uuid::fromString('15ee65db-0db8-4b2d-8356-f14cea67a8d0');
         $property = new Property();
-        $property->setTitle('E-mailadres:');
+        $property->setTitle('adres advocaat');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('url');
+        $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
