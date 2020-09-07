@@ -476,7 +476,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-user-friends');
         $property->setType('array');
         $property->setFormat('url');
-        $property->setIri('irc/assent');
+        $property->setIri('irc/assents');
         $property->setDescription('Wie zijn de ouders');
         $property->setMinItems(2);
         $property->setMaxItems(2);
@@ -557,7 +557,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-user-friends');
         $property->setType('array');
         $property->setFormat('url');
-        $property->setIri('irc/assent');
+        $property->setIri('irc/assents');
         $property->setMinItems(2);
         $property->setDefaultValue('{{ app.user.person }}');
         $property->setMaxItems(2);
@@ -638,7 +638,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-users');
         $property->setType('array');
         $property->setFormat('url');
-        $property->setIri('irc/assent');
+        $property->setIri('irc/assents');
         $property->setMinItems(2);
         $property->setMaxItems(4);
         $property->setRequired(true);

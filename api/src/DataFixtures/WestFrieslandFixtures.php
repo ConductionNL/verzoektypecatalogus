@@ -109,7 +109,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setIri('pdc/offer');
         $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
         $property->setType('string');
-        $property->setFormat('uri');
+        $property->setFormat('uri ');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -152,8 +152,8 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Belanghebbende');
         $property->setType('string');
-        $property->setFormat('string');
-        $property->setIri('irc/assent');
+        $property->setFormat('url');
+        $property->setIri('irc/assents');
         $property->setMaxItems(1);
         $property->setRequired(true);
         $property->setRequestType($requestType);
