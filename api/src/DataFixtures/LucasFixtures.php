@@ -633,7 +633,6 @@ class LucasFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
-
         // Uw aanvraag
         $id = Uuid::fromString('2c039392-2a56-44eb-bccd-abff50a738be');
         $property = new Property();

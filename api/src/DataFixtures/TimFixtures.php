@@ -624,7 +624,7 @@ class TimFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
-//1e pagina is belangrijke informatie
+        //1e pagina is belangrijke informatie
         $id = Uuid::fromString('0959b819-c203-417c-a5be-6626a785cb2e');
         $property = new Property();
         $property->setTitle('Datum van de aansluiting');
@@ -714,7 +714,6 @@ class TimFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-
         //4e pagina
         $id = Uuid::fromString('5ed9c4b1-2e59-4532-b6bf-14eb56eeba77');
         $property = new Property();
@@ -757,8 +756,7 @@ class TimFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-
-//5e pagina
+        //5e pagina
         $id = Uuid::fromString('5cbd70b2-e4d3-4a78-ac7e-67cc91ca10ba');
         $property = new Property();
         $property->setTitle('bijlagen toevoegen');
@@ -784,6 +782,5 @@ class TimFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
     }
 }

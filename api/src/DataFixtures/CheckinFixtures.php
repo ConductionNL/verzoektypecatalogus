@@ -192,7 +192,6 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-
         /*
       *  Opvragen gegevens door GGD (Checkin)
       */
@@ -302,6 +301,5 @@ class CheckinFixtures extends Fixture
         $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
         $property->setRequestType($requestType);
         $property->setRequired(true);
-
     }
 }
