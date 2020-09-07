@@ -170,7 +170,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setName('Contactpersoon');
         $property->setType('string');
         $property->setFormat('url');
-        $property->setIri('irc/assent');
+        $property->setIri('cc/people');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
