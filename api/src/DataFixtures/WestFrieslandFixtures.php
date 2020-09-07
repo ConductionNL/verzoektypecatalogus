@@ -164,6 +164,26 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('8110dc29-7b27-448e-8853-a8126c984ccb');
+        $property = new Property();
+        $property->setTitle('Contactpersoon');
+        $property->setName('Contactpersoon');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('irc/assent');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('db69ce35-4ae1-4aac-936f-bdb5d4d1ff18');
         $property = new Property();
         $property->setTitle('Overledene met bsn');
