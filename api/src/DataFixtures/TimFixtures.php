@@ -264,7 +264,7 @@ class TimFixtures extends Fixture
         $id = Uuid::fromString('195c7e03-e3f5-4c71-bf66-b023d9f1bfe9');
         $property = new Property();
         $property->setTitle('Maak uw keuze');
-        $property->setName('MaakKeuze');
+        $property->setName('Maakeenkeuze');
         $property->setType('string');
         $property->setFormat('checkbox');
         $property->setEnum(['mijn  persoonsgegevens bekijken', 'mijn persoonsgegevens aanpassen of aanvullen', 'mijn persoonsgegevens verwijderen', 'mijn toestemming intrekken', 'mijn persoongegevens overdragen']);
