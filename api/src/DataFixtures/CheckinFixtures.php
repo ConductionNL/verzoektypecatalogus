@@ -125,7 +125,7 @@ class CheckinFixtures extends Fixture
         $property->setIcon('fa fa-building');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft facturen wij zonder BTW');
+        $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft factureren wij zonder BTW');
         $property->setRequestType($requestType);
 
         $manager->persist($property);
