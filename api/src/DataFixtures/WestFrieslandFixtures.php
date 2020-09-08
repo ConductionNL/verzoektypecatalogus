@@ -261,6 +261,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/people');
+        $property->setConfigurtation(['email'=>false,'telephone'=>false,'givenName'=>true,'familyName'=>true,'birthday'=>true,'placeOfBirth'=>true]);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
