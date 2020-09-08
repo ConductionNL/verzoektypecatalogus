@@ -610,7 +610,7 @@ class Property
     /**
      * @var array  An array of possible configuration options for form ellements
      *
-     *
+     * @Groups({"read", "write"})
      * @ORM\Column(type="array", nullable=true)
      */
     private $configuration = [];
