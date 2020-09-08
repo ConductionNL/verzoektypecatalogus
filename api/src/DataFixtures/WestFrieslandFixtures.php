@@ -53,14 +53,14 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $template = new \App\Entity\Template();
-        $template->setName('HO Akte');
-        $template->setDescription('Ho Akte test document');
-        $template->setType('word');
-        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'3807993a-ed98-4570-8a05-09c9454bcac5']));
-        $template->setRequestType($requestType);
-        $manager->persist($template);
-        $manager->flush();
+        //$template = new \App\Entity\Template();
+        //$template->setName('HO Akte');
+        //$template->setDescription('Ho Akte test document');
+        //$template->setType('word');
+        //$template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'3807993a-ed98-4570-8a05-09c9454bcac5']));
+        //$template->setRequestType($requestType);
+        //$manager->persist($template);
+        //$manager->flush();
 
         $template = new \App\Entity\Template();
         $template->setName('Ontvangs bevestiging');
