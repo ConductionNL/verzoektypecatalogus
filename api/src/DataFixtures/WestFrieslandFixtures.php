@@ -119,6 +119,20 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('e0f14f62-763a-4870-be3d-e864971a6404');
+        $property = new Property();
+        $property->setTitle('Bestaand graf');
+        $property->setType('boolean');
+        $property->setFormat('boolean');
+        $property->setRequired(false);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('b1fd7b38-384b-47ec-a0f2-6f81949cdece');
         $property = new Property();
         $property->setTitle('Datum');
@@ -186,6 +200,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/people');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
