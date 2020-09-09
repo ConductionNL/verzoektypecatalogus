@@ -88,9 +88,9 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Verwerkingsovereenkomst');
         $property->setIcon('fa fa-building');
-        $property->setType('string');
-        $property->setFormat('file');
-        $property->setIri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'b7049936-bef1-45a1-a70e-9160f795a6cd']));
+        $property->setType('boolean');
+        $property->setFormat('checkbox');
+        //$property->setIri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'b7049936-bef1-45a1-a70e-9160f795a6cd']));
         $property->setDescription('Verwerkingsovereenkomst');
         $property->setRequired(true);
         $property->setRequestType($requestType);
