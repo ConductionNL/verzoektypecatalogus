@@ -236,11 +236,11 @@ class WestFrieslandFixtures extends Fixture
 
         $id = Uuid::fromString('dfc4b51d-f1ea-4137-8451-e18f5b58bb80');
         $property = new Property();
-        $property->setTitle('Factuur adress');
+        $property->setTitle('Factuur address');
         $property->setDescription('Naar wie moet de factuur worden gestuurd voor deze begravenis');
         $property->setType('string');
         $property->setFormat('url');
-        $property->setIri('cc/adress');
+        $property->setIri('cc/address');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -276,7 +276,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/people');
-        $property->setConfiguration(['email'=>false,'telephone'=>false,'givenName'=>true,'familyName'=>true,'birthday'=>true,'placeOfBirth'=>true]);
+        $property->setConfiguration(['email'=>false, 'telephone'=>false, 'givenName'=>true, 'familyName'=>true, 'birthday'=>true, 'placeOfBirth'=>true]);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
