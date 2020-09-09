@@ -233,7 +233,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setDescription('Naar wie moet de factuur worden gestuurd voor deze begravenis');
         $property->setType('string');
         $property->setFormat('url');
-        $property->setIri('cc/address');
+        $property->setIri('cc/addresses');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
