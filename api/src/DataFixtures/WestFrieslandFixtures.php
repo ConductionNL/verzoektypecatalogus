@@ -148,9 +148,30 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('8110dc29-7b27-448e-8853-a8126c984ccb');
+        $property = new Property();
+        $property->setTitle('Factuurgegevens');
+        $property->setName('Factuurgegevens');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('24d3e05d-26c2-4adb-acd4-08bde88b4526');
         $property = new Property();
-        $property->setTitle('Belanghebbende');
+        $property->setTitle('Aanvrager/Rechthebbende');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('irc/assents');
