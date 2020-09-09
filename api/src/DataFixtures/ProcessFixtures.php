@@ -713,7 +713,8 @@ class ProcessFixtures extends Fixture
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('babs-andere-gemeente');
         $stage1->setType('array');
-        $stage1->setIri('irc/assent');
+        $stage1->setIri('irc/assents');
+        $stage1->setFormat('uri');
         $stage1->setDescription('Wat zijn de adress gegevens van uw beoogde babs');
         $stage1->setRequestType($request);
         $manager->persist($stage1);
@@ -741,7 +742,8 @@ class ProcessFixtures extends Fixture
         $stage1->setTitle('Gegevens');
         $stage1->setIcon('fal fa-user');
         $stage1->setSlug('babs-voor-een-dag');
-        $stage1->setIri('irc/assent');
+        $stage1->setIri('irc/assents');
+        $stage1->setFormat('uri');
         $stage1->setType('array');
         $stage1->setDescription('Wat zijn de contact gegevens van uw beoogd BABS');
         $stage1->setRequestType($request);
@@ -885,9 +887,9 @@ class ProcessFixtures extends Fixture
         $stage2->setTitle('Partners');
         $stage2->setIcon('fas fa-user-friends');
         $stage2->setSlug('partner-melding');
-        $stage2->setIri('irc/assent');
+        $stage2->setIri('irc/assents');
         $stage2->setType('array');
-        $stage2->setFormat('bsn');
+        $stage2->setFormat('uri');
         $stage2->setMinItems(2);
         $stage2->setMaxItems(2);
         $stage2->setRequired(true);
@@ -900,9 +902,9 @@ class ProcessFixtures extends Fixture
         $stage3->setTitle('Getuigen');
         $stage3->setIcon('fas fa-users');
         $stage3->setSlug('getuige-melding');
-        $stage3->setIri('irc/assent');
+        $stage3->setIri('irc/assents');
         $stage3->setType('array');
-        $stage3->setFormat('bsn');
+        $stage3->setFormat('uri');
         $stage3->setMinItems(2);
         $stage3->setMaxItems(4);
         $stage3->setRequired(true);
@@ -1031,7 +1033,7 @@ class ProcessFixtures extends Fixture
         $stage2->setSlug('partner');
         $stage2->setType('array');
         $stage2->setFormat('url');
-        $stage2->setIri('irc/assent');
+        $stage2->setIri('irc/assents');
         $stage2->setMinItems(2);
         $stage2->setMaxItems(2);
         $stage2->setRequired(true);
@@ -1098,7 +1100,7 @@ class ProcessFixtures extends Fixture
         $stage7->setSlug('getuige');
         $stage7->setType('array');
         $stage7->setFormat('url');
-        $stage7->setIri('irc/assent');
+        $stage7->setIri('irc/assents');
         $stage7->setMinItems(2);
         $stage7->setMaxItems(4);
         $stage7->setRequired(true);
