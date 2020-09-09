@@ -53,14 +53,14 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $template = new \App\Entity\Template();
-        $template->setName('HO Akte');
-        $template->setDescription('Ho Akte test document');
-        $template->setType('word');
-        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'3807993a-ed98-4570-8a05-09c9454bcac5']));
-        $template->setRequestType($requestType);
-        $manager->persist($template);
-        $manager->flush();
+        //$template = new \App\Entity\Template();
+        //$template->setName('HO Akte');
+        //$template->setDescription('Ho Akte test document');
+        //$template->setType('word');
+        //$template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'3807993a-ed98-4570-8a05-09c9454bcac5']));
+        //$template->setRequestType($requestType);
+        //$manager->persist($template);
+        //$manager->flush();
 
         $template = new \App\Entity\Template();
         $template->setName('Ontvangs bevestiging');
@@ -119,6 +119,20 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('e0f14f62-763a-4870-be3d-e864971a6404');
+        $property = new Property();
+        $property->setTitle('Bestaand graf');
+        $property->setType('boolean');
+        $property->setFormat('boolean');
+        $property->setRequired(false);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('b1fd7b38-384b-47ec-a0f2-6f81949cdece');
         $property = new Property();
         $property->setTitle('Datum');
@@ -136,7 +150,7 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Artikelen');
         $property->setIri('pdc/offer');
-        $property->setQuery(['audience'=>'public', 'products.groups.id'=>'9f9a78cb-f708-447f-8795-23f6cf13c39d']);
+        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafartikelen', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
         $property->setRequired(false);
         $property->setType('array');
         $property->setFormat('uri');
@@ -148,20 +162,14 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('8110dc29-7b27-448e-8853-a8126c984ccb');
+        $id = Uuid::fromString('7c212e0e-46dc-4ce0-8cec-8fd0d2d2c99b');
         $property = new Property();
-        $property->setTitle('Factuurgegevens');
-        $property->setName('Factuurgegevens');
+        $property->setTitle('Grafnummer of grafnaam');
+        $property->setDescription('In het geval van een bijzetting dient u het graf waarin dient te worden bijgezet te identificeren met een grafnummer of naam van reeds geplaatste overledenen');
+        $property->setRequired(false);
         $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('cc/people');
-        $property->setRequired(true);
+        $property->setFormat('text');
         $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
         $manager->persist($property);
         $property->setId($id);
@@ -188,11 +196,51 @@ class WestFrieslandFixtures extends Fixture
         $id = Uuid::fromString('8110dc29-7b27-448e-8853-a8126c984ccb');
         $property = new Property();
         $property->setTitle('Contactpersoon');
-        $property->setName('Contactpersoon');
+        $property->setDescription('Wie is eht contact persoon voor deze begravenis? e.g. uitvaart ondernemer of begravenisleider');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/people');
         $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('baf2d8a5-250a-44f8-9a05-55af004d5d4f');
+        $property = new Property();
+        $property->setTitle('Factuur persoon');
+        $property->setDescription('Naar wie moet de factuur worden gestuurd voor deze begravenis');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('dfc4b51d-f1ea-4137-8451-e18f5b58bb80');
+        $property = new Property();
+        $property->setTitle('Factuur adress');
+        $property->setDescription('Naar wie moet de factuur worden gestuurd voor deze begravenis');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/adress');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -228,6 +276,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/people');
+        $property->setConfiguration(['email'=>false,'telephone'=>false,'givenName'=>true,'familyName'=>true,'birthday'=>true,'placeOfBirth'=>true]);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -238,7 +287,7 @@ class WestFrieslandFixtures extends Fixture
         // Bijbehorende taken die in de queue worden gezet
         $task = new Task();
         $task->setRequestType($requestType);
-        $task->setName('Aaanmaken zaak');
+        $task->setName('Aanmaken zaak');
         $task->setDescription('Deze task maakt bij het creaëren van een begravenis meteen een zaak aan');
         $task->setCode('start_zaak_begraven');
         $task->setEndpoint('trouwservice');
