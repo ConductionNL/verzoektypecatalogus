@@ -109,7 +109,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setIri('pdc/offer');
         $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
         $property->setType('string');
-        $property->setFormat('uri ');
+        $property->setFormat('uri');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -118,14 +118,6 @@ class WestFrieslandFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('e0f14f62-763a-4870-be3d-e864971a6404');
-        $property = new Property();
-        $property->setTitle('Bestaand graf');
-        $property->setType('boolean');
-        $property->setFormat('boolean');
-        $property->setRequired(false);
-        $property->setRequestType($requestType);
 
         $manager->persist($property);
         $property->setId($id);
