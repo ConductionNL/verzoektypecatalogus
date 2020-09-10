@@ -2521,6 +2521,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[configuration]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[dateCreated]'
           in: query
           required: false
@@ -3393,6 +3402,22 @@ paths:
             items:
               type: boolean
           style: form
+          explode: true
+        -
+          name: configuration
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'configuration[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
           explode: true
         -
           name: dateCreated
@@ -8275,6 +8300,12 @@ components:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
           nullable: true
+        configuration:
+          description: 'An array of possible configuration options for form ellements'
+          type: array
+          items:
+            type: string
+          nullable: true
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -8483,6 +8514,12 @@ components:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
           nullable: true
+        configuration:
+          description: 'An array of possible configuration options for form ellements'
+          type: array
+          items:
+            type: string
+          nullable: true
     'Property:jsonld-read':
       type: object
       description: |
@@ -8689,6 +8726,12 @@ components:
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+          nullable: true
+        configuration:
+          description: 'An array of possible configuration options for form ellements'
+          type: array
+          items:
+            type: string
           nullable: true
         dateCreated:
           description: 'The moment this request was created'
@@ -8906,6 +8949,12 @@ components:
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+          nullable: true
+        configuration:
+          description: 'An array of possible configuration options for form ellements'
+          type: array
+          items:
+            type: string
           nullable: true
     RequestType-read:
       type: object
@@ -9774,12 +9823,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9805,6 +9854,9 @@ definitions:
         description: 'Whether or not this proerty is the starting oint of a process'
         type: string
         example: 'true'
+      configuration:
+        description: 'An array of possible configuration options for form ellements'
+        type: array
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -9964,12 +10016,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9995,6 +10047,9 @@ definitions:
         description: 'Whether or not this proerty is the starting oint of a process'
         type: string
         example: 'true'
+      configuration:
+        description: 'An array of possible configuration options for form ellements'
+        type: array
       requestType:
         description: 'The requestType that this property belongs to'
         type: object
@@ -10177,12 +10232,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -10409,12 +10464,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
     required: []
   AuditTrail-write:
     properties:
@@ -10462,12 +10517,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-08-28 09:15:39'
+        example: '2020-09-08 23:04:38'
     required: []
   ChangeLog-write:
     properties:

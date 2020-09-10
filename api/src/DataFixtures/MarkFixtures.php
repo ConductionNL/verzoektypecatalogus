@@ -58,12 +58,14 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Postcode
+        //Adresgegevens
         $id = Uuid::fromString('c9ed0d31-6296-4e65-9416-aa2a1c366ecd');
         $property = new Property();
-        $property->setTitle('Postcode:');
+        $property->setTitle('Wat is uw adres?');
+        $property->setName('adres_Sticker');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -71,63 +73,14 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //huisnummer
+        //persoonsgegevens
         $id = Uuid::fromString('f0ab2b61-2a98-48c0-b984-58ab5fa8568f');
         $property = new Property();
-        $property->setTitle('Huisnummer:');
-        $property->setType('integer');
-        $property->setFormat('text');
+        $property->setTitle('Wat zijn uw gegevens?');
+        $property->setType('string');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer toevoeging
-        $id = Uuid::fromString('afcf73a4-9d31-4104-baf2-039c0fae85e2');
-        $property = new Property();
-        $property->setTitle('Huisnummer toevoeging:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //straatnaam
-        $id = Uuid::fromString('a48ca6a1-0dbe-4497-9034-8760e407c662');
-        $property = new Property();
-        $property->setTitle('Straatnaam:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Woonplaats
-        $id = Uuid::fromString('5fc37fbe-14e8-48cf-ad32-0de22fa3bc57');
-        $property = new Property();
-        $property->setTitle('Woonplaats:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Emailadres
-        $id = Uuid::fromString('825b1050-6dde-4d17-b180-6bde3204364f');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -151,6 +104,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('8835b122-7a8a-4dfc-86d9-e12254e9f676');
         $property = new Property();
         $property->setTitle('Voor welke kosten wilt u bijzondere bijstand aanvragen?');
+        $property->setName('reden_anvraag');
         $property->setType('string');
         $property->setFormat('textarea');
         $property->setRequired(true);
@@ -160,39 +114,14 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //telefoonnummer
+        //Persoonsgegevens
         $id = Uuid::fromString('52339b15-cd83-4710-b102-c06fc72cd727');
         $property = new Property();
-        $property->setTitle('Telefoon');
+        $property->setTitle('Wat zijn uw gegevens?');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setDescription('telefoon nummer:');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Emailadres
-        $id = Uuid::fromString('a0162fb5-bf38-4476-b834-dbb298b9ac9f');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //email adres heraald
-        $id = Uuid::fromString('91284651-b7a5-4b47-9108-24a7840c035e');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
+        $property->setName('gegevens_bijstand');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -245,6 +174,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('24d9151f-abfe-45c6-9b87-5b543acae91d');
         $property = new Property();
         $property->setTitle('Uw vraag of melding betreft:');
+        $property->setName('melding_klacht');
         $property->setDescription('Kunt u aangeven op welk gebied u een vraag of melding heeft?');
         $property->setRequired(true);
         $property->setType('string');
@@ -260,6 +190,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('36708885-716b-4e12-a93a-614952217b4e');
         $property = new Property();
         $property->setTitle('Vraag of opmerking');
+        $property->setName('vraag_opmerking');
         $property->setType('string');
         $property->setRequired(true);
         $property->setFormat('textarea');
@@ -269,25 +200,14 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //telefoonnummer
+        //Persoonsgegevens
         $id = Uuid::fromString('9410db4d-331f-4a54-9322-5db9148b9c90');
         $property = new Property();
-        $property->setTitle('Telefoon');
+        $property->setTitle('Wat zijn uw gegevens?');
+        $property->setName('gegevens_aanmelden');
         $property->setType('string');
-        $property->setFormat('tel');
-        $property->setDescription('telefoon nummer:');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Emailadres
-        $id = Uuid::fromString('3493c557-83b8-4284-9653-09f7028b5676');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -366,9 +286,10 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('dc3d50fb-106d-4fea-acb8-1323ac412744');
         $property = new Property();
         $property->setTitle('Mobiel nummer (tijdens evenement)');
+        $property->setName('tel_evenement');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Mobiel nummer:');
+        $property->setDescription('Mobiel nummer van uw bedrijf');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -379,7 +300,7 @@ class MarkFixtures extends Fixture
         //Begintijd event
         $id = Uuid::fromString('2b34d5f1-37fb-40a9-b171-61a9ccea3e16');
         $property = new Property();
-        $property->setTitle('Begin evenement');
+        $property->setTitle('Begintijd evenement');
         $property->setType('string');
         $property->setFormat('time');
         $property->setRequired(true);
@@ -392,7 +313,7 @@ class MarkFixtures extends Fixture
         //Eindtijd evenement
         $id = Uuid::fromString('ef793831-d09b-428f-a2d5-338943abe8b5');
         $property = new Property();
-        $property->setTitle('Eind evenement');
+        $property->setTitle('Eindtijd evenement');
         $property->setType('string');
         $property->setFormat('time');
         $property->setRequired(true);
@@ -472,48 +393,14 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Postcode
-        $id = Uuid::fromString('145f99ba-3319-41d9-b035-a178239eeec1');
-        $property = new Property();
-        $property->setTitle('Postcode:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer
-        $id = Uuid::fromString('234daa9c-f4ae-4a54-b1d2-a57ae7cbaeff');
-        $property = new Property();
-        $property->setTitle('Huisnummer:');
-        $property->setType('integer');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //straat
-        $id = Uuid::fromString('abed58a6-3e16-42fb-bb15-8b4f197fb7fc');
-        $property = new Property();
-        $property->setTitle('Straatnaam:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //plaats
+        //locatie
         $id = Uuid::fromString('4b3faaf9-f8f4-422c-869b-19103892316f');
         $property = new Property();
-        $property->setTitle('Plaats:');
+        $property->setTitle('Wat is het adres van uw evenement?');
+        $property->setName('adres_evenement');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -523,8 +410,8 @@ class MarkFixtures extends Fixture
         //Formulier alchol schenken
         $id = Uuid::fromString('30d63557-53e5-4393-a613-ca1debf278f4');
         $requestType = new RequestType();
-        $requestType->setName('Aanvraag verguning Drank en Horicawet');
-        $property->setTitle('Aanvraag verguning Drank en Horicawet');
+        $requestType->setName('Aanvraag verguning Drank -en Horicawet');
+        $property->setTitle('Aanvraag verguning Drank -en Horicawet');
         $property->setDescription('Een ondernemer moet een drank- en horecavergunning hebben om alcoholische dranken te schenken, Vraag deze hier aan.');
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -535,7 +422,8 @@ class MarkFixtures extends Fixture
         //bedrijfnaam
         $id = Uuid::fromString('889d5fc0-6709-42c5-b910-b992638e2755');
         $property = new Property();
-        $property->setTitle('Naam:');
+        $property->setTitle('Naam Bedrijf:');
+        $property->setName('name_bedrijf');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -561,63 +449,12 @@ class MarkFixtures extends Fixture
         //Adres bedrijf
         $id = Uuid::fromString('b2163bf1-1247-4670-a146-d9bd2ce703ef');
         $property = new Property();
-        $property->setTitle('Adres');
+        $property->setTitle('Wat is het adres van uw bedrijf?');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $property->setRequired(true);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //postcode bedrijf
-        $id = Uuid::fromString('9d3e1f91-51c3-4c55-9440-0e09aa19957a');
-        $property = new Property();
-        $property->setTitle('Postcode:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //woonplaats
-        $id = Uuid::fromString('2913ff39-5888-452c-9171-0594d47c9513');
-        $property = new Property();
-        $property->setTitle('Plaats:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //stage 2
-        //telefoonnummer
-        $id = Uuid::fromString('01a07273-6977-4b1b-87e6-96cf4930552d');
-        $property = new Property();
-        $property->setTitle('Telefoonnummer:');
-        $property->setType('string');
-        $property->setFormat('tel');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Emailadres
-        $id = Uuid::fromString('cb87cae2-1a8c-42de-8587-ee821b400032');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -837,7 +674,7 @@ class MarkFixtures extends Fixture
         //aanwezigheid
         $id = Uuid::fromString('66ccac5c-969a-4879-9f6a-a151f414c3f4');
         $property = new Property();
-        $property->setTitle('Kunnen er, op enig moment meer dan 50 persoonen (incl. personeel) in de ruimte aanwezig zijn?');
+        $property->setTitle('Kunnen er, op enig moment meer dan 50 personen (incl. personeel) in de ruimte aanwezig zijn?');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
@@ -863,7 +700,7 @@ class MarkFixtures extends Fixture
         //beroep horecawet
         $id = Uuid::fromString('a61c80cb-54d6-415a-8e46-ef5caa9fbd09');
         $property = new Property();
-        $property->setTitle('Wilt u beroep doen op artiekel 46 van de drank en horecawet?');
+        $property->setTitle('Wilt u beroep doen op artikel 46 van de drank -en horecawet?');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['Ja', 'Nee']);
@@ -892,37 +729,10 @@ class MarkFixtures extends Fixture
         //Telefoonnummer
         $id = Uuid::fromString('1172021a-9902-42b7-ab08-2cb169b589da');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Wat zijn uw gegevens?');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //e-mailardes
-        $id = Uuid::fromString('6e93748f-2822-4c77-823d-d35ef3246c06');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Herhaal e-mailardes
-        $id = Uuid::fromString('abc993e6-c030-49ce-81b5-e0c8641aa239');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -935,49 +745,11 @@ class MarkFixtures extends Fixture
         //Voor- en achternaam
         $id = Uuid::fromString('55027bb1-5639-4ea2-a92b-878971c3776e');
         $property = new Property();
-        $property->setTitle('Voor- en achternaam');
+        $property->setTitle('Gegevens partner');
+        $property->setName('partner');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //man - vrouw
-        $id = Uuid::fromString('7af29a03-4b98-44c5-81fa-84186ff86ad0');
-        $property = new Property();
-        $property->setTitle('Geslacht');
-        $property->setType('string');
-        $property->setFormat('radio');
-        $property->setEnum(['Man', 'Vrouw']);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Burgerservicenummer
-        $id = Uuid::fromString('bb7ace53-1c74-4218-bbc7-ec592cad6b0f');
-        $property = new Property();
-        $property->setTitle('Burgerservicenummer');
-        $property->setType('string');
-        $property->setFormat('number');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //geboortedatum
-        $id = Uuid::fromString('813286e8-0743-4353-ac32-1a04a819f333');
-        $property = new Property();
-        $property->setTitle('geboortedatum');
-        $property->setType('string');
-        $property->setFormat('date');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -986,51 +758,13 @@ class MarkFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //gegevens van uw woning + description
-        //adres
-        $id = Uuid::fromString('f9f7bf4e-a798-45b9-9fab-e5e68aa48718');
-        $property = new Property();
-        $property->setTitle('Adres');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //postcode
-        $id = Uuid::fromString('c5d64190-bf92-40ce-93bc-f83bb386c414');
-        $property = new Property();
-        $property->setTitle('Postcode');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //woonplaats
-        $id = Uuid::fromString('97626d6b-4e51-4f7a-99e1-3c7daca0ba76');
-        $property = new Property();
-        $property->setTitle('Woonplaats');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
         //wanneer eigenaar
         $id = Uuid::fromString('a012a629-3f02-43f8-8037-9f91609385fc');
         $property = new Property();
         $property->setTitle('Op welke datum werd u de eigenaar van de woning?');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1327,60 +1061,14 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Postcode
+        //Adres
         $id = Uuid::fromString('0309ca91-7c12-4046-a7b0-f390acddff40');
         $property = new Property();
-        $property->setTitle('Postcode:');
+        $property->setTitle('Wat is adres van de locatie?');
+        $property->setName('locatie_verbouwing');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer
-        $id = Uuid::fromString('2e18a86a-4e6a-4de4-972a-184a86446dc8');
-        $property = new Property();
-        $property->setTitle('Huisnummer:');
-        $property->setType('integer');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer toevoeging
-        $id = Uuid::fromString('e796c513-706e-4545-97cd-e5a75576c9fd');
-        $property = new Property();
-        $property->setTitle('Huisnummer toevoeging:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //straatnaam
-        $id = Uuid::fromString('6c1944c5-7931-4608-a9a2-b65bd751b729');
-        $property = new Property();
-        $property->setTitle('Straatnaam:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Woonplaats
-        $id = Uuid::fromString('df6d8c3b-d50c-4442-8596-2768a60eb071');
-        $property = new Property();
-        $property->setTitle('Woonplaats:');
-        $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1403,35 +1091,11 @@ class MarkFixtures extends Fixture
         //telefoonnummer
         $id = Uuid::fromString('56568eef-388e-4549-b3c2-c10dce672453');
         $property = new Property();
-        $property->setTitle('Telefoonnummer:');
+        $property->setTitle('Wat zijn uw gegevens?');
+        $property->setName('gegevens_verbouwer');
         $property->setType('string');
-        $property->setFormat('tel');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Emailadres
-        $id = Uuid::fromString('de0d08d5-27f2-42d4-8984-af4d07b20350');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //email adres heraald
-        $id = Uuid::fromString('3630286c-4a83-41ab-8fcb-07a596d4597d');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1455,7 +1119,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('KvK-nummer:');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('kvk');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1486,63 +1150,14 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Postcode
+        //adres bedrijf
         $id = Uuid::fromString('1f479217-9ee0-4a62-acb0-8ef9160cfa17');
         $property = new Property();
-        $property->setTitle('Postcode:');
+        $property->setTitle('Wat is het adres van uw bedrijf?');
+        $property->setName('adres_uitvaart');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer
-        $id = Uuid::fromString('a918ca80-ef3f-44fe-812d-79f89de0c162');
-        $property = new Property();
-        $property->setTitle('Huisnummer:');
-        $property->setType('integer');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer toevoeging
-        $id = Uuid::fromString('b1a98254-7a8c-4cf3-bc88-fd7edc4da7d8');
-        $property = new Property();
-        $property->setTitle('Huisnummer toevoeging:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //straatnaam
-        $id = Uuid::fromString('cecbddfa-207e-4d9b-811c-a1c0962904d6');
-        $property = new Property();
-        $property->setTitle('Straatnaam:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $property->setRequired(true);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Woonplaats
-        $id = Uuid::fromString('94052578-250b-43de-9993-e16c481e8d5b');
-        $property = new Property();
-        $property->setTitle('Plaats:');
-        $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1551,77 +1166,13 @@ class MarkFixtures extends Fixture
         $manager->flush();
 
         //stage 2
-        //naam
+        //gegevens contactpersoon
         $id = Uuid::fromString('2e82f135-1258-4c48-a34b-b8bd8a0b7cc6');
         $property = new Property();
-        $property->setTitle('Voornaam(en)');
-        $property->setName('Voornaamen_2');
+        $property->setTitle('Wat zijn de gegevens van de contactpersoon?');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //tussenvoegsels
-        $id = Uuid::fromString('6b7fa325-5956-45df-bb63-7075dce2ebb4');
-        $property = new Property();
-        $property->setTitle('Tussenvoegsel(s):');
-        $property->setName('tussenvoegsels_1');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //achternaam
-        $id = Uuid::fromString('ca518de8-4d19-482c-abd7-f5e8e64139d5');
-        $property = new Property();
-        $property->setTitle('Achternaam:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //telefoon
-        $id = Uuid::fromString('e2bc6133-e279-488e-8f98-496ed103e1f5');
-        $property = new Property();
-        $property->setTitle('Telefoon');
-        $property->setType('string');
-        $property->setFormat('tel');
-        $property->setDescription('telefoon nummer:');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Emailadres
-        $id = Uuid::fromString('d0f2b60e-cd79-4bc4-b7c8-a47ee53b5a6e');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //email adres heraald
-        $id = Uuid::fromString('c98deeb0-481b-40e3-99e4-9b4e5c4efcab');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1683,33 +1234,8 @@ class MarkFixtures extends Fixture
         //voornamen
         $id = Uuid::fromString('734fc710-ce4d-4ee6-9b02-8e8288e99edd');
         $property = new Property();
-        $property->setTitle('Voornamen:');
-        $property->setName('voornamen_1');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //tussenvoegsels
-        $id = Uuid::fromString('5452777e-7ca6-4ca1-8bb9-bbdf095287c6');
-        $property = new Property();
-        $property->setTitle('Tussenvoegsel(s):');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //achternaam
-        $id = Uuid::fromString('338b4229-6c00-454a-b72b-6b9f398d0bd7');
-        $property = new Property();
-        $property->setTitle('Geslachtsnaam:');
+        $property->setTitle('wat zijn de gegevens van de overledenen?');
+        $property->setName('gegevens_overleidenen');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -1762,10 +1288,10 @@ class MarkFixtures extends Fixture
 
         $id = Uuid::fromString('b0530640-9213-4b06-a213-14fbcdf763d2');
         $property = new Property();
-        $property->setTitle('Naam:');
-        $property->setName('opdrachtgever_naam');
+        $property->setTitle('Gegevens van de rechthebbende?');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1773,68 +1299,13 @@ class MarkFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //Postcode
+        //Adres
         $id = Uuid::fromString('95c5a62b-d8c8-464d-8059-cd3b8995ab0f');
         $property = new Property();
-        $property->setTitle('Postcode:');
-        $property->setName('opdrachtgever_postcode');
+        $property->setTitle('Wat is het adres van de rechthebbende?');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer
-        $id = Uuid::fromString('867adfe6-ec0a-4c32-bac0-1c5edfb4fdec');
-        $property = new Property();
-        $property->setTitle('Huisnummer:');
-        $property->setName('opdrachtgever_huisnummer');
-        $property->setType('integer');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer toevoeging
-        $id = Uuid::fromString('9ca27a26-2b85-417e-ad6c-2b08fd48ed87');
-        $property = new Property();
-        $property->setTitle('Huisnummer toevoeging:');
-        $property->setName('opdrachtgever_huisnummer_toevoeging');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //straatnaam
-        $id = Uuid::fromString('259efb62-4cf1-4ba4-8238-b29c777ccb11');
-        $property = new Property();
-        $property->setTitle('Straatnaam:');
-        $property->setName('opdrachtgever_straatnaam');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $property->setRequired(true);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Woonplaats
-        $id = Uuid::fromString('eca0cb14-bfac-4af4-9457-734741235a03');
-        $property = new Property();
-        $property->setTitle('Plaats:');
-        $property->setName('opdrachtgever_plaats');
-        $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1925,6 +1396,7 @@ class MarkFixtures extends Fixture
         $id = Uuid::fromString('55298664-0121-4272-933c-ee217628dc33');
         $property = new Property();
         $property->setTitle('Rijdende baar?');
+        $property->setDescription('Een rijdende baar is een platvorm op 4 wielen dat kan worden gebruikt om de kist te dragen als de loopafstand te ver is en de auto er niet bij kan');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setEnum(['ja', 'nee']);
@@ -1963,7 +1435,7 @@ class MarkFixtures extends Fixture
         //formulier aangeven overlijden
         $id = Uuid::fromString('24962583-a3a2-4453-88b8-970114ebb89b');
         $requestType = new RequestType();
-        $requestType->setName('Aangeven overlijden');
+        $requestType->setName('Aangifte overlijden');
         $requestType->setDescription('Met dit formulier kan de uitvaartverzorger een overleden persoon digitaal aangeven bij de gemeente Zuid-Drecht. ');
         $manager->persist($requestType);
         $requestType->setId($id);
@@ -1976,7 +1448,7 @@ class MarkFixtures extends Fixture
         $property = new Property();
         $property->setTitle('KvK-nummer:');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('kvk');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1997,75 +1469,13 @@ class MarkFixtures extends Fixture
         //naam bedrijf
         $id = Uuid::fromString('486950fe-f884-4f28-99d4-82058a29cbca');
         $property = new Property();
-        $property->setTitle('Naam bedrijf:');
+        $property->setTitle('Wat is het adres van uw bedrijf?');
+        $property->setName('bedrijf_uitvaartverzorger');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
+        $property->setRequestType($requestType);
         $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Postcode
-        $id = Uuid::fromString('fbb74614-c969-421c-bb72-1465ce65f06e');
-        $property = new Property();
-        $property->setTitle('Postcode:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer
-        $id = Uuid::fromString('2f187ded-547a-43bb-b8d7-dcd0809159c7');
-        $property = new Property();
-        $property->setTitle('Huisnummer:');
-        $property->setType('integer');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //huisnummer toevoeging
-        $id = Uuid::fromString('582bc39a-251a-4c9e-bafa-f1f186b63ef4');
-        $property = new Property();
-        $property->setTitle('Huisnummer toevoeging:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //straatnaam
-        $id = Uuid::fromString('7ce30df4-fcf6-4429-acfb-a72091490443');
-        $property = new Property();
-        $property->setTitle('Straatnaam:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $property->setRequired(true);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Woonplaats
-        $id = Uuid::fromString('48e083f6-0de2-4196-9cc8-34cb3592959b');
-        $property = new Property();
-        $property->setTitle('Plaats:');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -2076,92 +1486,10 @@ class MarkFixtures extends Fixture
         //naam
         $id = Uuid::fromString('b3aa2e1e-8d3f-458e-96e9-c37aa194512f');
         $property = new Property();
-        $property->setTitle('Voornamen:');
-        $property->setName('aangever_voornamen');
+        $property->setTitle('Wat zijn de gegevens van de aangever?');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //tussenvoegsels
-        $id = Uuid::fromString('7872224c-10ec-488c-8b70-703ea42fbdf3');
-        $property = new Property();
-        $property->setTitle('Tussenvoegsel(s):');
-        $property->setName('aangever_tussenvoegels');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //achternaam
-        $id = Uuid::fromString('8d55d760-d5a6-4967-a29b-f41a80bb9109');
-        $property = new Property();
-        $property->setTitle('Achternaam:');
-        $property->setName('aangever_achternaam');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //telefoon
-        $id = Uuid::fromString('6a23a136-0dce-457b-9b15-fbd60ac5f835');
-        $property = new Property();
-        $property->setTitle('Telefoon');
-        $property->setName('aangever_telefoon');
-        $property->setType('string');
-        $property->setFormat('tel');
-        $property->setDescription('telefoon nummer:');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Emailadres
-        $id = Uuid::fromString('90594152-2302-43e9-a544-ae120bb249da');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setName('aangever_email');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //email adres heraald
-        $id = Uuid::fromString('75dcaddf-9a42-48d7-a2b6-4eb0e527e4cd');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres:');
-        $property->setName('aangever_herhaal_email');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //gebortedatum
-        $id = Uuid::fromString('eb1314d1-cee4-433e-a61e-07d0c4822c2f');
-        $property = new Property();
-        $property->setTitle('Geboortedatum:');
-        $property->setType('string');
-        $property->setFormat('date');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2187,64 +1515,10 @@ class MarkFixtures extends Fixture
         //BSN
         $id = Uuid::fromString('9c90a629-5aab-4194-a8bf-39ea57f219a6');
         $property = new Property();
-        $property->setTitle('Burgerservicenummer:');
+        $property->setTitle('Gegevens van de overledenen');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //voornamen
-        $id = Uuid::fromString('c49b417a-f0d2-49b2-bcfb-11946b2636f0');
-        $property = new Property();
-        $property->setTitle('Voornamen');
-        $property->setTitle('overledenen_voornamen');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //tussenvoegsels
-        $id = Uuid::fromString('2ff7dbf5-099c-4f24-9419-584ed6bc2e55');
-        $property = new Property();
-        $property->setTitle('Tussenvoegsel(s)');
-        $property->setTitle('overledenen_tussenvoegsel');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //achternaam
-        $id = Uuid::fromString('a3cd3ea3-762c-4022-94eb-bb698083d62f');
-        $property = new Property();
-        $property->setTitle('Geslachtsnaam:');
-        $property->setTitle('overledenen_gelsachtsnaam');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //geboorte
-        $id = Uuid::fromString('c2393ead-43ea-4d0d-a6d1-28836e46b7f0');
-        $property = new Property();
-        $property->setTitle('Geboortedatum:');
-        $property->setTitle('overledenen_geboortedatum');
-        $property->setType('string');
-        $property->setFormat('date');
-        $property->setRequired(true);
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2273,7 +1547,7 @@ class MarkFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setEnum(['natuurlijk', 'niet natuurlijk']);
+        $property->setEnum(['Natuurlijk', 'Niet natuurlijk']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
