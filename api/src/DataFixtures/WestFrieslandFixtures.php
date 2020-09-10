@@ -171,7 +171,7 @@ class WestFrieslandFixtures extends Fixture
 
         $id = Uuid::fromString('24d3e05d-26c2-4adb-acd4-08bde88b4526');
         $property = new Property();
-        $property->setTitle('Belanghebbende');
+        $property->setTitle('Aanvrager/Rechthebbende');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('irc/assents');
