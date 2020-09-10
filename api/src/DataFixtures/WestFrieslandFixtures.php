@@ -119,6 +119,22 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('4153ca80-55df-4a0e-9053-79f7db01bf4a');
+        $property = new Property();
+        $property->setTitle('Kistmaat');
+        $property->setIri('pdc/offer');
+//        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
+        $property->setType('boolean');
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
