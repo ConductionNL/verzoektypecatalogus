@@ -143,9 +143,9 @@ class WestFrieslandFixtures extends Fixture
         $property->setTitle('Artikelen');
         $property->setIri('pdc/offer');
         $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafartikelen', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
-        $property->setRequired(false);
         $property->setType('array');
-        $property->setFormat('uri');
+        $property->setFormat('uri ');
+        $property->setRequired(false);
         $property->setRequestType($requestType);
 
         $manager->persist($property);
@@ -188,7 +188,7 @@ class WestFrieslandFixtures extends Fixture
         $id = Uuid::fromString('8110dc29-7b27-448e-8853-a8126c984ccb');
         $property = new Property();
         $property->setTitle('Contactpersoon');
-        $property->setDescription('Wie is eht contact persoon voor deze begravenis? e.g. uitvaart ondernemer of begravenisleider');
+        $property->setDescription('Wie is het  contact persoon voor deze begravenis? e.g. uitvaart ondernemer of begravenisleider');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/people');
