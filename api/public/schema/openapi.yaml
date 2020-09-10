@@ -2521,6 +2521,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[configuration]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[dateCreated]'
           in: query
           required: false
@@ -3393,6 +3402,22 @@ paths:
             items:
               type: boolean
           style: form
+          explode: true
+        -
+          name: configuration
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'configuration[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: deepObject
           explode: true
         -
           name: dateCreated
@@ -8275,6 +8300,12 @@ components:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
           nullable: true
+        configuration:
+          description: 'An array of possible configuration options for form ellements'
+          type: array
+          items:
+            type: string
+          nullable: true
         dateCreated:
           description: 'The moment this request was created'
           type: string
@@ -8483,6 +8514,12 @@ components:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
           nullable: true
+        configuration:
+          description: 'An array of possible configuration options for form ellements'
+          type: array
+          items:
+            type: string
+          nullable: true
     'Property:jsonld-read':
       type: object
       description: |
@@ -8689,6 +8726,12 @@ components:
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+          nullable: true
+        configuration:
+          description: 'An array of possible configuration options for form ellements'
+          type: array
+          items:
+            type: string
           nullable: true
         dateCreated:
           description: 'The moment this request was created'
@@ -8906,6 +8949,12 @@ components:
         start:
           description: 'Whether or not this proerty is the starting oint of a process'
           type: boolean
+          nullable: true
+        configuration:
+          description: 'An array of possible configuration options for form ellements'
+          type: array
+          items:
+            type: string
           nullable: true
     RequestType-read:
       type: object
@@ -9774,12 +9823,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-09-01 12:54:49'
+        example: '2020-09-08 23:04:38'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-09-01 12:54:49'
+        example: '2020-09-08 23:04:38'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9805,6 +9854,9 @@ definitions:
         description: 'Whether or not this proerty is the starting oint of a process'
         type: string
         example: 'true'
+      configuration:
+        description: 'An array of possible configuration options for form ellements'
+        type: array
       dateCreated:
         description: 'The moment this request was created'
         type: \Datetime
@@ -9964,12 +10016,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2020-09-01 12:54:49'
+        example: '2020-09-08 23:04:38'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2020-09-01 12:54:49'
+        example: '2020-09-08 23:04:38'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -9995,6 +10047,9 @@ definitions:
         description: 'Whether or not this proerty is the starting oint of a process'
         type: string
         example: 'true'
+      configuration:
+        description: 'An array of possible configuration options for form ellements'
+        type: array
       requestType:
         description: 'The requestType that this property belongs to'
         type: object
@@ -10177,12 +10232,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-09-01 12:54:49'
+        example: '2020-09-08 23:04:38'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-09-01 12:54:49'
+        example: '2020-09-08 23:04:38'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -10305,59 +10360,6 @@ definitions:
       - name
       - uri
       - type
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-09-01 12:54:49'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-09-01 12:54:49'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
   AuditTrail-read:
     properties:
       id:
@@ -10462,12 +10464,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-09-01 12:54:49'
+        example: '2020-09-08 23:04:38'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-09-01 12:54:49'
+        example: '2020-09-08 23:04:38'
     required: []
   AuditTrail-write:
     properties:
@@ -10475,6 +10477,59 @@ definitions:
         description: 'A note conserning this log lin'
         type: string
         example: 'This log line looks suspicius'
+        maxLength: 2555
+    required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-09-08 23:04:38'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-09-08 23:04:38'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
         maxLength: 2555
     required: []
 tags:
@@ -10506,13 +10561,13 @@ tags:
       
       
   -
-    name: ChangeLog
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: AuditTrail
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
@@ -10523,16 +10578,16 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
 host: irc.zaakonline.nl
 servers:

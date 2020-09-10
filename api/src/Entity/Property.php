@@ -608,6 +608,14 @@ class Property
     private $start = false;
 
     /**
+     * @var array An array of possible configuration options for form ellements
+     *
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $configuration = [];
+
+    /**
      * @var Datetime The moment this request was created
      *
      * @Groups({"read"})
@@ -1311,6 +1319,18 @@ class Property
     public function setStart(bool $start): self
     {
         $this->start = $start;
+
+        return $this;
+    }
+
+    public function getConfiguration(): ?array
+    {
+        return $this->configuration;
+    }
+
+    public function setConfiguration(array $configuration): self
+    {
+        $this->configuration = $configuration;
 
         return $this;
     }
