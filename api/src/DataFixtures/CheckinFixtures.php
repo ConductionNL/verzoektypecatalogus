@@ -73,7 +73,7 @@ class CheckinFixtures extends Fixture
         $property->setIcon('fa fa-building');
         $property->setType('string');
         $property->setFormat('url');
-        $property->setIri('cc/organization');
+        $property->setIri('cc/organizations');
         $property->setDescription('Vul hier het adres van uw horeca onderneming in.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
