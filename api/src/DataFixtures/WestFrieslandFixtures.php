@@ -123,7 +123,7 @@ class WestFrieslandFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Kistmaat');
 //        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
-        $property->setType('boolean');
+        $property->setType('string');
         $property->setEnum(['De kist valt binnen de standaard afmetingen van 55cm bij 200cm.', 'De kist is groter dan de standaard afmetingen van 55cm bij 200cm.']);
         $property->setFormat('radio');
         $property->setRequired(true);
