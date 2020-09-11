@@ -135,6 +135,21 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('03d4460d-ce9b-4d5b-9063-e7856205273d');
+        $property = new Property();
+        $property->setTitle('Opmerkingen');
+//        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequired(false);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
