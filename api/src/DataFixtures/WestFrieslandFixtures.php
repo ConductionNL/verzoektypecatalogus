@@ -122,7 +122,6 @@ class WestFrieslandFixtures extends Fixture
         $id = Uuid::fromString('4153ca80-55df-4a0e-9053-79f7db01bf4a');
         $property = new Property();
         $property->setTitle('Kistmaat');
-        $property->setIri('pdc/offer');
 //        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
         $property->setType('boolean');
         $property->setFormat('radio');
