@@ -80,7 +80,7 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('9e5c34dc-99da-423d-9a88-a4a3875a66fb');
+        $id = Uuid::fromString('587babac-f23a-4fb0-8df8-ccd083a079cc');
         $property = new Property();
         $property->setTitle('KHN Nummer');
         $property->setName('khn');
