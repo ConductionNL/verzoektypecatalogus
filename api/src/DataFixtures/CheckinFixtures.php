@@ -80,7 +80,7 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('9e5c34dc-99da-423d-9a88-a4a3875a66fb');
+        $id = Uuid::fromString('587babac-f23a-4fb0-8df8-ccd083a079cc');
         $property = new Property();
         $property->setTitle('KHN Nummer');
         $property->setName('khn');
@@ -119,24 +119,6 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft factureren wij zonder BTW');
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('3fbb0356-a362-4b70-b914-dd27919ff99c');
-        $property = new Property();
-        $property->setTitle('Abonnement');
-        $property->setIcon('fa fa-money-check');
-        $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('pdc/offer');
-        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Checkin Producten', 'products.name'=>'Abonnement']);
-        $property->setDescription('Kies hier een abbonnement.');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
 
         $manager->persist($property);
