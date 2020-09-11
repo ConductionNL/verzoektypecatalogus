@@ -476,7 +476,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fal fa-user-friends');
         $property->setType('array');
         $property->setFormat('url');
-        $property->setIri('irc/assent');
+        $property->setIri('irc/assents');
         $property->setDescription('Wie zijn de ouders');
         $property->setMinItems(2);
         $property->setMaxItems(2);
@@ -557,7 +557,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-user-friends');
         $property->setType('array');
         $property->setFormat('url');
-        $property->setIri('irc/assent');
+        $property->setIri('irc/assents');
         $property->setMinItems(2);
         $property->setDefaultValue('{{ app.user.person }}');
         $property->setMaxItems(2);
@@ -638,7 +638,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-users');
         $property->setType('array');
         $property->setFormat('url');
-        $property->setIri('irc/assent');
+        $property->setIri('irc/assents');
         $property->setMinItems(2);
         $property->setMaxItems(4);
         $property->setRequired(true);
@@ -669,7 +669,6 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('492f4687-71f3-48f0-aad8-70a2f1f3cd1a');
         $property = new Property();
         $property->setTitle('Naamgebruik');
-        $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
         $property->setFormat('radio');
@@ -687,7 +686,6 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('d07d6fd3-7118-4e75-9ee6-407d494e1613');
         $property = new Property();
         $property->setTitle('Taal');
-        $property->setName('type');
         $property->setIcon('fas fa-ring');
         $property->setType('string');
         $property->setFormat('radio');

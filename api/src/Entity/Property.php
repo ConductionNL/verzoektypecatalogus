@@ -50,8 +50,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          }
  *     },
  * )
+ *
+ *  @ORM\Table(
+ *    uniqueConstraints={
+ *        @ORM\UniqueConstraint(name="property_unique_name",
+ *            columns={"request_type", "name"})
+ *    }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
  * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
+ * @ORM\HasLifecycleCallbacks
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
@@ -81,7 +89,7 @@ class Property
      * @MaxDepth(1)
      * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RequestType", inversedBy="properties",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, name="request_type")
      */
     private $requestType;
 
@@ -102,6 +110,7 @@ class Property
      * @example my_property
      * @Assert\Length(min = 15, max = 255)
      * @Groups({"read"})
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
@@ -599,6 +608,14 @@ class Property
     private $start = false;
 
     /**
+     * @var array An array of possible configuration options for form ellements
+     *
+     * @Groups({"read", "write"})
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $configuration = [];
+
+    /**
      * @var Datetime The moment this request was created
      *
      * @Groups({"read"})
@@ -615,6 +632,24 @@ class Property
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
+
+    /**
+     *  @ORM\PrePersist
+     *  @ORM\PreUpdate
+     *
+     *  */
+    public function prePersist()
+    {
+        if (!$this->name) {
+            // titles wil be used as strings so lets convert the to camelcase
+            $string = $this->title;
+            $string = trim($string); //removes whitespace at begin and ending
+            $string = preg_replace('/\s+/', '_', $string); // replaces other whitespaces with _
+            $string = strtolower($string);
+
+            $this->name = $string;
+        }
+    }
 
     public function __construct()
     {
@@ -1284,6 +1319,18 @@ class Property
     public function setStart(bool $start): self
     {
         $this->start = $start;
+
+        return $this;
+    }
+
+    public function getConfiguration(): ?array
+    {
+        return $this->configuration;
+    }
+
+    public function setConfiguration(array $configuration): self
+    {
+        $this->configuration = $configuration;
 
         return $this;
     }
