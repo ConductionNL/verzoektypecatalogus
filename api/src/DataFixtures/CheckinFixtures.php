@@ -52,12 +52,10 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('5fe949b5-6ce7-4394-a4c9-6ae0297dad5d');
         $property = new Property();
-        $property->setTitle('Naam ondernemer');
-        $property->setIcon('fa fa-user');
+        $property->setTitle('Contact gegevens');
         $property->setType('string');
         $property->setFormat('uri');
         $property->setIri('cc/people');
-        $property->setDescription('Vul hier uw gegevens in');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -70,11 +68,9 @@ class CheckinFixtures extends Fixture
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
         $property->setTitle('Horeca onderneming contact');
-        $property->setIcon('fa fa-building');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/organizations');
-        $property->setDescription('Vul hier het adres van uw horeca onderneming in.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -84,15 +80,13 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('2abb52b1-bf30-4359-a027-fede87b63f64');
+        $id = Uuid::fromString('9e5c34dc-99da-423d-9a88-a4a3875a66fb');
         $property = new Property();
-        $property->setTitle('Verwerkingsovereenkomst');
-        $property->setIcon('fa fa-building');
-        $property->setType('boolean');
-        $property->setFormat('checkbox');
-        //$property->setIri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'b7049936-bef1-45a1-a70e-9160f795a6cd']));
-        $property->setDescription('Verwerkingsovereenkomst');
-        $property->setRequired(true);
+        $property->setTitle('KHN Nummer');
+        $property->setName('khn');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Als u lid bent van koningklijke horeca nederland kunt u hier wu lidmaarschats nummer opvoeren voor korting');
         $property->setRequestType($requestType);
 
         $manager->persist($property);
@@ -108,7 +102,6 @@ class CheckinFixtures extends Fixture
         $property->setIcon('fa fa-building');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setDescription('Vul hier het KVK Nummer van uw horeca onderneming in.');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -156,10 +149,8 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
         $property->setName('akkoord');
-        $property->setIcon('fa fa-building');
         $property->setType('boolean');
         $property->setFormat('checkbox');
-        $property->setDescription('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
         $property->setRequestType($requestType);
         $property->setRequired(true);
 
@@ -173,10 +164,8 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
         $property->setName('algemenevoorwaarden');
-        $property->setIcon('fa fa-building');
         $property->setType('boolean');
         $property->setFormat('checkbox');
-        $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
         $property->setRequestType($requestType);
         $property->setRequired(true);
 
