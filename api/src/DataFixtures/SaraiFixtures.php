@@ -111,10 +111,9 @@ class SaraiFixtures extends Fixture
         //taal
         $id = Uuid::fromString('688a2e68-55c3-4dde-aaf6-339b918ae137');
         $property = new Property();
-        $property->setTitle('Spreekt u Nederlands?');
-        $property->setType('boolean');
-        $property->setFormat('radio');
-        $property->setRequired(true);
+        $property->setTitle('Welke taal/talen spreekt u?');
+        $property->setType('string');
+        $property->setFormat('textarea');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -127,7 +126,7 @@ class SaraiFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Naam huisarts');
         $property->setType('string');
-        $property->setFormat('textarea');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -288,38 +287,15 @@ class SaraiFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //persoonsgegevens van de ander
-        //voornaam
+        //gegevens betreffende
         $id = Uuid::fromString('eddf6606-e470-4a93-b1dd-00af4f7673c8');
         $property = new Property();
-        $property->setTitle('Voornamen');
+        $property->setTitle('Gegevens betreffende');
+        $property->setName('gegevens_betreffende');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //tussenvoegsel
-        $id = Uuid::fromString('320a94f5-8d09-4386-ada8-d0e2b4b03a87');
-        $property = new Property();
-        $property->setTitle('Tussenvoegsel(s)');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //achternaam
-        $id = Uuid::fromString('b9545eb0-8b83-42ef-84ba-d5f547826bde');
-        $property = new Property();
-        $property->setTitle('Achternaam');
-        $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -370,51 +346,6 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        // uw gegevens
-        // telefoonnummer
-        $id = Uuid::fromString('ed376dae-ef61-43f4-968f-9fa0f7be507b');
-        $property = new Property();
-        $property->setTitle('Telefoonnummer');
-        $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //e-mailadres
-        $id = Uuid::fromString('7db65c5a-1443-412e-9342-bfde7d0908ca');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //herhaal emailadres
-        $id = Uuid::fromString('78e675c9-f5b0-438d-bc68-9b4edc48a354');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
         /*
          * Leerlingen vervoer wijziging doorgeven
          */
@@ -432,12 +363,13 @@ class SaraiFixtures extends Fixture
 
         //gegevens doorgeven
         //gegevens ouder/verzorger
-        //voor- en achternaam
         $id = Uuid::fromString('31cfa8b3-96f2-4af2-8d36-166334f45875');
         $property = new Property();
-        $property->setTitle('Voor- en achternaam');
+        $property->setTitle('Gegevens ouder/verzorger');
+        $property->setName('ouder_verzoger');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -446,57 +378,14 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        //telefoonnummer
-        $id = Uuid::fromString('7c38580e-bb71-4259-b4dd-76a0e9d60a36');
-        $property = new Property();
-        $property->setTitle('Telefoonnummer');
-        $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //e-mailadres
-        $id = Uuid::fromString('8b403a94-f257-4664-8191-d72bfba4a9ee');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //gegevens leerling
-        //Naam
+        //gegevens kind(eren)
         $id = Uuid::fromString('bc2434be-bae8-4e5d-992a-522e1306c350');
         $property = new Property();
-        $property->setTitle('Naam');
+        $property->setTitle('Gegevens kind(eren)');
+        $property->setName('kinderen');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //geboortedatum
-        $id = Uuid::fromString('50385e5e-d172-467b-a88c-d23fea1381f3');
-        $property = new Property();
-        $property->setTitle('Geboortedatum');
-        $property->setType('string');
-        $property->setFormat('date');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -550,42 +439,13 @@ class SaraiFixtures extends Fixture
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         //uw gegevens
-        //telefoonnummer
         $id = Uuid::fromString('19e542a4-65dd-43fe-b985-e96c71b061a6');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('uw_gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //emailadres
-        $id = Uuid::fromString('0f48762c-d6c6-42fe-a682-77c2d047e107');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //herhaal emailadres
-        $id = Uuid::fromString('2c5351c7-5067-4d22-87c8-b147c7497f06');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -770,43 +630,13 @@ class SaraiFixtures extends Fixture
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
         //Uw gegevens
-        //telefoonnummer
         $id = Uuid::fromString('25eacbe9-31c7-4af4-84cf-a68bec98f77d');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('uw_gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //emailadres
-        $id = Uuid::fromString('4b27eeea-7a1e-4660-8b4b-85c8d63b2371');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //herhaal emailadres
-        $id = Uuid::fromString('41728926-f2d0-41b0-8af9-7c787e291206');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -966,84 +796,13 @@ class SaraiFixtures extends Fixture
         $manager->flush();
 
         //gegevens secretaris/contact persoon
-        //voornamen
         $id = Uuid::fromString('ee598e5b-db66-4f4d-a12b-aee5069a0ca2');
         $property = new Property();
-        $property->setTitle('Voornamen');
+        $property->setTitle('Gegevens secretaris/contactpersoon');
+        $property->setName('secretaris');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //tussenvoegsel(s)
-        $id = Uuid::fromString('e9d11008-fa0a-4c10-b69b-e6b73ec2c78e');
-        $property = new Property();
-        $property->setTitle('Tussenvoegsel(s)');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //achternaam
-        $id = Uuid::fromString('906309b3-db5c-4299-8957-720e146272e4');
-        $property = new Property();
-        $property->setTitle('Achternaam');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //telefoonnummer
-        $id = Uuid::fromString('5e758019-0353-40c5-aef6-95d1b005f24f');
-        $property = new Property();
-        $property->setTitle('Telefoonnummer');
-        $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //emailadres
-        $id = Uuid::fromString('2f9b19ef-ddb2-4d4d-a76e-4d7c3ef348fb');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('email');
-        $property->setFormat('text');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //herhaal emailadres
-        $id = Uuid::fromString('a571478f-cc7b-4477-8690-6e05adeb6f03');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1174,7 +933,6 @@ class SaraiFixtures extends Fixture
          * Aanvragen tegemoetkoming in schade (planschadevergoeding)
          *
          */
-
         $id = Uuid::fromString('3bb7a27a-82a0-4e38-afba-b4b3a9de4306');
         $requestType = new RequestType();
         $requestType->setOrganization('002220647');
@@ -1231,50 +989,19 @@ class SaraiFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //uw gegevens
-        //telefoonnummer
         $id = Uuid::fromString('7bbd0593-4284-4f2f-a918-3a99670e8136');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('uw_gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //emailadres
-        $id = Uuid::fromString('2ab5126f-af53-4c88-8734-b08fd564994b');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //herhaal e-mailadres
-        $id = Uuid::fromString('cf60c928-6b05-44ee-afe5-29909ba441f8');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //de grond van aanvraag
         //schade veroorzakende maatregel
@@ -1375,43 +1102,13 @@ class SaraiFixtures extends Fixture
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
 
         //Uw gegevens
-        // Telefoonnummer
         $id = Uuid::fromString('89bb3781-56a7-4c3e-b121-1cb2f153badc');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('uw_gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(false);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        // E-mailares
-        $id = Uuid::fromString('68990cc6-c8bb-4ae0-bf3a-6dcd38eb1577');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        // Herhaal e-mailadres
-        $id = Uuid::fromString('a736d736-af06-44f4-adde-a6083dc0f3ec');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1758,27 +1455,14 @@ class SaraiFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        //telefoonnummer
+        //Uw gegevens
         $id = Uuid::fromString('47c29397-4509-4d6d-9f26-13695cb68cc5');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('uw_gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //e-mailadres
-        $id = Uuid::fromString('28b09e40-99e0-4dd4-be7b-b6e1b0f00f29');
-        $property = new Property();
-        $property->setTitle('Email-adres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -1888,26 +1572,14 @@ class SaraiFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //Gegevens Bewindvoerder
-        //naam
         $id = Uuid::fromString('53ff3d9f-636b-419a-8fde-dda9c504921f');
         $property = new Property();
-        $property->setTitle('Naam');
+        $property->setTitle('Gegevens bewindvoerder');
+        $property->setName('bewindvoerder');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //telefoonnummer
-        $id = Uuid::fromString('266b6881-9ba3-4a48-a86d-b1700da40269');
-        $property = new Property();
-        $property->setTitle('Telefoonnummer (overdag bereikbaar)');
-        $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -1974,43 +1646,13 @@ class SaraiFixtures extends Fixture
 
         //4. Toelichting en persoonsgegevens
         //Uw gegevens
-        //telefoonnummer
         $id = Uuid::fromString('a19b21d2-c395-45ea-8ec1-0b58ddbbcbc0');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('advocaat');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //E-mailadres
-        $id = Uuid::fromString('576cb008-a477-4140-9f7b-15e1ce942ab7');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Herhaal e-mailadres
-        $id = Uuid::fromString('a37e98d6-a6fa-4bbc-ba4d-f09e2ea3e6b7');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2065,40 +1707,11 @@ class SaraiFixtures extends Fixture
         //telefoonnummer
         $id = Uuid::fromString('e7a2839a-18f9-410f-8416-a8fe3e80d77b');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('uw_gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //E-mailadres
-        $id = Uuid::fromString('ebe854e0-740b-4762-a2a5-1a77fb8fd487');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Herhaal e-mailadres
-        $id = Uuid::fromString('c7f87212-5af3-40c7-9e78-6e8c29e2843a');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2144,64 +1757,14 @@ class SaraiFixtures extends Fixture
         //formElement maken waarbij je meerdere kinderen kunt toevoegen
 
         //Persoonsgegevens van kind 1
-        //voornamen
         $id = Uuid::fromString('76272572-677e-4070-88c6-52d4dae172e2');
         $property = new Property();
-        $property->setTitle('Voornamen');
+        $property->setTitle('Persoonsgegevens kind(eren)');
+        $property->setName('gegevens_kind_indienen');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Tussenvoegsels
-        $id = Uuid::fromString('70fabe34-a985-49c5-aa8e-36d699ccbc83');
-        $property = new Property();
-        $property->setTitle('Tussenvoegsel(s)');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Achternaam
-        $id = Uuid::fromString('5cf36c00-2479-4e35-b645-4ca2759187f8');
-        $property = new Property();
-        $property->setTitle('Achternaam');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Geboortedatum
-        $id = Uuid::fromString('6e303208-5bb6-4530-96a9-d50a42d2298d');
-        $property = new Property();
-        $property->setTitle('Geboortedatum');
-        $property->setType('string');
-        $property->setFormat('date');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Geboorteplaats
-        $id = Uuid::fromString('9c7f70f3-68a4-4189-8c8f-f0506580e4ff');
-        $property = new Property();
-        $property->setTitle('Geboorteplaats');
-        $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2440,41 +2003,14 @@ class SaraiFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //Uw gegevens
-        //Telefoonnummer
         $id = Uuid::fromString('087e09c8-d7ef-4575-8936-75fcb40e0379');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //E-mailadres
-        $id = Uuid::fromString('01505a42-5683-4bd1-be36-4d54d16604ef');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Herhaal e-mailadres
-        $id = Uuid::fromString('d2299920-9c17-4616-8721-8c591cfd6908');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -2528,43 +2064,13 @@ class SaraiFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //2. Uw gegevens
-        //Telefoonnummer
         $id = Uuid::fromString('d9aa5bbf-bdb2-42e4-84f4-761dd8d9b354');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //E-mailadres
-        $id = Uuid::fromString('d2b15e79-753a-4d43-80c2-fec1ee55060e');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Herhaal e-mailadres
-        $id = Uuid::fromString('9b63971b-5110-49a5-8118-ae2fbc593087');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -2750,7 +2256,6 @@ class SaraiFixtures extends Fixture
 
         //2. Uw gegevens
         //aangever
-        //telefoonnummer
         $id = Uuid::fromString('33968884-9455-4baf-afa2-27ed3af0ec08');
         $property = new Property();
         $property->setTitle('Aangeven');
@@ -2780,7 +2285,6 @@ class SaraiFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //gegevens kind
-        //voornamen
         $id = Uuid::fromString('cb961d90-b178-466c-be95-20762f4963d6');
         $property = new Property();
         $property->setTitle('kind');
@@ -2793,7 +2297,6 @@ class SaraiFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //geboortedatum
         $id = Uuid::fromString('9cd123f4-9650-41b0-95f4-aac9b5790486');
@@ -3222,7 +2725,6 @@ class SaraiFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //2. Uw gegevens
-        //voornaam
         $id = Uuid::fromString('90298527-052c-4e9d-a99e-6a1fac71839b');
         $property = new Property();
         $property->setTitle('Uw gegevens');
@@ -3649,43 +3151,13 @@ class SaraiFixtures extends Fixture
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
         //2. Uw gegevens
-        //Telefoonnummer
         $id = Uuid::fromString('28a586c5-a7d9-4041-873c-1e9bbd7a55fc');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
+        $property->setName('gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
-        $property->setExample('0612345678');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //E-mailadres
-        $id = Uuid::fromString('6a4ca487-61a7-44dd-a7e6-16e1ebd72256');
-        $property = new Property();
-        $property->setTitle('E-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //Herhaal e-mailadres
-        $id = Uuid::fromString('802bc991-6ffe-4c2a-8ff8-55caf97cc9ae');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setExample('example@hotmail.com');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -3696,7 +3168,6 @@ class SaraiFixtures extends Fixture
 
         //3. Uw verhuizing
         //section - Uw nieuwe adres
-        //postcode
         $id = Uuid::fromString('4ea1e9b3-a7c8-4a29-b435-194c822a3df6');
         $property = new Property();
         $property->setTitle('Addres ');
@@ -3758,51 +3229,14 @@ class SaraiFixtures extends Fixture
 
         //section - Partner
         //description - Vul hier de gegevens van uw partner in
-        //voornamen
         $id = Uuid::fromString('7713e9d2-8539-4b02-8066-99bcb7b9b8a4');
         $property = new Property();
-        $property->setTitle('Voornamen');
+        $property->setTitle('gegevens advocaat?');
+        $property->setName('advocaat');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //tussenvoegsel
-        $id = Uuid::fromString('974e8d19-7e08-49e5-b046-26f9648c458c');
-        $property = new Property();
-        $property->setTitle('Tussenvoegsel(s)');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //achternaam
-        $id = Uuid::fromString('493db183-621f-4432-bacd-f1f60d14e433');
-        $property = new Property();
-        $property->setTitle('Achternaam');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        //geboortedatum
-        $id = Uuid::fromString('b4e6a4a8-dcbd-48dc-b69d-39340802d3a9');
-        $property = new Property();
-        $property->setTitle('Geboortedatum');
-        $property->setType('string');
-        $property->setFormat('date');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
+        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);

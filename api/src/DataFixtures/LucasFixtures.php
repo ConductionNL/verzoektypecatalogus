@@ -74,9 +74,10 @@ class LucasFixtures extends Fixture
 
         $id = Uuid::fromString('3df6b0e8-ca2b-4767-add9-72f37f103089');
         $property = new Property();
-        $property->setTitle('Voor- en achternaam:');
+        $property->setTitle('Uw gegevens');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -115,9 +116,10 @@ class LucasFixtures extends Fixture
         //naam nominee
         $id = Uuid::fromString('58240c06-894b-46b0-a1bf-bb7b1782b9c4');
         $property = new Property();
-        $property->setTitle('Naam:');
+        $property->setTitle('Gegevens jeugdige');
         $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -128,22 +130,10 @@ class LucasFixtures extends Fixture
         //adres nominee
         $id = Uuid::fromString('f52be373-1cda-4361-80c8-e410200c3c70');
         $property = new Property();
-        $property->setTitle('Adres:');
+        $property->setTitle('Adres jeugdige:');
         $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Postcode en woonplaats
-        $id = Uuid::fromString('5843033d-da97-487f-8415-92b3b524e7b3');
-        $property = new Property();
-        $property->setTitle('Postcode en woonplaats:');
-        $property->setType('string');
-        $property->setFormat('text');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -192,37 +182,11 @@ class LucasFixtures extends Fixture
         //geboortedatum aanmelder
         $id = Uuid::fromString('9cca2fd5-1f93-444d-938a-f801aea96e3a');
         $property = new Property();
-        $property->setTitle('Geboortedatum');
-        $property->setName('melder-geboortedatum');
+        $property->setTitle('Wie is de aanmelder?');
         $property->setType('string');
-        $property->setFormat('date');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //telefoonnummer
-        $id = Uuid::fromString('4c268c2f-0a79-4c88-a0dc-beb4c389064b');
-        $property = new Property();
-        $property->setTitle('Telefoonnummer:');
-        $property->setName('melder-telefoonnummer');
-        $property->setType('string');
-        $property->setFormat('tel');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-
-        //Emailadres
-        $id = Uuid::fromString('57c7dc2c-4ae4-47ef-97ad-af87ed5206a0');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -255,11 +219,13 @@ class LucasFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        //naam ref1
+        //info referenties
         $id = Uuid::fromString('185e24de-1f32-4da3-a81c-0993941b8419');
         $property = new Property();
         $property->setTitle('Naam');
         $property->setName('ref1-naam');
+        $property->setTitle('Referenties');
+        $property->setDescription('Voer hier de gegevens van de mensen die u wilt gebruiken als referentie');
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
@@ -528,34 +494,11 @@ class LucasFixtures extends Fixture
 
         $id = Uuid::fromString('aa636080-5e9d-4909-80fd-0df8a6cb8754');
         $property = new Property();
-        $property->setTitle('Telefoonnummer');
+        $property->setTitle('Uw gegevens');
         $property->setType('string');
-        $property->setFormat('phonenumber');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
         $property->setRequired(false);
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        $id = Uuid::fromString('87eec012-befe-45f8-b64d-62f3b2d26f11');
-        $property = new Property();
-        $property->setTitle('E-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
-        $property->setRequestType($requestType);
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
-
-        $id = Uuid::fromString('1ec4376e-c5e9-47cf-aa36-617615bf5b28');
-        $property = new Property();
-        $property->setTitle('Herhaal e-mailadres:');
-        $property->setType('string');
-        $property->setFormat('email');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
