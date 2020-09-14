@@ -55,7 +55,7 @@ class CheckinFixtures extends Fixture
         $property->setTitle('Contact gegevens');
         $property->setType('string');
         $property->setFormat('uri');
-        $property->setIri('cc/assents');
+        $property->setIri('cc/people');
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
