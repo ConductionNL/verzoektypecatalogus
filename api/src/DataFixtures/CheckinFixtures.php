@@ -50,21 +50,6 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('5fe949b5-6ce7-4394-a4c9-6ae0297dad5d');
-        $property = new Property();
-        $property->setTitle('Contact gegevens');
-        $property->setType('string');
-        $property->setFormat('uri');
-        $property->setIri('cc/people');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
         $property->setTitle('Horeca onderneming contact');
@@ -87,23 +72,6 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setDescription('Als u lid bent van koningklijke horeca nederland kunt u hier wu lidmaarschats nummer opvoeren voor korting');
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('9e5c34dc-99da-423d-9a88-a4a3875a66fb');
-        $property = new Property();
-        $property->setTitle('KVK Nummer');
-        $property->setName('kvk');
-        $property->setIcon('fa fa-building');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setRequired(true);
-        $property->setDescription('Kvk nummer zoeken? klik <a target="_blank" href="https://www.kvk.nl/zoeken/">hier</a>');
         $property->setRequestType($requestType);
 
         $manager->persist($property);
