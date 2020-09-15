@@ -774,7 +774,7 @@ class TimFixtures extends Fixture
         //6e pagina
         $id = Uuid::fromString('2df9cd9f-45f6-4aa5-a4d1-767c4a621ce7');
         $property = new Property();
-        $property->setTitle('zijn uw gegevens juis en naarwaarheid ingevult?');
+        $property->setTitle('zijn uw gegevens juist en naar waarheid ingevult?');
         $property->setName('ControlerenGegevens');
         $property->setType('boolian');
         $property->setFormat('radio');
@@ -784,6 +784,105 @@ class TimFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
+
+        // formulier aanvraag briefadres
+        $id = Uuid::fromString('7fc73e35-b8bc-4208-9b12-5718ee4b30a8');
+        $requestType = new RequestType();
+        $requestType->setOrganization('002220647');
+        $requestType->setName('briefadres aanvragen');
+        $requestType->setDescription('met dit formulier kunt u een adres aangeven om uw post op te ontvangen');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id' => $id]);
+
+        //1e pagina uw gegevens
+        $id = Uuid::fromString('a7950bdc-80f7-4f17-b2ea-39f091f97442');
+        $property = new Property();
+        $property->setTitle('uw gegevens');
+        $property->setName('PersoonsGegevens');
+        $property->setType('string');
+        $property->setFormat('uri');
+        $property->setIri('cc/people');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+
+        $id = Uuid::fromString('c49b0dec-29eb-4e8e-bef2-f4bce8596741');
+        $property = new Property();
+        $property->setTitle('uw adres');
+        $property->setName('Adres');
+        $property->setType('string');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //2e pagina gegevens brief adres
+        $id = Uuid::fromString('01a5eeae-67dc-42f7-951f-b7b6752e08e2');
+        $property = new Property();
+        $property->setTitle('uw adres');
+        $property->setName('Adres');
+        $property->setType('string');
+        $property->setFormat('uri');
+        $property->setIri('bag/address');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('0f0e3e2b-f301-4573-b609-464b6f0351c4');
+        $property = new Property();
+        $property->setTitle('reden brief adres');
+        $property->setName('redenbriefadres');
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //3e pagina
+        $id = Uuid::fromString('435914c9-e72c-40b2-bb6f-9b731eef7b95');
+        $property = new Property();
+        $property->setTitle('bijlagen toevoegen');
+        $property->setName('Bijlagen');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        //4e pagina
+
+        $id = Uuid::fromString('ab7859fe-41da-4f43-8c0e-365d79579b07');
+        $property = new Property();
+        $property->setTitle('gevens controleren');
+        $property->setName('controleren');
+        $property->setType('boolian');
+        $property->setDescription('zijn uw gegevens correct en naar waarheid in gevult?');
+        $property->setFormat('radio');
+        $property->setEnum('ja');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
 
     }
 }
