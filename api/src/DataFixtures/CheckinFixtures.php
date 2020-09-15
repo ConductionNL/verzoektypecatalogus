@@ -103,6 +103,7 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequired(true);
+        $property->setDescription('Kvk nummer zoeken? klik <a target="_blank" href="https://www.kvk.nl/zoeken/">hier</a>');
         $property->setRequestType($requestType);
 
         $manager->persist($property);
