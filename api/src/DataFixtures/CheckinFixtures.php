@@ -56,6 +56,7 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/organizations');
+        $property->setConfiguration(['person'=>true, 'address'=>true]);
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
