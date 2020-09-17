@@ -27,9 +27,8 @@ class CheckinFixtures extends Fixture
             // If build all fixtures is true we build all the fixtures
             !$this->params->get('app_build_all_fixtures') &&
             // Specific domain names
-            $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
-            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
-            $this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false
+            $this->params->get('app_domain') != 'checking.nu' && strpos($this->params->get('app_domain'), 'checking.nu') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false
         ) {
             return false;
         }
@@ -50,31 +49,13 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('5fe949b5-6ce7-4394-a4c9-6ae0297dad5d');
-        $property = new Property();
-        $property->setTitle('Naam ondernemer');
-        $property->setIcon('fa fa-user');
-        $property->setType('string');
-        $property->setFormat('uri');
-        $property->setIri('cc/people');
-        $property->setDescription('Vul hier uw gegevens in');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
         $property->setTitle('Horeca onderneming contact');
-        $property->setIcon('fa fa-building');
         $property->setType('string');
         $property->setFormat('url');
-        $property->setIri('cc/organization');
-        $property->setDescription('Vul hier het adres van uw horeca onderneming in.');
+        $property->setIri('cc/organizations');
+        $property->setConfiguration(['person'=>true, 'address'=>true]);
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
@@ -84,32 +65,13 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('2abb52b1-bf30-4359-a027-fede87b63f64');
+        $id = Uuid::fromString('587babac-f23a-4fb0-8df8-ccd083a079cc');
         $property = new Property();
-        $property->setTitle('Verwerkingsovereenkomst');
-        $property->setIcon('fa fa-building');
-        $property->setType('boolean');
-        $property->setFormat('checkbox');
-        //$property->setIri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'b7049936-bef1-45a1-a70e-9160f795a6cd']));
-        $property->setDescription('Verwerkingsovereenkomst');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('9e5c34dc-99da-423d-9a88-a4a3875a66fb');
-        $property = new Property();
-        $property->setTitle('KVK Nummer');
-        $property->setName('kvk');
-        $property->setIcon('fa fa-building');
+        $property->setTitle('KHN Nummer');
+        $property->setName('khn');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setDescription('Vul hier het KVK Nummer van uw horeca onderneming in.');
-        $property->setRequired(true);
+        $property->setDescription('Als u lid bent van koningklijke horeca nederland kunt u hier wu lidmaarschats nummer opvoeren voor korting');
         $property->setRequestType($requestType);
 
         $manager->persist($property);
@@ -134,32 +96,12 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('3fbb0356-a362-4b70-b914-dd27919ff99c');
-        $property = new Property();
-        $property->setTitle('Abonnement');
-        $property->setIcon('fa fa-money-check');
-        $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('pdc/offer');
-        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Checkin Producten', 'products.name'=>'Abonnement']);
-        $property->setDescription('Kies hier een abbonnement.');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
         $property->setName('akkoord');
-        $property->setIcon('fa fa-building');
         $property->setType('boolean');
         $property->setFormat('checkbox');
-        $property->setDescription('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
         $property->setRequestType($requestType);
         $property->setRequired(true);
 
@@ -173,10 +115,8 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
         $property->setName('algemenevoorwaarden');
-        $property->setIcon('fa fa-building');
         $property->setType('boolean');
         $property->setFormat('checkbox');
-        $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
         $property->setRequestType($requestType);
         $property->setRequired(true);
 

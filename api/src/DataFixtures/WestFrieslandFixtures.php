@@ -119,6 +119,37 @@ class WestFrieslandFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('4153ca80-55df-4a0e-9053-79f7db01bf4a');
+        $property = new Property();
+        $property->setTitle('Kistmaat');
+//        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
+        $property->setType('string');
+        $property->setEnum(['De kist valt binnen de standaard afmetingen van 55cm bij 200cm.', 'De kist is groter dan de standaard afmetingen van 55cm bij 200cm.']);
+        $property->setFormat('radio');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('03d4460d-ce9b-4d5b-9063-e7856205273d');
+        $property = new Property();
+        $property->setTitle('Opmerkingen');
+//        $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafsoorten', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
+        $property->setType('string');
+        $property->setFormat('textarea');
+        $property->setRequired(false);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -144,7 +175,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setIri('pdc/offer');
         $property->setQuery(['audience'=>'public', 'products.groups.name'=>'Grafartikelen', 'products.groups.sourceOrganization'=>'{{ request.properties.gemeente }}']);
         $property->setType('array');
-        $property->setFormat('uri ');
+        $property->setFormat('uri');
         $property->setRequired(false);
         $property->setRequestType($requestType);
 
@@ -269,7 +300,7 @@ class WestFrieslandFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/people');
-        $property->setConfiguration(['email'=>false, 'telephone'=>false, 'givenName'=>true, 'familyName'=>true, 'birthday'=>true, 'placeOfBirth'=>true]);
+        $property->setConfiguration(['email'=>false, 'telephone'=>false, 'givenName'=>true, 'familyName'=>true, 'birthday'=>true, 'birthplace'=>true]);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
