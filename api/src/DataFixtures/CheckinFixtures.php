@@ -55,7 +55,7 @@ class CheckinFixtures extends Fixture
         $property->setTitle('Naam ondernemer');
         $property->setIcon('fa fa-user');
         $property->setType('string');
-        $property->setFormat('uri');
+        $property->setFormat('url');
         $property->setIri('cc/people');
         $property->setDescription('Vul hier uw gegevens in');
         $property->setRequired(true);
@@ -186,15 +186,9 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
         /*
-      *  Opvragen gegevens door GGD (Checkin)
-      */
+        *  Opvragen gegevens door GGD (Checkin)
+        */
 
         $id = Uuid::fromString('b816e7d8-f7e3-4fd4-9e6f-5c5b29072b94');
         $requestType = new RequestType();
@@ -265,8 +259,8 @@ class CheckinFixtures extends Fixture
         $property->setRequired(true);
 
         /*
-       *  Opvragen gegevens door gebruiker (Checkin)
-       */
+        *  Opvragen gegevens door gebruiker (Checkin)
+        */
 
         $id = Uuid::fromString('39fe2fed-b5dc-42ce-9f9e-64101351b566');
         $requestType = new RequestType();
@@ -301,5 +295,70 @@ class CheckinFixtures extends Fixture
         $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
         $property->setRequestType($requestType);
         $property->setRequired(true);
+
+        /*
+        *  Contact Formulier (Checkin)
+        */
+
+        $id = Uuid::fromString('16b09e78-bca7-426d-b035-abfa101a9259');
+        $requestType = new RequestType();
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $requestType->setIcon('fas fa-clipboard-list');
+        $requestType->setName('Contact formulier');
+        $requestType->setDescription('Met dit verzoek kunt u contact opnemen met Conduction');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('0586ea46-640f-43aa-af50-04c76268f912');
+        $property = new Property();
+        $property->setTitle('Titel');
+        $property->setIcon('fas fa-clipboard-list');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Vul hier de titel van uw contact formulier in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('20064385-f73b-401c-bfe3-2ec2b1fa6411');
+        $property = new Property();
+        $property->setTitle('Tekst');
+        $property->setIcon('fas fa-clipboard-list');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Vul hier de tekst van uw contact formulier in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('54c7cfd5-bd6b-491e-a84e-047b26b4eebf');
+        $property = new Property();
+        $property->setTitle('Contact');
+        $property->setIcon('fa fa-user');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setDescription('Vul hier uw gegevens in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
     }
 }
