@@ -49,23 +49,6 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('5fe949b5-6ce7-4394-a4c9-6ae0297dad5d');
-        $property = new Property();
-        $property->setTitle('Naam ondernemer');
-        $property->setIcon('fa fa-user');
-        $property->setType('string');
-        $property->setFormat('url');
-        $property->setIri('cc/people');
-        $property->setDescription('Vul hier uw gegevens in');
-        $property->setRequired(true);
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
         $property->setTitle('Horeca onderneming contact');
