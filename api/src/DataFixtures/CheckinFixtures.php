@@ -300,5 +300,86 @@ class CheckinFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        /*
+        *  Idee Formulier (Checkin)
+        */
+
+        $id = Uuid::fromString('d92f1462-6a69-449f-8491-e6038af5ca82');
+        $requestType = new RequestType();
+        $requestType->setOrganization($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'organizations', 'id'=>'4d1eded3-fbdf-438f-9536-8747dd8ab591']));
+        $requestType->setIcon('fas fa-clipboard-list');
+        $requestType->setName('Idee formulier');
+        $requestType->setDescription('Met dit verzoek kunt u uw idee opsturen naar Conduction');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('f7a04eea-8a00-46b1-bbe8-9ffd04fcb9c0');
+        $property = new Property();
+        $property->setTitle('Titel');
+        $property->setIcon('fas fa-clipboard-list');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Vul hier de titel van uw idee formulier in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('8dfc477e-dd31-43bb-8325-eac600a1f228');
+        $property = new Property();
+        $property->setTitle('Tekst');
+        $property->setIcon('fas fa-clipboard-list');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Vul hier de tekst van uw idee formulier in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('c8b4a8bf-f19c-4bd6-9e3f-3e7771cbf1b5');
+        $property = new Property();
+        $property->setTitle('Bijlage');
+        $property->setIcon('far fa-file-image');
+        $property->setType('string');
+        $property->setFormat('file');
+        $property->setDescription('Hier kunt u eventueel nog bijlagen uploaden');
+        $property->setRequired(false);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('c342f6c8-2cd6-4e11-96ae-20a26260fdf4');
+        $property = new Property();
+        $property->setTitle('Contact');
+        $property->setIcon('fa fa-user');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setDescription('Vul hier uw gegevens in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
     }
 }
