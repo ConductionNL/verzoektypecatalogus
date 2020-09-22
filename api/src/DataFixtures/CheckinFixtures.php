@@ -153,6 +153,12 @@ class CheckinFixtures extends Fixture
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('7e536da6-cd5b-4141-9ef8-0c14fe5a238a');
         $property = new Property();
         $property->setTitle('GGD');
@@ -163,6 +169,12 @@ class CheckinFixtures extends Fixture
         $property->setDescription('Welke GGD heeft bij u gegevens opgevraagd?');
         $property->setRequired(true);
         $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
         $id = Uuid::fromString('0e282256-ca2e-494c-8ebc-66839ec7534d');
         $property = new Property();
@@ -176,6 +188,12 @@ class CheckinFixtures extends Fixture
         $property->setRequired(true);
         $property->setRequestType($requestType);
 
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('6035561c-8d93-40c2-82bb-1ddbf22b84cc');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
@@ -187,6 +205,12 @@ class CheckinFixtures extends Fixture
         $property->setRequestType($requestType);
         $property->setRequired(true);
 
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('86ef664f-7ab4-43d7-8bea-8eece272d4ef');
         $property = new Property();
         $property->setTitle('Ik geef opdracht tot het verstrekken van deze persoonsgegevens');
@@ -197,6 +221,12 @@ class CheckinFixtures extends Fixture
         $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
         $property->setRequestType($requestType);
         $property->setRequired(true);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
         /*
         *  Opvragen gegevens door gebruiker (Checkin)
@@ -225,6 +255,12 @@ class CheckinFixtures extends Fixture
         $property->setRequestType($requestType);
         $property->setRequired(true);
 
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('bf268ea7-4f08-4730-a5eb-fa6df870a24d');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
@@ -235,6 +271,12 @@ class CheckinFixtures extends Fixture
         $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
         $property->setRequestType($requestType);
         $property->setRequired(true);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
         /*
         *  Contact Formulier (Checkin)
