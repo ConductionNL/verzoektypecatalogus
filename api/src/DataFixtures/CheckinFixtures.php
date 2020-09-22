@@ -180,7 +180,7 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
         $property->setName('algemenevoorwaarden');
-        $property->setIcon('fa fa-building');
+        $property->setIcon('fa fa-user');
         $property->setType('boolean');
         $property->setFormat('checkbox');
         $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
@@ -191,7 +191,7 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Ik geef opdracht tot het verstrekken van deze persoonsgegevens');
         $property->setName('opdrachtverstrekking');
-        $property->setIcon('fa fa-building');
+        $property->setIcon('fa fa-user');
         $property->setType('boolean');
         $property->setFormat('checkbox');
         $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
@@ -218,7 +218,7 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('e-Mail addres');
         $property->setName('email');
-        $property->setIcon('fa fa-building');
+        $property->setIcon('fa fa-user');
         $property->setType('string');
         $property->setFormat('email');
         $property->setDescription('Naar welk e-mail addres wilt u de gegevens uitdraai versturen?');
@@ -229,7 +229,7 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
         $property->setName('algemenevoorwaarden');
-        $property->setIcon('fa fa-building');
+        $property->setIcon('fa fa-user');
         $property->setType('boolean');
         $property->setFormat('checkbox');
         $property->setDescription('Ik ga akkoord met de algemene voorwaarden');
