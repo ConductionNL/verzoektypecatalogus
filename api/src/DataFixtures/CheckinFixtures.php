@@ -71,7 +71,6 @@ class CheckinFixtures extends Fixture
         $property->setName('khn');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setDescription('Als u lid bent van koningklijke horeca nederland kunt u hier uw lidmaarschats nummer opvoeren voor korting');
         $property->setRequestType($requestType);
 
         $manager->persist($property);
