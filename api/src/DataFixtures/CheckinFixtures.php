@@ -51,7 +51,7 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
-        $property->setTitle('Horeca onderneming contact');
+        $property->setTitle('Gegevens van de organisatie');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/organizations');
