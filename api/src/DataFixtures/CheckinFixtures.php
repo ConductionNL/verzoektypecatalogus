@@ -80,6 +80,20 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('f063f230-446d-468d-891d-0652e3ed9cad');
+        $property = new Property();
+        $property->setTitle('branche');
+        $property->setName('branche');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
