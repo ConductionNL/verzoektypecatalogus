@@ -94,6 +94,36 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('6030339b-c807-47d9-bb69-118a5aded1d5');
+        $property = new Property();
+        $property->setTitle('iban');
+        $property->setName('iban');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('db597628-8cf4-493b-8488-131a7351a949');
+        $property = new Property();
+        $property->setTitle('tenaamstelling');
+        $property->setName('tenaamstelling');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+
+
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
