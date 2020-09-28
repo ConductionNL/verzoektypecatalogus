@@ -51,7 +51,8 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
-        $property->setTitle('Horeca onderneming contact');
+        $property->setTitle('Wat zijn de gegevens van u en uw ondernemening?');
+        $property->setName('organization');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/organizations');
@@ -79,14 +80,40 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-        $id = Uuid::fromString('41122a46-4788-4ba1-aba9-b48f7f640ef8');
+        $id = Uuid::fromString('f063f230-446d-468d-891d-0652e3ed9cad');
         $property = new Property();
-        $property->setTitle('BTW Nummer');
-        $property->setName('btw');
-        $property->setIcon('fa fa-building');
+        $property->setTitle('branche');
+        $property->setName('branche');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft factureren wij zonder BTW');
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('6030339b-c807-47d9-bb69-118a5aded1d5');
+        $property = new Property();
+        $property->setTitle('iban');
+        $property->setName('iban');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('db597628-8cf4-493b-8488-131a7351a949');
+        $property = new Property();
+        $property->setTitle('tenaamstelling');
+        $property->setName('tenaamstelling');
+        $property->setType('string');
+        $property->setFormat('text');
         $property->setRequestType($requestType);
 
         $manager->persist($property);
@@ -97,8 +124,23 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
-        $property->setTitle('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
+        $property->setTitle('Ik ga akkoord met de <a target="_new" href="/documents/NLdigital-Voorwaarden-NL.pdf">verwerkingsovereenkomst persoonsgegevens</a>');
         $property->setName('akkoord');
+        $property->setType('boolean');
+        $property->setFormat('checkbox');
+        $property->setRequestType($requestType);
+        $property->setRequired(true);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('1356dc18-1dba-4ff8-9c69-df181425842c');
+        $property = new Property();
+        $property->setTitle('Ik ga akkoord met de bovengenoemde (abonnements) tarieven van €25,- per maand (+ eventuele gebruikskosten)  en machtig Conduction b.v. om deze tot wederopzegging van mijn bankrekening af te schrijven');
+        $property->setName('machtiging');
         $property->setType('boolean');
         $property->setFormat('checkbox');
         $property->setRequestType($requestType);
@@ -112,7 +154,7 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('ce876e7e-8157-4468-b4ae-f72e04eabb74');
         $property = new Property();
-        $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
+        $property->setTitle('Ik ga akkoord met de <a target="_new" href="/documents/Standaard-verwerkersovereenkomst-checking.docx">algemene voorwaarden</a>');
         $property->setName('algemenevoorwaarden');
         $property->setType('boolean');
         $property->setFormat('checkbox');
