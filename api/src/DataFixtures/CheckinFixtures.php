@@ -122,8 +122,6 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
-
-
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de <a target="_new" href="/documents/NLdigital-Voorwaarden-NL.pdf">verwerkingsovereenkomst persoonsgegevens</a>');
@@ -153,7 +151,6 @@ class CheckinFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
 
         $id = Uuid::fromString('ce876e7e-8157-4468-b4ae-f72e04eabb74');
         $property = new Property();
