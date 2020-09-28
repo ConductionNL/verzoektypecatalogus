@@ -825,6 +825,61 @@ class ZuiddrechtFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
 
+        /*
+         *  Chatbot Fixtures
+         */
+        /*
+         *  Vermissingsformulier reisdocument
+         */
+
+        $id = Uuid::fromString('4695d430-6cc2-4499-add4-a5e45ee84761');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-id-card');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Vermissingsformulier reisdocument');
+        $requestType->setDescription('Via dit formulier kunt u bij ons aangeven wanneer u uw reisdocument verloren bent');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('1d92bc85-7e4c-4468-9588-44b7de598d8c');
+        $property = new Property();
+        $property->setTitle('Het verloren document');
+        $property->setName('type');
+        $property->setIcon('fas fa-id-card');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setMaxLength('8');
+        $property->setMinLength('7');
+        $property->setEnum(['Id kaart', 'paspoort']);
+        $property->setRequired(true);
+        $property->setDescription('Welk document bent u verloren?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('f37dad7b-d7f4-4493-b9ba-814b0b0b2a8d');
+        $property = new Property();
+        $property->setTitle('Contact');
+        $property->setIcon('fa fa-user');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setDescription('Vul hier uw gegevens in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
         $manager->flush();
     }
 }
