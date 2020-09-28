@@ -126,7 +126,7 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
-        $property->setTitle('Ik ga akkoord met de verwerkingsovereenkomst persoonsgegevens');
+        $property->setTitle('Ik ga akkoord met de <a target="_new" href="/documents/NLdigital-Voorwaarden-NL.pdf">verwerkingsovereenkomst persoonsgegevens</a>');
         $property->setName('akkoord');
         $property->setType('boolean');
         $property->setFormat('checkbox');
@@ -157,7 +157,7 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('ce876e7e-8157-4468-b4ae-f72e04eabb74');
         $property = new Property();
-        $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
+        $property->setTitle('Ik ga akkoord met de <a target="_new" href="/documents/Standaard-verwerkersovereenkomst-checking.docx">algemene voorwaarden</a>');
         $property->setName('algemenevoorwaarden');
         $property->setType('boolean');
         $property->setFormat('checkbox');
