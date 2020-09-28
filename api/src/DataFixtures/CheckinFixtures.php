@@ -51,7 +51,8 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
-        $property->setTitle('Horeca onderneming contact');
+        $property->setTitle('Wat zijn de gegevens van u en uw ondernemening?');
+        $property->setName('organization');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('cc/organizations');
@@ -71,23 +72,6 @@ class CheckinFixtures extends Fixture
         $property->setName('khn');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setDescription('Als u lid bent van koningklijke horeca nederland kunt u hier uw lidmaarschats nummer opvoeren voor korting');
-        $property->setRequestType($requestType);
-
-        $manager->persist($property);
-        $property->setId($id);
-        $manager->persist($property);
-        $manager->flush();
-        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
-
-        $id = Uuid::fromString('41122a46-4788-4ba1-aba9-b48f7f640ef8');
-        $property = new Property();
-        $property->setTitle('BTW Nummer');
-        $property->setName('btw');
-        $property->setIcon('fa fa-building');
-        $property->setType('string');
-        $property->setFormat('text');
-        $property->setDescription('Als u het BTW nummer van uw onderneming opgeeft factureren wij zonder BTW');
         $property->setRequestType($requestType);
 
         $manager->persist($property);
