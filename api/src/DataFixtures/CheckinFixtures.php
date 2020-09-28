@@ -109,6 +109,22 @@ class CheckinFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
 
+        $id = Uuid::fromString('1356dc18-1dba-4ff8-9c69-df181425842c');
+        $property = new Property();
+        $property->setTitle('Ik ga akkoord met de bovengenoemde (abonnements) tarieven van €25,- per maand (+ eventuele gebruikskosten)  en machtig Conduction b.v. om deze tot wederopzegging van mijn bankrekening af te schrijven');
+        $property->setName('machtiging');
+        $property->setType('boolean');
+        $property->setFormat('checkbox');
+        $property->setRequestType($requestType);
+        $property->setRequired(true);
+
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+
         $id = Uuid::fromString('ce876e7e-8157-4468-b4ae-f72e04eabb74');
         $property = new Property();
         $property->setTitle('Ik ga akkoord met de algemene voorwaarden');
