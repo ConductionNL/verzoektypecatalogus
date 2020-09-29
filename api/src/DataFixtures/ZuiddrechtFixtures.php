@@ -1166,6 +1166,87 @@ class ZuiddrechtFixtures extends Fixture
         $stage2->setRequestType($verhuizenDenBosh);
         $manager->persist($stage2);*/
 
+        /*
+         *  BRP-uittreksel aanvragen
+         */
+        $id = Uuid::fromString('9aa0fcf5-ad95-4e2d-b272-d36656e72a82');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-file-alt');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('BRP-uittreksel aanvragen');
+        $requestType->setDescription('Via dit formulier kunt u bij ons een BRP-uittreksel aanvragen');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('fce828db-1110-4ee7-a828-291517b6bad7');
+        $property = new Property();
+        $property->setTitle('Contact');
+        $property->setIcon('fa fa-user');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setDescription('Vul hier uw gegevens in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('3c1c8517-03c2-43f1-9ef4-86136ee3aecd');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Wat is uw email adres waarop wij u kunnen bereiken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1d21a50d-dd29-4051-80cd-970d6e793f15');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Wat is het telefoon nummer waarop wij u kunnen bereiken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('fb77df2e-d33e-4956-8aa4-5bb2ba5e75c3');
+        $property = new Property();
+        $property->setTitle('Opties voor BRP-uittreksel');
+        $property->setName('type');
+        $property->setIcon('fas fa-id-card');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setMaxLength('50');
+        $property->setMinLength('13');
+        $property->setEnum(['Internationaal uittreksel BRP', 'Uitreksel BRP',
+            'Uitreksel BRP + Adres historie', 'Uitreksel BRP + BSN', 'Uitreksel BRP + Gezinssamenstelling',
+            'Uitreksel BRP + Nationaliteit', 'Uitreksel BRP met burgelijke staat en natinaliteit',
+            'Uitreksel BRP met vestigingsdatum', 'Uitreksel BRP ouderlijk gezag']);
+        $property->setRequired(true);
+        $property->setDescription('Welke optie van de BRP-uittreksel wilt u?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         $manager->flush();
     }
 }
