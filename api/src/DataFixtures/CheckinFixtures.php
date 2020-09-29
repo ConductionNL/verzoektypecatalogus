@@ -96,8 +96,9 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('6030339b-c807-47d9-bb69-118a5aded1d5');
         $property = new Property();
-        $property->setTitle('iban');
+        $property->setTitle('IBAN');
         $property->setName('iban');
+        $property->setRequired(true);
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
@@ -112,6 +113,7 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('tenaamstelling');
         $property->setName('tenaamstelling');
+        $property->setRequired(true);
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
