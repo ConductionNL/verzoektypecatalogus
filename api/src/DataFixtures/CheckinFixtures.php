@@ -96,8 +96,9 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('6030339b-c807-47d9-bb69-118a5aded1d5');
         $property = new Property();
-        $property->setTitle('iban');
+        $property->setTitle('IBAN');
         $property->setName('iban');
+        $property->setRequired(true);
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
@@ -112,6 +113,7 @@ class CheckinFixtures extends Fixture
         $property = new Property();
         $property->setTitle('tenaamstelling');
         $property->setName('tenaamstelling');
+        $property->setRequired(true);
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
@@ -124,7 +126,7 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('fa79e0cd-2fcd-44bf-84e3-01e9253bdd7b');
         $property = new Property();
-        $property->setTitle('Ik ga akkoord met de <a target="_new" href="/documents/NLdigital-Voorwaarden-NL.pdf">verwerkingsovereenkomst persoonsgegevens</a>');
+        $property->setTitle('Ik ga akkoord met de <a target="_blank" href="/gdrp-nl">verwerkingsovereenkomst persoonsgegevens</a>');
         $property->setName('akkoord');
         $property->setType('boolean');
         $property->setFormat('checkbox');
@@ -154,7 +156,7 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('ce876e7e-8157-4468-b4ae-f72e04eabb74');
         $property = new Property();
-        $property->setTitle('Ik ga akkoord met de <a target="_new" href="/documents/Standaard-verwerkersovereenkomst-checking.docx">algemene voorwaarden</a>');
+        $property->setTitle('Ik ga akkoord met de <a target="_blank" href="/terms-nl">algemene voorwaarden</a>');
         $property->setName('algemenevoorwaarden');
         $property->setType('boolean');
         $property->setFormat('checkbox');
