@@ -825,6 +825,428 @@ class ZuiddrechtFixtures extends Fixture
         $property->setId($id);
         $manager->persist($property);
 
+        /*
+         *  Chatbot Fixtures
+         */
+
+        /*
+         *  Vermissingsformulier reisdocument
+         */
+        $id = Uuid::fromString('4695d430-6cc2-4499-add4-a5e45ee84761');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-id-card');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Vermissingsformulier reisdocument');
+        $requestType->setDescription('Via dit formulier kunt u bij ons aangeven wanneer u uw reisdocument verloren bent');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('1d92bc85-7e4c-4468-9588-44b7de598d8c');
+        $property = new Property();
+        $property->setTitle('Het verloren document');
+        $property->setName('type');
+        $property->setIcon('fas fa-id-card');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setMaxLength('8');
+        $property->setMinLength('7');
+        $property->setEnum(['Id kaart', 'paspoort']);
+        $property->setRequired(true);
+        $property->setDescription('Welk document bent u verloren?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('f37dad7b-d7f4-4493-b9ba-814b0b0b2a8d');
+        $property = new Property();
+        $property->setTitle('Contact');
+        $property->setIcon('fa fa-user');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setDescription('Vul hier uw gegevens in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        /*
+         *  Toestemmingsformulier voor reisdocument kind
+         */
+        $id = Uuid::fromString('2d353bec-54a2-4a3b-81f3-cee6e5a06c99');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-id-card');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('Toestemmingsformulier voor reisdocument kind');
+        $requestType->setDescription('Via dit formulier kunt u toestemming geven voor een reisdocument van een kind');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('3daf4dbb-d8e2-4ced-a51e-0f6bf293e410');
+        $property = new Property();
+        $property->setTitle('Naam familie/accomodatie');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is de naam van de familie of accomodatie van het verblijf?');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('2942fcd0-84f8-444e-ad12-b668b9c17f8f');
+        $property = new Property();
+        $property->setTitle('Postcode');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is de postcode van het verblijf?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('878be633-f3af-4b4a-a885-a35f54bd49cc');
+        $property = new Property();
+        $property->setTitle('Plaats');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is de plaats van het verblijf??');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('0964c49a-f640-4e2c-a5b8-21060f59d258');
+        $property = new Property();
+        $property->setTitle('Land');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is het land van het verblijf?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('c36b3fed-afed-4e04-80c1-c11d1a04ce7c');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Wat is de de telefoonnummer van het verblijf?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('9411c48c-587c-4b86-b56d-d3241daa9cd5');
+        $property = new Property();
+        $property->setTitle('Vluchtnummer');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is het vluchtnummer van de vlucht?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('82246844-9a3c-4b35-96d4-e0a843992d3e');
+        $property = new Property();
+        $property->setTitle('Reisperiode van');
+        $property->setIcon('fas fa-calendar-day');
+        $property->setType('string');
+        $property->setFormat('calendar');
+        $property->setDescription('Wat is de startdatum van dit verblijf?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('c07374e9-404c-42fa-a62d-e27072a01cd9');
+        $property = new Property();
+        $property->setTitle('Reisperiode tot');
+        $property->setIcon('fas fa-calendar-day');
+        $property->setType('string');
+        $property->setFormat('calendar');
+        $property->setDescription('Wat is de einddatum van dit verblijf?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        /*
+                 *  Emigreren naar het buitenland
+                 */
+        $id = Uuid::fromString('0567df58-aca0-44f7-9efa-3b4585e03fc5');
+        $requestType = new RequestType();
+        $requestType->setIcon('fal fa-truck-moving');
+        $requestType->setOrganization('0000');
+        $requestType->setName('Emigratie');
+        $requestType->setDescription('Het doorgeven van een emigratie aan een gemeente');
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('fc470862-7bf3-41e9-9b98-5f3a7ae9b3bd');
+        $property = new Property();
+        $property->setStart(true);
+        $property->setTitle('Datum');
+        $property->setIcon('fal fa-calendar-day');
+        $property->setSlug('datum');
+        $property->setType('string');
+        $property->setFormat('date');
+        $property->setDescription('Wat is de emigratie datum?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
+
+        $id = Uuid::fromString('222d82c9-e281-4cd6-9f5b-b6feaa4e86f3');
+        $property = new Property();
+        $property->setTitle('Postcode');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is de postcode van het land waarnaar u emigreert?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1ee404c5-003d-422c-a061-fd89bc4c47ea');
+        $property = new Property();
+        $property->setTitle('Plaats');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is de plaats van het land waarnaar u emigreer??');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('a0d53f41-5f19-4d5c-b8f0-284e83d78e68');
+        $property = new Property();
+        $property->setTitle('Land');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setDescription('Wat is het land waarnaar u emigreer?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('75eefbc2-b628-42f3-9c96-4a7ba10dbc28');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Wat is uw email adres waarop wij u kunnen bereiken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('72c1bd35-f385-4a88-8bb1-0fcd628b2f4c');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Wat is het telefoon nummer waarop wij u kunnen bereiken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1972409b-1262-43c8-ba31-833ab283d171');
+        $property = new Property();
+        //$property->setId('');
+        $property->setTitle('Wie');
+        $property->setIcon('fal fa-users');
+        $property->setSlug('Emigrerende');
+        $property->setType('array');
+        $property->setFormat('bsn');
+        $property->setRequired(true);
+        $property->setDescription('Wie gaan er emigreren?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
+
+
+        /*$id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
+        $verhuizenDenBosh = new RequestType();
+        $verhuizenDenBosh->setName('Verhuizen');
+        $verhuizenDenBosh->setIcon('fal fa-truck-moving');
+        $verhuizenDenBosh->setDescription('Het doorgeven van een verhuizing aan de gemeente \'s-Hertogenbosch');
+        $verhuizenDenBosh->setOrganization('001709124');
+        $verhuizenDenBosh->setExtends($requestType);
+        $manager->persist($verhuizenDenBosh);
+        $verhuizenDenBosh->setId($id);
+        $manager->persist($verhuizenDenBosh);
+        $manager->flush();
+        $verhuizenDenBosh = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $stage1 = new Property();
+        $stage1->setStart(true);
+        //$requestType->setId('');
+        $stage1->setTitle('Email');
+        $stage1->setIcon('fal fa-envelope');
+        $stage1->setSlug('email');
+        $stage1->setDescription('Het e-mail addres dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
+        $stage1->setType('string');
+        $stage1->setFormat('email');
+        $stage1->setRequired(true);
+        $stage1->setRequestType($verhuizenDenBosh);
+        $manager->persist($stage1);
+
+        $stage2 = new Property();
+        $stage2->addPrevious($stage1);
+        //$requestType->setId('');
+        $stage2->setTitle('Telefoon');
+        $stage2->setIcon('fal fa-phone');
+        $stage2->setSlug('telefoon');
+        $stage2->setDescription('Het telefoon nummer dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
+        $stage2->setType('string');
+        $stage2->setFormat('string');
+        $stage2->setRequired(true);
+        $stage2->setRequestType($verhuizenDenBosh);
+        $manager->persist($stage2);*/
+
+        /*
+         *  BRP-uittreksel aanvragen
+         */
+        $id = Uuid::fromString('9aa0fcf5-ad95-4e2d-b272-d36656e72a82');
+        $requestType = new RequestType();
+        $requestType->setIcon('fas fa-file-alt');
+        $requestType->setOrganization('002220647');
+        $requestType->setName('BRP-uittreksel aanvragen');
+        $requestType->setDescription('Via dit formulier kunt u bij ons een BRP-uittreksel aanvragen');
+        $requestType->setUnique(true);
+        $manager->persist($requestType);
+        $requestType->setId($id);
+        $manager->persist($requestType);
+        $manager->flush();
+        $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('fce828db-1110-4ee7-a828-291517b6bad7');
+        $property = new Property();
+        $property->setTitle('Contact');
+        $property->setIcon('fa fa-user');
+        $property->setType('string');
+        $property->setFormat('url');
+        $property->setIri('cc/people');
+        $property->setDescription('Vul hier uw gegevens in');
+        $property->setRequired(true);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id'=> $id]);
+
+        $id = Uuid::fromString('3c1c8517-03c2-43f1-9ef4-86136ee3aecd');
+        $property = new Property();
+        $property->setTitle('Email');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setDescription('Wat is uw email adres waarop wij u kunnen bereiken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('1d21a50d-dd29-4051-80cd-970d6e793f15');
+        $property = new Property();
+        $property->setTitle('Telefoonnummer');
+        $property->setIcon('fal fa-user-friends');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setDescription('Wat is het telefoon nummer waarop wij u kunnen bereiken?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+        $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
+
+        $id = Uuid::fromString('fb77df2e-d33e-4956-8aa4-5bb2ba5e75c3');
+        $property = new Property();
+        $property->setTitle('Opties voor BRP-uittreksel');
+        $property->setName('type');
+        $property->setIcon('fas fa-id-card');
+        $property->setType('string');
+        $property->setFormat('radio');
+        $property->setMaxLength('50');
+        $property->setMinLength('13');
+        $property->setEnum(['Internationaal uittreksel BRP', 'Uitreksel BRP',
+            'Uitreksel BRP + Adres historie', 'Uitreksel BRP + BSN', 'Uitreksel BRP + Gezinssamenstelling',
+            'Uitreksel BRP + Nationaliteit', 'Uitreksel BRP met burgelijke staat en natinaliteit',
+            'Uitreksel BRP met vestigingsdatum', 'Uitreksel BRP ouderlijk gezag']);
+        $property->setRequired(true);
+        $property->setDescription('Welke optie van de BRP-uittreksel wilt u?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         $manager->flush();
     }
 }
