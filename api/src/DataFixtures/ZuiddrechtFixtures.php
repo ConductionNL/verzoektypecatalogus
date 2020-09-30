@@ -1126,7 +1126,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
 
-
         /*$id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
         $verhuizenDenBosh = new RequestType();
         $verhuizenDenBosh->setName('Verhuizen');
@@ -1238,7 +1237,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setEnum(['Internationaal uittreksel BRP', 'Uitreksel BRP',
             'Uitreksel BRP + Adres historie', 'Uitreksel BRP + BSN', 'Uitreksel BRP + Gezinssamenstelling',
             'Uitreksel BRP + Nationaliteit', 'Uitreksel BRP met burgelijke staat en natinaliteit',
-            'Uitreksel BRP met vestigingsdatum', 'Uitreksel BRP ouderlijk gezag']);
+            'Uitreksel BRP met vestigingsdatum', 'Uitreksel BRP ouderlijk gezag', ]);
         $property->setRequired(true);
         $property->setDescription('Welke optie van de BRP-uittreksel wilt u?');
         $property->setRequestType($requestType);
