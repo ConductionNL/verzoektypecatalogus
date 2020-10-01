@@ -115,6 +115,16 @@ class Property
     private $name;
 
     /**
+     * @var string The utter of this property as a question for chatbot like senarios
+     *
+     * @example We would like to ask you to
+     * @Assert\Length(min = 3, max = 255)
+     * @Groups({"read"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $utter;
+
+    /**
      * @var int The order in wichs this propertie is desplayed
      *
      * @example 1
@@ -712,6 +722,18 @@ class Property
         $string = strtolower($string);
 
         return $string;
+    }
+
+    public function getUtter(): ?string
+    {
+        return $this->utter;
+    }
+
+    public function setUtter(string $utter): self
+    {
+        $this->utter = $utter;
+
+        return $this;
     }
 
     public function getOrder(): ?int

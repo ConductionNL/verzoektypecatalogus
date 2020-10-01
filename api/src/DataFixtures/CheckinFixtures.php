@@ -87,7 +87,6 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
-
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -102,7 +101,6 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
-
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -117,7 +115,6 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
-
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);

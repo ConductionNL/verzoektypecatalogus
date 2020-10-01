@@ -60,6 +60,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('date');
         $property->setDescription('Wat is de verhuisdatum?');
+        $property->setUtter('Op welke datum wilt u verhuizen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -76,6 +77,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setDescription('Wat is het nieuwe adres?');
+        $property->setUtter('Naar welk addres wilt u verhuizen');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -91,6 +93,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setFormat('bag');
         $property->setRequired(true);
         $property->setDescription('Wie gaan er verhuizen');
+        $property->setUtter('Welke personen gana er verhuizen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -119,6 +122,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('email');
         $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setUtter('p welk E-Mail adders kunnen we u berijken als we vragen hebben over deze verhuizing?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -133,6 +137,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('tel');
         $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setUtter('Op welk telefoon nummer kunnen we u berijken als we vragen hebben over deze verhuizing?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -146,7 +151,8 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setDescription('Mogen wij andere op de hoogte stellen van uw verhuizing');
+        $property->setDescription('Mogen wij andere op de hoogte stellen van uw verhuizing?');
+        $property->setUtter('Mogen wij andere op de hoogte stellen van uw verhuizing? Bijvoorbeeld post diensten, sportverenigingen of kerkgenootschappen');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -172,7 +178,7 @@ class SHertogenboschFixtures extends Fixture
         $task = new Task();
         $task->setRequestType($requestType);
         $task->setName('Updaten burger service nummers');
-        $task->setDescription('Deze task roept een webhook aan als er een verzoek vanhet type verhuizen wordt gecrieërd');
+        $task->setDescription('Deze task roept een webhook aan als er een verzoek van het type verhuizen wordt gecrieërd');
         $task->setEndpoint($this->commonGroundService->cleanUrl(['component'=>'vs', 'type'=>'webhook']));
         $task->setType('GET');
         $task->setCode('set_bsn');
