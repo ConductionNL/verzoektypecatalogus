@@ -150,21 +150,6 @@ class RequestType
     private $properties;
 
     /**
-     * @var Property[]|ArrayCollection The tasks for this request type
-     *
-     * @Groups({"read"})
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
-     */
-    private $tasks;
-
-    /**
-     * @Groups({"read"})
-     * @MaxDepth(1)
-     */
-    private $stages;
-
-    /**
      * @var object The requestType that this requestType extends
      *
      * @Groups({"write-requesttype"})
@@ -239,20 +224,6 @@ class RequestType
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $caseType;
-
-    /**
-     * @var string The default camunda proces that is started when submiting this request
-     *
-     * @example http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a
-     *
-     * @Gedmo\Versioned
-     * @Assert\Length(
-     *      max = 255
-     * )
-     * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $camundaProces;
 
     /**
      * @Groups({"read","write"})
@@ -486,43 +457,6 @@ class RequestType
         $this->availableUntil = $availableUntil;
 
         return $this;
-    }
-
-    public function getStages()
-    {
-        $stages = [];
-        $stage = $this->getFirstStage();
-        while ($stage) {
-            $array = [
-                'id'         => $stage->getId(),
-                'name'       => $stage->getName(),
-                'description'=> $stage->getDescription(),
-                'icon'       => $stage->getIcon(),
-                'slug'       => $stage->getSlug(),
-            ];
-
-            if ($stage->getNext()) {
-                $array['next'] = $stage->getNext()->getSlug();
-            }
-
-            if ($stage->getPrevious()->first()) {
-                $array['previous'] = $stage->getPrevious()->first()->getSlug();
-            }
-
-            $stages[] = $array;
-
-            $stage = $stage->getNext();
-        }
-
-        return $stages;
-    }
-
-    public function getFirstStage()
-    {
-        $criteria = Criteria::create()
-        ->andWhere(Criteria::expr()->eq('start', true));
-
-        return $this->getProperties()->matching($criteria)->first();
     }
 
     public function getUnique(): ?bool
