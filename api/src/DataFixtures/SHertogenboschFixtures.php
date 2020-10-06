@@ -77,7 +77,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setDescription('Wat is het nieuwe adres?');
-        $property->setUtter('Wat is het nieuwe adres?');
+        $property->setUtter('Ik heb een vraag over uw nieuwe adres');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
