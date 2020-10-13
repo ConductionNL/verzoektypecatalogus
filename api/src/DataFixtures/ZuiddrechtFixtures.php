@@ -53,15 +53,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
 
-        $template = new \App\Entity\Template();
-        $template->setName('Ontvangs bevestiging');
-        $template->setDescription('Ontvangs bevestiging voor verzoeken');
-        $template->setType('pdf');
-        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'bf8aff0a-ab65-4761-923b-890785c5d2fb']));
-        $template->setRequestType($requestType);
-        $manager->persist($template);
-        $manager->flush();
-
         $id = Uuid::fromString('0ab3fbc1-ee3c-40d6-881b-84b5b331710f');
         $property = new Property();
         $property->setTitle('Wat is uw kenteken?');
