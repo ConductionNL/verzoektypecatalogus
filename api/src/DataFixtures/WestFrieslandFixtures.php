@@ -148,9 +148,9 @@ class WestFrieslandFixtures extends Fixture
         $property->setRequestType($requestType);
         $property->setMaxDate('P21D');
         $property->setConfiguration([
-            'startingHour'=>'P9H',
-            'endingHour'=>'P17H',
-            'optionDuration'=>'P2H'
+            'startingHour'  => 'P9H',
+            'endingHour'    => 'P17H',
+            'optionDuration'=> 'P2H',
         ]);
 
         $manager->persist($property);
