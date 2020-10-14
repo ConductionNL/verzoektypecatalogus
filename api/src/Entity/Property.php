@@ -161,7 +161,7 @@ class Property
     private $format;
 
     /**
-     * @var string The iri type of the property used to standarize datas
+     * @var string The iri type of the property used to standarize data
      *
      * @example https://schema.org/name
      *
