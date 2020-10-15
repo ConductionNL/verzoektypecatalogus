@@ -7,7 +7,7 @@ use App\Service\RequestTypeService;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -31,7 +31,7 @@ class RequestTypeSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function getRequestType(GetResponseForControllerResultEvent $event)
+    public function getRequestType(ViewEvent $event)
     {
         $requestType = $event->getControllerResult();
         $route = $event->getRequest()->get('_route');
