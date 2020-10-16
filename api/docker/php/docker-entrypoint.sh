@@ -63,7 +63,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 		echo "Loading fixtures"
 		bin/console doctrine:fixtures:load  --no-interaction
 
-		if[ "$APP_URL" == 'http://localhost' ]
+		if [ "$APP_URL" == 'http://localhost' ]; then
 			# Lets update the docs to show the latest chages
 			echo "Creating OAS documentation"
 			bin/console api:openapi:export --output=/srv/api/public/schema/openapi.yaml --yaml --spec-version=3
