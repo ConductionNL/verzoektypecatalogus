@@ -7,7 +7,7 @@ use App\Entity\RequestType;
 use App\Entity\Task;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -60,6 +60,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('date');
         $property->setDescription('Wat is de verhuisdatum?');
+        $property->setUtter('Wat is de verhuisdatum?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -76,6 +77,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIri('bag/address');
         $property->setRequired(true);
         $property->setDescription('Wat is het nieuwe adres?');
+        $property->setUtter('Ik heb een vraag over uw nieuwe adres');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -91,6 +93,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setFormat('bag');
         $property->setRequired(true);
         $property->setDescription('Wie gaan er verhuizen');
+        $property->setUtter('Welke personen gaan er verhuizen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -119,6 +122,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('email');
         $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setUtter('Op welk e-mailadres kunnen we je bereiken als we vragen hebben over deze verhuizing?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -133,6 +137,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('tel');
         $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setUtter('Op welk telefoonnummer kunnen we je bereiken als we vragen hebben over deze verhuizing');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -146,7 +151,8 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fal fa-map-marked');
         $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setDescription('Mogen wij andere op de hoogte stellen van uw verhuizing');
+        $property->setDescription('Mogen wij andere op de hoogte stellen van uw verhuizing?');
+        $property->setUtter('Mogen wij deze verhuizing aan anderen doorgeven? Bijvoorbeeld aan postdiensten, sportverenigingen of kerkgenootschappen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -172,7 +178,7 @@ class SHertogenboschFixtures extends Fixture
         $task = new Task();
         $task->setRequestType($requestType);
         $task->setName('Updaten burger service nummers');
-        $task->setDescription('Deze task roept een webhook aan als er een verzoek vanhet type verhuizen wordt gecrieërd');
+        $task->setDescription('Deze task roept een webhook aan als er een verzoek van het type verhuizen wordt gecrieërd');
         $task->setEndpoint($this->commonGroundService->cleanUrl(['component'=>'vs', 'type'=>'webhook']));
         $task->setType('GET');
         $task->setCode('set_bsn');

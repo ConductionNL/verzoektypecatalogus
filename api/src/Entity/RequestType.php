@@ -11,7 +11,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
@@ -150,21 +149,6 @@ class RequestType
     private $properties;
 
     /**
-     * @var Property[]|ArrayCollection The tasks for this request type
-     *
-     * @Groups({"read"})
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="requestType", orphanRemoval=true, fetch="EAGER", cascade={"persist"})
-     */
-    private $tasks;
-
-    /**
-     * @Groups({"read"})
-     * @MaxDepth(1)
-     */
-    private $stages;
-
-    /**
      * @var object The requestType that this requestType extends
      *
      * @Groups({"write-requesttype"})
@@ -241,26 +225,6 @@ class RequestType
     private $caseType;
 
     /**
-     * @var string The default camunda proces that is started when submiting this request
-     *
-     * @example http://vtc.zaakonline.nl/9bd169ef-bc8c-4422-86ce-a0e7679ab67a
-     *
-     * @Gedmo\Versioned
-     * @Assert\Length(
-     *      max = 255
-     * )
-     * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $camundaProces;
-
-    /**
-     * @Groups({"read","write"})
-     * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="requestType", cascade={"persist"})
-     */
-    private $templates;
-
-    /**
      * @var Datetime The moment this request was created
      *
      * @Groups({"read"})
@@ -284,7 +248,6 @@ class RequestType
         $this->tasks = new ArrayCollection();
         $this->extendedBy = new ArrayCollection();
         $this->children = new ArrayCollection();
-        $this->templates = new ArrayCollection();
     }
 
     public function getId(): Uuid
@@ -488,43 +451,6 @@ class RequestType
         return $this;
     }
 
-    public function getStages()
-    {
-        $stages = [];
-        $stage = $this->getFirstStage();
-        while ($stage) {
-            $array = [
-                'id'         => $stage->getId(),
-                'name'       => $stage->getName(),
-                'description'=> $stage->getDescription(),
-                'icon'       => $stage->getIcon(),
-                'slug'       => $stage->getSlug(),
-            ];
-
-            if ($stage->getNext()) {
-                $array['next'] = $stage->getNext()->getSlug();
-            }
-
-            if ($stage->getPrevious()->first()) {
-                $array['previous'] = $stage->getPrevious()->first()->getSlug();
-            }
-
-            $stages[] = $array;
-
-            $stage = $stage->getNext();
-        }
-
-        return $stages;
-    }
-
-    public function getFirstStage()
-    {
-        $criteria = Criteria::create()
-        ->andWhere(Criteria::expr()->eq('start', true));
-
-        return $this->getProperties()->matching($criteria)->first();
-    }
-
     public function getUnique(): ?bool
     {
         return $this->unique;
@@ -636,37 +562,6 @@ class RequestType
     public function setParentRequired(bool $parentRequired): self
     {
         $this->parentRequired = $parentRequired;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Template[]
-     */
-    public function getTemplates(): Collection
-    {
-        return $this->templates;
-    }
-
-    public function addTemplate(Template $template): self
-    {
-        if (!$this->templates->contains($template)) {
-            $this->templates[] = $template;
-            $template->setRequestType($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTemplate(Template $template): self
-    {
-        if ($this->templates->contains($template)) {
-            $this->templates->removeElement($template);
-            // set the owning side to null (unless already changed)
-            if ($template->getRequestType() === $this) {
-                $template->setRequestType(null);
-            }
-        }
 
         return $this;
     }

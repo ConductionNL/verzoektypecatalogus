@@ -7,7 +7,7 @@ use App\Entity\RequestType;
 use App\Entity\Task;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -52,15 +52,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($requestType);
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
-
-        $template = new \App\Entity\Template();
-        $template->setName('Ontvangs bevestiging');
-        $template->setDescription('Ontvangs bevestiging voor verzoeken');
-        $template->setType('pdf');
-        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'bf8aff0a-ab65-4761-923b-890785c5d2fb']));
-        $template->setRequestType($requestType);
-        $manager->persist($template);
-        $manager->flush();
 
         $id = Uuid::fromString('0ab3fbc1-ee3c-40d6-881b-84b5b331710f');
         $property = new Property();
@@ -1126,7 +1117,6 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id'=>$id]);
 
-
         /*$id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
         $verhuizenDenBosh = new RequestType();
         $verhuizenDenBosh->setName('Verhuizen');
@@ -1238,7 +1228,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setEnum(['Internationaal uittreksel BRP', 'Uitreksel BRP',
             'Uitreksel BRP + Adres historie', 'Uitreksel BRP + BSN', 'Uitreksel BRP + Gezinssamenstelling',
             'Uitreksel BRP + Nationaliteit', 'Uitreksel BRP met burgelijke staat en natinaliteit',
-            'Uitreksel BRP met vestigingsdatum', 'Uitreksel BRP ouderlijk gezag']);
+            'Uitreksel BRP met vestigingsdatum', 'Uitreksel BRP ouderlijk gezag', ]);
         $property->setRequired(true);
         $property->setDescription('Welke optie van de BRP-uittreksel wilt u?');
         $property->setRequestType($requestType);

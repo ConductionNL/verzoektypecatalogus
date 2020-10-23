@@ -6,7 +6,7 @@ use App\Entity\Property;
 use App\Entity\RequestType;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -51,7 +51,7 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
-        $property->setTitle('Wat zijn de gegevens van u en uw ondernemening?');
+        $property->setTitle('Wat zijn de gegevens van u en uw onderneming?');
         $property->setName('organization');
         $property->setType('string');
         $property->setFormat('url');
@@ -87,7 +87,6 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
-
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -96,13 +95,12 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('6030339b-c807-47d9-bb69-118a5aded1d5');
         $property = new Property();
-        $property->setTitle('IBAN');
-        $property->setName('iban');
+        $property->setTitle('betaal gegevens');
+        $property->setName('betaal gegevens');
         $property->setRequired(true);
-        $property->setType('string');
-        $property->setFormat('text');
+        $property->setType('array');
+        $property->setFormat('iban');
         $property->setRequestType($requestType);
-
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -117,7 +115,6 @@ class CheckinFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('text');
         $property->setRequestType($requestType);
-
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
