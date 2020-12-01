@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\DataFixtures;
-
 
 use App\Entity\Property;
 use App\Entity\RequestType;
@@ -111,6 +109,5 @@ class CommongroundNuFixtures
         $property->setId($id);
         $manager->persist($property);
         $manager->flush();
-
     }
 }
