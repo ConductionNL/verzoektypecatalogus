@@ -1067,8 +1067,8 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setTitle('Type');
         $stage1->setIcon('fas fa-ring');
         $stage1->setSlug('ceremonie');
-        $property->setType('string');
-        $property->setFormat('radio');
+        $stage1->setType('string');
+        $stage1->setFormat('radio');
         $stage1->setMaxLength('12');
         $stage1->setMinLength('7');
         $stage1->setEnum(['trouwen', 'partnerschap', 'omzetten']);
