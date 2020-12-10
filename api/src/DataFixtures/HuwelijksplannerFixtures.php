@@ -21,8 +21,14 @@ class HuwelijksplannerFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // Lets make sure we only run these fixtures on larping enviroment
-        if ($this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false) {
+        if (
+            // If build all fixtures is true we build all the fixtures
+            !$this->params->get('app_build_all_fixtures') &&
+            // Specific domain names
+            $this->params->get('app_domain') != 'zuiddrecht.nl' && strpos($this->params->get('app_domain'), 'zuiddrecht.nl') == false &&
+            $this->params->get('app_domain') != 'zuid-drecht.nl' && strpos($this->params->get('app_domain'), 'zuid-drecht.nl') == false &&
+            $this->params->get('app_domain') != 'huwelijksplanner.online' && strpos($this->params->get('app_domain'), 'huwelijksplanner.online') == false
+        ) {
             return false;
         }
 
@@ -1094,7 +1100,7 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $stage2 = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-        $id = Uuid::fromString('8357401c-0551-4f75-891f-a0c7f4b72d41');
+        $id = Uuid::fromString('1a87072e-efcd-4cc3-b364-d4c0775617fd');
         $stage3 = new Property();
         $stage3->setTitle('Plechtigheid');
         $stage3->setIcon('fas fa-glass-cheers');
