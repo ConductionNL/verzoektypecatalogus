@@ -1123,7 +1123,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage4->setIcon('fas fa-calendar-day');
         $stage4->setSlug('datum');
         $stage4->setType('string');
-        $stage4->setFormat('date');
+        $stage4->setFormat('calendar');
         $stage4->setDescription('Selecteer een datum voor de voltrekking');
         $stage4->setRequestType($trouwenNL);
         $manager->persist($stage4);
