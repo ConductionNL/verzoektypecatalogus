@@ -573,7 +573,7 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->persist($stage3);
         $manager->flush();
 
-        $id = Uuid::fromString('9d76fb58-0711-4437-acc4-9f4d9d403cdf');
+        $id = Uuid::fromString('1fb98cc9-33c8-40dc-9c0b-f7d53e6f9176');
         $verhuizenDenBosh = new RequestType();
         $verhuizenDenBosh->setName('Verhuizen');
         $verhuizenDenBosh->setIcon('fal fa-truck-moving');
@@ -1217,7 +1217,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setEnum(['geen wijziging', 'naam partner 1', 'naam partner 2']);
         $property->setRequired(true);
         $property->setDescription('Welke achternaam wilt u gebruiken na de huwelijksvoltrekking');
-        $property->setRequestType($requestType);
+        $property->setRequestType($trouwenNL);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -1234,7 +1234,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setEnum(['nederlands', 'frans', 'engels']);
         $property->setRequired(true);
         $property->setDescription('In welke taal wilt u de plechtigheid voltrekken');
-        $property->setRequestType($requestType);
+        $property->setRequestType($trouwenNL);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -1247,7 +1247,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('textarea');
         $property->setDescription('Heeft u nog opmerking die u graag wil meegeven');
-        $property->setRequestType($requestType);
+        $property->setRequestType($trouwenNL);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -1260,7 +1260,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setType('boolean');
         $property->setFormat('radio');
         $property->setDescription('Wilt u met deze reservering tevens uw melding voorgenomen huwelijk (her) indienen?');
-        $property->setRequestType($requestType);
+        $property->setRequestType($trouwenNL);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
@@ -1275,7 +1275,7 @@ class HuwelijksplannerFixtures extends Fixture
         $property->setFormat('url');
         $property->setIri('bs/invoice');
         $property->setDescription('Heeft er reeds een betaling plaatsgevonden');
-        $property->setRequestType($requestType);
+        $property->setRequestType($trouwenNL);
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);
