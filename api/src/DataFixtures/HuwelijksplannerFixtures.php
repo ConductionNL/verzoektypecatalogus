@@ -1067,8 +1067,8 @@ class HuwelijksplannerFixtures extends Fixture
         $stage1->setTitle('Type');
         $stage1->setIcon('fas fa-ring');
         $stage1->setSlug('ceremonie');
-        $stage1->setType('string');
-        $stage1->setFormat('string');
+        $property->setType('string');
+        $property->setFormat('radio');
         $stage1->setMaxLength('12');
         $stage1->setMinLength('7');
         $stage1->setEnum(['trouwen', 'partnerschap', 'omzetten']);
@@ -1108,7 +1108,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setType('string');
         $stage3->setFormat('url');
         $stage3->setIri('pdc/offer');
-        $stage3->setQuery(['audience'=>'public', 'products.groups.id'=>'0c1f993d-f9e2-46c5-8d83-0b6dfb702069']);
+        $stage3->setQuery(['audience'=>'public', 'products.groups.id'=>'1cad775c-c2d0-48af-858f-a12029af24b3']);
         $stage3->setDescription('Welke plechtigheid wenst u?');
         $stage3->setRequestType($trouwenNL);
         $manager->persist($stage3);
