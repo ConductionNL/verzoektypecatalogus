@@ -1276,7 +1276,6 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
 
         $stage11 = new Property();
-        $stage11->addPrevious($stage10);
         $stage11->setTitle('Reserveren ');
         $stage11->setIcon('fas fa-calendar-check');
         $stage11->setSlug('checklist');
