@@ -1075,7 +1075,6 @@ class HuwelijksplannerFixtures extends Fixture
         $manager->flush();
         $stage1 = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
-
         $id = Uuid::fromString('8357401c-0551-4f75-891f-a0c7f4b72d41');
         $stage2 = new Property();
         $stage2->setTitle('Partners');
