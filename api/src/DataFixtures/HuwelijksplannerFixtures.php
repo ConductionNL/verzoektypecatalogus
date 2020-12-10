@@ -1108,7 +1108,7 @@ class HuwelijksplannerFixtures extends Fixture
         $stage3->setType('string');
         $stage3->setFormat('url');
         $stage3->setIri('pdc/offer');
-        $stage3->setQuery(['audience'=>'public', 'products.groups.id'=>'0c1f993d-f9e2-46c5-8d83-0b6dfb702069']);
+        $stage3->setQuery(['audience'=>'public', 'products.groups.id'=>'1cad775c-c2d0-48af-858f-a12029af24b3']);
         $stage3->setDescription('Welke plechtigheid wenst u?');
         $stage3->setRequestType($trouwenNL);
         $manager->persist($stage3);
