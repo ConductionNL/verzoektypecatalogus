@@ -51,7 +51,7 @@ class CheckinFixtures extends Fixture
 
         $id = Uuid::fromString('55dde78d-4a14-43c6-a0ff-d33b7b5f8bae');
         $property = new Property();
-        $property->setTitle('Wat zijn de gegevens van u en uw ondernemening?');
+        $property->setTitle('Wat zijn de gegevens van u en uw onderneming?');
         $property->setName('organization');
         $property->setType('string');
         $property->setFormat('url');
