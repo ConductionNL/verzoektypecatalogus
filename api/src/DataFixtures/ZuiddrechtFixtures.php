@@ -706,7 +706,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('d46c0a9c-b6db-40da-af77-09f0037def57');
         $property = new Property();
-        $property->setTitle('Melding ');
+        $property->setTitle('Melding');
         $property->setIcon('fas fa-envelope');
         $property->setType('boolean');
         $property->setFormat('radio');
@@ -717,9 +717,9 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
-        $id = Uuid::fromString('f6231405-373e-4477-9026-265db00601e1');
+        $id = Uuid::fromString('c6e36d7e-90fc-4da0-9acb-7932e3b956ae');
         $property = new Property();
-        $property->setTitle('Betaling ');
+        $property->setTitle('Betaling');
         $property->setName('Betalen');
         $property->setIcon('fas fa-cash-register');
         $property->setType('string');
