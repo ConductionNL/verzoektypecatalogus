@@ -1,4 +1,4 @@
-# Request Type Catalogue 
+# Request Type Catalogue / VTC
 
 Description
 ----
