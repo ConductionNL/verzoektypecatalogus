@@ -1,4 +1,4 @@
-# vtc
+# verzoektypecatalogus
 
 Description
 ----
