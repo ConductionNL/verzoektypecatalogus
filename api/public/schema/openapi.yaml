@@ -8548,12 +8548,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8741,12 +8741,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8942,12 +8942,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -9107,12 +9107,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
     required: []
   AuditTrail-write:
     properties:
@@ -9160,12 +9160,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-02 10:10:06'
+        example: '2021-02-24 09:23:49'
     required: []
   ChangeLog-write:
     properties:

@@ -5,7 +5,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-02-02T10:08:48.0355373Z"
+    created: "2021-02-24T09:18:06.7389352Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -37,14 +37,14 @@ entries:
   vtc:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-02-02T10:08:48.0233126Z"
+    created: "2021-02-24T09:18:06.719834Z"
     description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
       beschikbaar.
-    digest: 6c3367294acf4a9bb4db0dc19afae3fe18fb14906d031cf2d8e3a9277bb22167
+    digest: 28104ec55e9241c259892df985c9caf82902e90d1031fd1a1bb847959c27373b
     home: pc.zaakonline.nl
     icon: pc.zaakonline.nl
     name: vtc
     urls:
     - vtc-0.1.0.tgz
     version: 0.1.0
-generated: "2021-02-02T10:08:48.011278Z"
+generated: "2021-02-24T09:18:06.7035662Z"

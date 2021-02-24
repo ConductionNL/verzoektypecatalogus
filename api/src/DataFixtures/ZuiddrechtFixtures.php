@@ -154,6 +154,90 @@ class ZuiddrechtFixtures extends Fixture
         $manager->persist($property);
         $manager->flush();
 
+        $id = Uuid::fromString('8f21de59-5c54-4878-a485-6dbb13864619');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw voornaam?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('f39233ba-4a68-4289-856d-ab880d085505');
+        $property = new Property();
+        $property->setTitle('achternaam');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw achternaam?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('415bc891-2d21-42b7-b57e-299038d67eb2');
+        $property = new Property();
+        $property->setTitle('organisatie');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is de naam van uw organisatie?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('3825f835-9880-4022-b6d3-3b322d9a7176');
+        $property = new Property();
+        $property->setTitle('email');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw e-mail adres?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('a10044be-2fde-470c-a705-994ca4b87548');
+        $property = new Property();
+        $property->setTitle('telefoon');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw telefoonnummer?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('c9328302-d02c-4c00-ae7d-c16abef833c5');
+        $property = new Property();
+        $property->setTitle('contact');
+        $property->setIcon('fas fa-parking');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setDescription('Ik geef toestemming voor het eenmalig gebruiken van deze gegevens om contact met mij op te nemen');
+        $property->setEnum(['geef toestemming']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         /*
          *  Contact Formulier
          */
