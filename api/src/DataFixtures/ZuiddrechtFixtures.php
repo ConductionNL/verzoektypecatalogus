@@ -423,6 +423,90 @@ class ZuiddrechtFixtures extends Fixture
         $manager->flush();
         $property = $manager->getRepository('App:Property')->findOneBy(['id' => $id]);
 
+        $id = Uuid::fromString('f20dc701-f24d-428c-865e-8d42aba36224');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setIcon('fas fa-user');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw voornaam?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('488c044f-6263-40ce-b066-1e7ec3c67a59');
+        $property = new Property();
+        $property->setTitle('achternaam');
+        $property->setIcon('fas fa-user');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw achternaam?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('951b9db6-9b13-4188-b583-4b54139b6085');
+        $property = new Property();
+        $property->setTitle('organisatie');
+        $property->setIcon('fas fa-building');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is de naam van uw organisatie?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('8bb40fa5-811b-42ea-8fb9-4a229d81a214');
+        $property = new Property();
+        $property->setTitle('e-mail');
+        $property->setIcon('fas fa-envelope');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw e-mail adres?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('8be2f5a7-e165-45c8-8cae-0969dd314b8d');
+        $property = new Property();
+        $property->setTitle('telefoonnummer');
+        $property->setIcon('fas fa-phone');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw telefoonnummer?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('90d34056-b0a4-47a7-bc8b-29501155efd3');
+        $property = new Property();
+        $property->setTitle('toesteming');
+        $property->setIcon('fas fa-check');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setDescription('Ik geef toestemming voor het eenmalig gebruiken van deze gegevens om contact met mij op te nemen');
+        $property->setEnum(['geef toestemming']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
         /*
          *  Melding openbare ruimte
          */
