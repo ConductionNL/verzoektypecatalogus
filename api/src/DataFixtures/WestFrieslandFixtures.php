@@ -7,7 +7,7 @@ use App\Entity\RequestType;
 use App\Entity\Task;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -52,24 +52,6 @@ class WestFrieslandFixtures extends Fixture
         $manager->persist($requestType);
         $manager->flush();
         $requestType = $manager->getRepository('App:RequestType')->findOneBy(['id'=> $id]);
-
-        //$template = new \App\Entity\Template();
-        //$template->setName('HO Akte');
-        //$template->setDescription('Ho Akte test document');
-        //$template->setType('word');
-        //$template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'3807993a-ed98-4570-8a05-09c9454bcac5']));
-        //$template->setRequestType($requestType);
-        //$manager->persist($template);
-        //$manager->flush();
-
-        $template = new \App\Entity\Template();
-        $template->setName('Ontvangs bevestiging');
-        $template->setDescription('Ontvangs bevestiging voor verzoeken');
-        $template->setType('pdf');
-        $template->setUri($this->commonGroundService->cleanUrl(['component'=>'wrc', 'type'=>'templates', 'id'=>'7a3d7d9a-269f-4699-a622-2ad0114d8e86']));
-        $template->setRequestType($requestType);
-        $manager->persist($template);
-        $manager->flush();
 
         $id = Uuid::fromString('72fdd281-c60d-4e2d-8b7d-d266303bdc46');
         $property = new Property();
@@ -164,6 +146,13 @@ class WestFrieslandFixtures extends Fixture
         $property->setFormat('calendar');
         $property->setDescription('Selecteer een datum voor de voltrekking');
         $property->setRequestType($requestType);
+        $property->setMaxDate('P21D');
+        $property->setConfiguration([
+            'startingHour'  => 'P9H',
+            'endingHour'    => 'P17H',
+            'optionDuration'=> 'P2H',
+        ]);
+
         $manager->persist($property);
         $property->setId($id);
         $manager->persist($property);

@@ -134,6 +134,16 @@ spec:
                   name: {{ template "fullname" . }}
                   key: app-subpath-routing
             - name: APP_SUBPATH
+<<<<<<< HEAD
+=======
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "fullname" . }}
+                  key: app-subpath
+            
+            # bla bla      
+            - name: CORS_ALLOW_ORIGIN
+>>>>>>> 0d8e6654c0531c589877deac0250012165ef0fd1
               valueFrom:
                 configMapKeyRef:
                   name: {{ template "fullname" . }}
@@ -150,6 +160,14 @@ spec:
                 secretKeyRef:
                   name: {{ template "fullname" . }}
                   key: app_application_key
+<<<<<<< HEAD
+=======
+            - name: APP_USER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "fullname" . }}
+                  key: app_user_key
+>>>>>>> 0d8e6654c0531c589877deac0250012165ef0fd1
             - name: APP_URL
               {{- if and (eq $.Values.settings.env "prod") (eq $.Values.settings.type "component") }}
               value: https://{{ $.Values.settings.domain }}/api/{{ $.Values.settings.majorVersion }}/{{ $.Values.settings.subpath }}
