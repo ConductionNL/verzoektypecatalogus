@@ -1,18 +1,19 @@
 openapi: 3.0.2
 info:
-  title: 'Verzoek Type Catalogus'
+  title: ''
   version: V1.0
   description: |
     API Details
-    - Component: Verzoek Type Catalogus
-    - Reference: vtc
+    - Component: 
+    - Reference: verzoektypecatalogus
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/verzoektypecatalogus) / [zip](https://github.com/ConductionNL/verzoektypecatalogus/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/vtc-php) 
-    - Datamodel: [postman](schema/vtc.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
-
+    - Docker Image: [online]() 
+    - Datamodel: [postman](schema/verzoektypecatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+    
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
+    
 paths:
   /audit_trails:
     get:
@@ -7025,7 +7026,7 @@ components:
           type: string
     Property-read:
       type: object
-      description: |-
+      description: |
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
@@ -7248,7 +7249,7 @@ components:
         - format
     Property-write:
       type: object
-      description: |-
+      description: |
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
@@ -7447,7 +7448,7 @@ components:
           nullable: true
     'Property:jsonld-read':
       type: object
-      description: |-
+      description: |
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
@@ -7679,7 +7680,7 @@ components:
         - format
     'Property:jsonld-write':
       type: object
-      description: |-
+      description: |
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
@@ -8548,12 +8549,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2021-02-24 10:55:27'
+        example: '2021-02-25 07:35:57'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2021-02-24 10:55:27'
+        example: '2021-02-25 07:35:57'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8741,12 +8742,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2021-02-24 10:55:27'
+        example: '2021-02-25 07:35:57'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2021-02-24 10:55:27'
+        example: '2021-02-25 07:35:57'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8942,12 +8943,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-24 10:55:27'
+        example: '2021-02-25 07:35:57'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-24 10:55:27'
+        example: '2021-02-25 07:35:57'
       requestType:
         description: 'The requestType that this task belongs to'
         type: object
@@ -9003,59 +9004,6 @@ definitions:
         type: object
     required:
       - name
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2021-02-24 10:55:27'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2021-02-24 10:55:27'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
   AuditTrail-read:
     properties:
       id:
@@ -9160,12 +9108,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-24 10:55:27'
+        example: '2021-02-25 07:35:58'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-24 10:55:27'
+        example: '2021-02-25 07:35:58'
     required: []
   AuditTrail-write:
     properties:
@@ -9175,36 +9123,92 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2021-02-25 07:35:58'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2021-02-25 07:35:58'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
 tags:
   -
     name: Property
-    description: |+
+    description: |
       This property follows the following schemes (in order of importance)
       https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
       https://tools.ietf.org/html/draft-wright-json-schema-validation-00
       http://json-schema.org/.
-
+      
+      
   -
     name: RequestType
-    description: |+
+    description: |
       All properties contained in the RequestType type.
-
+      
+      
   -
     name: Task
-    description: |+
-
-
-  -
-    name: ChangeLog
-    description: |-
-      An resource representing a log line.
-
-      This entity represents a product that can be ordered via the OrderRegistratieComponent.
+    description: |
+      
+      
+      
   -
     name: AuditTrail
-    description: |-
+    description: |
       An resource representing a log line.
-
+      
+      This entity represents a product that can be ordered via the OrderRegistratieComponent.
+  -
+    name: ChangeLog
+    description: |
+      An resource representing a log line.
+      
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
 securityDefinitions:
   JWT-Oauth:
@@ -9212,22 +9216,22 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the AuditTrail resource'
-      write: 'write right to the AuditTrail resource'
+      read: 'read right to the ChangeLog resource'
+      write: 'write right to the ChangeLog resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
 host: irc.zaakonline.nl
 servers:
   -
     name: zuid-drecht.nl
-    url: vtc.dev.zuid-drecht.nl
+    url: verzoektypecatalogus.dev.zuid-drecht.nl
 externalDocs:
   -
     description: 'OAS Documentatie'

@@ -21,7 +21,6 @@ parameters:
     env(AUDITTRAIL_ENABLED): ""
     env(NOTIFICATION_ENABLED):
     env(APP_VERSION): "1.0.0"
-    env(APP_MAJOR_VERSION): "1.0.0"
     env(APP_NAME): "Proto Component"
     env(APP_DESCRIPTION): "A commonground component"
     env(APP_DOMAIN): "zaakonline.nl"
@@ -30,15 +29,19 @@ parameters:
     env(APP_SUBDOMAIN):
     env(APP_SUBPATH):
     env(APP_SUBPATH_ROUTING):
+    env(APP_CONTAINER): ""
     env(APP_DEMO): "pc.zaakonline.nl"
     env(APP_WEB):
     env(APP_INTERNAL):
     env(APP_BUILD_ALL_FIXTURES):
     env(APP_URL): "http://localhost"
-    env(APP_CONTAINER): ""
-    env(APP_TITLE): ""
-    env(APP_ID): ""
-    env(APP_TYPE): ""
+    env(FACEBOOK_ID): ""
+    env(FACEBOOK_SECRET): ""
+    env(GMAIL_ID): ""
+    env(GMAIL_SECRET): ""
+    env(IDIN_ID): ""
+    env(IDIN_SECRET): ""
+    env(APP_TYPE): "component"
   
     app_env: "%env(APP_ENV)%"
     app_container: "%env(APP_CONTAINER)%"
@@ -64,17 +67,19 @@ parameters:
     app_build_all_fixtures: "%env(APP_BUILD_ALL_FIXTURES)%"
     app_chart: "%env(APP_CHART)%"
     app_session_duration: "%env(APP_SESSION_DURATION)%"
+    app_type: "%env(APP_TYPE)%"
     licence_name: "%env(LICENCE_NAME)%"
     owner_name: "%env(OWNER_NAME)%"
     owner_url: "%env(OWNER_URL)%"
     artifacthub_id: "%env(ARTIFACTHUB_ID)%"
     artifacthub_user: "%env(ARTIFACTHUB_USER)%"
     helm_repository: "%env(HELM_REPOSITORY)%"
-    app_commonground_key: "%env(APP_COMMONGROUND_KEY)%"
-    app_major_version: "%env(APP_MAJOR_VERSION)%"
-    app_title: "%env(APP_TITLE)%"
-    app_id: "%env(APP_ID)%"
-    app_type: "%env(APP_TYPE)%"
+    facebook_id: "%env(FACEBOOK_ID)%"
+    facebook_secret: "%env(FACEBOOK_SECRET)%"
+    gmail_id: "%env(GMAIL_ID)%"
+    gmail_secret: "%env(GMAIL_SECRET)%"
+    idin_id: "%env(IDIN_ID)%"
+    idin_secret: "%env(IDIN_SECRET)%"
 
     # Busnes Engine
     env(APP_COMMONGROUND_BE_LOCATION): "https://ac.%env(APP_DOMAIN)%"
@@ -298,10 +303,12 @@ twig:
         artifacthub_id: "%env(ARTIFACTHUB_ID)%"
         artifacthub_user: "%env(ARTIFACTHUB_USER)%"
         helm_repository: "%env(HELM_REPOSITORY)%"
-        app_commonground_key: "%env(APP_COMMONGROUND_KEY)%"
-        app_major_version: "%env(APP_MAJOR_VERSION)%"
-        app_title: "%env(APP_TITLE)%"
-        app_id: "%env(APP_ID)%"
+        facebook_id: "%env(FACEBOOK_ID)%"
+        facebook_secret: "%env(FACEBOOK_SECRET)%"
+        gmail_id: "%env(GMAIL_ID)%"
+        gmail_secret: "%env(GMAIL_SECRET)%"
+        idin_id: "%env(IDIN_ID)%"
+        idin_secret: "%env(IDIN_SECRET)%"
         app_type: "%env(APP_TYPE)%"
 
         # Security Details
