@@ -226,5 +226,89 @@ class SHertogenboschFixtures extends Fixture
         $stage2->setRequired(true);
         $stage2->setRequestType($verhuizenDenBosh);
         $manager->persist($stage2);
+
+        $id = Uuid::fromString('ba8506d8-458e-4d6d-b88a-8107f960d9b5');
+        $property = new Property();
+        $property->setTitle('voornaam');
+        $property->setIcon('fas fa-user');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw voornaam?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('009d51f1-c5bd-402c-8be4-bf79a00ea22f');
+        $property = new Property();
+        $property->setTitle('achternaam');
+        $property->setIcon('fas fa-user');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw achternaam?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('42f011f7-a77d-48db-b415-d4bc0f0bf6dc');
+        $property = new Property();
+        $property->setTitle('organisatie');
+        $property->setIcon('fas fa-building');
+        $property->setType('string');
+        $property->setFormat('text');
+        $property->setRequired(true);
+        $property->setDescription('Wat is de naam van uw organisatie?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('20d3b9cc-131a-4397-803f-2c43b6deb6ca');
+        $property = new Property();
+        $property->setTitle('mail');
+        $property->setIcon('fas fa-envelope');
+        $property->setType('string');
+        $property->setFormat('email');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw e-mail adres?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('922f34e2-39db-4e0b-a98c-252ed7243945');
+        $property = new Property();
+        $property->setTitle('phone');
+        $property->setIcon('fas fa-phone');
+        $property->setType('string');
+        $property->setFormat('tel');
+        $property->setRequired(true);
+        $property->setDescription('Wat is uw telefoonnummer?');
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
+
+        $id = Uuid::fromString('2cc19bb6-808e-4cd2-80a9-d9404f134280');
+        $property = new Property();
+        $property->setTitle('toestemming');
+        $property->setIcon('fas fa-check');
+        $property->setType('string');
+        $property->setFormat('checkbox');
+        $property->setDescription('Ik geef toestemming voor het eenmalig gebruiken van deze gegevens om contact met mij op te nemen');
+        $property->setEnum(['geef toestemming']);
+        $property->setRequestType($requestType);
+        $manager->persist($property);
+        $property->setId($id);
+        $manager->persist($property);
+        $manager->flush();
     }
 }
