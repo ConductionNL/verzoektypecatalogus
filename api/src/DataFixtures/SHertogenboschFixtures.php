@@ -233,7 +233,6 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-user');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
         $property->setDescription('Wat is uw voornaam?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -247,7 +246,6 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-user');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
         $property->setDescription('Wat is uw achternaam?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -261,7 +259,6 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-building');
         $property->setType('string');
         $property->setFormat('text');
-        $property->setRequired(true);
         $property->setDescription('Wat is de naam van uw organisatie?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -275,7 +272,6 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setRequired(true);
         $property->setDescription('Wat is uw e-mail adres?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -289,7 +285,6 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-phone');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setRequired(true);
         $property->setDescription('Wat is uw telefoonnummer?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -299,7 +294,7 @@ class SHertogenboschFixtures extends Fixture
 
         $id = Uuid::fromString('2cc19bb6-808e-4cd2-80a9-d9404f134280');
         $property = new Property();
-        $property->setTitle('toestemming');
+        $property->setTitle('geef toestemming');
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
