@@ -391,6 +391,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('3ed36d5b-349f-42f2-a084-f2feb20899be');
         $property = new Property();
         $property->setTitle('Email');
+        $property->setName('balieEmail');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
@@ -406,6 +407,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('c4e88952-bd02-4832-886f-316bcbaf6ed4');
         $property = new Property();
         $property->setTitle('Telefoon');
+        $property->setName('balieTelefoon');
         $property->setRequired(true);
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
