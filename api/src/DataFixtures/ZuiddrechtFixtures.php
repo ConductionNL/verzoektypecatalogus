@@ -208,7 +208,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('a10044be-2fde-470c-a705-994ca4b87548');
         $property = new Property();
-        $property->setTitle('telefoon');
+        $property->setTitle('telefoonnummer');
         $property->setIcon('fas fa-phone');
         $property->setType('string');
         $property->setFormat('tel');
@@ -225,8 +225,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setDescription('Ik geef toestemming voor het eenmalig gebruiken van deze gegevens om contact met mij op te nemen');
-        $property->setEnum(['geef toestemming']);
+        $property->setDescription("We zouden graag met je contact opnemen om je te vragen wat je van deze manier van demo'en, Zuid-Drecht en het zaaksysteem vindt. ");
+        $property->setEnum(['Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -459,7 +459,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('8bb40fa5-811b-42ea-8fb9-4a229d81a214');
         $property = new Property();
-        $property->setTitle('e-mail');
+        $property->setTitle('email');
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
         $property->setFormat('email');
@@ -489,8 +489,8 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setDescription('Ik geef toestemming voor het eenmalig gebruiken van deze gegevens om contact met mij op te nemen');
-        $property->setEnum(['geef toestemming']);
+        $property->setDescription("We zouden graag met je contact opnemen om je te vragen wat je van deze manier van demo'en, Zuid-Drecht en het zaaksysteem vindt. ");
+        $property->setEnum(['Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
