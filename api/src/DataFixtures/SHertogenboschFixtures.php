@@ -118,10 +118,11 @@ class SHertogenboschFixtures extends Fixture
         $id = Uuid::fromString('32061b32-1f8d-4bd7-b203-52b22585f3c9');
         $property = new Property();
         $property->setTitle('Email');
+        $property->setName('shertogenboschEmail');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u berijken?');
+        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
         $property->setUtter('Op welk e-mailadres kunnen we je bereiken als we vragen hebben over deze verhuizing?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -205,6 +206,7 @@ class SHertogenboschFixtures extends Fixture
         $stage1->setStart(true);
         //$verhuizenNL->setId('');
         $stage1->setTitle('Email');
+        $stage1->setName('verhuizenEmail');
         $stage1->setIcon('fal fa-envelope');
         $stage1->setSlug('email');
         $stage1->setDescription('Het e-mail addres dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
@@ -218,6 +220,7 @@ class SHertogenboschFixtures extends Fixture
         $stage2->addPrevious($stage1);
         //$verhuizenNL->setId('');
         $stage2->setTitle('Telefoon');
+        $stage2->setName('verhuizenTelefoon');
         $stage2->setIcon('fal fa-phone');
         $stage2->setSlug('telefoon');
         $stage2->setDescription('Het telefoon nummer dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
@@ -268,7 +271,8 @@ class SHertogenboschFixtures extends Fixture
 
         $id = Uuid::fromString('20d3b9cc-131a-4397-803f-2c43b6deb6ca');
         $property = new Property();
-        $property->setTitle('mail');
+        $property->setTitle('email');
+        $property->setName('infoEmail');
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
         $property->setFormat('email');
@@ -281,7 +285,7 @@ class SHertogenboschFixtures extends Fixture
 
         $id = Uuid::fromString('922f34e2-39db-4e0b-a98c-252ed7243945');
         $property = new Property();
-        $property->setTitle('phone');
+        $property->setTitle('telefoonnummer');
         $property->setIcon('fas fa-phone');
         $property->setType('string');
         $property->setFormat('tel');
@@ -298,8 +302,8 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setDescription('Ik geef toestemming voor het eenmalig gebruiken van deze gegevens om contact met mij op te nemen');
-        $property->setEnum(['geef toestemming']);
+        $property->setDescription("We zouden graag met je contact opnemen om je te vragen wat je van deze manier van demo'en, Zuid-Drecht en het zaaksysteem vindt. ");
+        $property->setEnum(['Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen']);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
