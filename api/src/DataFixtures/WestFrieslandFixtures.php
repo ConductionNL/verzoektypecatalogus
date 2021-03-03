@@ -327,8 +327,8 @@ class WestFrieslandFixtures extends Fixture
         $property->setTitle('Wijziging');
         $property->setIcon('fal fa-map-marked');
         $property->setType('string');
-        $property->setDescription('wat wil u wijzigen aan uw verzoek');
-        $property->setFormat('text');
+        $property->setDescription('');
+        $property->setFormat('textarea');
         $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
