@@ -325,7 +325,7 @@ class WestFrieslandFixtures extends Fixture
         $id = Uuid::fromString('6c5e6a94-1b31-4db3-97a7-c9a0bb3e6eda');
         $property = new Property();
         $property->setTitle('Wijziging');
-        $property->setIcon('fal fa-map-marked');
+        $property->setIcon('fas fa-edit');
         $property->setType('string');
         $property->setDescription('');
         $property->setFormat('textarea');
