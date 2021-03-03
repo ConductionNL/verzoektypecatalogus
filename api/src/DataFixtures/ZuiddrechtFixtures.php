@@ -55,7 +55,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('0ab3fbc1-ee3c-40d6-881b-84b5b331710f');
         $property = new Property();
-        $property->setTitle('');
+        $property->setTitle('Wat is uw kenteken?');
         $property->setName('Wat is uw kenteken?');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
