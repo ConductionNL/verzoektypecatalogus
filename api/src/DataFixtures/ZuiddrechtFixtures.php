@@ -221,7 +221,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('c9328302-d02c-4c00-ae7d-c16abef833c5');
         $property = new Property();
-        $property->setTitle('geef toestemming');
+        $property->setTitle('Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen');
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
@@ -346,7 +346,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('bb4fd6ee-5dce-4b9f-a28a-c566d5542d07');
         $property = new Property();
         $property->setTitle('Datum');
-        $property->setIcon('fal fa-calendar-day');
+        $property->setIcon('fas fa-calendar-day');
         $property->setType('string');
         $property->setFormat('calendar');
         $property->setDescription('Wanneer wilt u uw afspraak');
@@ -360,7 +360,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('1db8bb40-aa1d-4ddd-b4d7-d43c987869cb');
         $property = new Property();
         $property->setTitle('Beschrijving');
-        $property->setIcon('fal fa-map-marked');
+        $property->setIcon('fas fa-map-marked');
         $property->setType('text');
         $property->setFormat('textarea');
         $property->setDescription('Om schrrijv uw vraag');
@@ -375,7 +375,7 @@ class ZuiddrechtFixtures extends Fixture
         $id = Uuid::fromString('b90265da-379e-4254-b6df-14f962a68212');
         $property = new Property();
         $property->setTitle('Onderwerp');
-        $property->setIcon('fal fa-map-marked');
+        $property->setIcon('fas fa-map-marked');
         $property->setType('string');
         $property->setFormat('url');
         $property->setIri('pdc/offer');
@@ -392,7 +392,7 @@ class ZuiddrechtFixtures extends Fixture
         $property = new Property();
         $property->setTitle('Email');
         $property->setName('balieEmail');
-        $property->setIcon('fal fa-map-marked');
+        $property->setIcon('fas fa-map-marked');
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
@@ -409,7 +409,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Telefoon');
         $property->setName('balieTelefoon');
         $property->setRequired(true);
-        $property->setIcon('fal fa-map-marked');
+        $property->setIcon('fas fa-map-marked');
         $property->setType('string');
         $property->setFormat('tel');
         $property->setDescription('Op welk telefoon nummer kunnen we u bereiken?');
@@ -487,7 +487,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('90d34056-b0a4-47a7-bc8b-29501155efd3');
         $property = new Property();
-        $property->setTitle('geef toesteming');
+        $property->setTitle('Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen');
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
