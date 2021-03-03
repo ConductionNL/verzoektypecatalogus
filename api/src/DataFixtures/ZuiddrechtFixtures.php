@@ -371,7 +371,6 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('text');
         $property->setFormat('textarea');
         $property->setDescription('Heeft u aanvullende informatie of vragen? Dan kunt u deze hier stellen.');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -403,7 +402,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
-        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
+        $property->setDescription('Op welk e-mail adres kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
