@@ -55,7 +55,7 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('0ab3fbc1-ee3c-40d6-881b-84b5b331710f');
         $property = new Property();
-        $property->setTitle('');
+        $property->setTitle('Wat is uw kenteken?');
         $property->setName('Wat is uw kenteken?');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
@@ -231,7 +231,6 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setRequired(true);
         $property->setDescription("We zouden graag met je contact opnemen om je te vragen wat je van deze manier van demo'en, Zuid-Drecht en het zaaksysteem vindt. ");
         $property->setEnum(['Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen']);
         $property->setRequestType($requestType);
@@ -371,7 +370,6 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('text');
         $property->setFormat('textarea');
         $property->setDescription('Heeft u aanvullende informatie of vragen? Dan kunt u deze hier stellen.');
-        $property->setRequired(true);
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -403,7 +401,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setType('string');
         $property->setFormat('email');
         $property->setRequired(true);
-        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
+        $property->setDescription('Op welk e-mail adres kunnen we u bereiken?');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
@@ -503,7 +501,6 @@ class ZuiddrechtFixtures extends Fixture
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setRequired(true);
         $property->setDescription("We zouden graag met je contact opnemen om je te vragen wat je van deze manier van demo'en, Zuid-Drecht en het zaaksysteem vindt. ");
         $property->setEnum(['Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen']);
         $property->setRequestType($requestType);

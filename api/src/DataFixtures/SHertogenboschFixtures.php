@@ -152,7 +152,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-bell');
         $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setDescription('Mogen wij andere op de hoogte stellen van uw verhuizing?');
+        $property->setDescription('Mogen wij anderen op de hoogte stellen van uw verhuizing?');
         $property->setUtter('Mogen wij deze verhuizing aan anderen doorgeven? Bijvoorbeeld aan postdiensten, sportverenigingen of kerkgenootschappen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -307,7 +307,6 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
-        $property->setRequired(true);
         $property->setDescription("We zouden graag met je contact opnemen om je te vragen wat je van deze manier van demo'en, Zuid-Drecht en het zaaksysteem vindt. ");
         $property->setEnum(['Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen']);
         $property->setRequestType($requestType);
