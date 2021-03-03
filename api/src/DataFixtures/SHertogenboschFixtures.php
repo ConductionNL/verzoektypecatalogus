@@ -122,7 +122,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
         $property->setFormat('email');
-        $property->setDescription('Op welk E-Mail adders kunnen we u bereiken?');
+        $property->setDescription('Op welk e-mail adres kunnen we u bereiken?');
         $property->setUtter('Op welk e-mailadres kunnen we je bereiken als we vragen hebben over deze verhuizing?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -137,7 +137,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-phone');
         $property->setType('string');
         $property->setFormat('tel');
-        $property->setDescription('Op welk telefoon nummer kunnen we u berijken?');
+        $property->setDescription('Op welk telefoonnummer kunnen we u bereiken?');
         $property->setUtter('Op welk telefoonnummer kunnen we je bereiken als we vragen hebben over deze verhuizing');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -149,7 +149,7 @@ class SHertogenboschFixtures extends Fixture
         $id = Uuid::fromString('f1964c98-df49-431a-a5e1-64c17d7d956b');
         $property = new Property();
         $property->setTitle('notificatie');
-        $property->setIcon('fas fa-map-marked');
+        $property->setIcon('fas fa-bell');
         $property->setType('boolean');
         $property->setFormat('radio');
         $property->setDescription('Mogen wij andere op de hoogte stellen van uw verhuizing?');
@@ -223,7 +223,7 @@ class SHertogenboschFixtures extends Fixture
         $stage2->setName('verhuizenTelefoon');
         $stage2->setIcon('fas fa-phone');
         $stage2->setSlug('telefoon');
-        $stage2->setDescription('Het telefoon nummer dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
+        $stage2->setDescription('Het telefoonnummer dat wordt gebruikt om contact op te nemen (indien nodig) over deze verhuizing');
         $stage2->setType('string');
         $stage2->setFormat('string');
         $stage2->setRequired(true);

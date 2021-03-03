@@ -69,12 +69,12 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('92461726-dc0a-4132-a466-4968a37f4620');
         $property = new Property();
-        $property->setTitle('Parkeergelegenheid');
+        $property->setTitle('Uw situatie');
         $property->setIcon('fas fa-parking');
         $property->setType('string');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setDescription('Is er een eigen parkeergelegenheid bij uw woning?');
+        $property->setDescription('');
         $property->setEnum(['Ik heb een eigen parkeergelegenheid', 'Alle parkeergelegenheden zijn in gebruik', 'Ik heb geen eigen parkeergelegenheid bij mijn woning']);
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -84,12 +84,12 @@ class ZuiddrechtFixtures extends Fixture
 
         $id = Uuid::fromString('3539cb5f-6801-4f45-838f-9c592946a592');
         $property = new Property();
-        $property->setTitle('Vergunning oud adres');
+        $property->setTitle('Ik heb een bestaande vergunning / Ik heb een parkeervergunning gehad in Zuid-Drecht');
         $property->setIcon('fas fa-parking');
         $property->setType('boolean');
         $property->setFormat('radio');
         $property->setRequired(true);
-        $property->setDescription('Ik heb een vergunning op mijn oude adres en wil ook een vergunning op mijn nieuwe adres:');
+        $property->setDescription('');
         $property->setRequestType($requestType);
         $manager->persist($property);
         $property->setId($id);
