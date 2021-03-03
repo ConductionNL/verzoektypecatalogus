@@ -270,7 +270,7 @@ class ZuiddrechtFixtures extends Fixture
         $property->setTitle('Beschrijving');
         $property->setIcon('fal fa-map-marked');
         $property->setType('text');
-        $property->setDescription('Om schrrijv uw vraag');
+        $property->setDescription('Omschrijf uw vraag');
         $property->setFormat('textarea');
         $property->setRequired(true);
         $property->setRequestType($requestType);
