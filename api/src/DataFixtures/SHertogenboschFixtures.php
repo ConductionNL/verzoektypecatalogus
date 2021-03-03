@@ -152,7 +152,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-bell');
         $property->setType('boolean');
         $property->setFormat('radio');
-        $property->setDescription('Mogen wij andere op de hoogte stellen van uw verhuizing?');
+        $property->setDescription('Mogen wij anderen op de hoogte stellen van uw verhuizing?');
         $property->setUtter('Mogen wij deze verhuizing aan anderen doorgeven? Bijvoorbeeld aan postdiensten, sportverenigingen of kerkgenootschappen?');
         $property->setRequestType($requestType);
         $manager->persist($property);
