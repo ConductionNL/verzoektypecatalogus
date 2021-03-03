@@ -236,6 +236,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-user');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setRequired(true);
         $property->setDescription('Wat is uw voornaam?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -248,6 +249,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setTitle('achternaam');
         $property->setIcon('fas fa-user');
         $property->setType('string');
+        $property->setRequired(true);
         $property->setFormat('text');
         $property->setDescription('Wat is uw achternaam?');
         $property->setRequestType($requestType);
@@ -262,6 +264,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-building');
         $property->setType('string');
         $property->setFormat('text');
+        $property->setRequired(true);
         $property->setDescription('Wat is de naam van uw organisatie?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -276,6 +279,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
         $property->setFormat('email');
+        $property->setRequired(true);
         $property->setDescription('Wat is uw e-mail adres?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -289,6 +293,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-phone');
         $property->setType('string');
         $property->setFormat('tel');
+        $property->setRequired(true);
         $property->setDescription('Wat is uw telefoonnummer?');
         $property->setRequestType($requestType);
         $manager->persist($property);
@@ -302,6 +307,7 @@ class SHertogenboschFixtures extends Fixture
         $property->setIcon('fas fa-check');
         $property->setType('string');
         $property->setFormat('checkbox');
+        $property->setRequired(true);
         $property->setDescription("We zouden graag met je contact opnemen om je te vragen wat je van deze manier van demo'en, Zuid-Drecht en het zaaksysteem vindt. ");
         $property->setEnum(['Ik geef toestemming voor het gebruiken van deze gegevens om contact met mij op te nemen']);
         $property->setRequestType($requestType);
