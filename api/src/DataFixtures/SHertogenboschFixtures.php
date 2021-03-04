@@ -275,7 +275,7 @@ class SHertogenboschFixtures extends Fixture
         $id = Uuid::fromString('20d3b9cc-131a-4397-803f-2c43b6deb6ca');
         $property = new Property();
         $property->setTitle('email');
-        $property->setName('infoEmail');
+        $property->setName('email');
         $property->setIcon('fas fa-envelope');
         $property->setType('string');
         $property->setFormat('email');
