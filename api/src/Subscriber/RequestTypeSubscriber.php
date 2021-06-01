@@ -6,7 +6,6 @@ use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Service\RequestTypeService;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -38,12 +37,9 @@ class RequestTypeSubscriber implements EventSubscriberInterface
         $method = $event->getRequest()->getMethod();
         $extend = $event->getRequest()->query->get('extend');
 
-        //!$requestType instanceof RequestType || Request::METHOD_GET !== $method ||
         if ($extend != 'true' || $route != 'api_request_types_get_item') {
             return $requestType;
         }
-
-        //var_dump($method);
 
         $requestType = $this->requestTypeService->extendRequestType($requestType);
 
