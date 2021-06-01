@@ -38,12 +38,9 @@ class RequestTypeSubscriber implements EventSubscriberInterface
         $method = $event->getRequest()->getMethod();
         $extend = $event->getRequest()->query->get('extend');
 
-        //!$requestType instanceof RequestType || Request::METHOD_GET !== $method ||
         if ($extend != 'true' || $route != 'api_request_types_get_item') {
             return $requestType;
         }
-
-        //var_dump($method);
 
         $requestType = $this->requestTypeService->extendRequestType($requestType);
 
