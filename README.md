@@ -1,8 +1,27 @@
-# vtc
+# Verzoek Type Catalogus
+[![StyleCI](https://github.styleci.io/repos/210271092/shield?branch=master)](https://github.styleci.io/repos/210271092?branch=master)
+[![Docker Image CI](https://github.com/ConductionNL/verzoektypecatalogus/workflows/Docker%20Image%20CI/badge.svg?branch=master)](https://github.com/ConductionNL/verzoektypecatalogus/actions?query=workflow%3A"Docker+Image+CI")
+[![Artifacthub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/verzoektypecatalogus)](https://artifacthub.io/packages/helm/verzoektypecatalogus/verzoektypecatalogus)
+[![BCH compliance](https://bettercodehub.com/edge/badge/ConductionNL/verzoektypecatalogus?branch=master)](https://bettercodehub.com/)
 
 Description
 ----
-Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.
+De Verzoek Type Catalogus biedt een overzicht van mogelijke door de gebruiker te starten verzoeken en de te verwachten afhandeling. Het component laat zich in deze het best vergelijken met een digitale beschrijving van een formulier, waarbij de Verzoek Type Catalogus zich zuiver beperkt tot de definiëring van de eindwaarde. Het bevat in deze dus een reeks van velden en voorwaarden waaraan het moet voldoen.
+
+De door de gebruiker aan te leveren velden noemen we properties, en iedere property kan worden beschreven. Voor het omschrijven van de velden gebruiken we de OpenAPI Standaard als richtlijn, dat betekent dat alle daarin opgenomen typering voor velden mogen worden toegepast. Dit kan op een aantal manieren:
+
+Simpel: bijvoorbeeld een naam is een string van minimaal 5 en maximaal 255 teken.
+Abstract: bijvoorbeeld een link is een geldige URL
+
+Linked Data: en vanuit de Common Ground gedachte kan het ook in de trant van een linked data object beschrijving. In dat laatste geval wordt gebruik gemaakt van de OpenAPI 2 norm extensie voor types. Waarbij een type wordt gedefinieerd als componentCode/resource. Bijvoorbeeld een persoon is een cc/people (ofwel een persoon in het Contacten Component).
+
+Linked data bevindt zich per definitie in andere componenten die bronhouder zijn, dat wil zeggen dat in de dataset van een verzoek alleen de verwijzing naar de bron wordt opgeslagen. Er kan echter wel gebruik worden gemaakt van de in NL API strategie omschreven extend functionaliteit. Dat wil zeggen dat het mogelijk is om aan de VTC API te vragen om externe bronnen in te voegen als objecten in plaats van verwijzingen. Op deze manier is het mogelijk om een verzoek met onderliggende data in één keer op te halen.
+
+Omgekeerd is het ook mogelijk om onderliggende resources in andere componenten aan te maken (door in plaats van een verwijzing een object mee te geven, maar niet te voorzien van een id property) of deze bij te werken (door in plaats van een verwijzing een object mee te geven, maar wel te voorzien van een id property). 
+
+
+
+Als laatste kan een verzoek type ook spelregels bevatten over wat er moet gebeuren als een verzoek van status verandert. Zo is het bijvoorbeeld mogelijk om bij het indienen van een verzoek, een zaak van een bepaald zaaktype te laten aanmaken in een API die de ZGW standaard ondersteunt of om bij bijvoorbeeld het opstarten van een verzoek een Camunda proces op te starten.
 
 Additional Information
 ----
