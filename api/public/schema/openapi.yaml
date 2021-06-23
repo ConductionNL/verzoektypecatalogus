@@ -11,9 +11,8 @@ info:
     - Repository: [online](https://github.com/ConductionNL/verzoektypecatalogus) / [zip](https://github.com/ConductionNL/verzoektypecatalogus/archive/master.zip)
     - Docker Image: [online]() 
     - Datamodel: [postman](schema/verzoektypecatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
-    
-    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
-    
+
+    De Verzoek Type Catalogus biedt een overzicht van de mogelijke te starten verzoeken door de gebruiker en de te verwachten afhandeling. Het component laat zich in deze het best vergelijken met een digitale beschrijving van een formulier, waarbij de Verzoek Type catalogus zich zuiver beperkt tot de definiëring van de eindwaarde. Het component bevat in deze dus een reeks van velden en voorwaarden waaraan het moet voldoen.         
 paths:
   /audit_trails:
     get:
@@ -7026,7 +7025,7 @@ components:
           type: string
     Property-read:
       type: object
-      description: |
+      description: |-
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
@@ -7249,7 +7248,7 @@ components:
         - format
     Property-write:
       type: object
-      description: |
+      description: |-
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
@@ -7448,7 +7447,7 @@ components:
           nullable: true
     'Property:jsonld-read':
       type: object
-      description: |
+      description: |-
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
@@ -7680,7 +7679,7 @@ components:
         - format
     'Property:jsonld-write':
       type: object
-      description: |
+      description: |-
         This property follows the following schemes (in order of importance)
         https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
         https://tools.ietf.org/html/draft-wright-json-schema-validation-00
@@ -8383,6 +8382,121 @@ components:
           type: string
           nullable: true
 definitions:
+  Task-read:
+    properties:
+      id:
+        description: ''
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      name:
+        description: 'The name of this Task'
+        type: string
+        example: 'Task name'
+        maxLength: 255
+      description:
+        description: 'The description of this Task'
+        type: string
+        example: 'Task description'
+        maxLength: 255
+      endpoint:
+        description: 'The endpoint that the request was made to'
+        type: string
+        example: endpoint
+        maxLength: 255
+      type:
+        description: 'The type of the task'
+        type: string
+        example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      event:
+        description: 'The type of event that trigers the ttask'
+        type: string
+        example: 'create, update, save or delete'
+        maxLength: 255
+      code:
+        description: 'The type of the task'
+        type: string
+        example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      requestHeaders:
+        description: 'The request headers supplied by client'
+        type: array
+      requestBody:
+        description: 'The request body supplied by client'
+        type: array
+      webHookHeaders:
+        description: 'The the headers of the webHook'
+        type: array
+      timeInterval:
+        description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+        type: string
+        example: P10D
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2021-06-23 14:18:56'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2021-06-23 14:18:56'
+      requestType:
+        description: 'The requestType that this task belongs to'
+        type: object
+    required:
+      - name
+  Task-write:
+    properties:
+      name:
+        description: 'The name of this Task'
+        type: string
+        example: 'Task name'
+        maxLength: 255
+      description:
+        description: 'The description of this Task'
+        type: string
+        example: 'Task description'
+        maxLength: 255
+      endpoint:
+        description: 'The endpoint that the request was made to'
+        type: string
+        example: endpoint
+        maxLength: 255
+      type:
+        description: 'The type of the task'
+        type: string
+        example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      event:
+        description: 'The type of event that trigers the ttask'
+        type: string
+        example: 'create, update, save or delete'
+        maxLength: 255
+      code:
+        description: 'The type of the task'
+        type: string
+        example: 'GET, POST, DELETE, CAMUNDA'
+        maxLength: 255
+      requestHeaders:
+        description: 'The request headers supplied by client'
+        type: array
+      requestBody:
+        description: 'The request body supplied by client'
+        type: array
+      webHookHeaders:
+        description: 'The the headers of the webHook'
+        type: array
+      timeInterval:
+        description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+        type: string
+        example: P10D
+      requestType:
+        description: 'The requestType that this task belongs to'
+        type: object
+    required:
+      - name
   Property-read:
     properties:
       id:
@@ -8549,12 +8663,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2021-03-02 20:26:54'
+        example: '2021-06-23 14:18:56'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2021-03-02 20:26:54'
+        example: '2021-06-23 14:18:56'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8742,12 +8856,12 @@ definitions:
       availableFrom:
         description: 'The moment from which this value is available'
         type: string
-        example: '2021-03-02 20:26:54'
+        example: '2021-06-23 14:18:56'
         format: date-time
       availableUntil:
         description: '*should be used in combination with deprecated* The moment where until this value is available'
         type: string
-        example: '2021-03-02 20:26:54'
+        example: '2021-06-23 14:18:56'
         format: date-time
       minDate:
         description: 'The minimal date for value, either a date, datetime or duration (ISO_8601)'
@@ -8889,121 +9003,59 @@ definitions:
         type: object
     required:
       - name
-  Task-read:
+  ChangeLog-read:
     properties:
       id:
-        description: ''
+        description: 'The UUID identifier of this object'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      name:
-        description: 'The name of this Task'
+      note:
+        description: 'A note conserning this log lin'
         type: string
-        example: 'Task name'
-        maxLength: 255
-      description:
-        description: 'The description of this Task'
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
         type: string
-        example: 'Task description'
-        maxLength: 255
-      endpoint:
-        description: 'The endpoint that the request was made to'
+      objectId:
+        description: ''
         type: string
-        example: endpoint
-        maxLength: 255
-      type:
-        description: 'The type of the task'
+      objectClass:
+        description: ''
         type: string
-        example: 'GET, POST, DELETE, CAMUNDA'
-        maxLength: 255
-      event:
-        description: 'The type of event that trigers the ttask'
-        type: string
-        example: 'create, update, save or delete'
-        maxLength: 255
-      code:
-        description: 'The type of the task'
-        type: string
-        example: 'GET, POST, DELETE, CAMUNDA'
-        maxLength: 255
-      requestHeaders:
-        description: 'The request headers supplied by client'
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
         type: array
-      requestBody:
-        description: 'The request body supplied by client'
-        type: array
-      webHookHeaders:
-        description: 'The the headers of the webHook'
-        type: array
-      timeInterval:
-        description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
+      username:
+        description: ''
         type: string
-        example: P10D
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
       dateCreated:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-02 20:26:54'
+        example: '2021-06-23 14:18:56'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-02 20:26:54'
-      requestType:
-        description: 'The requestType that this task belongs to'
-        type: object
-    required:
-      - name
-  Task-write:
+        example: '2021-06-23 14:18:56'
+    required: []
+  ChangeLog-write:
     properties:
-      name:
-        description: 'The name of this Task'
+      note:
+        description: 'A note conserning this log lin'
         type: string
-        example: 'Task name'
-        maxLength: 255
-      description:
-        description: 'The description of this Task'
-        type: string
-        example: 'Task description'
-        maxLength: 255
-      endpoint:
-        description: 'The endpoint that the request was made to'
-        type: string
-        example: endpoint
-        maxLength: 255
-      type:
-        description: 'The type of the task'
-        type: string
-        example: 'GET, POST, DELETE, CAMUNDA'
-        maxLength: 255
-      event:
-        description: 'The type of event that trigers the ttask'
-        type: string
-        example: 'create, update, save or delete'
-        maxLength: 255
-      code:
-        description: 'The type of the task'
-        type: string
-        example: 'GET, POST, DELETE, CAMUNDA'
-        maxLength: 255
-      requestHeaders:
-        description: 'The request headers supplied by client'
-        type: array
-      requestBody:
-        description: 'The request body supplied by client'
-        type: array
-      webHookHeaders:
-        description: 'The the headers of the webHook'
-        type: array
-      timeInterval:
-        description: 'The time interval afther wichs to trigger the task (in dateinterval format https://www.php.net/manual/en/class.dateinterval.php)'
-        type: string
-        example: P10D
-      requestType:
-        description: 'The requestType that this task belongs to'
-        type: object
-    required:
-      - name
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
   AuditTrail-read:
     properties:
       id:
@@ -9108,12 +9160,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-02 20:26:54'
+        example: '2021-06-23 14:18:56'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-02 20:26:54'
+        example: '2021-06-23 14:18:56'
     required: []
   AuditTrail-write:
     properties:
@@ -9123,92 +9175,36 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2021-03-02 20:26:54'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2021-03-02 20:26:54'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
 tags:
   -
+    name: Task
+    description: |+
+
+
+  -
     name: Property
-    description: |
+    description: |+
       This property follows the following schemes (in order of importance)
       https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
       https://tools.ietf.org/html/draft-wright-json-schema-validation-00
       http://json-schema.org/.
-      
-      
+
   -
     name: RequestType
-    description: |
+    description: |+
       All properties contained in the RequestType type.
-      
-      
-  -
-    name: Task
-    description: |
-      
-      
-      
-  -
-    name: AuditTrail
-    description: |
-      An resource representing a log line.
-      
-      This entity represents a product that can be ordered via the OrderRegistratieComponent.
+
   -
     name: ChangeLog
-    description: |
+    description: |-
       An resource representing a log line.
-      
+
+      This entity represents a product that can be ordered via the OrderRegistratieComponent.
+  -
+    name: AuditTrail
+    description: |-
+      An resource representing a log line.
+
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
 securityDefinitions:
   JWT-Oauth:
@@ -9216,16 +9212,16 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
       write-requesttype: 'write-requesttype right to the RequestType resource'
 host: irc.zaakonline.nl
 servers:
